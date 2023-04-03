@@ -1,5 +1,6 @@
 # homeXchangeManager 🤟🏼🐄
-Home exchange manager project at ISEP, 2023. Grpup: La vaca polaca
+Web technologies, home exchange manager project at ISEP, 2023. 
+Group name: La vaca polaca
 ## Technologies:
 - Backend: Java with Spring framework 
 - Frontend: HTML, CSS and JS
