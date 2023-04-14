@@ -27,11 +27,17 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    // security
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
+    implementation("javax.persistence:javax.persistence-api:2.2")
     // MySQL
     implementation("mysql:mysql-connector-java:8.0.26")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     // H2
     implementation("com.h2database:h2")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
