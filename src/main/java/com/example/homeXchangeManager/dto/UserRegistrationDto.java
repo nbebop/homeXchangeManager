@@ -5,7 +5,8 @@ public class UserRegistrationDto {
     private String email;
     private String password;
 
-    public UserRegistrationDto() {}
+    public UserRegistrationDto() {
+    }
 
 
     public String getUserName() {

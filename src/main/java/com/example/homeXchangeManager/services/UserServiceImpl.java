@@ -1,12 +1,8 @@
 package com.example.homeXchangeManager.services;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.example.homeXchangeManager.dto.UserRegistrationDto;
 import com.example.homeXchangeManager.models.Role;
+import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,9 +11,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.example.homeXchangeManager.models.User;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
@@ -32,8 +33,8 @@ public class UserServiceImpl implements UserService{
     public User save(UserRegistrationDto registrationDto) {
 
         User user = new User(registrationDto.getUserName(),
-                             registrationDto.getEmail(),
-                             passwordEncoder.encode(registrationDto.getPassword()),
+                registrationDto.getEmail(),
+                passwordEncoder.encode(registrationDto.getPassword()),
                 Arrays.asList(new Role("ROLE_USER")));
 
         return userRepository.save(user);

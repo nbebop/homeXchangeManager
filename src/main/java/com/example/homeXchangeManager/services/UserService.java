@@ -1,12 +1,12 @@
 package com.example.homeXchangeManager.services;
 
 import com.example.homeXchangeManager.dto.UserRegistrationDto;
+import com.example.homeXchangeManager.models.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
-import com.example.homeXchangeManager.models.User;
 
-public interface UserService  extends UserDetailsService {
+public interface UserService extends UserDetailsService {
     User save(UserRegistrationDto registrationDto);
 
     List<User> getAll();
