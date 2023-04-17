@@ -1,29 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Untitled Document</title>
     <!-- Bootstrap -->
-    <link href="/css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
     <title>Login / Sign up</title>
     <style>
-
-        /* Set the background image for the upper section */
-        .hero-section {
-            background-image: url("img/background.jpg");
-            background-size: cover;
-            background-position: center center;
-            height: 100vh;
-        }
-
         body {
             font-family: Arial, sans-serif;
+            background-image: url('img\background_updated.jpg');
             background-repeat: no-repeat;
             background-size: cover;
         }
-
         .container {
             display: flex;
             justify-content: flex-end;
@@ -81,7 +72,7 @@
             cursor: pointer;
         }
 
-        a[href="registration.html"] {
+        a[href="sign_up_form.html"] {
             color: rgb(167, 135, 136);
         }
 
@@ -107,13 +98,54 @@
         a:hover {
             text-decoration: none;
         }
+        /* Set the position of the sections below the upper section */
+        .how-it-works-section, .costs-section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
+        .how-it-works-section{
+            padding-top: 30px;
+            height: 200px;
+        }
+        .costs-section{
+            margin-top: 50px;
+            margin-bottom: 50px;
+            height: 400px;
+        }
+        .info-section {
+            text-align: center;
+        }
 
+        .watermark {
+            margin-right: 20px;
+            font-size: 15px;
+            opacity: 0.5;
+            z-index: -1;
+            text-align: right;
+            margin-bottom: 25px;
+            margin-top: 50px;
+        }
+        .info-section a {
+            color: #fff;
+            margin-right: 20px;
+            margin-left: 30px;
+        }
+
+        .info-section a:hover {
+            color: rgb(167, 135, 136);
+        }
     </style>
 </head>
-
 <body>
-<section class="hero-section">
+<section id="main_info">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="index.html">HomeExchangeLogoHere</a>
@@ -127,7 +159,7 @@
                         <a class="nav-link" href="#how-it-works">How it works?</a>
                     </li>
                     <li class="nav-item mr-4">
-                        <a class="nav-link" href="#costs">How much it costs?</a>
+                        <a class="nav-link" href="#how-much-it-costs">How much it costs?</a>
                     </li>
                     <li class="nav-item mr-2">
                         <a class="nav-link btn btn-outline-secondary rounded-10 px-4 py-2" href="#"
@@ -158,28 +190,31 @@
                     <button type="submit">Login</button>
                 </form>
                 <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px">
-                    <p>Don't have an account? <a th:action="@{/registration}" style="color: rgb(167, 135, 136)">Sign up
-                        for free</a>.</p>
+                    <p>Don't have an account? <a href="sign_up_form.html" style="color: rgb(167, 135, 136)">Sign up for
+                        free</a>.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 <!-- body code goes here -->
 <section id="how-it-works" class="how-it-works-section">
     <h2>How it works?</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
-        luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
-        dictumst.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
 </section>
 
-<section id="costs" class="costs-section">
+<section id="how-much-it-costs" class="costs-section">
     <h2>How much it costs?</h2>
-    <p>Quisque eget nisl ut nisl suscipit dignissim. Duis quis augue eu velit ullamcorper dignissim in ac metus. Etiam
-        euismod eu nunc at varius. Praesent auctor nulla eu tortor congue rhoncus. Nullam dapibus, risus eget euismod
-        blandit, mauris sapien efficitur lectus, sit amet eleifend nulla velit vel risus.</p>
+    <p>Quisque eget nisl ut nisl suscipit dignissim. Duis quis augue eu velit ullamcorper dignissim in ac metus. Etiam euismod eu nunc at varius. Praesent auctor nulla eu tortor congue rhoncus. Nullam dapibus, risus eget euismod blandit, mauris sapien efficitur lectus, sit amet eleifend nulla velit vel risus.</p>
 </section>
 
+<section id="info" class="info-section">
+    <a href="#">ABOUT</a>
+    <a href="#">COOKIE SETTINGS</a>
+    <a href="#">PRIVACY</a>
+    <div class="watermark">2023 ISEP Web technologies Project</div>
+</section>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-3.4.1.min.js"></script>
 
