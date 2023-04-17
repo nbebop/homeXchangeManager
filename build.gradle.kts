@@ -33,9 +33,8 @@ dependencies {
     // security
     implementation("org.springframework.boot:spring-boot-starter-security")
 
-    // H2
-    implementation("com.h2database:h2")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    // Firebase
+    implementation ("com.google.firebase:firebase-admin:6.11.0")
 
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
