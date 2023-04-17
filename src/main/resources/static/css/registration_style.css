@@ -1,9 +1,13 @@
+/* general idea */
 body {
     font-family: Arial, sans-serif;
     background-image: url('../img/background_updated.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
 }
+/* SIGN UP white box  - form */
 .form-container {
     position: absolute;
     top: 50%;
@@ -13,7 +17,18 @@ body {
     padding: 50px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    width: 450px;
 }
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 100vh;
+    margin-right: 90px;
+    margin-top: 100px;
+}
+
 h1 {
     text-align: center;
     margin-bottom: 30px;
@@ -32,12 +47,14 @@ input, textarea {
     width: 250px;
 }
 
+/* SIGN UP white box  - input stuff */
 input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
     padding: 10px;
     border-radius: 5px;
     border: none;
     margin-bottom: 20px;
 }
+/* SIGN UP white box  - submit button */
 input[type="submit"] {
     padding: 10px;
     color: #fff;
@@ -50,6 +67,29 @@ input[type="submit"] {
     margin-left: 110px;
     background-color: rgb(167, 135, 136);
 }
+/* submit button HOVER */
 input[type="submit"]:hover {
     background-color: #0062cc;
+}
+/* Bottom info section about privacy, watermark and stuff */
+.info-section {
+    text-align: center;
+}
+.watermark {
+    margin-right: 20px;
+    font-size: 15px;
+    opacity: 0.5;
+    z-index: -1;
+    text-align: right;
+    margin-bottom: 25px;
+    margin-top: 50px;
+}
+.info-section a {
+    color: #fff;
+    margin-right: 20px;
+    margin-left: 30px;
+}
+
+.info-section a:hover {
+    color: rgb(167, 135, 136);
 }
