@@ -13,7 +13,7 @@ public class FBInitialize {
     public void initialize() {
         try {
             FileInputStream serviceAccount =
-                    new FileInputStream("C:\\Users\\Mario\\IdeaProjects\\homeXchangeManager\\src\\main\\java\\com\\example\\homeXchangeManager\\privateKey.json");
+                    new FileInputStream("privateKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
