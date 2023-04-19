@@ -1,18 +1,74 @@
-/* general idea */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 body {
-    font-family: Arial, sans-serif;
+/*    font-family: Arial, sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
     background-image: url('../img/background_updated.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-/* SIGN UP white box  - form */
+/* NAVBAR CSS*/
+/* LOGO */
+.logo{
+    cursor: pointer;
+    width: 10%;
+    height: 10%;
+    margin-right: 25px;
+}
+.logo-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    margin-right: 20px;
+    margin-left: 20px; /* add margin-left */
+}
+/* Rest of navbar */
+
+.navbar-section li, a, button {
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.nav-links{
+    list-style: none;
+    margin-left: 50px;
+}
+.nav-links li{
+    display: inline-block;
+    padding: 20px;
+}
+.nav-links li a{
+    transition: all 0.3s ease 0s;
+}
+.nav-links li a:hover{
+    color: rgb(167, 135, 136);
+}
+/* Button */
+button {
+    margin-left: 20px;
+    padding: 10px;
+    background-color: rgb(167, 135, 136);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+button:hover{
+    background-color: rgb(161, 101, 103);
+}
+/* FORM white box */
 .form-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: rgba(255,255,255,0.8);
     padding: 50px;
     border-radius: 10px;
@@ -33,6 +89,7 @@ h1 {
     text-align: center;
     margin-bottom: 30px;
 }
+
 form {
     width: 400px;
     margin: 0 auto;
@@ -47,14 +104,13 @@ input, textarea {
     width: 250px;
 }
 
-/* SIGN UP white box  - input stuff */
 input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
     padding: 10px;
     border-radius: 5px;
     border: none;
     margin-bottom: 20px;
 }
-/* SIGN UP white box  - submit button */
+
 input[type="submit"] {
     padding: 10px;
     color: #fff;
@@ -67,29 +123,40 @@ input[type="submit"] {
     margin-left: 110px;
     background-color: rgb(167, 135, 136);
 }
-/* submit button HOVER */
+
 input[type="submit"]:hover {
     background-color: #0062cc;
 }
-/* Bottom info section about privacy, watermark and stuff */
-.info-section {
+/* Bottom information */
+#info {
+    font-size:15px;
     text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
+/* ISEP 2023 sign */
 .watermark {
-    margin-right: 20px;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
     font-size: 15px;
     opacity: 0.5;
     z-index: -1;
-    text-align: right;
-    margin-bottom: 25px;
-    margin-top: 50px;
 }
+
 .info-section a {
     color: #fff;
     margin-right: 20px;
     margin-left: 30px;
+    text-decoration: none;
 }
 
 .info-section a:hover {
     color: rgb(167, 135, 136);
 }
+
+.form-section {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
