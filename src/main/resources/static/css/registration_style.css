@@ -47,8 +47,8 @@ header {
 .nav-links li a:hover {
     color: rgb(167, 135, 136);
 }
-/* Button 1 */
-button {
+/* Button in navbar */
+header button {
     margin-left: 20px;
     padding: 9px 25px;
     background-color: rgb(167, 135, 136);
@@ -57,7 +57,7 @@ button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
-button:hover {
+header button:hover {
     background-color: rgb(161, 101, 103);
 }
 
@@ -110,7 +110,7 @@ input[type="submit"] {
     padding: 10px;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease;
@@ -145,4 +145,24 @@ input[type="submit"]:hover {
     margin-bottom: 30px;
     margin-top: 30px;
 }
+
+/* Password toggle */
+
+/*#show-passwd {*/
+/*    position: absolute;*/
+/*    top: 108%;*/
+/*    right: 32rem;*/
+/*    transform: translateY(-50%);*/
+/*    cursor: pointer;*/
+/*    width: 1.5rem;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    border: none;*/
+/*}*/
+
+/*#show-passwd img {*/
+/*    width: 100%;*/
+/*    height: auto;*/
+/*}*/
+
 
