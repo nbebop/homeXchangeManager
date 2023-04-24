@@ -1,6 +1,7 @@
 package com.example.homeXchangeManager.models;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 
 @Entity
@@ -15,9 +16,13 @@ public class User {
     private Long id;
 
     private String username;
-
     private String email;
     private String password;
+    private String firstName;
+    private String lastName;
+    private SimpleDateFormat birthDate;
+    private String phoneNumber;
+    private String userDescription;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
