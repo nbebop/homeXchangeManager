@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 /* General info*/
 body {
@@ -44,10 +43,11 @@ header {
 .nav-links li a:hover {
     color: rgb(167, 135, 136);
 }
+/****************************************************/
 /* Dropdown Profile menu */
 .dropbtn{
     margin-left: 15px;
-    width: 70px;
+    width: 90px;
     height: 40px;
     padding: 9px 25px;
     background-color: rgb(167, 135, 136);
@@ -71,10 +71,13 @@ header {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: transparent;
     z-index: 1;
     text-align: center;
     transition: all 0.3s ease 0s;
+    border-radius: 20px;
+    padding: 15px;
+    backdrop-filter: blur(10px);
+
 }
 
 /* Links inside the dropdown */
@@ -83,25 +86,20 @@ header {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-
 }
-/* If I want to make it in a blurred box */
-/*.dropdown-content:hover{
-    backdrop-filter: blur(6px);
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}*/
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: transparent;
-    color: rgb(161, 101, 103);
-}
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    border-radius: 50px;
+    background-color: rgb(167, 135, 136);
 
+}
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
-
-/* Search bar*/
+/****************************************************/
+/* Search bar */
 .search-bar {
     flex: 1;
     position: relative;
@@ -147,5 +145,70 @@ input[type="search"]::-webkit-search-cancel-button {
     width: 20px;
     background-color: rgb(167, 135, 136);
     -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+}
+/****************************************************/
+/* LISTINGS */
+.listings-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
+.listing {
+    border-radius: 50px;
+    background-color: white;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.listing:hover {
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+}
+/* OBJECT PICTURE */
+.listing img {
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50px;
+}
+.listing-details {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 130px;
+}
+/* STAR RATING */
+.listing-details img{
+    width: 15px;
+    height: 15px;
+}
+.listing-details .rating {
+    display: flex;
+    align-items: center;
+}
+
+.listing-details .rating img {
+    height: 15px;
+    margin-right: 8px;
+    position: relative;
+    margin-top: -235px;
+}
+
+.listing-details .rating-number {
+    font-weight: bold;
+    position: relative;
+    margin-top: -235px;
+}
+.listing-details h3 {
+    margin: 0;
+    font-size: 18px;
+}
+.listing-details p{
+    margin-top: -20px;
 }
