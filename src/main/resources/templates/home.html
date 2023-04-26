@@ -7,8 +7,31 @@
     <!--<link href="css/home_style.css" rel="stylesheet">-->
     <!-- Stylesheet for frontend build -->
     <link href="../static/css/home_style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-
+<!-- Top of the page - navbar/search bar-->
+<section class="navbar">
+    <header>
+        <!-- Logo -->
+        <a href="/" th:action="@{/login}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
+            <form action="/" method="GET" class="form">
+                <input type="search" placeholder="Search for..." class="search-field">
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- Rent a house link -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Rent your house</a> </li>
+            </ul>
+        </nav>
+        <!-- Profile button -->
+        <a href="/" th:action="@{/login}"><button class="profile_button">Login</button></a>
+        <a href="/" th:href="@{/registration}"><button class="profile_button">Register</button></a>
+    </header>
+</section>
 </body>
 </html>
