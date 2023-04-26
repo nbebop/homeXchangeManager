@@ -28,9 +28,20 @@
                 <li><a href="#">Rent your house</a> </li>
             </ul>
         </nav>
-        <!-- Profile button -->
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="#">Account</a>
+                <a href="#">Messages</a>
+                <a href="#">Favorites</a>
+                <a href="#">Help</a>
+                <a href="#">Log Out</a>
+            </div>
+        </div>
+<!--        &lt;!&ndash; Profile button &ndash;&gt;
         <a href="/" th:action="@{/login}"><button class="profile_button">Login</button></a>
-        <a href="/" th:href="@{/registration}"><button class="profile_button">Register</button></a>
+        <a href="/" th:href="@{/registration}"><button class="profile_button">Register</button></a>-->
     </header>
 </section>
 </body>
