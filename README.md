@@ -15,4 +15,4 @@ Subject: Web technologies
 - Nizar (team leader)
 - Magdalena (team member, managing reports)
 - Aleksandra (team member)
-- Mario (Papá)
+- Mario (team member)
