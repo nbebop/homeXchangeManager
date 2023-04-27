@@ -1,7 +1,9 @@
 package com.example.homeXchangeManager.models;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
+import javax.validation.constraints.Email;
 import java.util.Collection;
 
 @Entity
@@ -14,15 +16,23 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotNull
     private String username;
-    private String email;
-    private String password;
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
-    private SimpleDateFormat birthDate;
+    @NotNull
+    private String password;
+    @NotNull
+    @Email
+    private String email;
+    @NotNull
+    private Integer age;
+    @NotNull
     private String phoneNumber;
-    private String userDescription;
+    @NotNull
+    private String profileInfo;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
@@ -33,10 +43,16 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password, Collection<Role> roles) {
+    public User(Long id, @NotNull String username, @NotNull String firstName, @NotNull String lastName, @NotNull String password, @NotNull String email, @NotNull Integer age, @NotNull String phoneNumber, @NotNull String profileInfo, Collection<Role> roles) {
+        this.id = id;
         this.username = username;
-        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
+        this.email = email;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.profileInfo = profileInfo;
         this.roles = roles;
     }
 
@@ -80,3 +96,4 @@ public class User {
         this.roles = roles;
     }
 }
+
