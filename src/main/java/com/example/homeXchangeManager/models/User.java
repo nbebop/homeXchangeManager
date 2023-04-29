@@ -29,11 +29,8 @@ public class User {
     @NotNull
     @Email
     private String email;
-    @NotNull
     private Integer age;
-    @NotNull
     private String phoneNumber;
-    @NotNull
     private String profileInfo;
 
     @ManyToMany(fetch = FetchType.LAZY)

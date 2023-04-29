@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -32,10 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(UserRegistrationDto registrationDto) {
 
-        User user = new User(registrationDto.getUserName(),
-                registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()),
-                Arrays.asList(new Role("ROLE_USER")));
+        User user = new User(); // to change to match User implementation
 
         return userRepository.save(user);
     }

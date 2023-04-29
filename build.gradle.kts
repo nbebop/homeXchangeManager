@@ -37,11 +37,9 @@ dependencies {
     // security
     implementation("org.springframework.boot:spring-boot-starter-security")
 
-    // Firebase
-    implementation ("com.google.firebase:firebase-admin:8.0.0")
-    implementation ("com.google.firebase:firebase-database-ktx:20.2.0")
-    implementation ("com.google.firebase:firebase-firestore-ktx:24.5.0")
-    //implementation ("com.google.firebase:firebase-auth-ktx:21.3.0")
+    // mysql
+    implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation ("mysql:mysql-connector-java")
 
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
