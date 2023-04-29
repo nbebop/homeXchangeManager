@@ -1,9 +1,10 @@
 package com.example.homeXchangeManager.models;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "ListingRating")
-public class ListingRating {
+public class ListingRating implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ratingId")

@@ -1,12 +1,13 @@
 package com.example.homeXchangeManager.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "listings")
-public class Listing {
+public class Listing implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int listingId;

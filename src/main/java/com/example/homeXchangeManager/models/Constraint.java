@@ -3,10 +3,11 @@ package com.example.homeXchangeManager.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "constraints")
-public class Constraint {
+public class Constraint implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

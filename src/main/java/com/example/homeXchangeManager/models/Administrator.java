@@ -1,11 +1,12 @@
 package com.example.homeXchangeManager.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "administrator")
-public class Administrator {
+public class Administrator implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "admin_id")
