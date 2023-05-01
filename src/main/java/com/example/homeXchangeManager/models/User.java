@@ -1,6 +1,12 @@
 package com.example.homeXchangeManager.models;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
@@ -9,15 +15,24 @@ import java.util.Collection;
                 @UniqueConstraint(columnNames = "username"),
                 @UniqueConstraint(columnNames = "email")
         })
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotNull
     private String username;
-
-    private String email;
+    @NotNull
+    private String firstName;
+    @NotNull
+    private String lastName;
+    @NotNull
     private String password;
+    @NotNull
+    @Email
+    private String email;
+    private Integer age;
+    private String phoneNumber;
+    private String profileInfo;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
@@ -28,10 +43,16 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password, Collection<Role> roles) {
+    public User(Long id, @NotNull String username, @NotNull String firstName, @NotNull String lastName, @NotNull String password, @NotNull String email, @NotNull Integer age, @NotNull String phoneNumber, @NotNull String profileInfo, Collection<Role> roles) {
+        this.id = id;
         this.username = username;
-        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
+        this.email = email;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.profileInfo = profileInfo;
         this.roles = roles;
     }
 
@@ -75,3 +96,4 @@ public class User {
         this.roles = roles;
     }
 }
+

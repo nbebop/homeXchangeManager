@@ -1,7 +1,6 @@
 package com.example.homeXchangeManager.controllers;
 
 import com.example.homeXchangeManager.dto.UserRegistrationDto;
-import com.example.homeXchangeManager.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/registration")
 public class RegistrationController {
 
-    private UserService userService;
-
-    public RegistrationController(UserService userService) {
+/**
+    public RegistrationController() {
         super();
         this.userService = userService;
     }
@@ -34,7 +32,7 @@ public class RegistrationController {
 
         userService.save(registrationDto);
         return "redirect:/registration?success";
-    }
+    }*/
 }
 
 
