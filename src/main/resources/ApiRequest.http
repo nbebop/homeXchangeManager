@@ -1,8 +1,0 @@
-POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAdrhvJcwvi3w_Q3CykEgMG8CkTmheq8y0
-Content-Type: application/json
-
-{
-  "email": "nizar.bikti@gmail.com",
-  "password": "5z#oAjTcKe$hRg",
-  "returnSecureToken": true
-}
