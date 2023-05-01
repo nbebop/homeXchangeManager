@@ -25,7 +25,7 @@ public class Message implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
-    // Constructors, getters, and setters
+    // Constructors
 
     public Message() {
     }
