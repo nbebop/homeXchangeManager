@@ -11,7 +11,7 @@ public class ListingRating implements Serializable {
     private int ratingId;
 
     @ManyToOne
-    @JoinColumn(name = "reviewerId", referencedColumnName = "userId")
+    @JoinColumn(name = "reviewerId", referencedColumnName = "id")
     private User reviewer;
 
     @ManyToOne
