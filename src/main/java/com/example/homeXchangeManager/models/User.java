@@ -1,13 +1,18 @@
 package com.example.homeXchangeManager.models;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users",
@@ -22,62 +27,79 @@ public class User implements Serializable {
     @NotNull
     private String username;
     @NotNull
-    private String firstName;
+    private String firstname;
     @NotNull
-    private String lastName;
+    private String lastname;
     @NotNull
     private String password;
     @NotNull
     @Email
     private String email;
-    private Integer age;
+    @DateTimeFormat(pattern="dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/YYYY")
+    private Date birthdate;
     private String phoneNumber;
-    private String profileInfo;
+    private String description;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    private String address;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<Role> roles;
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private List<Role> roles = new ArrayList<>();
 
     public User() {
     }
 
-    public User(Long id, @NotNull String username, @NotNull String firstName, @NotNull String lastName, @NotNull String password, @NotNull String email, @NotNull Integer age, @NotNull String phoneNumber, @NotNull String profileInfo, Collection<Role> roles) {
+    public User(Long id, @NotNull String username, @NotNull String firstName, @NotNull String lastName, @NotNull String password, @NotNull String email, Date birthdate, String phoneNumber, String description, List<Role> roles) {
         this.id = id;
         this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstName;
+        this.lastname = lastName;
         this.password = password;
         this.email = email;
-        this.age = age;
+        this.birthdate = birthdate;
         this.phoneNumber = phoneNumber;
-        this.profileInfo = profileInfo;
+        this.description = description;
         this.roles = roles;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public User(String username, String password, List<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setFirstname(String firstName) {
+        this.firstname = firstName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public Integer getAge() {
-        return age;
+    public void setLastname(String lastName) {
+        this.lastname = lastName;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getPhoneNumber() {
@@ -88,12 +110,12 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getProfileInfo() {
-        return profileInfo;
+    public String getDescription() {
+        return description;
     }
 
-    public void setProfileInfo(String profileInfo) {
-        this.profileInfo = profileInfo;
+    public void setDescription(String profileInfo) {
+        this.description = profileInfo;
     }
 
     public Long getId() {
@@ -128,11 +150,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Collection<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Collection<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 }
