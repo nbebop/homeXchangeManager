@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,6 @@ import java.text.SimpleDateFormat;
 import java.util.Collections;
 
 @Controller
-@RequestMapping("/api/auth")
 public class AuthController {
     private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
@@ -38,12 +38,13 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @PostMapping("register")
-    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
-        if (userRepository.existsByUsername(registerDto.getUsername())) {
-            return new ResponseEntity<>("Username is taken!", HttpStatus.BAD_REQUEST);
-        }
+    @ModelAttribute("user")
+    public RegisterDto registerDto() {
+        return new RegisterDto();
+    }
 
+    @PostMapping("register")
+    public String register(@ModelAttribute("user") RegisterDto registerDto) {
         User user = new User();
         user.setUsername(registerDto.getUsername());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
@@ -54,14 +55,12 @@ public class AuthController {
         user.setPhoneNumber(registerDto.getPhoneNumber());
         user.setDescription(registerDto.getDescription());
         user.setAddress(registerDto.getAddress());
-
         // anyone who registers is a user
         user.setRoles(Collections.singletonList(new Role("USER")));
 
         userRepository.save(user);
-
-        return new ResponseEntity<>("User registration successful!", HttpStatus.OK);
-        //return "redirect:/registration?success";
+        // TODO: page to be redirected after successful registration
+        return "redirect:/registration?success";
     }
 
     @PostMapping("login")
