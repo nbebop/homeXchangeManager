@@ -56,8 +56,7 @@ public class AuthController {
         user.setAddress(registerDto.getAddress());
 
         // anyone who registers is a user
-        Role roles = roleRepository.findByName("USER");
-        user.setRoles(Collections.singletonList(roles));
+        user.setRoles(Collections.singletonList(new Role("USER")));
 
         userRepository.save(user);
 
