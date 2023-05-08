@@ -59,15 +59,11 @@ public class AuthController {
         user.setRoles(Collections.singletonList(new Role("USER")));
 
         userRepository.save(user);
-        // TODO: page to be redirected after successful registration
+        // TODO: page to be redirected to after successful registration
         return "redirect:/registration?success";
     }
 
-    @PostMapping("login")
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("User signed success", HttpStatus.OK);
-        //return new ResponseEntity<>("User signed success", HttpStatus.OK);
-    }
+    // POST login is handled directly by sprint boot security
+    // @PostMapping("login")
+
 }

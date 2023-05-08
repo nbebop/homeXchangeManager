@@ -24,7 +24,8 @@ public class SecurityConfiguration {
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/registration/**", "/js/**", "/css/**", "/img/**")
                 .permitAll().anyRequest().authenticated().and()
-                .formLogin().loginPage("/login").permitAll().and()
+                // Todo: change defaultSuccessUrl to listing page
+                .formLogin().loginPage("/login").defaultSuccessUrl("/login?succ").permitAll().and()
                 .logout().invalidateHttpSession(true).clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout").permitAll()
