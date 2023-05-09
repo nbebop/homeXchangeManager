@@ -21,6 +21,15 @@ header {
     align-items: center;
     padding: 5px 10%;
 }
+header.sticky {
+    backdrop-filter: blur(10px);
+}
+
+.navbar {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
 /* links */
 .navbar li, a, button {
     font-weight: 500;
@@ -149,7 +158,7 @@ input[type="search"]::-webkit-search-cancel-button {
 /****************************************************/
 /* LISTINGS */
 .listings-container {
-    margin-top: 20px;
+    margin-top: 80px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -181,7 +190,7 @@ input[type="search"]::-webkit-search-cancel-button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 130px;
+    height: 70px;
 }
 /* STAR RATING */
 .listing-details img{
@@ -197,18 +206,20 @@ input[type="search"]::-webkit-search-cancel-button {
     height: 15px;
     margin-right: 8px;
     position: relative;
-    margin-top: -235px;
+    margin-top: -160px;
 }
 
 .listing-details .rating-number {
     font-weight: bold;
     position: relative;
-    margin-top: -235px;
+    margin-top: -160px;
 }
 .listing-details h3 {
     margin: 0;
     font-size: 18px;
+    padding-bottom: 20px;
 }
 .listing-details p{
     margin-top: -20px;
+    padding-bottom: 10px;
 }

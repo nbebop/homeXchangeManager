@@ -24,6 +24,14 @@ header {
     align-items: center;
     padding: 5px 10%;
 }
+header.sticky {
+    backdrop-filter: blur(10px);
+}
+.navbar {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
 /* links */
 .navbar-section li, a, button {
     font-weight: 500;

@@ -12,7 +12,13 @@
     background-size: cover;
     background-position: center;
 }
+header.sticky {
+    backdrop-filter: blur(10px);
+}
 nav{
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
     display: flex;
     align-items: center;
     justify-content: space-between;
