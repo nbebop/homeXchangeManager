@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listing Page - EASY TUTORIALS</title>
+    <title>Listing Page</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+    <link href="../static/css/style.css" rel="stylesheet">
 </head>
 <body>
     <nav id="navBar" class="navbar-white">
         <a href="index.html">
-            <img src="images/compass_white_name.png" class="logo">
+            <img src="../static/img/compass_white_name.png" class="logo">
         </a>
 		 <div class="search-bar-list">
             <form action="/" method="GET" class="form">
@@ -23,7 +26,7 @@
         <a href="#" class="register-btn">Register Now</a>
         <i class="fas fa-bars" onclick="togglebtn()"></i>
 		 <div class="dropdown">
-            <button class="dropbtn"><img src="images/menu3.png" alt="My Button Image"></button>
+            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="#">Account</a>
                 <a href="#">Messages</a>
@@ -41,7 +44,7 @@
             <h1>Recommended Places In Paris</h1>
             <div class="house">
                 <div class="house-img">
-                    <a href="house.html"><img src="images/image-s1.png"></a>
+                    <a href="house.html"><img src="../static/img/image-s1.png"></a>
                 </div>
                 <div class="house-info">
                     <p>Private Villa in Paris</p>
@@ -60,7 +63,7 @@
             </div>
             <div class="house">
                 <div class="house-img">
-                    <img src="images/image-s2.png">
+                    <img src="../static/img/image-s2.png">
                 </div>
                 <div class="house-info">
                     <p>Private Villa in Paris</p>
@@ -79,7 +82,7 @@
             </div>
             <div class="house">
                 <div class="house-img">
-                    <img src="images/image-s3.png">
+                    <img src="../static/img/image-s3.png">
                 </div>
                 <div class="house-info">
                     <p>Private Villa in San Francisco</p>
@@ -98,7 +101,7 @@
             </div>
             <div class="house">
                 <div class="house-img">
-                    <img src="images/image-s4.png">
+                    <img src="../static/img/image-s4.png">
                 </div>
                 <div class="house-info">
                     <p>Private Villa in San Francisco</p>
@@ -117,7 +120,7 @@
             </div>
             <div class="house">
                 <div class="house-img">
-                    <img src="images/image-s5.png">
+                    <img src="../static/img/image-s5.png">
                 </div>
                 <div class="house-info">
                     <p>Private Villa in San Francisco</p>
@@ -136,7 +139,7 @@
             </div>
             <div class="house">
                 <div class="house-img">
-                    <img src="images/image-s6.png">
+                    <img src="../static/img/image-s6.png">
                 </div>
                 <div class="house-info">
                     <p>Private Villa in San Francisco</p>
@@ -198,7 +201,7 @@
     </div>
 
     <div class="pagination">
-        <img src="images/arrow.png">
+        <img src="../static/img/arrow.png">
         <span class="current">1</span>
         <span>2</span>
         <span>3</span>
@@ -206,7 +209,7 @@
         <span>5</span>
         <span>&middot; &middot; &middot; &middot;</span>
         <span>20</span>
-        <img src="images/arrow.png" class="right-arrow">
+        <img src="../static/img/arrow.png" class="right-arrow">
     </div>
 
     <div class="footer">
@@ -225,5 +228,11 @@
         navBar.classList.toggle("hidemenu");
     }
 </script>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
 </body>
 </html>
