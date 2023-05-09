@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Page</title>
+  <!-- Stylesheet -->
+  <link href="../static/css/admin_style.css" rel="stylesheet">
+  <script src="../static/js/script.js"></script>
+</head>
+<body>
+<section class="navbar">
+  <header>
+    <!-- Logo -->
+    <a href="/" th:action="@{/login}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>
+    <!--Search bar -->
+    <div class="search-bar">
+      <form action="/" method="GET" class="form">
+        <input type="search" placeholder="Search for..." class="search-field">
+        <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    <!-- Rent a house link -->
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Rent your house</a> </li>
+      </ul>
+    </nav>
+    <!-- Dropdown menu -->
+    <div class="dropdown">
+      <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
+      <div class="dropdown-content">
+        <a href="#">Account</a>
+        <a href="#">Messages</a>
+        <a href="#">Favorites</a>
+        <a href="#">Help</a>
+        <a href="#">Log Out</a>
+      </div>
+    </div>
+  </header>
+</section>
+<div class="edit_listings">
+  <h2>Edit Listings</h2>
+  <table>
+    <!-- TABLE HEADERS-->
+    <tr class="table-header">
+      <th>Name</th>
+      <th>Price</th>
+      <th>Rating</th>
+      <th>Owner</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+<!-- TABLE INPUTS-->
+    <tr>
+      <td>Listing 1</td>
+      <td>$10</td>
+      <td>4.5</td>
+      <td>John Doe</td>
+      <td><button>Edit</button></td>
+      <td><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td>Listing 2</td>
+      <td>$15</td>
+      <td>4.2</td>
+      <td>Jane Smith</td>
+      <td><button>Edit</button></td>
+      <td><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td>Listing 3</td>
+      <td>$15</td>
+      <td>4.2</td>
+      <td>Jane Smith</td>
+      <td><button>Edit</button></td>
+      <td><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td>Listing 4</td>
+      <td>$15</td>
+      <td>4.2</td>
+      <td>Jane Smith</td>
+      <td><button>Edit</button></td>
+      <td><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td>Listing 4</td>
+      <td>$15</td>
+      <td>4.2</td>
+      <td>Jane Smith</td>
+      <td><button>Edit</button></td>
+      <td><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td>Listing 6</td>
+      <td>$15</td>
+      <td>4.2</td>
+      <td>Jane Smith</td>
+      <td><button>Edit</button></td>
+      <td><button>Delete</button></td>
+    </tr>
+    <!-- Add more rows as needed -->
+  </table>
+</div>
+<!-- STATISTICS -->
+<div class="statistics-block">
+  <h2>Website Statistics</h2>
+  <ul class="statistics-list">
+    <li class="statistics-item">
+      Total Visitors: 1000
+    </li>
+    <li class="statistics-item">
+      Unique Visitors: 800
+    </li>
+    <li class="statistics-item">
+      Page Views: 5000
+    </li>
+    <li class="statistics-item">
+      Average Time on Site: 2 minutes
+    </li>
+  </ul>
+</div>
+</body>
+</html>
