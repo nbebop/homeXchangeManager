@@ -11,3 +11,8 @@ listing.querySelector('.left-arrow').addEventListener('click', () => {
     currentImage = (currentImage - 1 + images.length) % images.length;
     listing.querySelector('img').src = images[currentImage];
 });
+
+window.addEventListener("scroll", function (){
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0);
+})
