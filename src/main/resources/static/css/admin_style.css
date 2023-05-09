@@ -203,3 +203,13 @@ th, td {
 .statistics-item {
     margin-bottom: 10px;
 }
+/* Sort By dropdown */
+.sort-by {
+    margin-bottom: 10px;
+    align-self: flex-end; /* Align to the right */
+}
+
+.sort-by select {
+    padding: 5px;
+    font-size: 14px;
+}
