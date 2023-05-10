@@ -20,4 +20,13 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/house")
+    public String house() {
+        return "house";
+    }
+
+    @GetMapping("/home_page")
+    public String listing() {
+        return "home_page";
+    }
 }
