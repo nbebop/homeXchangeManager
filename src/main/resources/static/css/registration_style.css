@@ -2,7 +2,7 @@
 /* General info*/
 body {
     font-family: 'Montserrat', sans-serif;
-    background-image: url('../img/background_updated.jpg');
+    background-image: url('../img/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -23,6 +23,14 @@ header {
     justify-content: flex-end;
     align-items: center;
     padding: 5px 10%;
+}
+header.sticky {
+    backdrop-filter: blur(10px);
+}
+.navbar {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
 }
 /* links */
 .navbar-section li, a, button {

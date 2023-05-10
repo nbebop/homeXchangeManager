@@ -11,3 +11,7 @@ show_pw_btn.addEventListener('click', () => {
         ? 'eye_closed.svg'
         : 'eye_open.svg'
 })
+window.addEventListener("scroll", function (){
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0);
+})

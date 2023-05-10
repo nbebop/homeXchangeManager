@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+    <link href="../static/css/message.css" rel="stylesheet">
+</head>
+<body>
+<section class="navbar">
+    <header>
+        <!-- Logo -->
+        <a href="/" th:action="@{/login}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
+            <form action="/" method="GET" class="form">
+                <input type="search" placeholder="Search for..." class="search-field">
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- Rent a house link -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Rent your house</a> </li>
+            </ul>
+        </nav>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="#">Account</a>
+                <a href="#">Messages</a>
+                <a href="#">Favorites</a>
+                <a href="#">Help</a>
+                <a href="#">Log Out</a>
+            </div>
+        </div>
+    </header>
+</section>
+<main>
+    <div class="host">
+        <img src="../static/img/host.png">
+        <div>
+            <h2>Brandon</h2>
+            <p><span>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </span>&nbsp; &nbsp; 245 reviews &nbsp; &nbsp; Response rate 100% &nbsp; &nbsp; Response time: 60 min</p>
+        </div>
+    </div>
+    <div class="conversation">
+        <div class="message received">
+            <p>Hello, is the apartment still available?</p>
+            <span class="timestamp">10:30 AM</span>
+        </div>
+        <div class="message sent">
+            <p>Yes, it is still available. When would you like to rent it?</p>
+            <span class="timestamp">10:35 AM</span>
+        </div>
+        <div class="message received">
+            <p>I am interested in renting it for the next 3 months. Can we arrange a viewing?</p>
+            <span class="timestamp">10:45 AM</span>
+        </div>
+        <div class="message sent">
+            <p>Sure, when would you like to come for a viewing?</p>
+            <span class="timestamp">10:50 AM</span>
+        </div>
+    </div>
+    <form>
+        <textarea id="message" name="message" placeholder="Type your message"></textarea>
+        <input type="submit" value="Send">
+    </form>
+</main>
+</body>
+</html>
