@@ -35,14 +35,6 @@ header {
     align-items: center;
     padding: 5px 10%;
 }
-header.sticky {
-    backdrop-filter: blur(10px);
-}
-.navbar {
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
-}
 /* links */
 .navbar-section li, a, button {
     font-weight: 500;
@@ -85,8 +77,8 @@ h1 {
 }
 
 input[type="text"],
-input[type="username"],
-input[type="password"] {
+input[type="new_password"],
+input[type="new_password2"] {
     background-color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
     width: 100%;

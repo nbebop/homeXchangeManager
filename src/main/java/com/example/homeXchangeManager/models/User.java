@@ -40,16 +40,9 @@ public class User implements Serializable {
     private Date birthdate;
     private String phoneNumber;
     private String description;
+    @NotNull
+    private Address address;
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    private String address;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -59,7 +52,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long id, @NotNull String username, @NotNull String firstName, @NotNull String lastName, @NotNull String password, @NotNull String email, Date birthdate, String phoneNumber, String description, List<Role> roles) {
+    public User(Long id, @NotNull String username, @NotNull String firstName, @NotNull String lastName, @NotNull String password, @NotNull String email, Date birthdate, String phoneNumber, String description, List<Role> roles, Address address) {
         this.id = id;
         this.username = username;
         this.firstname = firstName;
@@ -70,6 +63,7 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
         this.description = description;
         this.roles = roles;
+        this.address = address;
     }
 
     public User(String username, String password, List<Role> roles) {
@@ -156,6 +150,14 @@ public class User implements Serializable {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
 

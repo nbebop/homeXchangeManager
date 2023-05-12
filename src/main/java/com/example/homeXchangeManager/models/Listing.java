@@ -18,7 +18,7 @@ public class Listing implements Serializable {
 
     private String description;
 
-    private String address;
+    private Address address;
 
     @ElementCollection
     private List<String> photos;
@@ -68,11 +68,11 @@ public class Listing implements Serializable {
         this.description = description;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
