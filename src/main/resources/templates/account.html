@@ -3,15 +3,42 @@
 
 <head>
     <title>Home Exchange - User Account</title>
-    <link rel="stylesheet" type="text/css" href="account.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/account.css">
 </head>
 
 <body>
-<h1>Welcome to Home Exchange</h1>
-
+<section class="navbar">
+    <header>
+        <a href="/" th:action="@{/login}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
+            <form action="/" method="GET" class="form">
+                <input type="search" placeholder="Search for..." class="search-field">
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- Rent a house link -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Rent your house</a> </li>
+            </ul>
+        </nav>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="#">Account</a>
+                <a href="#">Messages</a>
+                <a href="#">Favorites</a>
+                <a href="#">Help</a>
+                <a href="#">Log Out</a>
+            </div>
+        </div>
+    </header>
+</section>
 <div class="profile-section">
     <h2>Profile</h2>
-    <img src="photo.jpg" alt="Profile Image" class="profile-image">
+    <img src="../static/img/host.png" alt="Profile Image" class="profile-image">
     <div class="profile-details">
         <!-- Display user's profile information -->
         <p>Name: John Doe</p>
@@ -22,9 +49,9 @@
 
 <div class="photos-section">
     <h2>Photos of My Home</h2>
-    <img src="photo1.jpg" alt="Home Photo" class="photo">
-    <img src="photo2.jpg" alt="Home Photo" class="photo">
-    <img src="photo3.jpg" alt="Home Photo" class="photo">
+    <img src="../static/img/house-1.png" alt="Home Photo" class="photo">
+    <img src="../static/img/house-2.png" alt="Home Photo" class="photo">
+    <img src="../static/img/house-3.png" alt="Home Photo" class="photo">
 </div>
 
 <div class="services-section">
