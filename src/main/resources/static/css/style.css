@@ -494,7 +494,7 @@ nav.navbar-white .fa-bars{
     background: rgb(161, 101, 103);
 }
 .list-container{
-    margin-top: 50px;
+    margin-top: 100px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
