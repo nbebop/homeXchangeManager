@@ -58,7 +58,7 @@ public class AuthController {
 
         userRepository.save(user);
         // TODO: page to be redirected to after successful registration
-        return "redirect:/registration?success";
+        return "login";
     }
 
     // POST login is handled directly by sprint boot security
