@@ -1,0 +1,14 @@
+POST http://localhost:8090/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test1",
+  "password": "psw1",
+  "email": "test@user.com",
+  "firstname": "Goku",
+  "lastname": "Kakarot",
+  "birthdate": "01/10/1967",
+  "phoneNumber": "0123456789",
+  "description": "A sayan living in the forest, very simple man.",
+  "address": "Chichis Way, 69"
+}

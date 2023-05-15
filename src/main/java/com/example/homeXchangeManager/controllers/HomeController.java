@@ -10,9 +10,30 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/registration")
+    public String register() {
+        return "registration";
+    }
+
     @GetMapping("/")
     public String home() {
-        return "index";
+        return "login";
     }
+
+    @GetMapping("/listing")
+    public String listing() {
+        return "listing";
+    }
+
+    @GetMapping("/house")
+    public String house() {
+        return "house";
+    }
+
+    @GetMapping("/home_page")
+    public String home_page() {
+        return "home_page";
+    }
+    
 
 }

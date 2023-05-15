@@ -8,11 +8,11 @@ Subject: Web technologies
 
 ## Work separation:
 - Github repository 
-- Jira 
+- Trello 
 - MS Teams
 
 ## Team members:
 - Nizar (team leader)
 - Magdalena (team member, managing reports)
 - Aleksandra (team member)
-- Mario (Papá)
+- Mario (team member)
