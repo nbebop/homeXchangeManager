@@ -18,9 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.text.SimpleDateFormat;
 import java.util.Collections;
 
 @Controller
@@ -66,4 +64,34 @@ public class AuthController {
     // POST login is handled directly by sprint boot security
     // @PostMapping("login")
 
+    @PostMapping("/api/auth/register")
+    public ResponseEntity<String> registerApi(@RequestBody RegisterDto registerDto) {
+        if (userRepository.existsByUsername(registerDto.getUsername())) {
+            return new ResponseEntity<>("Username is taken!", HttpStatus.BAD_REQUEST);
+        }
+
+        User user = new User();
+        user.setUsername(registerDto.getUsername());
+        user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+        user.setFirstname(registerDto.getLastname());
+        user.setLastname(registerDto.getLastname());
+        user.setEmail(registerDto.getEmail());
+        user.setBirthdate(registerDto.getBirthdate());
+        user.setPhoneNumber(registerDto.getPhoneNumber());
+        user.setDescription(registerDto.getDescription());
+        user.setAddress(registerDto.getAddress());
+        user.setRoles(Collections.singletonList(new Role("USER")));
+
+        userRepository.save(user);
+
+        return new ResponseEntity<>("User registration successful!", HttpStatus.OK);
+    }
+
+    @PostMapping("/api/auth/login")
+    public ResponseEntity<String> loginApi(@RequestBody LoginDto loginDto) {
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        return new ResponseEntity<>("User signed success", HttpStatus.OK);
+    }
 }
