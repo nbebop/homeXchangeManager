@@ -157,7 +157,7 @@ nav{
     margin: 10px 0;
 }
 .cta-btn{
-    background: #ff5361;
+    background:rgb(167, 135, 136);
     color: #fff;
     text-decoration: none;
     padding: 12px 30px;
@@ -192,7 +192,7 @@ nav{
 }
 .start-btn{
     text-decoration: none;
-    background: #ff5361;
+    background: rgb(167, 135, 136);
     color: #fff;
     width: 80%;
     max-width: 350px;
@@ -787,7 +787,7 @@ nav.navbar-white .fa-bars{
     text-decoration: none;
     color: #555;
     padding: 15px 50px;
-    border: 1px solid #ff5361;
+    border: 1px solid rgb(167, 135, 136);
     border-radius: 8px;
 }
 /* -----media query for house details page---------- */
