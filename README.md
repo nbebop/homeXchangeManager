@@ -8,7 +8,7 @@ Subject: Web technologies
 
 ## Work separation:
 - Github repository 
-- Jira 
+- Trello 
 - MS Teams
 
 ## Team members:
