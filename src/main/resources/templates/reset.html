@@ -8,16 +8,16 @@
     <!-- Bootstrap -->
     <!--    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">-->
     <!-- Stylesheet for frontend build -->
-    <link href="../static/css/reset.css" rel="stylesheet">
+<!--    <link href="../static/css/reset.css" rel="stylesheet">-->
     <!-- Stylesheet for backend build -->
-    <!--    <link href="css/login_style.css" rel="stylesheet">-->
+        <link href="css/reset.css" rel="stylesheet">
     <title>Login / Sign up</title>
 </head>
 <body>
 <!-- NAVBAR-->
 <section id="navbar" class="navbar-section">
     <header>
-        <a href="/" th:action="@{/login}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>
+        <a href="/" th:action="@{/login}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
         <nav>
             <ul class="nav-links">
                 <li><a href="#how-it-works">How it works?</a> </li>
@@ -71,6 +71,6 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap-4.4.1.js"></script>
-<script src="../static/js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
