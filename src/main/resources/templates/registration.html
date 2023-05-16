@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:form="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <title>Sign Up Form</title>
     <!-- Stylesheet for backend build -->
@@ -26,7 +26,7 @@
 <section id="form" class="form-section">
     <div class="form-container">
         <h1>Create account</h1>
-        <form modelAttribute="user" action="/register" method="post">
+        <form modelAttribute="user" th:action="@{/register}" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" th:field="*{username}" required>
 

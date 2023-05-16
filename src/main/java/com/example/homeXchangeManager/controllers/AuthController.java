@@ -52,13 +52,17 @@ public class AuthController {
         user.setBirthdate(registerDto.getBirthdate());
         user.setPhoneNumber(registerDto.getPhoneNumber());
         user.setDescription(registerDto.getDescription());
-        user.setAddress(registerDto.getAddress());
+        user.setAddressLine(registerDto.getAddressLine());
+        user.setPremise(registerDto.getPremise());
+        user.setCity(registerDto.getCity());
+        user.setPostalCode(registerDto.getPostalCode());
+        user.setCountry(registerDto.getCountry());
         // anyone who registers is a user
         user.setRoles(Collections.singletonList(new Role("USER")));
 
         userRepository.save(user);
         // TODO: page to be redirected to after successful registration
-        return "login";
+        return "registration";
     }
 
     // POST login is handled directly by sprint boot security
@@ -79,7 +83,11 @@ public class AuthController {
         user.setBirthdate(registerDto.getBirthdate());
         user.setPhoneNumber(registerDto.getPhoneNumber());
         user.setDescription(registerDto.getDescription());
-        user.setAddress(registerDto.getAddress());
+        user.setAddressLine(registerDto.getAddressLine());
+        user.setPremise(registerDto.getPremise());
+        user.setCity(registerDto.getCity());
+        user.setPostalCode(registerDto.getPostalCode());
+        user.setCountry(registerDto.getCountry());
         user.setRoles(Collections.singletonList(new Role("USER")));
 
         userRepository.save(user);

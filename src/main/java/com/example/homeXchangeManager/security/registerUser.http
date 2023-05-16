@@ -10,5 +10,9 @@ Content-Type: application/json
   "birthdate": "01/10/1967",
   "phoneNumber": "0123456789",
   "description": "A sayan living in the forest, very simple man.",
-  "address": "Chichis Way, 69"
+  "addressLine": "addressLine",
+  "premise": "left apt. 4. floor",
+  "city": "city",
+  "postalCode": "12345",
+  "country": "country"
 }

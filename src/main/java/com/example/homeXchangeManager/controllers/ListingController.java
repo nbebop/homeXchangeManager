@@ -36,7 +36,6 @@ public class ListingController {
         Listing listing = new Listing();
         listing.setOwner(owner);
         listing.setDescription(listingDto.getDescription());
-        listing.setAddress(listingDto.getAddress());
         listing.setPhotos(listingDto.getPhotos());
         listing.setServices(listingDto.getServices());
         listing.setConstraints(listingDto.getConstrains());
@@ -45,6 +44,11 @@ public class ListingController {
         listing.setAvailabilityEnd(listingDto.getAvailabilityEnd());
         listing.setRating(0.0);
         listing.setOwnerRating(0.0);
+        listing.setAddressLine(listingDto.getAddressLine());
+        listing.setPremise(listingDto.getPremise());
+        listing.setCity(listingDto.getCity());
+        listing.setPostalCode(listingDto.getPostalCode());
+        listing.setCountry(listingDto.getCountry());
 
         Listing savedListing = listingRepository.save(listing);
 

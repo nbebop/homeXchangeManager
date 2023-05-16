@@ -1,6 +1,9 @@
 package com.example.homeXchangeManager.controllers;
 
+import com.example.homeXchangeManager.dto.RegisterDto;
+import com.example.homeXchangeManager.models.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -11,7 +14,8 @@ public class HomeController {
     }
 
     @GetMapping("/registration")
-    public String register() {
+    public String register(Model model) {
+        model.addAttribute("user", new RegisterDto());
         return "registration";
     }
 
@@ -34,6 +38,6 @@ public class HomeController {
     public String home_page() {
         return "home_page";
     }
-    
+
 
 }

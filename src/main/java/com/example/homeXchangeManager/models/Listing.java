@@ -18,8 +18,6 @@ public class Listing implements Serializable {
 
     private String description;
 
-    private Address address;
-
     @ElementCollection
     private List<String> photos;
 
@@ -41,7 +39,32 @@ public class Listing implements Serializable {
 
     private Date availabilityEnd;
 
+    private String addressLine;
+    private String premise;
+    private String city;
+    private String postalCode;
+    private String country;
+
     public Listing() {
+    }
+
+    public Listing(int listingId, User owner, String description, List<String> photos, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country) {
+        this.listingId = listingId;
+        this.owner = owner;
+        this.description = description;
+        this.photos = photos;
+        this.services = services;
+        this.constraints = constraints;
+        this.bookingInfo = bookingInfo;
+        this.rating = rating;
+        this.ownerRating = ownerRating;
+        this.availabilityStart = availabilityStart;
+        this.availabilityEnd = availabilityEnd;
+        this.addressLine = addressLine;
+        this.premise = premise;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.country = country;
     }
 
     public int getListingId() {
@@ -66,14 +89,6 @@ public class Listing implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 
     public List<String> getPhotos() {
@@ -138,5 +153,45 @@ public class Listing implements Serializable {
 
     public void setAvailabilityEnd(Date availabilityEnd) {
         this.availabilityEnd = availabilityEnd;
+    }
+
+    public String getAddressLine() {
+        return addressLine;
+    }
+
+    public void setAddressLine(String addressLine) {
+        this.addressLine = addressLine;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getPremise() {
+        return premise;
+    }
+
+    public void setPremise(String premise) {
+        this.premise = premise;
     }
 }

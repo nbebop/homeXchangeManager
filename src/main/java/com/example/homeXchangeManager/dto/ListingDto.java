@@ -1,6 +1,5 @@
 package com.example.homeXchangeManager.dto;
 
-import com.example.homeXchangeManager.models.Address;
 import com.example.homeXchangeManager.models.Constraint;
 import com.example.homeXchangeManager.models.Service;
 import lombok.Data;
@@ -12,7 +11,11 @@ import java.util.List;
 public class ListingDto {
     private int ownerId;
     private String description;
-    private Address address;
+    private String addressLine;
+    private String city;
+    private String postalCode;
+    private String country;
+    private String premise;
     private List<String> photos;
     private List<Service> services;
     private List<Constraint> constrains;

@@ -1,6 +1,5 @@
 package com.example.homeXchangeManager.dto;
 
-import com.example.homeXchangeManager.models.Address;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -17,5 +16,9 @@ public class RegisterDto {
     private Date birthdate;
     private String phoneNumber;
     private String description;
-    private Address address;
+    private String addressLine;
+    private String city;
+    private String postalCode;
+    private String country;
+    private String premise;
 }
