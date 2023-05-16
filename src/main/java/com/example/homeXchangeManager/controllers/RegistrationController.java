@@ -9,20 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collections;
 
 @Controller
-public class AuthController {
+@RequestMapping("/registration")
+public class RegistrationController {
+
     private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
     private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public RegistrationController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -34,7 +38,14 @@ public class AuthController {
         return new RegisterDto();
     }
 
-    @PostMapping("register")
+    @GetMapping
+    public String register() {
+        return "registration";
+    }
+
+    // for the date
+
+    @PostMapping
     public String register(@ModelAttribute("user") RegisterDto registerDto) {
         User user = new User();
         user.setUsername(registerDto.getUsername());
