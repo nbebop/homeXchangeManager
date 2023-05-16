@@ -45,6 +45,8 @@
 
             <label for="dob">Date of Birth:</label>
             <input type="date" id="dob" name="dob" th:field="*{birthdate}" required>
+            <!-- in errorclass you can set css for the error -->
+            <p th:if="${#fields.hasErrors('birthdate')}" th:errorclass="error" th:errors="*{birthdate}" />
 
             <label for="phone">Phone number:</label>
             <input type="tel" id="phone" name="phone" th:field="*{phoneNumber}" required>

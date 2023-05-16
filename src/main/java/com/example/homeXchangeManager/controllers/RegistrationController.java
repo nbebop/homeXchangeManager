@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.Collections;
 
 @Controller
@@ -46,7 +48,12 @@ public class RegistrationController {
     // for the date
 
     @PostMapping
-    public String register(@ModelAttribute("user") RegisterDto registerDto) {
+    public String register(@Valid @ModelAttribute("user") RegisterDto registerDto, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+
         User user = new User();
         user.setUsername(registerDto.getUsername());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
