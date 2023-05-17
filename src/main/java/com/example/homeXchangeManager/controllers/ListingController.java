@@ -8,6 +8,9 @@ import com.example.homeXchangeManager.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +23,7 @@ import javax.persistence.EntityNotFoundException;
 @Controller
 public class ListingController {
     private static final Logger logger = LoggerFactory.getLogger(ListingController.class);
-
+    private AuthenticationManager authenticationManager;
     private ListingRepository listingRepository;
     private UserRepository userRepository;
 
@@ -45,9 +48,10 @@ public class ListingController {
         if (bindingResult.hasErrors()) {
             return "listing";
         }
+        // retrieve logged in user
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User owner = (User)auth.getPrincipal();
 
-        User owner = userRepository.findById(listingDto.getOwnerId())
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
         Listing listing = new Listing();
         listing.setOwner(owner);
         listing.setDescription(listingDto.getDescription());
