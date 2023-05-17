@@ -9,13 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.persistence.EntityNotFoundException;
-import java.security.Principal;
 
 @Controller
 public class ListingController {
@@ -31,7 +31,7 @@ public class ListingController {
     }
 
     @ModelAttribute("listing")
-    public ListingDto listingDto(){
+    public ListingDto listingDto() {
         return new ListingDto();
     }
 
@@ -41,7 +41,11 @@ public class ListingController {
     }
 
     @PostMapping("/listing/save")
-    public String createListing(@ModelAttribute("listing") ListingDto listingDto) {
+    public String createListing(@ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "listing";
+        }
+
         User owner = userRepository.findById(listingDto.getOwnerId())
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
         Listing listing = new Listing();
@@ -68,11 +72,11 @@ public class ListingController {
     @PostMapping("/listing/delete/{id}")
     public String deleteListing(@PathVariable("id") int listingId) {
         Listing listing = listingRepository.findListingByListingId(listingId);
-        if (listing != null){
+        if (listing != null) {
             listingRepository.deleteListingByListingId(listingId);
             logger.debug(String.format("Listing with id: %s has been successfully deleted.", listing.getListingId()));
             return "redirect:/home_page";
-        }else {
+        } else {
             // add error pages
             return "error/404";
         }
