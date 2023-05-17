@@ -8,4 +8,8 @@ import java.util.List;
 
 public interface ListingRepository extends JpaRepository<Listing, Integer> {
     List<Listing> findAllByOwner(User owner);
+
+    Listing deleteListingByListingId(int listingId);
+
+    Listing findListingById(int listingId);
 }

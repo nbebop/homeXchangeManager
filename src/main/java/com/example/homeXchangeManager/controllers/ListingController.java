@@ -5,9 +5,13 @@ import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.ListingRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.persistence.EntityNotFoundException;
@@ -15,6 +19,8 @@ import java.security.Principal;
 
 @Controller
 public class ListingController {
+    private static final Logger logger = LoggerFactory.getLogger(ListingController.class);
+
     private ListingRepository listingRepository;
     private UserRepository userRepository;
 
@@ -29,7 +35,12 @@ public class ListingController {
         return new ListingDto();
     }
 
-    @PostMapping("/listings")
+    @GetMapping
+    public String newListing() {
+        return "listing";
+    }
+
+    @PostMapping("/listing/save")
     public String createListing(@ModelAttribute("listing") ListingDto listingDto) {
         User owner = userRepository.findById(listingDto.getOwnerId())
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
@@ -49,9 +60,21 @@ public class ListingController {
         listing.setCity(listingDto.getCity());
         listing.setPostalCode(listingDto.getPostalCode());
         listing.setCountry(listingDto.getCountry());
-
-        Listing savedListing = listingRepository.save(listing);
+        listingRepository.save(listing);
 
         return "redirect:/listing";
+    }
+
+    @PostMapping("/listing/delete/{id}")
+    public String deleteListing(@PathVariable("id") int listingId) {
+        Listing listing = listingRepository.findListingById(listingId);
+        if (listing != null){
+            listingRepository.deleteListingByListingId(listingId);
+            logger.debug(String.format("Listing with id: %s has been successfully deleted.", listing.getId()));
+            return "redirect:/home_page";
+        }else {
+            // add error pages
+            return "error/404";
+        }
     }
 }
