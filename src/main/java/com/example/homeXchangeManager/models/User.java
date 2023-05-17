@@ -69,6 +69,7 @@ public class User implements Serializable {
         this.description = description;
         this.roles = roles;
         this.addressLine = addressLine;
+        this.premise = premise;
         this.city = city;
         this.postalCode = postalCode;
         this.country = country;
