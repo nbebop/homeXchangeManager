@@ -67,7 +67,7 @@ public class ListingController {
 
     @PostMapping("/listing/delete/{id}")
     public String deleteListing(@PathVariable("id") int listingId) {
-        Listing listing = listingRepository.findListingById(listingId);
+        Listing listing = listingRepository.findListingByListingId(listingId);
         if (listing != null){
             listingRepository.deleteListingByListingId(listingId);
             logger.debug(String.format("Listing with id: %s has been successfully deleted.", listing.getListingId()));

@@ -11,5 +11,5 @@ public interface ListingRepository extends JpaRepository<Listing, Integer> {
 
     Listing deleteListingByListingId(int listingId);
 
-    Listing findListingById(int listingId);
+    Listing findListingByListingId(int listingId);
 }
