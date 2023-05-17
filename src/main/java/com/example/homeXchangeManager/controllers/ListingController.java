@@ -70,7 +70,7 @@ public class ListingController {
         Listing listing = listingRepository.findListingById(listingId);
         if (listing != null){
             listingRepository.deleteListingByListingId(listingId);
-            logger.debug(String.format("Listing with id: %s has been successfully deleted.", listing.getId()));
+            logger.debug(String.format("Listing with id: %s has been successfully deleted.", listing.getListingId()));
             return "redirect:/home_page";
         }else {
             // add error pages
