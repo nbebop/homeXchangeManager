@@ -7,8 +7,10 @@ VALUES ('2', 'USER');
 -- create users
 INSERT INTO users (id, username, firstname, lastname, password, email, birthdate, phone_number, description,
                    address_line, premise, city, postal_code, country)
-VALUES ('1', 'user1', 'John', 'Doe', 'password1', 'user1@example.com', '1990-01-01', '123456789', 'Description 1',
-        '123 Main St', 'Premise 1', 'City1', '12345', 'Country1');
+VALUES ('2', 'user', 'user', 'user', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user@example.com', '1990-01-01', '123456789', 'Description user',
+        'Test street 1', 'Premise 1', 'paris', '750014', 'France'),
+    ('1', 'admin', 'admin', 'admin', '$2a$10$PJf3MqpW2aexwqLML51U5exS62wv0rsJ6pKcI7j9aqh9s0HUDtWVu', 'admin@example.com', '1990-01-01', '123456789', 'Description admin',
+            'Admin st 2', 'Left apt.', 'Paris', '750001', 'France');
 
 -- set user rights
 INSERT INTO user_roles (user_id, role_id)
