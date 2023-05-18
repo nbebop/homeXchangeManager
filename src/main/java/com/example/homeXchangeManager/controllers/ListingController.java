@@ -5,13 +5,19 @@ import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.ListingRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
+import com.example.homeXchangeManager.security.CustomUserDetailsService;
+import com.example.homeXchangeManager.service.impl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.CachingUserDetailsService;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +25,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class ListingController {
@@ -27,10 +35,13 @@ public class ListingController {
     private ListingRepository listingRepository;
     private UserRepository userRepository;
 
+    private UserServiceImpl userService;
+
     @Autowired
-    public ListingController(ListingRepository listingRepository, UserRepository userRepository) {
+    public ListingController(ListingRepository listingRepository, UserRepository userRepository, UserServiceImpl userService) {
         this.listingRepository = listingRepository;
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @ModelAttribute("listing")
@@ -38,19 +49,24 @@ public class ListingController {
         return new ListingDto();
     }
 
-    @GetMapping
+    @GetMapping("/new_listing")
     public String newListing() {
-        return "listing";
+        // pass constraints
+        // model.addAttribute("categories", categoryService.findAll());
+        return "new_listing";
     }
 
-    @PostMapping("/listing/save")
-    public String createListing(@ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) {
+    @PostMapping("/new_listing")
+    public String createListing(@Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "listing";
+            return "new_listing";
         }
+
+        // TODO add constraints and requests
+
         // retrieve logged in user
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User owner = (User)auth.getPrincipal();
+        User owner = userService.findByUsername(auth.getName());
 
         Listing listing = new Listing();
         listing.setOwner(owner);

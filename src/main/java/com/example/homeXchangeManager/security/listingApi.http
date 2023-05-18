@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "owner": "1",
-  "Description": "Small cozy loft in the center of paris",
+  "description": "Small cozy loft in the center of paris",
   "bookingInfo": "Any other info call me",
   "availabilityStart": "2024-01-01",
   "availabilityEnd": "2024-12-01",
