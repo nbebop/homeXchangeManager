@@ -68,8 +68,9 @@ public class RegistrationController {
         user.setCity(registerDto.getCity());
         user.setPostalCode(registerDto.getPostalCode());
         user.setCountry(registerDto.getCountry());
-        // anyone who registers is a user
-        user.setRoles(Collections.singletonList(new Role("USER")));
+
+        Role roles = roleRepository.findByName("USER");
+        user.setRoles(Collections.singletonList(roles));
 
         userRepository.save(user);
         return "login";

@@ -1,6 +1,10 @@
 package com.example.homeXchangeManager.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -18,8 +22,7 @@ public class Listing implements Serializable {
 
     private String description;
 
-    @ElementCollection
-    private List<String> photos;
+    private String photos;
 
     @ManyToMany
     private List<Service> services;
@@ -34,9 +37,13 @@ public class Listing implements Serializable {
     private double ownerRating;
 
     // TODO: add in services the logic to get the ratings
-
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/YYYY")
+    @NotNull
     private Date availabilityStart;
-
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/YYYY")
+    @NotNull
     private Date availabilityEnd;
 
     private String addressLine;
@@ -48,7 +55,7 @@ public class Listing implements Serializable {
     public Listing() {
     }
 
-    public Listing(int listingId, User owner, String description, List<String> photos, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country) {
+    public Listing(int listingId, User owner, String description, String photos, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country) {
         this.listingId = listingId;
         this.owner = owner;
         this.description = description;
@@ -91,11 +98,11 @@ public class Listing implements Serializable {
         this.description = description;
     }
 
-    public List<String> getPhotos() {
+    public String getPhotos() {
         return photos;
     }
 
-    public void setPhotos(List<String> photos) {
+    public void setPhotos(String photos) {
         this.photos = photos;
     }
 
