@@ -1,8 +1,9 @@
-package com.example.homeXchangeManager.services;
+package com.example.homeXchangeManager.service.impl;
 
 import com.example.homeXchangeManager.models.Message;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.MessageRepository;
+import com.example.homeXchangeManager.service.ChatService;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

@@ -3,7 +3,7 @@ package com.example.homeXchangeManager.controllers;
 import com.example.homeXchangeManager.models.Message;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.UserRepository;
-import com.example.homeXchangeManager.services.ChatService;
+import com.example.homeXchangeManager.service.ChatService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

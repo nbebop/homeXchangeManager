@@ -1,4 +1,4 @@
-package com.example.homeXchangeManager.services;
+package com.example.homeXchangeManager.service;
 
 import com.example.homeXchangeManager.models.Message;
 import com.example.homeXchangeManager.models.User;

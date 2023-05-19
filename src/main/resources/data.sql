@@ -4,7 +4,7 @@ INSERT INTO roles (id, name) VALUES ('2', 'USER');
 
 -- create users
 INSERT INTO users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
-VALUES ('2', 'user', 'user', 'user', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user@example.com', '1990-01-01', '123456789', 'Description user', 'Test street 1', 'Premise 1', 'paris', '750014', 'France'),
+       VALUES ('2', 'user', 'user', 'user', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user@example.com', '1990-01-01', '123456789', 'Description user', 'Test street 1', 'Premise 1', 'paris', '750014', 'France'),
        ('1', 'admin', 'admin', 'admin', '$2a$10$PJf3MqpW2aexwqLML51U5exS62wv0rsJ6pKcI7j9aqh9s0HUDtWVu', 'admin@example.com', '1990-01-01', '123456789', 'Description admin','Admin st 2', 'Left apt.', 'Paris', '750001', 'France'),
        ('3', 'user3', 'David', 'Johnson', 'password3', 'user3@example.com', '1985-08-20', '555555555', 'Description 3', '789 Oak St', 'Premise 3', 'Chicago', '23456', 'USA'),
        ('4', 'user4', 'Emily', 'Davis', 'password4', 'user4@example.com', '1995-03-10', '111111111', 'Description 4', '987 Pine St', 'Premise 4', 'Houston', '78901', 'USA'),
@@ -26,5 +26,16 @@ INSERT INTO user_roles (user_id, role_id) VALUES (8, 2);
 INSERT INTO user_roles (user_id, role_id) VALUES (9, 1);
 
 -- listing
-INSERT INTO listings (listing_id, owner_id, description, photos, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
-VALUES ('1', '1', 'Small cozy loft in the center of paris', NULL, 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Qifsharopt 69', '4th floor, left', 'Paris', '750001', 'France');
+-- INSERT INTO listings (listing_id, owner_id, description, photos, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
+-- VALUES ('1', '1', 'Small cozy loft in the center of paris', NULL, 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Qifsharopt 69', '4th floor, left', 'Paris', '750001', 'France');
+
+
+-- messages
+INSERT INTO messages (sender_id, receiver_id, content, timestamp)
+VALUES
+       (7, 8, 'Hello User 8, this is User 7!', CURRENT_TIMESTAMP),
+       (8, 7, 'Hi User 7, nice to hear from you!', CURRENT_TIMESTAMP),
+       (7, 8, 'How are you today?', CURRENT_TIMESTAMP),
+       (8, 7, 'I am fine, thank you', CURRENT_TIMESTAMP),
+       (7, 8, 'Is it possible to smoke in your home?', CURRENT_TIMESTAMP),
+       (8, 7, 'Absolutely no!', CURRENT_TIMESTAMP);
