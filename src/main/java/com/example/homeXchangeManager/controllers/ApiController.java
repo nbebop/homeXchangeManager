@@ -1,9 +1,12 @@
 package com.example.homeXchangeManager.controllers;
 
+import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.dto.LoginDto;
 import com.example.homeXchangeManager.dto.RegisterDto;
+import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.Role;
 import com.example.homeXchangeManager.models.User;
+import com.example.homeXchangeManager.repositories.ListingRepository;
 import com.example.homeXchangeManager.repositories.RoleRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,8 @@ public class ApiController {
     private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
     private RoleRepository roleRepository;
+
+    private ListingRepository listingRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -67,5 +72,33 @@ public class ApiController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         return new ResponseEntity<>("User signed success", HttpStatus.OK);
+    }
+
+    @PostMapping("/api/auth/listing/new")
+    public ResponseEntity<String> newListingApi(@RequestBody ListingDto listingDto) {
+        Listing listing = new Listing();
+        listing.setDescription(listing.getDescription());
+        listing.setAvailabilityStart(listingDto.getAvailabilityStart());
+        listing.setAvailabilityEnd(listingDto.getAvailabilityEnd());
+        listing.setBookingInfo(listingDto.getBookingInfo());
+        listing.setAddressLine(listingDto.getAddressLine());
+        listing.setPremise(listingDto.getPremise());
+        listing.setCity(listingDto.getCity());
+        listing.setPostalCode(listingDto.getPostalCode());
+        listing.setCountry(listingDto.getCountry());
+
+        return new ResponseEntity<>("Listing created success", HttpStatus.OK);
+    }
+
+    @PostMapping("/api/auth/listing/edit")
+    public ResponseEntity<String> editListingApi(@RequestBody ListingDto listingDto) {
+
+        return new ResponseEntity<>("Listing edit success", HttpStatus.OK);
+    }
+
+    @PostMapping("/api/auth/listing/delete")
+    public ResponseEntity<String> deleteListingApi(@RequestBody ListingDto listingDto) {
+
+        return new ResponseEntity<>("Listing deleted success", HttpStatus.OK);
     }
 }

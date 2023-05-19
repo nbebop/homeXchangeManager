@@ -1,0 +1,15 @@
+POST http://localhost:8090/api/auth/listing/new
+Content-Type: application/json
+
+{
+  "owner": "1",
+  "description": "Small cozy loft in the center of paris",
+  "bookingInfo": "Any other info call me",
+  "availabilityStart": "2024-01-01",
+  "availabilityEnd": "2024-12-01",
+  "addressLine": "Qifsharopt 69",
+  "premise": "4th floor, left",
+  "city": "Paris",
+  "postalCode": "750001",
+  "country": "France"
+}
