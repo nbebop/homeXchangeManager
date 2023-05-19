@@ -5,7 +5,6 @@ import com.example.homeXchangeManager.repositories.RoleRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
 import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
-import com.example.homeXchangeManager.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
@@ -71,7 +70,7 @@ public class HomeController {
         return "home_page";
     }
 
-    private List<Listing> getAllListing(){
+    private List<Listing> getAllListing() {
         return listingService.findAll();
     }
 

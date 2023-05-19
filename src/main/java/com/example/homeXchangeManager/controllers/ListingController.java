@@ -83,15 +83,23 @@ public class ListingController {
     }
 
 
-     @PostMapping("/listing/delete/{id}") public String deleteListing(@PathVariable("id") long listingId) {
-     Listing listing = listingRepository.findListingByListingId(listingId);
-     if (listing != null) {
-     listingRepository.deleteListingByListingId(listingId);
-     logger.debug(String.format("Listing with id: %s has been successfully deleted.", listing.getListingId()));
-     return "redirect:/home_page";
-     } else {
-     // add error pages
-     return "error/404";
+    @PostMapping("/listing/delete/{id}")
+    public String deleteListing(@PathVariable("id") long listingId) {
+        Listing listing = listingRepository.findListingByListingId(listingId);
+        if (listing != null) {
+            listingRepository.deleteListingByListingId(listingId);
+            logger.debug(String.format("Listing with id: %s has been successfully deleted.", listing.getListingId()));
+            return "redirect:/home_page";
+        } else {
+            // add error pages
+            return "error/404";
+        }
+    }
+
+    /**
+     * to implement
+     @PostMapping("/listing/edit/{id}") public String editListing(@PathVariable("id") long listingId) {
+     return "home_page";
      }
-     }
+     */
 }
