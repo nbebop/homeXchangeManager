@@ -1,12 +1,19 @@
 package com.example.homeXchangeManager.controllers;
 
+import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.repositories.RoleRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
+import com.example.homeXchangeManager.service.ListingService;
+import com.example.homeXchangeManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -14,18 +21,36 @@ public class HomeController {
     private UserRepository userRepository;
     private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
+
+    private UserService userService;
+
+    private ListingService listingService;
+
+
     @Autowired
-    public HomeController(UserRepository userRepository) {
+    public HomeController(UserRepository userRepository, UserService userService, ListingService listingService) {
         this.userRepository = userRepository;
+        this.userService = userService;
+        this.listingService = listingService;
+
     }
-    @GetMapping("/login")
+
+    @GetMapping({"/login", "/"})
     public String login() {
         return "login";
     }
 
-    @GetMapping("/")
-    public String home() {
-        return "login";
+    @GetMapping("/success")
+    public String successLogin(Authentication authResult) {
+        String role = authResult.getAuthorities().toString();
+
+        if (role.contains("ADMIN")) {
+            return "admin_page";
+        } else if (role.contains("USER")) {
+            return "home_page";
+        }
+        //fall back
+        return "error/404";
     }
 
     @GetMapping("/listing")
@@ -39,8 +64,14 @@ public class HomeController {
     }
 
     @GetMapping("/home_page")
-    public String home_page() {
+    public String home_page(Model model) {
+        model.addAttribute("listings", getAllListing());
+
         return "home_page";
+    }
+
+    private List<Listing> getAllListing() {
+        return listingService.findAll();
     }
 
 }

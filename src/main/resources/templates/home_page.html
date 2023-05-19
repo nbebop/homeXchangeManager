@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,42 +12,48 @@
 
 </head>
 <body>
-  <div class="header">
-       <nav id="navBar">
+<div class="header">
+    <nav id="navBar">
         <a href="index.html">
             <img src="img/compass_white_name.png" class="logo">
         </a>
-		 <div class="search-bar-list">
+        <div class="search-bar-list">
             <form action="/" method="GET" class="form">
                 <input type="search" placeholder="Search for..." class="search-field">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
         <ul class="nav-links">
-             <li><a href="#">Swap your house</a> </li>
+            <li><a href="#">Swap your house</a></li>
         </ul>
         <a href="/" th:href="@{/new_listing}" class="register-btn">Add a listing</a>
+        <form name="logoutForm" th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+
         <i class="fas fa-bars" onclick="togglebtn()"></i>
-		 <div class="dropdown">
+        <div class="dropdown">
             <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="#">Account</a>
                 <a href="#">Messages</a>
                 <a href="#">Favorites</a>
                 <a href="#">Help</a>
-                <a href="#">Log Out</a>
+                <form name="logoutForm" th:action="@{/logout}" method="post">
+                    <input hidden type="submit" value="Sign Out"/>
+                </form>
             </div>
         </div>
     </nav>
-      <div class="container">
-          <h1>Find Your Next Stay</h1>
-          <div class="search-bar">
-              <form>
-                  <div class="location-input">
-                      <label>Location</label>
-                      <input type="text" placeholder="Where are you going?">
-                  </div>
-                  <div>
+    <div class="container">
+        <h1>Find Your Next Stay</h1>
+        <div class="search-bar">
+            <form>
+                <div class="location-input">
+                    <label>Location</label>
+                    <input type="text" placeholder="Where are you going?">
+                </div>
+                <div>
                     <label>Check in</label>
                     <input type="text" placeholder="Add Date">
                 </div>
@@ -60,20 +66,20 @@
                     <input type="text" placeholder="Add Guest">
                 </div>
                 <button type="submit"><img src="img/search.png"></button>
-              </form>
-          </div>
-      </div>
-  </div>
-  <div class="container">
-      <h2 class="sub-title">Exclusives</h2>
-      <div class="exclusives">
-          <div>
-              <img src="img/image-1.png">
-              <span>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h2 class="sub-title">Exclusives</h2>
+    <div class="exclusives">
+        <div>
+            <img src="img/image-1.png">
+            <span>
                   <h3>London</h3>
               </span>
-          </div>
-          <div>
+        </div>
+        <div>
             <img src="img/image-2.png">
             <span>
                 <h3>Switzerland</h3>
@@ -128,10 +134,10 @@
 
             </span>
         </div>
-      </div>
+    </div>
 
-      <h2 class="sub-title">Trending Places</h2>
-      <div class="trending">
+    <h2 class="sub-title">Trending Places</h2>
+    <div class="trending">
         <div>
             <img src="img/dubai.png">
             <h3>Dubai</h3>
@@ -148,16 +154,16 @@
             <img src="img/new-delhi.png">
             <h3>New Delhi</h3>
         </div>
-      </div>
+    </div>
 
-      <div class="cta">
-          <h3>Sharing <br>Is Earning Now</h3>
-          <p>Great opportunity to make money by <br>sharing your extra space.</p>
-          <a href="#" class="cta-btn">Know More</a>
-      </div>
+    <div class="cta">
+        <h3>Sharing <br>Is Earning Now</h3>
+        <p>Great opportunity to make money by <br>sharing your extra space.</p>
+        <a href="#" class="cta-btn">Know More</a>
+    </div>
 
-      <h2 class="sub-title">Travellers Stories</h2>
-      <div class="stories">
+    <h2 class="sub-title">Travellers Stories</h2>
+    <div class="stories">
         <div>
             <img src="img/story-1.png">
             <p>Popular European countries</p>
@@ -170,33 +176,38 @@
             <img src="img/story-3.png">
             <p>Best experience you get while traveling to Thailand</p>
         </div>
-      </div>
-      <a href="#" class="start-btn">Start making money</a>
+    </div>
+    <a href="#" class="start-btn">Start making money</a>
 
-      <div class="about-msg">
-          <h2>About Staybnb</h2>
-          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-      </div>
+    <div class="about-msg">
+        <h2>About Staybnb</h2>
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+            literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
+            source.</p>
+    </div>
 
-      <div class="footer">
-          <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
-          <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-          <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
-          <hr>
-          <p>Copyright © 2021, Easy Tutorials.</p>
-      </div>
+    <div class="footer">
+        <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+        <hr>
+        <p>Copyright © 2021, Easy Tutorials.</p>
+    </div>
 
 
-  </div>
+</div>
 
 <script>
     var navBar = document.getElementById("navBar");
-    function togglebtn(){
+
+    function togglebtn() {
         navBar.classList.toggle("hidemenu");
     }
 </script>
-    
+
 </body>
 </html>

@@ -14,7 +14,7 @@ import java.util.List;
 public class Listing implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int listingId;
+    private long listingId;
 
     @ManyToOne
     @JoinColumn(name = "ownerId")
@@ -55,7 +55,7 @@ public class Listing implements Serializable {
     public Listing() {
     }
 
-    public Listing(int listingId, User owner, String description, String photos, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country) {
+    public Listing(long listingId, User owner, String description, String photos, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country) {
         this.listingId = listingId;
         this.owner = owner;
         this.description = description;
@@ -74,7 +74,7 @@ public class Listing implements Serializable {
         this.country = country;
     }
 
-    public int getListingId() {
+    public long getListingId() {
         return listingId;
     }
 

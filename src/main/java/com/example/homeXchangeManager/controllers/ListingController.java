@@ -5,28 +5,21 @@ import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.ListingRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
-import com.example.homeXchangeManager.security.CustomUserDetailsService;
 import com.example.homeXchangeManager.service.impl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.CachingUserDetailsService;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 public class ListingController {
@@ -89,8 +82,9 @@ public class ListingController {
         return "redirect:/listing";
     }
 
+
     @PostMapping("/listing/delete/{id}")
-    public String deleteListing(@PathVariable("id") int listingId) {
+    public String deleteListing(@PathVariable("id") long listingId) {
         Listing listing = listingRepository.findListingByListingId(listingId);
         if (listing != null) {
             listingRepository.deleteListingByListingId(listingId);
@@ -101,4 +95,11 @@ public class ListingController {
             return "error/404";
         }
     }
+
+    /**
+     * to implement
+     @PostMapping("/listing/edit/{id}") public String editListing(@PathVariable("id") long listingId) {
+     return "home_page";
+     }
+     */
 }
