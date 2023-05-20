@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class ListingServiceImpl implements ListingService {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -31,7 +32,7 @@ public class ListingServiceImpl implements ListingService {
         Listing listing = listingRepository.getById((int) id);
 
         listing.setDescription(updatedListing.getDescription());
-        listing.setPhotos(updatedListing.getPhotos());
+        listing.setImage(updatedListing.getImage());
         listing.setServices(updatedListing.getServices());
         listing.setConstraints(updatedListing.getConstraints());
         listing.setBookingInfo(updatedListing.getBookingInfo());
@@ -46,7 +47,7 @@ public class ListingServiceImpl implements ListingService {
     }
 
     @Override
-    public void delete(long id){
+    public void delete(long id) {
         listingRepository.delete(findByListingId(id));
     }
 
@@ -69,8 +70,9 @@ public class ListingServiceImpl implements ListingService {
     public List<Listing> findByCity(String city) {
         return listingRepository.findAllByCity(city);
     }
+
     @Override
-    public List<Listing> findAll(){
+    public List<Listing> findAll() {
         return listingRepository.findAllByOrderByListingIdAsc();
     }
 

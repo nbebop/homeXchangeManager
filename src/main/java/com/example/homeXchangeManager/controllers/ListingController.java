@@ -14,12 +14,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 public class ListingController {
@@ -50,8 +50,14 @@ public class ListingController {
     }
 
     @PostMapping("/new_listing")
-    public String createListing(@Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) {
+    public String createListing(@Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
+            String errorMessages = "";
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                errorMessages += error.getDefaultMessage();
+            }
+            logger.debug(errorMessages);
+
             return "new_listing";
         }
 
@@ -61,10 +67,13 @@ public class ListingController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User owner = userService.findByUsername(auth.getName());
 
+        // get img in bytes
+        Byte[] bytesImg = convertToBytes(listingDto.getImage());
+
         Listing listing = new Listing();
         listing.setOwner(owner);
         listing.setDescription(listingDto.getDescription());
-        listing.setPhotos(listingDto.getPhotos());
+        listing.setImage(bytesImg);
         listing.setServices(listingDto.getServices());
         listing.setConstraints(listingDto.getConstrains());
         listing.setBookingInfo(listingDto.getBookingInfo());
@@ -94,6 +103,15 @@ public class ListingController {
             // add error pages
             return "error/404";
         }
+    }
+
+    private Byte[] convertToBytes(MultipartFile file) throws IOException {
+        Byte[] byteObjects = new Byte[file.getBytes().length];
+        int i = 0;
+        for (byte b : file.getBytes()) {
+            byteObjects[i++] = b;
+        }
+        return byteObjects;
     }
 
     /**
