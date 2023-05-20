@@ -5,10 +5,10 @@ import com.example.homeXchangeManager.models.Service;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class ListingDto {
     private String postalCode;
     private String country;
     private String premise;
-    private String photos;
+    private MultipartFile image;
     private List<Service> services;
     private List<Constraint> constrains;
     private String bookingInfo;

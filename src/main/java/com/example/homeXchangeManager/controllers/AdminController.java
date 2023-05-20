@@ -6,7 +6,6 @@ import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +17,10 @@ import java.util.List;
 @Controller
 public class AdminController {
     private static final Logger logger = LoggerFactory.getLogger(ListingController.class);
-
-    private AuthenticationManager authenticationManager;
     private UserService userService;
     private ListingService listingService;
 
-    public AdminController(AuthenticationManager authenticationManager, UserService userService, ListingService listingService) {
-        this.authenticationManager = authenticationManager;
+    public AdminController(UserService userService, ListingService listingService) {
         this.userService = userService;
         this.listingService = listingService;
     }
