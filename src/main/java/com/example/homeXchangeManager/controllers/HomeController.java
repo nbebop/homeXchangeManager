@@ -1,12 +1,9 @@
 package com.example.homeXchangeManager.controllers;
 
 import com.example.homeXchangeManager.models.Listing;
-import com.example.homeXchangeManager.repositories.RoleRepository;
-import com.example.homeXchangeManager.repositories.UserRepository;
 import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,9 +14,7 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    private AuthenticationManager authenticationManager;
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
+
     private PasswordEncoder passwordEncoder;
 
     private UserService userService;
@@ -28,11 +23,9 @@ public class HomeController {
 
 
     @Autowired
-    public HomeController(UserRepository userRepository, UserService userService, ListingService listingService) {
-        this.userRepository = userRepository;
+    public HomeController(UserService userService, ListingService listingService) {
         this.userService = userService;
         this.listingService = listingService;
-
     }
 
     @GetMapping({"/login", "/"})

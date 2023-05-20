@@ -6,7 +6,6 @@ import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.RoleRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,14 +21,12 @@ import java.util.Collections;
 @RequestMapping("/registration")
 public class RegistrationController {
 
-    private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
     private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public RegistrationController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
-        this.authenticationManager = authenticationManager;
+    public RegistrationController(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
