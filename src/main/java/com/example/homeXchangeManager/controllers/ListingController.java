@@ -4,18 +4,19 @@ import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.ListingRepository;
-import com.example.homeXchangeManager.repositories.UserRepository;
 import com.example.homeXchangeManager.service.impl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -24,16 +25,13 @@ import java.io.IOException;
 @Controller
 public class ListingController {
     private static final Logger logger = LoggerFactory.getLogger(ListingController.class);
-    private AuthenticationManager authenticationManager;
     private ListingRepository listingRepository;
-    private UserRepository userRepository;
 
     private UserServiceImpl userService;
 
     @Autowired
-    public ListingController(ListingRepository listingRepository, UserRepository userRepository, UserServiceImpl userService) {
+    public ListingController(ListingRepository listingRepository, UserServiceImpl userService) {
         this.listingRepository = listingRepository;
-        this.userRepository = userRepository;
         this.userService = userService;
     }
 
