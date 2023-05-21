@@ -71,7 +71,7 @@ public class HomeController {
     /**
      * Controller to display listing images
      * and to display the image in frontend:
-     * <img th:src="@{'/display/image/' + ${clothing.id}}">
+     * <img th:src="@{'/listing/image/' + ${listing.id}}">
      */
     @GetMapping("/listing/image/{id}")
     public ResponseEntity<Byte[]> displayItemImage(@PathVariable long id) {
