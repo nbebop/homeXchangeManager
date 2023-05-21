@@ -111,11 +111,22 @@ public class ListingController {
         }
         return byteObjects;
     }
+    @PostMapping("/listing/edit/{id}")
+    public String editListing(@PathVariable("id") long listingId, @Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            // should we create return "edit_listing"; - create a design for editing listin??
+            return "listing";
+        }
 
-    /**
-     * to implement
-     @PostMapping("/listing/edit/{id}") public String editListing(@PathVariable("id") long listingId) {
-     return "home_page";
-     }
-     */
+        Listing listing = listingRepository.findListingByListingId(listingId);
+        if (listing != null) {
+            listing.setDescription(listingDto.getDescription());
+            listingRepository.save(listing);
+            return "redirect:/home_page";
+        } else {
+            // Listing not found, handle the error appropriately
+            return "error/404";
+        }
+    }
+
 }

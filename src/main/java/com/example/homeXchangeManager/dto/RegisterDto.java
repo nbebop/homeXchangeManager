@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Data
@@ -28,7 +29,9 @@ public class RegisterDto {
     private Date birthdate;
     @PhoneNumberConstraint
     private String phoneNumber;
+    @NotBlank(message = "Description is required")
     private String description;
+    @NotBlank(message = "Address is required")
     private String addressLine;
     @NameConstraint
     private String city;
