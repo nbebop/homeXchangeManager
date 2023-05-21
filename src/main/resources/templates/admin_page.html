@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>Admin Page</title>
   <!-- Stylesheet -->
-  <link href="css/admin_style.css" rel="stylesheet">
+<!--  backend-->
+<!--  <link href="css/admin_style.css" rel="stylesheet">-->
+  <!--for front-->
+  <link href="../static/css/admin_style.css" rel="stylesheet">
   <script src="js/script.js"></script>
 </head>
 <body>
@@ -55,7 +58,6 @@
     <!-- TABLE HEADERS-->
     <tr class="table-header">
       <th>Name</th>
-      <th>Price</th>
       <th>Rating</th>
       <th>Owner</th>
       <th>Edit</th>
@@ -64,7 +66,6 @@
 <!-- TABLE INPUTS-->
     <tr>
       <td>Listing 1</td>
-      <td>$10</td>
       <td>4.5</td>
       <td>John Doe</td>
       <td><button>Edit</button></td>
@@ -72,7 +73,6 @@
     </tr>
     <tr>
       <td>Listing 2</td>
-      <td>$15</td>
       <td>4.2</td>
       <td>Jane Smith</td>
       <td><button>Edit</button></td>
@@ -80,7 +80,6 @@
     </tr>
     <tr>
       <td>Listing 3</td>
-      <td>$15</td>
       <td>4.2</td>
       <td>Jane Smith</td>
       <td><button>Edit</button></td>
@@ -88,7 +87,6 @@
     </tr>
     <tr>
       <td>Listing 4</td>
-      <td>$15</td>
       <td>4.2</td>
       <td>Jane Smith</td>
       <td><button>Edit</button></td>
@@ -96,7 +94,6 @@
     </tr>
     <tr>
       <td>Listing 4</td>
-      <td>$15</td>
       <td>4.2</td>
       <td>Jane Smith</td>
       <td><button>Edit</button></td>
@@ -104,7 +101,6 @@
     </tr>
     <tr>
       <td>Listing 6</td>
-      <td>$15</td>
       <td>4.2</td>
       <td>Jane Smith</td>
       <td><button>Edit</button></td>
@@ -112,6 +108,43 @@
     </tr>
     <!-- Add more rows as needed -->
   </table>
+  <div class="user-list">
+    <h2>User List</h2>
+    <table>
+      <tr class="table-header">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Edit</th>
+      </tr>
+      <tr>
+        <td>John Doe</td>
+        <td>johndoe@example.com</td>
+        <td>Admin</td>
+        <td>
+          <select>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+            <option value="guest">Guest</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Jane Smith</td>
+        <td>janesmith@example.com</td>
+        <td>User</td>
+        <td>
+          <select>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+            <option value="guest">Guest</option>
+          </select>
+        </td>
+      </tr>
+      <!-- Add more rows for each user -->
+    </table>
+  </div>
+
 </div>
 <!-- STATISTICS -->
 <div class="statistics-block">

@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+/* General info*/
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* FORM white box */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    width: 600px;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form {
+    width: 100%; /* Fill entire width of form container */
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    white-space: nowrap; /* Prevent label text from wrapping */
+    padding: 0 40px;
+}
+
+input, textarea {
+    width: 300px;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+input[type="submit"] {
+    margin-left: 40px;
+    width: 515px;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    align-items: center;
+    background-color: rgb(167, 135, 136);
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(161, 101, 103);
+}
+
+/* Bottom information */
+#info {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.info-section a {
+    color: #fff;
+    margin-right: 20px;
+    margin-left: 30px;
+    text-decoration: none;
+}
+
+.info-section a:hover {
+    color: rgb(167, 135, 136);
+}
+
+.form-section {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+
+/* Upload file button */
+label[for="image"] {
+    display: inline-block;
+    margin-right: 10px;
+
+}
+
+input[type="file"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+    background-color: rgb(167, 135, 136);
+    color: #fff;
+    cursor: pointer;
+}
+
+.upload-btn {
+    display: inline-block;
+    background-color: rgb(167, 135, 136);
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: rgb(161, 101, 103);
+}
