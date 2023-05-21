@@ -213,3 +213,19 @@ th, td {
     padding: 5px;
     font-size: 14px;
 }
+
+.user-list select {
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.user-list td:nth-child(4) {
+    display: flex;
+    align-items: center;
+}
+
+.user-list td:nth-child(4) select {
+    margin-right: 10px;
+}
