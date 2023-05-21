@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>Admin Page</title>
   <!-- Stylesheet -->
-  <link href="css/admin_style.css" rel="stylesheet">
+<!--  backend-->
+<!--  <link href="css/admin_style.css" rel="stylesheet">-->
+  <!--for front-->
+  <link href="../static/css/admin_style.css" rel="stylesheet">
   <script src="js/script.js"></script>
 </head>
 <body>
@@ -105,6 +108,43 @@
     </tr>
     <!-- Add more rows as needed -->
   </table>
+  <div class="user-list">
+    <h2>User List</h2>
+    <table>
+      <tr class="table-header">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Edit</th>
+      </tr>
+      <tr>
+        <td>John Doe</td>
+        <td>johndoe@example.com</td>
+        <td>Admin</td>
+        <td>
+          <select>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+            <option value="guest">Guest</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Jane Smith</td>
+        <td>janesmith@example.com</td>
+        <td>User</td>
+        <td>
+          <select>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+            <option value="guest">Guest</option>
+          </select>
+        </td>
+      </tr>
+      <!-- Add more rows for each user -->
+    </table>
+  </div>
+
 </div>
 <!-- STATISTICS -->
 <div class="statistics-block">
