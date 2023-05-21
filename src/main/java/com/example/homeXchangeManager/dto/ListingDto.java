@@ -13,13 +13,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
 
 @Data
 public class ListingDto {
     private int ownerId;
+    @NotBlank(message = "Description is required")
     private String description;
+    @NotBlank(message = "Address is required")
     private String addressLine;
     @NameConstraint
     private String city;
