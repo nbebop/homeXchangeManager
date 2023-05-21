@@ -5,11 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login page</title>
-    <!-- Bootstrap -->
-<!--    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">-->
-    <!-- Stylesheet for frontend build -->
-<!--    <link href="../static/css/login_style.css" rel="stylesheet">-->
-    <!-- Stylesheet for backend build -->
     <link href="css/login_style.css" rel="stylesheet">
     <title>Login / Sign up</title>
 </head>
@@ -80,15 +75,34 @@
     <p>Keep in mind that while the accommodation is free, there might be additional expenses associated with your vacation, such as transportation, meals, and activities. However, the cost savings on accommodation can significantly contribute to a more affordable and immersive travel experience.</p>
 </section>
 
-
+<!-- BOTTOM SECTION -->
 <section id="info" class="info-section">
-    <a href="#">ABOUT</a>
+    <a href="#" onclick="openPopup('about')">ABOUT</a>
     <a href="#">COOKIE SETTINGS</a>
-    <a href="#">PRIVACY</a>
+    <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
 </section>
+
+<!-- Popup Windows -->
+<div id="popup-about" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('about')">&times;</span>
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your project summary text here -->
+    </div>
+</div>
+
+<div id="popup-privacy" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('privacy')">&times;</span>
+        <h2>Privacy</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your privacy policy text here -->
+    </div>
+</div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/login_script.js"></script>
+<script src="js/script.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/popper.min.js"></script>
