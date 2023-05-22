@@ -58,6 +58,14 @@
         </form>
     </div>
 </section>
+<!-- EXAMPLE ! Delete when implemented properly-->
+<table>
+    <tr th:each="service: ${services}">
+        <td th:text="${service.serviceName}"></td>
+        <td th:text="${service.serviceDescription}"></td>
+    </tr>
+</table>
+
 <!-- Bottom information -->
 <section id="info" class="info-section">
     <a href="#" onclick="openPopup('about')">ABOUT</a>
