@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -22,13 +22,9 @@
             </form>
         </div>
         <ul class="nav-links">
-            <li><a href="#">Swap your house</a></li>
+            <li><a href="/" th:action="@{/home_page.html}">Find a house</a></li>
+            <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
         </ul>
-        <a href="/" th:href="@{/new_listing}" class="register-btn">Add a listing</a>
-        <form name="logoutForm" th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
-
         <i class="fas fa-bars" onclick="togglebtn()"></i>
         <div class="dropdown">
             <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>

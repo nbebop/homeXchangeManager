@@ -45,22 +45,14 @@ nav{
     justify-content: center;
     list-style: none;
 }
-.nav-links li {
-    width: 140px;
+.nav-links li a {
+
     padding: 0 5px;
 }
 .nav-links li a:hover {
-    color: rgb(167, 135, 136);
+    color: rgb(161, 101, 103);
 }
 
-.register-btn{
-    background: rgb(161, 101, 103);
-    color: #fff;
-    padding: 8px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 14px;
-}
 .container{
     padding: 0 7%;
 }
@@ -488,7 +480,7 @@ nav .fa-bars{
 }
 
 .navbar-white .nav-links li {
-    width: 140px;
+    width: 170px;
     padding: 0 5px;
 }
 .navbar-white .nav-links li a {
