@@ -7,7 +7,7 @@ Content-Type: application/json
   "email": "test@user.com",
   "firstname": "Goku",
   "lastname": "Kakarot",
-  "birthdate": "01/10/1967",
+  "birthdate": "1967-01-01",
   "phoneNumber": "0123456789",
   "description": "A sayan living in the forest, very simple man.",
   "addressLine": "addressLine",
