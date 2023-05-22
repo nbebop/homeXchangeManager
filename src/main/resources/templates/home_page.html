@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listing Page</title>
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
 
     <script src="js/script.js"></script>
 
@@ -15,7 +15,7 @@
 <div class="header">
     <nav id="navBar">
         <a href="index.html">
-            <img src="img/compass_white_name.png" class="logo">
+            <img src="../static/img/compass_white_name.png" class="logo">
         </a>
         <div class="search-bar-list">
             <form action="/" method="GET" class="form">
@@ -33,12 +33,12 @@
 
         <i class="fas fa-bars" onclick="togglebtn()"></i>
         <div class="dropdown">
-            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
+            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="/" th:action="@{/account}">Account</a>
-                <a href="#">Messages</a>
-                <a href="#">Favorites</a>
-                <a href="#">Help</a>
+                <a href="/" th:action="@{/message}">Messages</a>
+                <a href="/" th:action="@{/favourites}">Favorites</a>
+                <a href="/" th:action="@{/help}">Help</a>
                 <form name="logoutForm" th:action="@{/logout}" method="post">
                     <input hidden type="submit" value="Sign Out"/>
                 </form>
@@ -65,7 +65,7 @@
                     <label>Guest</label>
                     <input type="text" placeholder="Add Guest">
                 </div>
-                <button type="submit"><img src="img/search.png"></button>
+                <button type="submit"><img src="../static/img/search.png"></button>
             </form>
         </div>
     </div>

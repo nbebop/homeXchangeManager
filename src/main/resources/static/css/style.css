@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+/* General info*/
 *{
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
-
 }
 .header{
     min-height: 100vh;
@@ -37,7 +38,21 @@ nav{
 .nav-links li a{
     text-decoration: none;
     color: #fff;
+    transition: all 0.2s ease 0s;
 }
+.nav-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+.nav-links li {
+    width: 140px;
+    padding: 0 5px;
+}
+.nav-links li a:hover {
+    color: rgb(167, 135, 136);
+}
+
 .register-btn{
     background: rgb(161, 101, 103);
     color: #fff;
