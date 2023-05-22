@@ -2,13 +2,12 @@ package com.example.homeXchangeManager.dto;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 @Data
 public class ServiceDto {
-    @NotNull
+    @NotBlank(message = "Service name is required")
     private String serviceName;
-    @NotNull
+    @NotBlank(message = "Service name is required")
     private String serviceDescription;
 }

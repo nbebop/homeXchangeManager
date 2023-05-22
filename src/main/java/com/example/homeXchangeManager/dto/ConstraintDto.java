@@ -2,13 +2,14 @@ package com.example.homeXchangeManager.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
 public class ConstraintDto {
-    @NotNull
+    @NotBlank(message = "Constraint name is required")
     private String constraintName;
-    @NotNull
+    @NotBlank(message = "Constraint description is required")
     private String constraintDescription;
 
 }

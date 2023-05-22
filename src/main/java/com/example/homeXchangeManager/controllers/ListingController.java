@@ -3,7 +3,9 @@ package com.example.homeXchangeManager.controllers;
 import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
-import com.example.homeXchangeManager.repositories.ListingRepository;
+import com.example.homeXchangeManager.service.impl.ConstraintServiceImpl;
+import com.example.homeXchangeManager.service.impl.ListingServiceImpl;
+import com.example.homeXchangeManager.service.impl.ServiceServiceImpl;
 import com.example.homeXchangeManager.service.impl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,14 +28,17 @@ import java.io.IOException;
 @Controller
 public class ListingController {
     private static final Logger logger = LoggerFactory.getLogger(ListingController.class);
-    private ListingRepository listingRepository;
-
+    private ListingServiceImpl listingService;
     private UserServiceImpl userService;
+    private ServiceServiceImpl serviceService;
+    private ConstraintServiceImpl constraintService;
 
     @Autowired
-    public ListingController(ListingRepository listingRepository, UserServiceImpl userService) {
-        this.listingRepository = listingRepository;
+    public ListingController(ListingServiceImpl listingService, UserServiceImpl userService, ServiceServiceImpl serviceService, ConstraintServiceImpl constraintService) {
+        this.listingService = listingService;
         this.userService = userService;
+        this.serviceService = serviceService;
+        this.constraintService = constraintService;
     }
 
     @ModelAttribute("listing")
@@ -41,9 +47,9 @@ public class ListingController {
     }
 
     @GetMapping("/new_listing")
-    public String newListing() {
-        // pass constraints
-        // model.addAttribute("categories", categoryService.findAll());
+    public String newListing(Model model) {
+        model.addAttribute("constraints", constraintService.findAll());
+        model.addAttribute("services", serviceService.findAll());
         return "new_listing";
     }
 
@@ -58,8 +64,6 @@ public class ListingController {
 
             return "new_listing";
         }
-
-        // TODO add constraints and requests
 
         // retrieve logged in user
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -84,21 +88,37 @@ public class ListingController {
         listing.setCity(listingDto.getCity());
         listing.setPostalCode(listingDto.getPostalCode());
         listing.setCountry(listingDto.getCountry());
-        listingRepository.save(listing);
+        listingService.save(listing);
 
         return "redirect:/listing";
     }
 
-
     @PostMapping("/listing/delete/{id}")
     public String deleteListing(@PathVariable("id") long listingId) {
-        Listing listing = listingRepository.findListingByListingId(listingId);
+        Listing listing = listingService.findByListingId(listingId);
         if (listing != null) {
-            listingRepository.deleteListingByListingId(listingId);
+            listingService.delete(listingId);
             logger.debug(String.format("Listing with id: %s has been successfully deleted.", listing.getListingId()));
             return "redirect:/home_page";
         } else {
             // add error pages
+            return "error/404";
+        }
+    }
+
+    @PostMapping("/listing/edit/{id}")
+    public String editListing(@PathVariable("id") long listingId, @Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "edit_listing";
+        }
+
+        Listing listing = listingService.findByListingId(listingId);
+        if (listing != null) {
+            listing.setDescription(listingDto.getDescription());
+            listingService.save(listing);
+            return "redirect:/home_page";
+        } else {
+            // Listing not found, handle the error appropriately
             return "error/404";
         }
     }
@@ -110,22 +130,6 @@ public class ListingController {
             byteObjects[i++] = b;
         }
         return byteObjects;
-    }
-    @PostMapping("/listing/edit/{id}")
-    public String editListing(@PathVariable("id") long listingId, @Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "edit_listing";
-        }
-
-        Listing listing = listingRepository.findListingByListingId(listingId);
-        if (listing != null) {
-            listing.setDescription(listingDto.getDescription());
-            listingRepository.save(listing);
-            return "redirect:/home_page";
-        } else {
-            // Listing not found, handle the error appropriately
-            return "error/404";
-        }
     }
 
 }
