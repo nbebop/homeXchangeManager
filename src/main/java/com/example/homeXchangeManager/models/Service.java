@@ -16,11 +16,7 @@ public class Service implements Serializable {
     @NotNull
     @Column(name = "service_name")
     private String serviceName;
-
-    @NotNull
-    @Column(name = "help_text")
-    private String helpText;
-
+    
     @NotNull
     @Column(name = "service_description")
     private String serviceDescription;
@@ -28,13 +24,11 @@ public class Service implements Serializable {
     public Service() {
     }
 
-    public Service(String serviceName, String helpText, String serviceDescription) {
+    public Service(int serviceId, String serviceName, String serviceDescription) {
+        this.serviceId = serviceId;
         this.serviceName = serviceName;
-        this.helpText = helpText;
         this.serviceDescription = serviceDescription;
     }
-
-    // Getters and setters
 
     public int getServiceId() {
         return serviceId;
@@ -50,14 +44,6 @@ public class Service implements Serializable {
 
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
-    }
-
-    public String getHelpText() {
-        return helpText;
-    }
-
-    public void setHelpText(String helpText) {
-        this.helpText = helpText;
     }
 
     public String getServiceDescription() {
