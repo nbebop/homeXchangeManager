@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Help</title>
+    <title>Home Exchange - User Account</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/home_style.css">
 </head>
+
 <body>
-<!-- TO DO: -->
-<!-- CREATE FAST EASY HELP PAGE -->
+<section class="navbar">
+    <header>
+        <a href="/" th:action="@{/login}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
+            <form action="/" method="GET" class="form">
+                <input type="search" placeholder="Search for..." class="search-field">
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- Rent a house link -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Rent your house</a> </li>
+            </ul>
+        </nav>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="#">Account</a>
+                <a href="#">Messages</a>
+                <a href="#">Favorites</a>
+                <a href="#">Help</a>
+                <a href="#">Log Out</a>
+            </div>
+        </div>
+    </header>
+</section>
+<div class="help-information-selection">
+    <!-- Additional advanced content for the help page -->
+    <h2>How It Works</h2>
+    <p>Welcome to Home Exchange! Here's how you can exchange your home for a short vacation:</p>
+    <ol>
+        <li>Create an account and log in.</li>
+        <li>Browse available homes or list your own for exchange.</li>
+        <li>Contact other users through our messaging system to discuss the exchange details.</li>
+        <li>Agree on services and constraints with the other party.</li>
+        <li>Finalize the exchange and enjoy your vacation!</li>
+    </ol>
+    <h2>Need Help?</h2>
+    <p>If you have any questions or encounter any issues, we're here to assist you. Please feel free to reach out to our support team by sending a message through the form below.</p>
+</div>
+<div class="messaging-section">
+    <h2>Contact Support</h2>
+    <form class="messaging-form">
+        <!-- Messaging form for communication with support -->
+        <textarea rows="4" cols="50" placeholder="Type your message here"></textarea>
+        <br>
+        <button type="submit">Send Message</button>
+    </form>
+</div>
 </body>
 </html>
