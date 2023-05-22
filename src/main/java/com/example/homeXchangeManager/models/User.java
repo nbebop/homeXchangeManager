@@ -7,11 +7,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.io.Serializable;
-import java.util.Date;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -35,13 +34,17 @@ public class User implements Serializable {
     @NotNull
     @Email
     private String email;
-    @DateTimeFormat(pattern="dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/YYYY")
+    @NotNull
     private Date birthdate;
     private String phoneNumber;
     private String description;
-    @NotNull
-    private Address address;
+    private String addressLine;
+    private String premise;
+    private String city;
+    private String postalCode;
+    private String country;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
@@ -52,7 +55,9 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long id, @NotNull String username, @NotNull String firstName, @NotNull String lastName, @NotNull String password, @NotNull String email, Date birthdate, String phoneNumber, String description, List<Role> roles, Address address) {
+    public User(Long id, @NotNull String username, @NotNull String firstName, @NotNull String lastName,
+                @NotNull String password, @NotNull String email, Date birthdate, String phoneNumber, String description,
+                List<Role> roles, String addressLine, String premise, String city, String postalCode, String country) {
         this.id = id;
         this.username = username;
         this.firstname = firstName;
@@ -63,7 +68,11 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
         this.description = description;
         this.roles = roles;
-        this.address = address;
+        this.addressLine = addressLine;
+        this.premise = premise;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.country = country;
     }
 
     public User(String username, String password, List<Role> roles) {
@@ -152,12 +161,43 @@ public class User implements Serializable {
         this.roles = roles;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getAddressLine() {
+        return addressLine;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressLine(String addressLine) {
+        this.addressLine = addressLine;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getPremise() {
+        return premise;
+    }
+
+    public void setPremise(String premise) {
+        this.premise = premise;
     }
 }
-

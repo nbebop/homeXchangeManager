@@ -1,6 +1,10 @@
 package com.example.homeXchangeManager.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -10,18 +14,16 @@ import java.util.List;
 public class Listing implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int listingId;
+    private long listingId;
 
     @ManyToOne
     @JoinColumn(name = "ownerId")
     private User owner;
 
     private String description;
-
-    private Address address;
-
-    @ElementCollection
-    private List<String> photos;
+    @Lob
+    @Column(name = "image", length = Integer.MAX_VALUE, nullable = true)
+    private Byte[] image;
 
     @ManyToMany
     private List<Service> services;
@@ -36,15 +38,44 @@ public class Listing implements Serializable {
     private double ownerRating;
 
     // TODO: add in services the logic to get the ratings
-
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/YYYY")
+    @NotNull
     private Date availabilityStart;
-
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/YYYY")
+    @NotNull
     private Date availabilityEnd;
+
+    private String addressLine;
+    private String premise;
+    private String city;
+    private String postalCode;
+    private String country;
 
     public Listing() {
     }
 
-    public int getListingId() {
+    public Listing(long listingId, User owner, String description, Byte[] image, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country) {
+        this.listingId = listingId;
+        this.owner = owner;
+        this.description = description;
+        this.image = image;
+        this.services = services;
+        this.constraints = constraints;
+        this.bookingInfo = bookingInfo;
+        this.rating = rating;
+        this.ownerRating = ownerRating;
+        this.availabilityStart = availabilityStart;
+        this.availabilityEnd = availabilityEnd;
+        this.addressLine = addressLine;
+        this.premise = premise;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.country = country;
+    }
+
+    public long getListingId() {
         return listingId;
     }
 
@@ -68,20 +99,12 @@ public class Listing implements Serializable {
         this.description = description;
     }
 
-    public Address getAddress() {
-        return address;
+    public Byte[] getImage() {
+        return image;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public List<String> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(List<String> photos) {
-        this.photos = photos;
+    public void setImage(Byte[] image) {
+        this.image = image;
     }
 
     public List<Service> getServices() {
@@ -138,5 +161,45 @@ public class Listing implements Serializable {
 
     public void setAvailabilityEnd(Date availabilityEnd) {
         this.availabilityEnd = availabilityEnd;
+    }
+
+    public String getAddressLine() {
+        return addressLine;
+    }
+
+    public void setAddressLine(String addressLine) {
+        this.addressLine = addressLine;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getPremise() {
+        return premise;
+    }
+
+    public void setPremise(String premise) {
+        this.premise = premise;
     }
 }

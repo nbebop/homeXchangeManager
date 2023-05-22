@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:form="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <title>Sign Up Form</title>
     <!-- Stylesheet for backend build -->
-        <link href="css/registration_style.css" rel="stylesheet">
+    <link href="css/registration_style.css" rel="stylesheet">
     <!-- Stylesheet for frontend build -->
-<!--    <link href="../static/css/registration_style.css" rel="stylesheet">-->
+    <!--    <link href="../static/css/registration_style.css" rel="stylesheet">-->
 </head>
 <body>
 <!-- NAVBAR-->
@@ -14,19 +14,23 @@
         <a href="/" th:action="@{/login}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
         <nav>
             <ul class="nav-links">
-                <li><a href="#">How it works?</a> </li>
-                <li><a href="#">How much it costs?</a> </li>
+                <li><a href="#">How it works?</a></li>
+                <li><a href="#">How much it costs?</a></li>
             </ul>
         </nav>
-        <a class="cta" href="/" th:action="@{/login}"><button>Login</button></a>
-        <a class="cta" href="/" th:href="@{/registration}"><button>Register</button></a>
+        <a class="cta" href="/" th:href="@{/login}">
+            <button>Login</button>
+        </a>
+        <a class="cta" href="/" th:href="@{/registration}">
+            <button>Register</button>
+        </a>
     </header>
 </section>
 <!-- Registration form -->
 <section id="form" class="form-section">
     <div class="form-container">
         <h1>Create account</h1>
-        <form modelAttribute="user" action="/register" method="post">
+        <form modelAttribute="user" th:action="@{/registration}" th:object="${user}" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" th:field="*{username}" required>
 
@@ -41,6 +45,8 @@
 
             <label for="dob">Date of Birth:</label>
             <input type="date" id="dob" name="dob" th:field="*{birthdate}" required>
+            <!-- in errorclass you can set css for the error -->
+            <p th:if="${#fields.hasErrors('birthdate')}" th:errorclass="error" th:errors="*{birthdate}" />
 
             <label for="phone">Phone number:</label>
             <input type="tel" id="phone" name="phone" th:field="*{phoneNumber}" required>
@@ -62,18 +68,37 @@
             <!--            <button class="passwd-toggle" id="show-passwd"><img src="../static/img/eye_open.svg" alt="Show password"/></button>-->
 
             <label for="password_conf">Confirm password:</label>
-            <input type="text" id="password_conf" name="password_conf" th:field="*{password_conf}" required>
+            <input type="password" id="password_conf" name="password_conf" required>
             <input type="submit" value="Sign Up">
         </form>
     </div>
 </section>
 <!-- Bottom information -->
 <section id="info" class="info-section">
-    <a href="#">ABOUT</a>
+    <a href="#" onclick="openPopup('about')">ABOUT</a>
     <a href="#">COOKIE SETTINGS</a>
-    <a href="#">PRIVACY</a>
+    <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
 </section>
 
-<script src="js/registration_script.js"></script>
+<!-- Popup Windows -->
+<div id="popup-about" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('about')">&times;</span>
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your project summary text here -->
+    </div>
+</div>
+
+<div id="popup-privacy" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('privacy')">&times;</span>
+        <h2>Privacy</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your privacy policy text here -->
+    </div>
+</div>
+
+<script src="js/script.js"></script>
 </body>
 </html>

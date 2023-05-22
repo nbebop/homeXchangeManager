@@ -1,9 +1,12 @@
 package com.example.homeXchangeManager.controllers;
 
+import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.dto.LoginDto;
 import com.example.homeXchangeManager.dto.RegisterDto;
+import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.Role;
 import com.example.homeXchangeManager.models.User;
+import com.example.homeXchangeManager.repositories.ListingRepository;
 import com.example.homeXchangeManager.repositories.RoleRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,54 +18,26 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Collections;
-
 @Controller
-public class AuthController {
+public class ApiController {
     private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
     private RoleRepository roleRepository;
+
+    private ListingRepository listingRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public ApiController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
-    @ModelAttribute("user")
-    public RegisterDto registerDto() {
-        return new RegisterDto();
-    }
-
-    @PostMapping("register")
-    public String register(@ModelAttribute("user") RegisterDto registerDto) {
-        User user = new User();
-        user.setUsername(registerDto.getUsername());
-        user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
-        user.setFirstname(registerDto.getLastname());
-        user.setLastname(registerDto.getLastname());
-        user.setEmail(registerDto.getEmail());
-        user.setBirthdate(registerDto.getBirthdate());
-        user.setPhoneNumber(registerDto.getPhoneNumber());
-        user.setDescription(registerDto.getDescription());
-        user.setAddress(registerDto.getAddress());
-        // anyone who registers is a user
-        user.setRoles(Collections.singletonList(new Role("USER")));
-
-        userRepository.save(user);
-        // TODO: page to be redirected to after successful registration
-        return "login";
-    }
-
-    // POST login is handled directly by sprint boot security
-    // @PostMapping("login")
 
     @PostMapping("/api/auth/register")
     public ResponseEntity<String> registerApi(@RequestBody RegisterDto registerDto) {
@@ -79,7 +54,11 @@ public class AuthController {
         user.setBirthdate(registerDto.getBirthdate());
         user.setPhoneNumber(registerDto.getPhoneNumber());
         user.setDescription(registerDto.getDescription());
-        user.setAddress(registerDto.getAddress());
+        user.setAddressLine(registerDto.getAddressLine());
+        user.setPremise(registerDto.getPremise());
+        user.setCity(registerDto.getCity());
+        user.setPostalCode(registerDto.getPostalCode());
+        user.setCountry(registerDto.getCountry());
         user.setRoles(Collections.singletonList(new Role("USER")));
 
         userRepository.save(user);
@@ -93,5 +72,33 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         return new ResponseEntity<>("User signed success", HttpStatus.OK);
+    }
+
+    @PostMapping("/api/auth/listing/new")
+    public ResponseEntity<String> newListingApi(@RequestBody ListingDto listingDto) {
+        Listing listing = new Listing();
+        listing.setDescription(listing.getDescription());
+        listing.setAvailabilityStart(listingDto.getAvailabilityStart());
+        listing.setAvailabilityEnd(listingDto.getAvailabilityEnd());
+        listing.setBookingInfo(listingDto.getBookingInfo());
+        listing.setAddressLine(listingDto.getAddressLine());
+        listing.setPremise(listingDto.getPremise());
+        listing.setCity(listingDto.getCity());
+        listing.setPostalCode(listingDto.getPostalCode());
+        listing.setCountry(listingDto.getCountry());
+
+        return new ResponseEntity<>("Listing created success", HttpStatus.OK);
+    }
+
+    @PostMapping("/api/auth/listing/edit")
+    public ResponseEntity<String> editListingApi(@RequestBody ListingDto listingDto) {
+
+        return new ResponseEntity<>("Listing edit success", HttpStatus.OK);
+    }
+
+    @PostMapping("/api/auth/listing/delete")
+    public ResponseEntity<String> deleteListingApi(@RequestBody ListingDto listingDto) {
+
+        return new ResponseEntity<>("Listing deleted success", HttpStatus.OK);
     }
 }
