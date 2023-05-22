@@ -11,24 +11,27 @@
     <script src="js/script.js"></script>
 </head>
 <body>
-<div class="header">
-    <nav id="navBar">
-        <a href="/" th:href="@{/home_page}">
-            <img src="img/compass_white_name.png" class="logo">
-        </a>
-        <div class="search-bar-list">
+<section class="navbar">
+    <header>
+        <!-- Logo -->
+        <a href="/" th:href="@{/home_page}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
             <form action="/" method="GET" class="form">
                 <input type="search" placeholder="Search for..." class="search-field">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
-        <ul class="nav-links">
-            <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-            <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
-        </ul>
-        <i class="fas fa-bars" onclick="togglebtn()"></i>
+        <!-- Find a house and add a listing navlinks -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+            </ul>
+        </nav>
+        <!-- Dropdown menu -->
         <div class="dropdown">
-            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
+            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="/" th:href="@{/account}">Account</a>
                 <a href="/" th:href="@{/message}">Messages</a>
@@ -39,8 +42,8 @@
                 </p>
             </div>
         </div>
-    </nav>
-</div>
+    </header>
+</section>
 <div class="container">
     <h2 class="sub-title">Exclusives</h2>
     <div class="exclusives">
