@@ -12,7 +12,26 @@ function closePopup(popupId) {
     var popup = document.getElementById("popup-" + popupId);
     popup.style.display = "none";
 }
+function validatePassword(event) {
+    event.preventDefault(); // Prevent form submission for demonstration purposes
 
+    var password = document.getElementById("password").value;
+    var passwordConf = document.getElementById("password_conf").value;
+
+    if (password !== passwordConf) {
+        alert("Passwords do not match");
+        return false;
+    }
+
+    // Passwords match, proceed with form submission
+    alert("Passwords match");
+    // document.forms[0].submit(); // Uncomment this line to submit the form
+}
+var navBar = document.getElementById("navBar");
+
+function togglebtn() {
+    navBar.classList.toggle("hidemenu");
+}
 /* OLD HOME SCRIPT */
 /*const listing = document.querySelector('.listing');
 const images = ['static/img/paris2_apartement.png', 'apartment2.jpg', 'apartment3.jpg']; // replace with your own image URLs

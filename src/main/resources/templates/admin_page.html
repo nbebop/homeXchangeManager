@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Page</title>
-  <link href="css/admin_style.css" rel="stylesheet">
+  <link href="../static/css/admin_style.css" rel="stylesheet">
   <script src="js/script.js"></script>
 </head>
 <body>
@@ -135,7 +135,6 @@
       <tr class="table-header">
         <th>Name</th>
         <th>Email</th>
-        <th>Role</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -143,11 +142,6 @@
       <tr th:each="user : ${users}">
         <td th:text="${user.firstname + ' ' + user.lastname}"></td>
         <td th:text="${user.email}"></td>
-        <td>
-          <select>
-            <option th:each="role : ${roles}" th:value="${role.name}" th:text="${role.name}" th:selected="${user.roles.contains(role)}"></option>
-          </select>
-        </td>
         <td><button>Edit</button></td>
         <td>
           <form action="/delete-user" method="post">
