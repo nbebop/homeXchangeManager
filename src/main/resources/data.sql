@@ -26,8 +26,9 @@ INSERT INTO user_roles (user_id, role_id) VALUES (8, 2);
 INSERT INTO user_roles (user_id, role_id) VALUES (9, 1);
 
 -- listing
--- INSERT INTO listings (listing_id, owner_id, description, photos, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
--- VALUES ('1', '1', 'Small cozy loft in the center of paris', NULL, 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Qifsharopt 69', '4th floor, left', 'Paris', '750001', 'France');
+
+INSERT INTO listings (listing_id, owner_id, description, image, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
+VALUES ('1', '1', 'Small cozy loft in the center of paris', NULL, 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Qifsharopt 69', '4th floor, left', 'Paris', '750001', 'France');
 
 
 -- messages
@@ -39,3 +40,4 @@ VALUES
        (8, 7, 'I am fine, thank you', CURRENT_TIMESTAMP),
        (7, 8, 'Is it possible to smoke in your home?', CURRENT_TIMESTAMP),
        (8, 7, 'Absolutely no!', CURRENT_TIMESTAMP);
+

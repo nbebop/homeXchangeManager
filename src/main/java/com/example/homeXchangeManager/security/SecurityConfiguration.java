@@ -24,7 +24,7 @@ public class SecurityConfiguration {
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/registration/**", "/js/**", "/css/**", "/img/**")
                 .permitAll().anyRequest().authenticated().and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/home_page").permitAll().and()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/success", true).permitAll().and()
                 .logout().invalidateHttpSession(true).clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout").permitAll()

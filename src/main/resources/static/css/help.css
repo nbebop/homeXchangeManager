@@ -1,17 +1,6 @@
-.logo {
-    cursor: pointer;
-    width: 15%;
-    height: 15%;
-}
-/* General navbar */
-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 5px 10%;
-}
+
 /* links */
-.navbar li, a, button {
+.navbar li, a {
     font-weight: 500;
     font-size: 14px;
     color: white;
@@ -32,7 +21,7 @@ header {
 .nav-links li a:hover {
     color: rgb(167, 135, 136);
 }
-
+/****************************************************/
 /* Dropdown Profile menu */
 .dropbtn{
     margin-left: 15px;
@@ -55,58 +44,6 @@ header {
 .dropdown {
     position: relative;
     display: inline-block;
-
-body, h1, h2, p, ul, li, form, img, button {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-}
-
-body {
-    background-color: rgb(215, 210, 207);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Profile Section */
-.profile-section {
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.profile-section h2 {
-    margin-bottom: 10px;
-}
-
-.profile-image {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 10px;
-}
-
-.profile-details p {
-    margin-bottom: 5px;
-}
-
-/* Photos Section */
-.photos-section {
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.photos-section h2 {
-    margin-bottom: 10px;
-
 }
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
@@ -118,6 +55,7 @@ h1 {
     border-radius: 20px;
     padding: 15px;
     backdrop-filter: blur(10px);
+
 }
 
 /* Links inside the dropdown */
@@ -135,108 +73,6 @@ h1 {
     border-radius: 50px;
     background-color: rgb(167, 135, 136);
 
-
-.photo {
-    width: 200px;
-    height: 200px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
-/* Services Section */
-.services-section {
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.services-section h2 {
-    margin-bottom: 10px;
-}
-
-.services-section ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 10px;
-}
-
-/* Constraints Section */
-.constraints-section {
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.constraints-section h2 {
-    margin-bottom: 10px;
-}
-
-.constraints-section ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 10px;
-}
-
-/* Messaging Section */
-.messaging-section {
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.messaging-section h2 {
-    margin-bottom: 10px;
-}
-
-.messaging-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.messaging-form button {
-    background-color: rgb(167, 135, 136);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-}
-
-.messaging-form button:hover {
-    background-color: rgb(161, 101, 103);
-}
-/* Style for the popup windows */
-.popup {
-    display: none; /* Hide the popups by default */
-    position: fixed; /* Position the popups */
-    z-index: 1; /* Set a high z-index to make them appear on top of other elements */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Enable scrolling if needed */
-    background-color: rgba(0, 0, 0, 0.6); /* Add a semi-transparent background color */
-}
-
-.popup-content {
-    background-color: #fefefe;
-    margin: 10% auto; /* Center the popup windows vertically and horizontally */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
 }
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
@@ -258,12 +94,6 @@ h1 {
     font-size: 14px;
     padding-right: 40px;
     transition: all 0.3s ease 0s;
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
 
 }
 .search-bar:hover input{
@@ -306,11 +136,62 @@ body {
 }
 header {
     background-color:rgb(215,210,207);;
-    color: #fff;
+    color:  rgb(161, 101, 103);
     padding: 10px;
 }
 
 main {
     margin: 20px;
 
+}
+
+.logo {
+    cursor: pointer;
+    width: 15%;
+    height: 15%;
+}
+/* General navbar */
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px 10%;
+}
+
+input[type="submit"] {
+    background-color: rgb(167, 135, 136);
+    color: rgb(161, 101, 103);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+}
+
+textarea {
+    padding: 10px;
+    border: 1px solid rgb(161, 101, 103);;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    resize: none;
+}
+.messaging-section{
+    color: rgb(161, 101, 103);
+}
+button{
+    color:rgb(167, 135, 136);
+    background-color: white;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+h2,p,li{
+    color: rgb(161, 101, 103);
 }
