@@ -41,3 +41,21 @@ VALUES
        (7, 8, 'Is it possible to smoke in your home?', CURRENT_TIMESTAMP),
        (8, 7, 'Absolutely no!', CURRENT_TIMESTAMP);
 
+-- services
+INSERT INTO services (service_id, service_description, service_name)
+VALUES (1, 'Garbage disposal', 'Take out the trash and recycling'),
+       (2, 'Plant care', 'Water plants and tend to garden'),
+       (3, 'Errand running', 'Run errands, such as picking up dry cleaning or dropping off mail. The owner will let you know in chat.'),
+       (4, 'Appliance maintenance', 'Clean and maintain appliances, such as the refrigerator and oven'),
+       (5, 'Disinfecting and sanitizing', ' Clean and disinfect high-touch surfaces, such as doorknobs and light switches');
+
+-- constraints
+INSERT INTO constraints (constraint_id, constraint_name, constraint_description)
+VALUES (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire hazards and health risks.'),
+       (2, 'No pets', 'Pets are not allowed to prevent damage and/or hygiene and health issues.'),
+       (3, 'No shoes on carpet', 'Shoes are not allowed on the carpet to keep it clean and prevent wear and tear.'),
+       (4, 'No loud music after 10pm', 'Loud music is not allowed after 10pm to respect neighbors and maintain a peaceful environment.'),
+       (5, 'No cooking with open flames', 'Cooking with open flames is prohibited due to fire hazards and safety concerns.'),
+       (6, 'No leaving doors unlocked', 'Doors must be locked at all times to prevent theft and ensure safety.'),
+       (7, 'No food in bedrooms', 'Eating in bedrooms is not allowed to prevent pests and maintain cleanliness.'),
+       (8, 'No car space', 'Cars cause pollution and there is not parking spot available. ');
