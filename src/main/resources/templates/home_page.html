@@ -6,20 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-
-    <!--for backend-->
-    <link href="css/styles.css" rel="stylesheet">
-    <!--for front-->
-<!--    <link href="../static/css/style.css" rel="stylesheet">-->
-
+    <link href="../static/css/style.css" rel="stylesheet">
     <script src="js/script.js"></script>
-
 </head>
 <body>
 <div class="header">
     <nav id="navBar">
         <a href="index.html">
-            <img src="../static/img/compass_white_name.png" class="logo">
+            <img src="img/compass_white_name.png" class="logo">
         </a>
         <div class="search-bar-list">
             <form action="/" method="GET" class="form">
@@ -28,24 +22,18 @@
             </form>
         </div>
         <ul class="nav-links">
-            <li><a href="#">Swap your house</a></li>
+            <li><a href="/" th:action="@{/home_page.html}">Find a house</a></li>
+            <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
         </ul>
-        <a href="/" th:href="@{/new_listing}" class="register-btn">Add a listing</a>
-        <form name="logoutForm" th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
-
         <i class="fas fa-bars" onclick="togglebtn()"></i>
         <div class="dropdown">
-            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
+            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="/" th:action="@{/account}">Account</a>
                 <a href="/" th:action="@{/message}">Messages</a>
                 <a href="/" th:action="@{/favourites}">Favorites</a>
                 <a href="/" th:action="@{/help}">Help</a>
-                <form name="logoutForm" th:action="@{/logout}" method="post">
-                    <input hidden type="submit" value="Sign Out"/>
-                </form>
+                <a href="/" th:action="@{/logout}" >Log Out</a>
             </div>
         </div>
     </nav>
