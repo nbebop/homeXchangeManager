@@ -3,39 +3,40 @@
 <head>
     <title>Home Exchange - User Account</title>
     <link rel="stylesheet" type="text/css" href="../static/css/account.css">
-    <link href="../static/css/account.css" rel="stylesheet">
+    <link href="/css/account.css" rel="stylesheet">
     <script src="js/script.js"></script>
 </head>
 <body>
-<section class="navbar">
-    <header>
-        <a href="/" th:action="@{/login}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>
-        <!--Search bar -->
-        <div class="search-bar">
+<div class="header">
+    <nav id="navBar">
+        <a href="/" th:href="@{/home_page}">
+            <img src="img/compass_white_name.png" class="logo">
+        </a>
+        <div class="search-bar-list">
             <form action="/" method="GET" class="form">
                 <input type="search" placeholder="Search for..." class="search-field">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
-        <!-- Rent a house link -->
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">Rent your house</a> </li>
-            </ul>
-        </nav>
-        <!-- Dropdown menu -->
+        <ul class="nav-links">
+            <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+            <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+        </ul>
+        <i class="fas fa-bars" onclick="togglebtn()"></i>
         <div class="dropdown">
-            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
+            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
-                <a href="/" th:action="@{/account}">Account</a>
-                <a href="/" th:action="@{/message}">Messages</a>
-                <a href="/" th:action="@{/favourites}">Favorites</a>
-                <a href="/" th:action="@{/help}">Help</a>
-                <a href="/" th:action="@{/logout}" >Log Out</a>
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <p th:if="${role != null}">
+                    <a href="/logout">Logout</a>
+                </p>
             </div>
         </div>
-    </header>
-</section>
+    </nav>
+</div>
 <div class="profile-section">
     <h2>Profile</h2>
     <img src="../static/img/host.png" alt="Profile Image" class="profile-image">

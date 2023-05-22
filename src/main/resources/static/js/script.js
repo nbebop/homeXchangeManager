@@ -32,6 +32,14 @@ var navBar = document.getElementById("navBar");
 function togglebtn() {
     navBar.classList.toggle("hidemenu");
 }
+
+// Close the success popup after a certain duration
+setTimeout(function() {
+    var popup = document.getElementById('successPopup');
+    if (popup) {
+        popup.style.display = 'none';
+    }
+}, 3000); // Adjust the duration (in milliseconds) as needed
 /* OLD HOME SCRIPT */
 /*const listing = document.querySelector('.listing');
 const images = ['static/img/paris2_apartement.png', 'apartment2.jpg', 'apartment3.jpg']; // replace with your own image URLs

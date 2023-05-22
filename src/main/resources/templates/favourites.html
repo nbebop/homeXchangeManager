@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -6,44 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favourites</title>
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-    <!--for backend-->
-    <link href="css/styles.css" rel="stylesheet">
-    <!--for front-->
-<!--    <link href="../static/css/style.css" rel="stylesheet">-->
-
+    <link href="css/style.css" rel="stylesheet">
     <script src="js/script.js"></script>
 </head>
 <body>
-<nav id="navBar">
-    <a href="index.html">
-        <img src="../static/img/compass_white_name.png" class="logo">
-    </a>
-    <div class="search-bar-list">
-        <form action="/" method="GET" class="form">
-            <input type="search" placeholder="Search for..." class="search-field">
-            <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
-    <ul class="nav-links">
-        <li><a href="#">Swap your house</a></li>
-    </ul>
-    <a href="/" th:href="@{/new_listing}" class="register-btn">Add a listing</a>
-    <form name="logoutForm" th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
-
-    <i class="fas fa-bars" onclick="togglebtn()"></i>
-    <div class="dropdown">
-        <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
-        <div class="dropdown-content">
-            <a href="/" th:action="@{/account}">Account</a>
-            <a href="/" th:action="@{/message}">Messages</a>
-            <a href="/" th:action="@{/favourites}">Favorites</a>
-            <a href="/" th:action="@{/help}">Help</a>
-            <a href="/" th:action="@{/logout}" >Log Out</a>
+<div class="header">
+    <nav id="navBar">
+        <a href="/" th:href="@{/home_page}">
+            <img src="img/compass_white_name.png" class="logo">
+        </a>
+        <div class="search-bar-list">
+            <form action="/" method="GET" class="form">
+                <input type="search" placeholder="Search for..." class="search-field">
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </form>
         </div>
-    </div>
-</nav>
+        <ul class="nav-links">
+            <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+            <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+        </ul>
+        <i class="fas fa-bars" onclick="togglebtn()"></i>
+        <div class="dropdown">
+            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <p th:if="${role != null}">
+                    <a href="/logout">Logout</a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</div>
 <div class="container">
     <h2 class="sub-title">Exclusives</h2>
     <div class="exclusives">

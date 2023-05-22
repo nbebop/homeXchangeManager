@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <html>
 <head>
     <meta charset="utf-8">
@@ -11,32 +12,36 @@
     <script src="js/script.js"></script>
 </head>
 <body>
-     <nav id="navBar" class="navbar-white">
-        <a href="index.html">
+<div class="header">
+    <nav id="navBar">
+        <a href="/" th:href="@{/home_page}">
             <img src="img/compass_white_name.png" class="logo">
         </a>
-		 <div class="search-bar-list">
+        <div class="search-bar-list">
             <form action="/" method="GET" class="form">
                 <input type="search" placeholder="Search for..." class="search-field">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
         <ul class="nav-links">
-             <li><a href="#">Rent your house</a> </li>
+            <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+            <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
         </ul>
-        <a href="#" class="register-btn">Register Now</a>
         <i class="fas fa-bars" onclick="togglebtn()"></i>
-		 <div class="dropdown">
+        <div class="dropdown">
             <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
-             <div class="dropdown-content">
-                 <a href="/" th:action="@{/account}">Account</a>
-                 <a href="/" th:action="@{/message}">Messages</a>
-                 <a href="/" th:action="@{/favourites}">Favorites</a>
-                 <a href="/" th:action="@{/help}">Help</a>
-                 <a href="/" th:action="@{/logout}" >Log Out</a>
-             </div>
+            <div class="dropdown-content">
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <p th:if="${role != null}">
+                    <a href="/logout">Logout</a>
+                </p>
+            </div>
         </div>
     </nav>
+</div>
     <div class="house-details">
         <div class="house-title">
             <h1>Luxury House</h1>
