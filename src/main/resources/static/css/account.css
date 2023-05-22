@@ -77,9 +77,14 @@ h1 {
 /* Profile Section */
 .profile-section {
     background-color: #ffffff;
-    border: 1px solid #dddddd;
+    border: 2px solid #dddddd;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 700px;
+    color: rgb(167, 135, 136);
+
 }
 
 .profile-section h2 {
@@ -99,9 +104,13 @@ h1 {
 /* Photos Section */
 .photos-section {
     background-color: #ffffff;
-    border: 1px solid #dddddd;
+    border: 2px solid #dddddd;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 700px;
+    color: rgb(167, 135, 136);
 }
 
 .photos-section h2 {
@@ -133,7 +142,9 @@ h1 {
     color: white;
     box-shadow: 0px 20px 20px rgba(0,0,0,0.8);
     border-radius: 50px;
-    background-color: rgb(167, 135, 136);}
+    background-color: rgb(167, 135, 136);
+    border-radius: 10px;
+}
 
 
 .photo {
@@ -149,6 +160,10 @@ h1 {
     border: 1px solid #dddddd;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 700px;
+    color: rgb(167, 135, 136);
 }
 
 .services-section h2 {
@@ -167,6 +182,10 @@ h1 {
     border: 1px solid #dddddd;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 700px;
+    color: rgb(167, 135, 136);
 }
 
 .constraints-section h2 {
@@ -185,6 +204,10 @@ h1 {
     border: 1px solid #dddddd;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 700px;
+    color: rgb(167, 135, 136);
 }
 
 .messaging-section h2 {
@@ -204,6 +227,7 @@ h1 {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .messaging-form button:hover {
@@ -313,4 +337,17 @@ header {
 main {
     margin: 20px;
 
+}
+.messaging-form textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    resize: vertical;
+}
+
+.messaging-form textarea:focus {
+    outline: none;
+    border-color: #888;
+    box-shadow: 0 0 5px #888;
 }
