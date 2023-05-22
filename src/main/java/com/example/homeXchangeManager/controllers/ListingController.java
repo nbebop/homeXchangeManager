@@ -114,8 +114,7 @@ public class ListingController {
     @PostMapping("/listing/edit/{id}")
     public String editListing(@PathVariable("id") long listingId, @Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            // should we create return "edit_listing"; - create a design for editing listin??
-            return "listing";
+            return "edit_listing";
         }
 
         Listing listing = listingRepository.findListingByListingId(listingId);

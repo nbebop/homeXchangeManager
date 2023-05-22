@@ -12,9 +12,9 @@ public class FileConstraintValidator implements ConstraintValidator<FileConstrai
 
     @Override
     public boolean isValid(MultipartFile value, ConstraintValidatorContext context) {
-        if (value == null || value.isEmpty()) {
-            return true; // Skip validation if the value is null or empty
-        }
+//        if (value == null || value.isEmpty()) {
+//            return true; // Skip validation if the value is null or empty
+//        }
         // Check if the content type is allowed
         if (!Arrays.asList(ALLOWED_CONTENT_TYPES).contains(value.getContentType())) {
             return false;

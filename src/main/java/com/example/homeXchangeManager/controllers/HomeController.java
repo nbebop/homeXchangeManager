@@ -87,4 +87,19 @@ public class HomeController {
         return listingService.findAll();
     }
 
+    @GetMapping("/account")
+    public String account() {
+        return "account";
+    }
+
+    @GetMapping("/favourites")
+    public String favourites() {
+        return "favourites";
+    }
+
+    @GetMapping("/help")
+    public String help() {
+        return "help";
+    }
+
 }
