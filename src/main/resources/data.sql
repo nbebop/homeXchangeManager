@@ -42,7 +42,7 @@ VALUES
        (8, 7, 'Absolutely no!', CURRENT_TIMESTAMP);
 
 -- services
-INSERT INTO services (service_id, service_description, service_name)
+INSERT INTO services (service_id, service_name, service_description)
 VALUES (1, 'Garbage disposal', 'Take out the trash and recycling'),
        (2, 'Plant care', 'Water plants and tend to garden'),
        (3, 'Errand running', 'Run errands, such as picking up dry cleaning or dropping off mail. The owner will let you know in chat.'),
