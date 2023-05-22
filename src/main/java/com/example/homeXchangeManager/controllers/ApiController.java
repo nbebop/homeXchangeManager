@@ -2,11 +2,14 @@ package com.example.homeXchangeManager.controllers;
 
 import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.dto.LoginDto;
+import com.example.homeXchangeManager.dto.MessageDto;
 import com.example.homeXchangeManager.dto.RegisterDto;
 import com.example.homeXchangeManager.models.Listing;
+import com.example.homeXchangeManager.models.Message;
 import com.example.homeXchangeManager.models.Role;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.ListingRepository;
+import com.example.homeXchangeManager.repositories.MessageRepository;
 import com.example.homeXchangeManager.repositories.RoleRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +24,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Collections;
+import java.util.Date;
+
 @Controller
 public class ApiController {
     private AuthenticationManager authenticationManager;
@@ -30,13 +39,15 @@ public class ApiController {
 
     private ListingRepository listingRepository;
     private PasswordEncoder passwordEncoder;
+    private MessageRepository messageRepository;
 
     @Autowired
-    public ApiController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public ApiController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, MessageRepository messageRepository) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.messageRepository = messageRepository;
     }
 
     @PostMapping("/api/auth/register")
@@ -100,5 +111,29 @@ public class ApiController {
     public ResponseEntity<String> deleteListingApi(@RequestBody ListingDto listingDto) {
 
         return new ResponseEntity<>("Listing deleted success", HttpStatus.OK);
+    }
+
+    @PostMapping("/api/chat/send")
+    public ResponseEntity<String> sendMessageApi(@RequestBody MessageDto messageDto){
+
+        User sender = userRepository.getById(2L);
+        User receiver = userRepository.getById(3L);
+
+        Message message = new Message();
+        message.setSender(sender);
+        message.setReceiver(receiver);
+        message.setContent(messageDto.getContent());
+
+        LocalDateTime currentDateTime = LocalDateTime.now(); // Get the current date and time
+
+        // Convert LocalDateTime to Date
+        ZoneId zoneId = ZoneId.systemDefault();
+        Instant instant = currentDateTime.atZone(zoneId).toInstant();
+        Date currentDate = Date.from(instant);
+        message.setTimestamp(currentDate);
+
+        messageRepository.save(message);
+
+        return new ResponseEntity<>("Message sent successfully", HttpStatus.OK);
     }
 }

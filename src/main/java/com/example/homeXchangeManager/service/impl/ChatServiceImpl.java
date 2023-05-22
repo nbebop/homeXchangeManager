@@ -18,7 +18,7 @@ public class ChatServiceImpl implements ChatService {
     }
 
     @Override
-    public void sendMessage(User sender, User receiver, String content) {
+    public void saveMessage(User sender, User receiver, String content) {
         Message message = new Message(sender, receiver, content, new Date());
         messageRepository.save(message);
     }
