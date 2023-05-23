@@ -46,25 +46,20 @@ public class ChatController {
         // retrieve logged in user
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User sender = userService.findByUsername(auth.getName());
-
-        // Fetch sender and receiver from the database based on the provided IDs
-        //Optional<User> senderOptional = userRepository.findById(sender.getId());
+        // retrieve receiver by name
         User receiver = userService.findByUsername(messageDto.getReceiver());
-        //Optional<User> receiverOptional = userRepository.findById(receiver.getId());
-
-
-        // sender = senderOptional.get();
-        // User receiver = receiverOptional.get();
 
         chatService.saveMessage(sender, receiver, messageDto.getContent());
         return "redirect:/message";
     }
 
-    @GetMapping("/message")
-    public List<Message> getChatMessages(@RequestParam Long senderId, @RequestParam Long receiverId) {
-        // Fetch sender and receiver from the database based on the provided IDs
-        User sender = userService.findById(senderId);
-        User receiver = userService.findById(receiverId);
+    @PostMapping("/chat/message/{name}")
+    public List<Message> getChatMessages(@PathVariable("name") String receiverName) {
+        // retrieve logged in user
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User sender = userService.findByUsername(auth.getName());
+        // retrieve receiver by name
+        User receiver = userService.findByUsername(receiverName);
 
         if (sender == null || receiver == null) {
             throw new IllegalArgumentException("Invalid sender or receiver ID.");

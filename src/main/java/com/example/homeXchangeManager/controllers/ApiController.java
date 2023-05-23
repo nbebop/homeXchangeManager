@@ -21,6 +21,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -30,6 +31,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Optional;
 
 @Controller
 public class ApiController {
@@ -116,8 +118,26 @@ public class ApiController {
     @PostMapping("/api/chat/send")
     public ResponseEntity<String> sendMessageApi(@RequestBody MessageDto messageDto){
 
-        User sender = userRepository.getById(2L);
-        User receiver = userRepository.getById(3L);
+        // User sender = userRepository.getById(2L);
+        // User receiver = userRepository.getById(3L);
+
+        String senderName = messageDto.getSender();
+        String receiverName = messageDto.getReceiver();
+
+        Optional<User> optionalSender = userRepository.findByUsername(senderName);
+        Optional<User> optionalReceiver = userRepository.findByUsername(receiverName);
+
+        User sender = new User();;
+        if(optionalSender.isPresent()){
+            sender = userRepository.getById(optionalSender.get().getId());
+        }
+
+        User receiver = new User();
+        if(optionalReceiver.isPresent()){
+            receiver = userRepository.getById(optionalReceiver.get().getId());
+        }
+
+        System.out.println(senderName + receiverName);
 
         Message message = new Message();
         message.setSender(sender);
@@ -136,4 +156,9 @@ public class ApiController {
 
         return new ResponseEntity<>("Message sent successfully", HttpStatus.OK);
     }
+
+    /*@PostMapping("/api/chat/message")
+    public ResponseEntity<String> getChatMessagesApi(@RequestBody MessageDto messageDto){
+
+    }*/
 }
