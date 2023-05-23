@@ -94,70 +94,87 @@
 
             <h2>Services</h2>
             <div class="services">
-
-                <label><input type="checkbox" name="services" value="pets">Take care of pets</label>
-                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>
-
-                <label><input type="checkbox" name="services" value="plants">Water plants</label>
-                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>
-                <label>
-                    <input type="checkbox" name="services" value="cleaning">Clean the house</label>
-                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>
-                <label>
-                    <input type="checkbox" name="services" value="security">
-                    Ensure home security
-                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description">
-                </label><br>
-                <label>
-                    <input type="checkbox" name="services" value="groceries">
-                    Buy groceries
-                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description">
-                </label><br>
-                <!-- Add more services as needed -->
-
-                <label>
-                    <input type="checkbox" name="customServices" value="true">
+                <label th:each="service : ${services}">
+                    <input type="checkbox" th:field="*{services}" th:value="${service}" />
+                    <span th:text="${service.name}"></span>
                 </label>
-                <input  class="custom-checkbox" type="text" name="customServiceName" placeholder="Enter custom service name">
-                <input type="text" name="customServiceDescription" placeholder="Enter custom service description">
-
             </div>
 
-            <h2>Limitations</h2>
+            <h2>Constraints</h2>
             <div class="constraints">
-                <label>
-                    <input type="checkbox" name="constraints" value="no-smoking">
-                    No smoking in the accommodation
-                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">
-                </label><br>
-                <label>
-                    <input type="checkbox" name="constraints" value="no-noise">
-                    No noise after 23h
-                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">
-                </label><br>
-                <label>
-                    <input type="checkbox" name="constraints" value="max-2-children">
-                    Maximum 2 children per accommodation
-                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">
-                </label><br>
-                <label>
-                    <input type="checkbox" name="constraints" value="no-children">
-                    No children allowed
-                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">
-                </label><br>
-                <label>
-                    <input type="checkbox" name="constraints" value="no-pets">
-                    No pets allowed
-                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">
-                </label><br>
-                <!-- Add more constraints as needed -->
-
-                <label>
-                    <input type="checkbox" name="customConstraints" value="true">
+                <label th:each="constraint : ${constraints}">
+                    <input type="checkbox" th:field="*{constraints}" th:value="${constraint}" />
+                    <span th:text="${constraint.name}"></span>
                 </label>
-                <input type="text" name="customConstraintName" placeholder="Create custom constraint name">
-                <input type="text" name="customConstraintDescription" placeholder="Enter additional description">
             </div>
+<!-- HARD CODED STUFF I THOUGHT IS IMPORTANT-->
+
+<!--            <h2>Services</h2>-->
+<!--            <div class="services">-->
+
+<!--                <label><input type="checkbox" name="services" value="pets">Take care of pets</label>-->
+<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>-->
+
+<!--                <label><input type="checkbox" name="services" value="plants">Water plants</label>-->
+<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="services" value="cleaning">Clean the house</label>-->
+<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="services" value="security">-->
+<!--                    Ensure home security-->
+<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="services" value="groceries">-->
+<!--                    Buy groceries-->
+<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                &lt;!&ndash; Add more services as needed &ndash;&gt;-->
+
+<!--                <label>-->
+<!--                    <input type="checkbox" name="customServices" value="true">-->
+<!--                </label>-->
+<!--                <input  class="custom-checkbox" type="text" name="customServiceName" placeholder="Enter custom service name">-->
+<!--                <input type="text" name="customServiceDescription" placeholder="Enter custom service description">-->
+
+<!--            </div>-->
+
+<!--            <h2>Limitations</h2>-->
+<!--            <div class="constraints">-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="constraints" value="no-smoking">-->
+<!--                    No smoking in the accommodation-->
+<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="constraints" value="no-noise">-->
+<!--                    No noise after 23h-->
+<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="constraints" value="max-2-children">-->
+<!--                    Maximum 2 children per accommodation-->
+<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="constraints" value="no-children">-->
+<!--                    No children allowed-->
+<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="constraints" value="no-pets">-->
+<!--                    No pets allowed-->
+<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                &lt;!&ndash; Add more constraints as needed &ndash;&gt;-->
+
+<!--                <label>-->
+<!--                    <input type="checkbox" name="customConstraints" value="true">-->
+<!--                </label>-->
+<!--                <input type="text" name="customConstraintName" placeholder="Create custom constraint name">-->
+<!--                <input type="text" name="customConstraintDescription" placeholder="Enter additional description">-->
+<!--            </div>-->
 
             <input type="submit" value="Save listing">
         </form>
