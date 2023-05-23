@@ -6,10 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit listing</title>
   <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-  <link href="../static/css/new_listing_style.css" rel="stylesheet">
+  <link href="css/navbar.css" rel="stylesheet">
+  <link href="css/new_listing_style.css" rel="stylesheet">
   <script src="js/script.js"></script>
 </head>
 <body>
+<section class="navbar">
+  <header>
+    <!-- Logo -->
+    <a href="/" th:href="@{/success}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
+    <!--Search bar -->
+    <div class="search-bar">
+      <form action="/" method="GET" class="form">
+        <input type="search" placeholder="Search for..." class="search-field">
+        <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    <!-- Find a house and add a listing navlinks -->
+    <div class="nav-links">
+      <ul class="nav-links-style">
+        <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+        <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+      </ul>
+    </div>
+    <!-- Dropdown menu -->
+    <div class="dropdown">
+      <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
+      <div class="dropdown-content">
+        <a href="/" th:href="@{/account}">Account</a>
+        <a href="/" th:href="@{/message}">Messages</a>
+        <a href="/" th:href="@{/favourites}">Favorites</a>
+        <a href="/" th:href="@{/help}">Help</a>
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+  </header>
+</section>
+<div class="spacer"></div>
 <!-- Edit listing form -->
 <section id="form" class="form-section">
   <div class="form-container">
@@ -50,7 +83,6 @@
     </form>
   </div>
 </section>
-
 <!-- Bottom information -->
 <section id="info" class="info-section">
   <a href="#" onclick="openPopup('about')">ABOUT</a>
@@ -67,7 +99,6 @@
     <!-- Add your project summary text here -->
   </div>
 </div>
-
 <div id="popup-privacy" class="popup">
   <div class="popup-content">
     <span class="close" onclick="closePopup('privacy')">&times;</span>
@@ -76,6 +107,5 @@
     <!-- Add your privacy policy text here -->
   </div>
 </div>
-
 </body>
 </html>
