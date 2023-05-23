@@ -515,3 +515,46 @@
         margin: 40px 0;
     }
 }
+/* ----------- listing page---- */
+.search-bar-list {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 20px;
+    margin-right: 30px;
+}
+
+.search-bar-list input{
+    width: 160px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: white;
+    border-radius: 50px;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 14px;
+    padding-right: 40px;
+    transition: all 0.3s ease 0s;
+}
+
+.search-bar-list:hover input{
+    width: 450px;
+}
+
+.search-bar-list button{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    position: absolute;
+    transform: scale(0.9);
+    background: rgb(167, 135, 136);
+    transition: all 0.3s ease 0s;
+}
+
+.search-bar-list:hover button{
+    background-color: rgb(161, 101, 103);
+}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: rgb(240, 237, 235);
@@ -34,7 +36,7 @@ textarea {
 .messaging-section{
     color: rgb(161, 101, 103);
 }
-button{
+.messaging-section button{
     color:rgb(167, 135, 136);
     background-color: white;
     font-weight: 500;
