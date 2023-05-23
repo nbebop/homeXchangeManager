@@ -48,9 +48,9 @@ public class HomeController {
         model.addAttribute("role", role);
 
         if (role.contains("ADMIN")) {
-            return "admin_page";
+            return "redirect:/admin_page";
         } else if (role.contains("USER")) {
-            return "home_page";
+            return "redirect:/home_page";
         }
         //fall back
         return "error/404";
