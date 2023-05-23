@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert new listing</title>
 <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-<link href="../static/css/navbar.css" rel="stylesheet">
-<link href="../static/css/new_listing_style.css" rel="stylesheet">
-<!--<link href="css/navbar.css" rel="stylesheet">-->
-<!--<link href="css/new_listing_style.css" rel="stylesheet">-->
+<!--<link href="../static/css/navbar.css" rel="stylesheet">-->
+<!--<link href="../static/css/new_listing_style.css" rel="stylesheet">-->
+<link href="css/navbar.css" rel="stylesheet">
+<link href="css/new_listing_style.css" rel="stylesheet">
 <script src="js/script.js"></script>
 <body>
 <section class="navbar">
     <header>
         <!-- Logo -->
-        <a href="/" th:href="@{/success}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>
+<!--        <a href="/" th:href="@{/success}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>-->
+        <a href="/" th:href="@{/success}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
         <!--Search bar -->
         <div class="search-bar">
             <form action="/" method="GET" class="form">
@@ -31,7 +32,8 @@
         </div>
         <!-- Dropdown menu -->
         <div class="dropdown">
-            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
+<!--            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>-->
+            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="/" th:href="@{/account}">Account</a>
                 <a href="/" th:href="@{/message}">Messages</a>
