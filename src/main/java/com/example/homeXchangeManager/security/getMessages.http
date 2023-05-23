@@ -1,0 +1,7 @@
+POST http://localhost:8090/api/chat/message/
+Content-Type: application/json
+
+{
+  "sender": "user",
+  "receiver": "user4"
+}

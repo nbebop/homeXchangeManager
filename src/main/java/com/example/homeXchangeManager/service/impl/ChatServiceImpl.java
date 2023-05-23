@@ -6,6 +6,9 @@ import com.example.homeXchangeManager.repositories.MessageRepository;
 import com.example.homeXchangeManager.service.ChatService;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +22,13 @@ public class ChatServiceImpl implements ChatService {
 
     @Override
     public void saveMessage(User sender, User receiver, String content) {
-        Message message = new Message(sender, receiver, content, new Date());
+        // get time
+        LocalDateTime currentDateTime = LocalDateTime.now(); // Get the current date and time
+        // Convert LocalDateTime to Date
+        ZoneId zoneId = ZoneId.systemDefault();
+        Instant instant = currentDateTime.atZone(zoneId).toInstant();
+        Date currentDate = Date.from(instant);
+        Message message = new Message(sender, receiver, content, currentDate);
         messageRepository.save(message);
     }
 

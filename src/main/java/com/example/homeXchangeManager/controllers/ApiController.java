@@ -31,6 +31,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -118,9 +119,6 @@ public class ApiController {
     @PostMapping("/api/chat/send")
     public ResponseEntity<String> sendMessageApi(@RequestBody MessageDto messageDto){
 
-        // User sender = userRepository.getById(2L);
-        // User receiver = userRepository.getById(3L);
-
         String senderName = messageDto.getSender();
         String receiverName = messageDto.getReceiver();
 
@@ -136,8 +134,6 @@ public class ApiController {
         if(optionalReceiver.isPresent()){
             receiver = userRepository.getById(optionalReceiver.get().getId());
         }
-
-        System.out.println(senderName + receiverName);
 
         Message message = new Message();
         message.setSender(sender);
@@ -157,8 +153,22 @@ public class ApiController {
         return new ResponseEntity<>("Message sent successfully", HttpStatus.OK);
     }
 
-    /*@PostMapping("/api/chat/message")
-    public ResponseEntity<String> getChatMessagesApi(@RequestBody MessageDto messageDto){
+    @PostMapping("/api/chat/message/")
+    public ResponseEntity<List<Message>> getChatMessagesApi(@RequestBody MessageDto messageDto){
+        Optional<User> optionalSender = userRepository.findByUsername(messageDto.getSender());
+        Optional<User> optionalReceiver = userRepository.findByUsername(messageDto.getReceiver());
 
-    }*/
+        if (optionalSender.isEmpty() || optionalReceiver.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        User sender = optionalSender.get();
+        User receiver = optionalReceiver.get();
+
+        List<Message> messages = messageRepository.findBySenderAndReceiverOrReceiverAndSenderOrderByTimestamp(sender, receiver, receiver, sender);
+
+        return new ResponseEntity<>(messages, HttpStatus.OK);
+
+
+    }
 }
