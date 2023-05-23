@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favourites</title>
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../static/css/navbar.css" rel="stylesheet">
+    <link href="../static/css/style_added.css" rel="stylesheet">
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -23,12 +24,12 @@
             </form>
         </div>
         <!-- Find a house and add a listing navlinks -->
-        <nav>
-            <ul class="nav-links">
+        <div class="nav-links">
+            <ul class="nav-links-style">
                 <li><a href="/" th:href="@{/listing}">Find a house</a></li>
                 <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
             </ul>
-        </nav>
+        </div>
         <!-- Dropdown menu -->
         <div class="dropdown">
             <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
@@ -44,6 +45,7 @@
         </div>
     </header>
 </section>
+<div class="spacer"></div>
 <div class="container">
     <h2 class="sub-title">Exclusives</h2>
     <div class="exclusives">
@@ -170,8 +172,30 @@
         <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
         <hr>
     </div>
+</div>
+<!-- Bottom information -->
+<section id="info" class="info-section">
+    <a href="#" onclick="openPopup('about')">ABOUT</a>
+    <a href="#">COOKIE SETTINGS</a>
+    <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
+</section>
 
-
+<!-- Popup Windows -->
+<div id="popup-about" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('about')">&times;</span>
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your project summary text here -->
+    </div>
+</div>
+<div id="popup-privacy" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('privacy')">&times;</span>
+        <h2>Privacy</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your privacy policy text here -->
+    </div>
 </div>
 </body>
 </html>

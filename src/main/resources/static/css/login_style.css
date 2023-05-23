@@ -210,7 +210,6 @@ a:hover {
     width: 80%;
     max-width: 600px;
 }
-
 .close {
     color: #aaa;
     float: right;
@@ -218,7 +217,6 @@ a:hover {
     font-weight: bold;
     cursor: pointer;
 }
-
 .close:hover,
 .close:focus {
     color: black;

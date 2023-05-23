@@ -8,13 +8,14 @@
     <title>Message Page</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+    <link href="css/navbar.css" rel="stylesheet">
     <link href="css/message.css" rel="stylesheet">
 </head>
 <body>
 <section class="navbar">
     <header>
         <!-- Logo -->
-        <a href="/" th:href="@{/home_page}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>
+        <a href="/" th:href="@{/home_page}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
         <!--Search bar -->
         <div class="search-bar">
             <form action="/" method="GET" class="form">
@@ -23,15 +24,15 @@
             </form>
         </div>
         <!-- Find a house and add a listing navlinks -->
-        <nav>
-            <ul class="nav-links">
+        <div class="nav-links">
+            <ul class="nav-links-style">
                 <li><a href="/" th:href="@{/listing}">Find a house</a></li>
                 <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
             </ul>
-        </nav>
+        </div>
         <!-- Dropdown menu -->
         <div class="dropdown">
-            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
+            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="/" th:href="@{/account}">Account</a>
                 <a href="/" th:href="@{/message}">Messages</a>
@@ -44,6 +45,7 @@
         </div>
     </header>
 </section>
+<div class="spacer"></div>
 <main>
     <div class="host">
         <img src="img/host.png">
@@ -81,5 +83,29 @@
         <input type="submit" value="Send">
     </form>
 </main>
+<!-- Bottom information -->
+<section id="info" class="info-section">
+    <a href="#" onclick="openPopup('about')">ABOUT</a>
+    <a href="#">COOKIE SETTINGS</a>
+    <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
+</section>
+
+<!-- Popup Windows -->
+<div id="popup-about" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('about')">&times;</span>
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your project summary text here -->
+    </div>
+</div>
+<div id="popup-privacy" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('privacy')">&times;</span>
+        <h2>Privacy</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your privacy policy text here -->
+    </div>
+</div>
 </body>
 </html>
