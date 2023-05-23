@@ -49,6 +49,23 @@
         <div class="left-col">
             <p>100+ Options</p>
             <h1>Recommended Places In Paris</h1>
+
+<!--            NOT HARDCODED STUFF         -->
+            <div class="house" th:each="listing : ${listings}">
+                <div class="house-img">
+                    <a href="house.html"><img th:src="${listing.image}"></a>
+                </div>
+                <div class="house-info">
+                    <p th:text="${listing.location}"></p>
+                    <h3 th:text="${listing.title}"></h3>
+                    <p th:text="${listing.description}"></p>
+                    <!-- Dynamic star rating, when we have stars -->
+                    <span th:each="star : ${listing.rating.stars}">
+                        <i th:class="${star ? 'fas fa-star' : 'far fa-star'}"></i>
+                    </span>
+                </div>
+            </div>
+<!--             HARD CODED STUFF           -->
             <div class="house">
                 <div class="house-img">
                     <a href="house.html"><img src="img/image-s1.png"></a>
