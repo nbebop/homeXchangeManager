@@ -38,6 +38,10 @@ nav{
     text-decoration: none;
     color: #fff;
 }
+.nav-links li a:hover{
+    text-decoration: none;
+    color: rgb(161, 101, 103);
+}
 .register-btn{
     background: rgb(161, 101, 103);
     color: #fff;
