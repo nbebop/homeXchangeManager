@@ -16,6 +16,7 @@ header {
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
     backdrop-filter: blur(10px); /* Add blur effect */
+    z-index: 9999;
 }
 /* LOGO */
 .logo {
