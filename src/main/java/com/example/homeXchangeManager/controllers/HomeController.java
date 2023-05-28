@@ -1,6 +1,7 @@
 package com.example.homeXchangeManager.controllers;
 
 import com.example.homeXchangeManager.models.Listing;
+import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,7 +105,11 @@ public class HomeController {
     }
 
     @GetMapping("/account")
-    public String account() {
+    public String account(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findByUsername(auth.getName());
+
+        model.addAttribute("currentUser", user);
         return "account";
     }
 
