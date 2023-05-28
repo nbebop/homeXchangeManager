@@ -1,6 +1,7 @@
 package com.example.homeXchangeManager.controllers;
 
 import com.example.homeXchangeManager.models.Listing;
+import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,9 +103,20 @@ public class HomeController {
     private List<Listing> getAllListing() {
         return listingService.findAll();
     }
+    private List<User> getAllUsers() {
+        return userService.findAll();
+
+    }
+
+//    @GetMapping("/account")
+//    public String account() {
+//        return "account";
+//    }
 
     @GetMapping("/account")
-    public String account() {
+    public String account(Model model) {
+        model.addAttribute("listings", getAllListing());
+        model.addAttribute("users", getAllUsers());
         return "account";
     }
 
