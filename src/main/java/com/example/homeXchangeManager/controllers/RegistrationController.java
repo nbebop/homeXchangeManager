@@ -44,6 +44,9 @@ public class RegistrationController {
 
     // for the date
 
+
+
+
     @PostMapping
     public String register(@Valid @ModelAttribute("user") RegisterDto registerDto, BindingResult bindingResult) {
 
@@ -72,5 +75,6 @@ public class RegistrationController {
         userRepository.save(user);
         return "login";
     }
+
 
 }
