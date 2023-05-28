@@ -37,7 +37,8 @@ public class HomeController {
         this.userService = userService;
         this.listingService = listingService;
     }
-//    LOGIN
+
+    //    LOGIN
     @GetMapping({"/login", "/"})
     public String login() {
         return "login";
@@ -69,7 +70,8 @@ public class HomeController {
 
 
     @GetMapping("/listing")
-    public String listing() {
+    public String listing(Model model) {
+        model.addAttribute("listings", getAllListing());
         return "listing";
     }
 
@@ -115,8 +117,13 @@ public class HomeController {
 
     @GetMapping("/account")
     public String account(Model model) {
-        model.addAttribute("listings", getAllListing());
-        model.addAttribute("users", getAllUsers());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findByUsername(auth.getName());
+
+        model.addAttribute("currentUser", user);
+        //model.addAttribute("listings", getAllListing());
+        //model.addAttribute("users", getAllUsers());
+
         return "account";
     }
 
