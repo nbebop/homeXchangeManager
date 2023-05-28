@@ -1,6 +1,8 @@
 package com.example.homeXchangeManager.controllers;
 
+import com.example.homeXchangeManager.models.Image;
 import com.example.homeXchangeManager.models.Listing;
+import com.example.homeXchangeManager.repositories.ImageRepository;
 import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +28,14 @@ public class HomeController {
 
     private ListingService listingService;
 
+    private ImageRepository imageRepository;
+
 
     @Autowired
-    public HomeController(UserService userService, ListingService listingService) {
+    public HomeController(UserService userService, ListingService listingService, ImageRepository imageRepository) {
         this.userService = userService;
         this.listingService = listingService;
+        this.imageRepository = imageRepository;
     }
 
     @GetMapping({"/login", "/"})
@@ -85,6 +90,10 @@ public class HomeController {
 
     private List<Listing> getAllListing() {
         return listingService.findAll();
+    }
+
+    private List<Image> getAllImages() {
+        return imageRepository.findAll();
     }
 
     @GetMapping("/account")

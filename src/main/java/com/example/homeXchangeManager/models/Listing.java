@@ -20,10 +20,10 @@ public class Listing implements Serializable {
     @JoinColumn(name = "ownerId")
     private User owner;
 
+    @OneToMany
+    @JoinColumn(name = "imageId")
+    private List<Image> images;
     private String description;
-    @Lob
-    @Column(name = "image", length = Integer.MAX_VALUE, nullable = true)
-    private Byte[] image;
 
     @ManyToMany
     private List<Service> services;
@@ -56,11 +56,11 @@ public class Listing implements Serializable {
     public Listing() {
     }
 
-    public Listing(long listingId, User owner, String description, Byte[] image, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country) {
+    public Listing(long listingId, User owner, String description, List<Image> images, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country) {
         this.listingId = listingId;
         this.owner = owner;
         this.description = description;
-        this.image = image;
+        this.images = images;
         this.services = services;
         this.constraints = constraints;
         this.bookingInfo = bookingInfo;
@@ -99,12 +99,12 @@ public class Listing implements Serializable {
         this.description = description;
     }
 
-    public Byte[] getImage() {
-        return image;
+    public List<Image> getImages() {
+        return images;
     }
 
-    public void setImage(Byte[] image) {
-        this.image = image;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
     public List<Service> getServices() {
