@@ -38,10 +38,11 @@
                 <a href="/" th:href="@{/message}">Messages</a>
                 <a href="/" th:href="@{/favourites}">Favorites</a>
                 <a href="/" th:href="@{/help}">Help</a>
-                <a href="/logout">Logout</a>
+                <a href="#" onclick="logout()">Logout</a>
             </div>
         </div>
     </header>
+    <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 </section>
 <div class="spacer"></div>
 
