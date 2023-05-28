@@ -31,9 +31,7 @@
                 <a href="/" th:href="@{/message}">Messages</a>
                 <a href="/" th:href="@{/favourites}">Favorites</a>
                 <a href="/" th:href="@{/help}">Help</a>
-                <p th:if="${role != null}">
-                    <a href="/logout">Logout</a>
-                </p>
+                <a href="#" onclick="logout()">Logout</a>
             </div>
         </div>
     </nav>
@@ -62,14 +60,7 @@
         </div>
     </div>
 </div>
-
-<script>
-    var navBar = document.getElementById("navBar");
-
-    function togglebtn() {
-        navBar.classList.toggle("hidemenu");
-    }
-</script>
+<form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 
 </body>
 </html>
