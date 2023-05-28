@@ -103,6 +103,10 @@ public class HomeController {
     private List<Listing> getAllListing() {
         return listingService.findAll();
     }
+    private List<User> getAllUsers() {
+        return userService.findAll();
+
+    }
 
     @GetMapping("/account")
     public String account(Model model) {
@@ -110,6 +114,9 @@ public class HomeController {
         User user = userService.findByUsername(auth.getName());
 
         model.addAttribute("currentUser", user);
+//        model.addAttribute("listings", getAllListing());
+//        model.addAttribute("users", getAllUsers());
+
         return "account";
     }
 
