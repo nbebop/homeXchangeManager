@@ -205,3 +205,40 @@ main {
     border-color: #888;
     box-shadow: 0 0 5px #888;
 }
+
+/*
+boooking*/
+/* Pending Bookings Section */
+/* Profile Section */
+.bookings-section {
+    background-color: #ffffff;
+    border: 2px solid #dddddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 700px;
+    color: rgb(167, 135, 136);
+}
+
+.bookings-section h2 {
+    margin-bottom: 10px;
+}
+
+.booking-photos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.booking-photos .photo {
+    width: 200px;
+    height: 200px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.booking-details p {
+    margin-bottom: 5px;
+}
+

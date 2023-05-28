@@ -44,9 +44,9 @@
     <img src="img/host.png" alt="Profile Image" class="profile-image">
     <div class="profile-details">
         <!-- Display user's profile information -->
-        <p>Name: John Doe</p>
-        <p>Email: johndoe@example.com</p>
-        <p>Location: New York, USA</p>
+<!--        <p th:text="${user.firstname + ' ' + user.lastname}"></p>-->
+<!--        <p th:text="${user.email}"></p>-->
+<!--        <p th:text="${user.city}"></p>-->
         <p>Rating: </p>
     </div>
 </div>
@@ -76,6 +76,27 @@
         <li>No noise after 23:00</li>
         <li>2 children maximum per accommodation</li>
     </ul>
+</div>
+
+<div class="bookings-section">
+    <h2>Pending Bookings</h2>
+    <div class="booking">
+        <div class="booking-details">
+<!--            <p th:text="${listing.description}"></p>-->
+<!--            <p th:text="${listing.city}"></p>-->
+<!--            <p th:text="${listing.postalCode}"></p>-->
+<!--            <p th:text="${listing.country}"></p>-->
+<!--            <p th:text="${listing.availabilityStart}"></p>-->
+<!--            <p th:text="${listing.availabilityEnd}"></p>>-->
+        </div>
+        <div class="booking-photos">
+            <img src="img/paris1.jpg" alt="Booking Photo 1" class="photo">
+            <img src="img/paris2.jpg" alt="Booking Photo 2" class="photo">
+            <img src="img/paris3.jpg" alt="Booking Photo 3" class="photo">
+        </div>
+    </div>
+    </div>
+    <!-- Add more bookings here -->
 </div>
 
 <div class="messaging-section">
