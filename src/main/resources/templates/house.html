@@ -7,15 +7,15 @@
     <title>House Page</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-    <link href="css/navbar.css" rel="stylesheet">
-    <link href="css/style_without_navbar.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet" th:if="${#strings.startsWith(request.getRequestURI(), '/house/')}">
+    <link href="/css/style_without_navbar.css" rel="stylesheet" th:if="${#strings.startsWith(request.getRequestURI(), '/house/')}">
     <script src="js/script.js"></script>
 </head>
 <body>
 <section class="navbar">
     <header>
         <!-- Logo -->
-        <a href="/" th:href="@{/success}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
+        <a href="/" th:href="@{/success}"><img class="logo" src="/img/compass_white_name.png" alt="logo"></a>
         <!--Search bar -->
         <div class="search-bar">
             <form action="/" method="GET" class="form">
@@ -32,7 +32,7 @@
         </div>
         <!-- Dropdown menu -->
         <div class="dropdown">
-            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
+            <button class="dropbtn"><img src="/img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="/" th:href="@{/account}">Account</a>
                 <a href="/" th:href="@{/message}">Messages</a>
@@ -47,34 +47,38 @@
 <div class="spacer"></div>
 <!-- HOUSE 1 -->
 <div class="house-details">
-    <!-- MAIN DETAILS-->
-    <h1 th:text="${listings[0].description}"></h1>
-    <div class="row">
-        <div>
-            <span th:each="i : ${#numbers.sequence(1, listings[0].rating)}">
+    <!-- MAIN DETAILS -->
+    <div>
+        <h1 th:text="${listing.description}"></h1>
+        <div class="row">
+            <div>
+            <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
                 <i class="fas fa-star"></i>
             </span>
-            <span th:each="i : ${#numbers.sequence(1, 5 - listings[0].rating)}">
+                <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
-            <span th:text="${listings[0].ownerRating}">0</span>
+                <span th:text="${listing.ownerRating}">0</span>
+            </div>
+            <div>
+                <p th:text="'Location: ' + ${listing.city}"></p>
+            </div>
         </div>
-        <div>
-            <p th:text="'Location: ' + ${listings[0].city}"></p>
-        </div>
+        <img th:src="@{${listing.image}}" alt="House Image here">
+        <p th:text="'Address: ' + ${listing.addressLine} + ', ' + ${listing.city} + ', ' + ${listing.postalCode} + ', ' + ${listing.country}"></p>
+        <p th:text="'Description: ' + ${listing.description}"></p>
+        <p th:text="'Booking Info: ' + ${listing.bookingInfo}"></p>
+        <p th:text="'Rating: ' + ${listing.rating}"></p>
+        <p>
+            Availability: From
+            <span th:text="${#dates.format(listing.availabilityStart, 'yyyy-MM-dd')}"></span>
+            to
+            <span th:text="${#dates.format(listing.availabilityEnd, 'yyyy-MM-dd')}"></span>
+        </p>
+        <hr> <!-- Add a horizontal rule to separate each listing -->
     </div>
-    <img th:src="@{${listings[0].image}}" alt="House Image here">
-    <p th:text="'Address: ' + ${listings[0].addressLine} + ', ' + ${listings[0].city} + ', ' + ${listings[0].postalCode} + ', ' + ${listings[0].country}"></p>
-    <p th:text="'Description: ' + ${listings[0].description}"></p>
-    <p th:text="'Booking Info: ' + ${listings[0].bookingInfo}"></p>
-    <p th:text="'Rating: ' + ${listings[0].rating}"></p>
-    <p>
-        Availability: From
-        <span th:text="${#dates.format(listings[0].availabilityStart, 'yyyy-MM-dd')}"></span>
-        to
-        <span th:text="${#dates.format(listings[0].availabilityEnd, 'yyyy-MM-dd')}"></span>
-    </p>
-<!--    TO CHANGE: -->
+
+    <!--    TO CHANGE: -->
 <!-- CHECK IN FORM -->
     <form class="check-form">
         <div>
@@ -113,7 +117,7 @@
         <h3>Location on map</h3>
         <iframe th:src="@{'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21221.676224044128!2d-122.45917885570059!3d37.75203368896406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1641145357317!5m2!1sen!2sin'}"
                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        <b th:text="${listings[0].city + ', ' + listings[0].country}">San Francisco, California, United States</b>
+        <b th:text="${listing.city + ', ' + listing.country}">San Francisco, California, United States</b>
         <p>It's like a home away from home.</p>
     </div>
 
@@ -121,7 +125,7 @@
     <!--    TO CHANGE: -->
 <!-- HOST -->
     <div class="host">
-        <img src="img/host.png">
+        <img src="/img/host.png">
         <div>
             <h2>Hosted by Brandon</h2>
             <p>

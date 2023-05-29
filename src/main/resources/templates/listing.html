@@ -47,12 +47,14 @@
 <div class="spacer"></div>
 <div class="container">
     <div class="list-container">
+
+        <!-- ALL LISTINGS -->
         <div class="left-col">
             <p>100+ Options</p>
             <h1>Recommended Places In Paris</h1>
-            <!-- Loop through the listings and populate the HTML dynamically -->
+            <!-- Looping through the listings and populating the HTML dynamically -->
             <div th:each="listing : ${listings}" class="house" >
-                <a href="/" th:href="@{/house}">CLICK HERE FOR MORE INFO</a>
+                <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
                 <div class="house-img">
                     <img th:src="@{${listing.image}}" alt="Listing Image">
                 </div>
@@ -69,6 +71,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- RIGHT COLUMN - IDK WHAT TO DO WITH IT -->
         <div class="right-col">
             <div class="sidebar">
                 <h2>Select Filters</h2>
@@ -111,7 +115,7 @@
             </div>
         </div>
     </div>
-
+<!-- PAGINATION BOTTOM - DESIGN -->
     <div class="pagination">
         <a href="#" class="arrow left-arrow"><img src="img/arrow.png"></a>
         <span class="current">1</span>
@@ -123,7 +127,7 @@
         <a href="#" class="arrow right-arrow"><img src="img/arrow.png"></a>
     </div>
 
-
+<!-- MEDIA-->
     <div class="footer">
         <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
         <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
