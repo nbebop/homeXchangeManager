@@ -19,8 +19,11 @@ public class Image {
     @Column(name = "content_type")
     private String contentType;
 
-    @Lob
-    private byte[] data;
+    private String url;
+
+    @ManyToOne
+    @JoinColumn(name="listing_id", nullable = false)
+    private Listing listing;
 
     public Long getId() {
         return id;
@@ -46,11 +49,11 @@ public class Image {
         this.contentType = contentType;
     }
 
-    public byte[] getData() {
-        return data;
+    public String getUrl() {
+        return url;
     }
 
-    public void setData(byte[] data) {
-        this.data = data;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

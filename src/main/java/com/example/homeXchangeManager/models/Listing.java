@@ -20,9 +20,6 @@ public class Listing implements Serializable {
     @JoinColumn(name = "ownerId")
     private User owner;
 
-    @OneToMany
-    @JoinColumn(name = "imageId")
-    private List<Image> images;
     private String description;
 
     @ManyToMany
@@ -53,14 +50,44 @@ public class Listing implements Serializable {
     private String postalCode;
     private String country;
 
+    public String getMainImg() {
+        return mainImg;
+    }
+
+    public void setMainImg(String mainImg) {
+        this.mainImg = mainImg;
+    }
+
+    public String getScdImg() {
+        return scdImg;
+    }
+
+    public void setScdImg(String scdImg) {
+        this.scdImg = scdImg;
+    }
+
+    public String getTrdImg() {
+        return trdImg;
+    }
+
+    public void setTrdImg(String trdImg) {
+        this.trdImg = trdImg;
+    }
+
+    @Column(name = "main_image")
+    private String mainImg;
+    @Column(name = "second_image")
+    private String scdImg;
+    @Column(name = "third_image")
+    private String trdImg;
+
     public Listing() {
     }
 
-    public Listing(long listingId, User owner, String description, List<Image> images, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country) {
+    public Listing(long listingId, User owner, String description, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country, String mainImg, String scdImg, String trdImg) {
         this.listingId = listingId;
         this.owner = owner;
         this.description = description;
-        this.images = images;
         this.services = services;
         this.constraints = constraints;
         this.bookingInfo = bookingInfo;
@@ -97,14 +124,6 @@ public class Listing implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Image> images) {
-        this.images = images;
     }
 
     public List<Service> getServices() {

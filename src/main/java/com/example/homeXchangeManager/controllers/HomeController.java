@@ -78,15 +78,7 @@ public class HomeController {
      * and to display the image in frontend:
      * <img th:src="@{'/listing/image/' + ${listing.id}}">
      */
-    @GetMapping("/listing/image/{id}")
-    public ResponseEntity<Byte[]> displayItemImage(@PathVariable long id) {
-        Listing listing = listingService.findByListingId(id);
-        Byte[] image = listing.getImage();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG);
 
-        return new ResponseEntity<>(image, headers, HttpStatus.OK);
-    }
 
     private List<Listing> getAllListing() {
         return listingService.findAll();

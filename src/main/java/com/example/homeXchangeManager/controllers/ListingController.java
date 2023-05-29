@@ -5,18 +5,17 @@ import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.ListingRepository;
 import com.example.homeXchangeManager.service.impl.UserServiceImpl;
+import com.example.homeXchangeManager.utils.FileUploadUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -26,7 +25,6 @@ import java.io.IOException;
 public class ListingController {
     private static final Logger logger = LoggerFactory.getLogger(ListingController.class);
     private ListingRepository listingRepository;
-
     private UserServiceImpl userService;
 
     @Autowired
@@ -47,6 +45,7 @@ public class ListingController {
         return "new_listing";
     }
 
+
     @PostMapping("/new_listing")
     public String createListing(@Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
@@ -58,20 +57,29 @@ public class ListingController {
 
             return "new_listing";
         }
-
         // TODO add constraints and requests
 
         // retrieve logged in user
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User owner = userService.findByUsername(auth.getName());
 
-        // get img in bytes
-        Byte[] bytesImg = convertToBytes(listingDto.getImage());
+        MultipartFile mainImg = listingDto.getMainImg();
+        MultipartFile scdImg = listingDto.getScdImg();
+        MultipartFile trdImg = listingDto.getTrdImg();
+
+        // handle the images
+        String mainImgName = StringUtils.cleanPath(mainImg.getOriginalFilename());
+        String scdImgName = StringUtils.cleanPath(scdImg.getOriginalFilename());
+        String trdImgName = StringUtils.cleanPath(trdImg.getOriginalFilename());
 
         Listing listing = new Listing();
         listing.setOwner(owner);
         listing.setDescription(listingDto.getDescription());
-        listing.setImage(bytesImg);
+
+        listing.setMainImg(mainImgName);
+        listing.setScdImg(scdImgName);
+        listing.setTrdImg(trdImgName);
+
         listing.setServices(listingDto.getServices());
         listing.setConstraints(listingDto.getConstrains());
         listing.setBookingInfo(listingDto.getBookingInfo());
@@ -84,7 +92,12 @@ public class ListingController {
         listing.setCity(listingDto.getCity());
         listing.setPostalCode(listingDto.getPostalCode());
         listing.setCountry(listingDto.getCountry());
-        listingRepository.save(listing);
+        Listing savedListing = listingRepository.save(listing);
+
+        String uploadDir = "./listing-images/" + savedListing.getListingId();
+        FileUploadUtil.saveFile(uploadDir, mainImg, mainImgName);
+        FileUploadUtil.saveFile(uploadDir, scdImg, scdImgName);
+        FileUploadUtil.saveFile(uploadDir, trdImg, trdImgName);
 
         return "redirect:/listing";
     }
@@ -111,6 +124,7 @@ public class ListingController {
         }
         return byteObjects;
     }
+
     @PostMapping("/listing/edit/{id}")
     public String editListing(@PathVariable("id") long listingId, @Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

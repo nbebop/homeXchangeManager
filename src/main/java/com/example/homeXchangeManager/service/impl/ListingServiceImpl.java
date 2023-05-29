@@ -32,7 +32,7 @@ public class ListingServiceImpl implements ListingService {
         Listing listing = listingRepository.getById((int) id);
 
         listing.setDescription(updatedListing.getDescription());
-        listing.setImage(updatedListing.getImage());
+        //listing.setImage(updatedListing.getImage());
         listing.setServices(updatedListing.getServices());
         listing.setConstraints(updatedListing.getConstraints());
         listing.setBookingInfo(updatedListing.getBookingInfo());
