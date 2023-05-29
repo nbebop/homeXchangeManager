@@ -1,11 +1,14 @@
+//correct and secure logout
 function logout() {
     document.getElementById('logoutForm').submit();
 }
+//navbar design
 window.addEventListener("scroll", function (){
     var header = document.querySelector("header");
     header.classList.toggle("sticky", window.scrollY > 0);
 })
 
+// pop up windows
 function openPopup(popupId) {
     var popup = document.getElementById("popup-" + popupId);
     popup.style.display = "block";
@@ -15,6 +18,7 @@ function closePopup(popupId) {
     var popup = document.getElementById("popup-" + popupId);
     popup.style.display = "none";
 }
+//validating password
 function validatePassword(event) {
     event.preventDefault(); // Prevent form submission for demonstration purposes
 
