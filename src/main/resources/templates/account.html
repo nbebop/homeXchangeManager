@@ -42,68 +42,53 @@
 <div class="spacer"></div>
 <div class="profile-section">
     <h2>Profile</h2>
-    <img src="img/host.png" alt="Profile Image" class="profile-image">
-    <div class="profile-details">
+    <div class="profile-details" >
+        <div class="booking-details" th:each="listings : ${listings}">
 <!--         Display user's profile information-->
-        <p th:text="${user.firstname + ' ' + user.lastname}"></p>
-        <p th:text="${user.email}"></p>
-        <p th:text="${user.city}"></p>
-        <p>Rating: </p>
+        <p th:text="'Name: '+ ${user.firstname + ' ' + user.lastname}"></p>
+        <p th:text="'Email: ' + ${user.email}"></p>
+        <p th:text="'Address: '+ ${user.city}"></p>
+        <p th:text="'Rating: '+ ${listings.ownerRating}"></p>
     </div>
 </div>
 
-<div class="photos-section">
+<div class="photos-section" th:each="listingItem : ${listings}">
     <h2>Photos of My Home</h2>
-    <img src="img/house-1.png" alt="Home Photo" class="photo">
-    <img src="img/house-2.png" alt="Home Photo" class="photo">
-    <img src="img/house-3.png" alt="Home Photo" class="photo">
+    <img th:src="@{${listingItem.image}}" alt="House Image here">
 </div>
 
-<div class="services-section">
+<div class="services-section" th:each="listingItem : ${listings}">
     <h2>Services Offered</h2>
     <!-- Display services offered by the user -->
-    <ul>
-        <li>Keep pets</li>
-        <li>Watering plants</li>
-        <li>Clean the house</li>
-    </ul>
+    <p th:text="'Services: ' + ${listingItem.services}"></p>
 </div>
 
-<div class="constraints-section">
+<div class="constraints-section" th:each="listingItem : ${listings}">
     <h2>Constraints/Limits</h2>
-    <!-- Display constraints/limits set by the user -->
-    <ul>
-        <li>No smoking in the accommodation</li>
-        <li>No noise after 23:00</li>
-        <li>2 children maximum per accommodation</li>
-    </ul>
+    <p th:text="'Constraints: ' + ${listingItem.constraints}"></p>
 </div>
 
 <div class="bookings-section">
     <h2>Pending Bookings</h2>
     <div class="booking">
-        <div class="booking-details">
-<!--            <p th:text="${listings.description}"></p>-->
-<!--            <p th:text="${listing.city}"></p>-->
-<!--            <p th:text="${listing.postalCode}"></p>-->
-<!--            <p th:text="${listing.country}"></p>-->
-<!--            <p th:text="${listing.availabilityStart}"></p>-->
-<!--            <p th:text="${listing.availabilityEnd}"></p>>-->
             <div class="booking-details" th:each="listingItem : ${listings}">
-                <p th:text="${listingItem.description}"></p>
-                <p th:text="${listingItem.city}"></p>
-                <p th:text="${listingItem.postalCode}"></p>
-                <p th:text="${listingItem.country}"></p>
-                <p th:text="${listingItem.availabilityStart}"></p>
-                <p th:text="${listingItem.availabilityEnd}"></p>
+                <p th:text="'Description: ' + ${listingItem.description}"></p>
+                <p th:text="'City: '+ ${listingItem.city}"></p>
+                <p th:text="'Code: '+ ${listingItem.postalCode}"></p>
+                <p th:text="'Conutry: '+${listingItem.country}"></p>
+                <p th:text="'Start: '+${listingItem.availabilityStart}"></p>
+                <p th:text="'End: '+${listingItem.availabilityEnd}"></p>
                 <!-- Add other listing details as needed -->
             </div>
         </div>
-        <div class="booking-photos">
+      <!--  <div class="booking-photos">
             <img src="img/paris1.jpg" alt="Booking Photo 1" class="photo">
             <img src="img/paris2.jpg" alt="Booking Photo 2" class="photo">
             <img src="img/paris3.jpg" alt="Booking Photo 3" class="photo">
-        </div>
+        </div>-->
+    <div class="booking-photos" th:each="listingItem : ${listings}">
+        <img th:src="@{${listingItem.image}}" alt="Booking Image here">
+    </div>
     </div>
     </div>
     <!-- Add more bookings here -->
