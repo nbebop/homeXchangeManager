@@ -4,6 +4,7 @@ import com.example.homeXchangeManager.constraints.FileConstraint;
 import com.example.homeXchangeManager.constraints.NameConstraint;
 import com.example.homeXchangeManager.constraints.PostalCodeConstraint;
 import com.example.homeXchangeManager.constraints.RatingConstraint;
+import com.example.homeXchangeManager.constraints.StayTimeConstraint;
 import com.example.homeXchangeManager.models.Constraint;
 import com.example.homeXchangeManager.models.Image;
 import com.example.homeXchangeManager.models.Service;
