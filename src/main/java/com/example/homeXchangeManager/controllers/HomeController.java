@@ -75,8 +75,13 @@ public class HomeController {
         return "listing";
     }
 
-    @GetMapping("/house")
-    public String house() {
+    @GetMapping("/house/{id}")
+    public String house(@PathVariable("id") long id, Model model, HttpServletRequest request) {
+        Listing listing = listingService.findByListingId(id);
+        model.addAttribute("listing", listing);
+
+        model.addAttribute("request", request); // Add the request object to the model
+
         return "house";
     }
 
@@ -105,7 +110,7 @@ public class HomeController {
     private List<Listing> getAllListing() {
         return listingService.findAll();
     }
-
+  
     @GetMapping("/account")
     public String account(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
