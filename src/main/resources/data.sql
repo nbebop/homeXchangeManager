@@ -26,17 +26,15 @@ INSERT INTO user_roles (user_id, role_id) VALUES (8, 2);
 INSERT INTO user_roles (user_id, role_id) VALUES (9, 1);
 
 -- listing
-
-INSERT INTO listings (listing_id, owner_id, description, image, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
-VALUES ('1', '1', 'Small cozy loft in the center of paris', 'img/house-1.png', 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Brown 69', '4th floor, left', 'Paris', '750001', 'France'),
-('2', '2', 'Big apartement in the center of paris', 'img/house-2.png', 'Any other info call me', 0, 0, '2024-01-02', '2024-12-02', 'Bookish 69', '2th floor, left', 'Paris', '750002', 'France'),
-('3', '3', 'Modern studio apartment in downtown Paris', 'img/house-3.png', 'Contact me for booking details', 0, 0, '2024-03-15', '2024-12-31', 'Rue de la Liberte 123', '7th floor, Apt 12', 'Paris', '750003', 'France'),
-('4', '4', 'Charming cottage in the outskirts of Paris', 'img/house-4.png', 'Please inquire for availability', 0, 0, '2024-02-01', '2024-12-15', 'Chemin des Fleurs 456', 'Garden Cottage', 'Paris', '750004', 'France'),
-('5', '5', 'Spacious penthouse with panoramic views', 'img/house-5.png', 'For bookings, contact the owner', 0, 0, '2024-05-01', '2024-12-31', 'Avenue des Champs-Elysees 789', 'Penthouse Suite', 'Paris', '750005', 'France'),
-('6', '6', 'Cozy apartment near Eiffel Tower', 'img/house-6.png', 'For booking inquiries, please contact the owner', 0, 0, '2024-06-01', '2024-12-31', 'Rue de la Tour 10', '2nd floor, Apt 5', 'Paris', '750006', 'France'),
-('7', '7', 'Beautiful villa with garden in Paris', 'img/house-7.png', 'Contact owner for availability and reservations', 0, 0, '2024-07-01', '2024-12-31', 'Avenue du Jardin 25', 'Villa Flore', 'Paris', '750007', 'France'),
-('8', '8', 'Modern loft in vibrant neighborhood', 'img/house-8.png', 'Please inquire for booking details', 0, 0, '2024-08-01', '2024-12-31', 'Rue de la Mode 42', '5th floor, Loft 8', 'Paris', '750008', 'France');
-
+INSERT INTO listings (listing_id, owner_id, description, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
+VALUES ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Brown 69', '4th floor, left', 'Paris', '750001', 'France'),
+('2', '2', 'Big apartement in the center of paris', 'Any other info call me', 0, 0, '2024-01-02', '2024-12-02', 'Bookish 69', '2th floor, left', 'Paris', '750002', 'France'),
+('3', '3', 'Modern studio apartment in downtown Paris', 'Contact me for booking details', 0, 0, '2024-03-15', '2024-12-31', 'Rue de la Liberte 123', '7th floor, Apt 12', 'Paris', '750003', 'France'),
+('4', '4', 'Charming cottage in the outskirts of Paris', 'Please inquire for availability', 0, 0, '2024-02-01', '2024-12-15', 'Chemin des Fleurs 456', 'Garden Cottage', 'Paris', '750004', 'France'),
+('5', '5', 'Spacious penthouse with panoramic views', 'For bookings, contact the owner', 0, 0, '2024-05-01', '2024-12-31', 'Avenue des Champs-Elysees 789', 'Penthouse Suite', 'Paris', '750005', 'France'),
+('6', '6', 'Cozy apartment near Eiffel Tower', 'For booking inquiries, please contact the owner', 0, 0, '2024-06-01', '2024-12-31', 'Rue de la Tour 10', '2nd floor, Apt 5', 'Paris', '750006', 'France'),
+('7', '7', 'Beautiful villa with garden in Paris', 'Contact owner for availability and reservations', 0, 0, '2024-07-01', '2024-12-31', 'Avenue du Jardin 25', 'Villa Flore', 'Paris', '750007', 'France'),
+('8', '8', 'Modern loft in vibrant neighborhood', 'Please inquire for booking details', 0, 0, '2024-08-01', '2024-12-31', 'Rue de la Mode 42', '5th floor, Loft 8', 'Paris', '750008', 'France');
 
 
 -- messages

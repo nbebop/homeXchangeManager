@@ -1,5 +1,6 @@
 package com.example.homeXchangeManager.controllers;
 
+import com.example.homeXchangeManager.models.Image;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.service.ListingService;
@@ -31,11 +32,14 @@ public class HomeController {
 
     private ListingService listingService;
 
+    private ImageRepository imageRepository;
+
 
     @Autowired
-    public HomeController(UserService userService, ListingService listingService) {
+    public HomeController(UserService userService, ListingService listingService, ImageRepository imageRepository) {
         this.userService = userService;
         this.listingService = listingService;
+        this.imageRepository = imageRepository;
     }
 
     //    LOGIN
@@ -97,20 +101,12 @@ public class HomeController {
      * and to display the image in frontend:
      * <img th:src="@{'/listing/image/' + ${listing.id}}">
      */
-    @GetMapping("/listing/image/{id}")
-    public ResponseEntity<Byte[]> displayItemImage(@PathVariable long id) {
-        Listing listing = listingService.findByListingId(id);
-        Byte[] image = listing.getImage();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG);
 
-        return new ResponseEntity<>(image, headers, HttpStatus.OK);
-    }
 
     private List<Listing> getAllListing() {
         return listingService.findAll();
     }
-  
+
     @GetMapping("/account")
     public String account(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

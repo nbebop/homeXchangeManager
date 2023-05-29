@@ -50,15 +50,12 @@
 <section id="form" class="form-section">
     <div class="form-container">
         <h1>Create a new listing</h1>
+      
         <form modelAttribute="listing" th:action="@{/new_listing}" th:object="${listing}" method="post" enctype="multipart/form-data">
             <div class="create_listing_info">
                 <label for="description">
                     Description:</label>
                 <input type="text" id="description" name="description" th:field="*{description}" required>
-
-                <label for="image">
-                    Choose the file:</label>
-                <input type="file" id="image" th:field="*{image}">
 
                 <label for="addressLine">
                     Address:</label>
@@ -177,6 +174,14 @@
 <!--                <input type="text" name="customConstraintDescription" placeholder="Enter additional description">-->
 <!--            </div>-->
 
+
+            <label for="image_main" class="upload-btn"> Upload main picture:</label>
+            <input type="file" id="image_main" th:field="*{mainImg}" accept="image/png, image/jpeg">
+            <label for="image_scd" class="upload-btn"> Upload secondary picture :</label>
+            <input type="file" id="image_scd" th:field="*{scdImg}" accept="image/png, image/jpeg">
+            <label for="image_trd" class="upload-btn"> Upload third picture:</label>
+            <input type="file" id="image_trd" th:field="*{trdImg}" accept="image/png, image/jpeg">
+
             <input type="submit" value="Save listing">
         </form>
     </div>
@@ -193,7 +198,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('about')">&times;</span>
         <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your project summary text here -->
     </div>
 </div>
@@ -201,7 +208,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('privacy')">&times;</span>
         <h2>Privacy</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your privacy policy text here -->
     </div>
 </div>
