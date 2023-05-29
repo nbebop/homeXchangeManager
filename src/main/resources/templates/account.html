@@ -44,10 +44,10 @@
     <h2>Profile</h2>
     <img src="img/host.png" alt="Profile Image" class="profile-image">
     <div class="profile-details">
-         Display user's profile information
-        <p th:text="${currentUser.firstname + ' ' + currentUser.lastname}"></p>
-        <p th:text="${currentUser.email}"></p>
-        <p th:text="${currentUser.city}"></p>
+<!--         Display user's profile information-->
+        <p th:text="${user.firstname + ' ' + user.lastname}"></p>
+        <p th:text="${user.email}"></p>
+        <p th:text="${user.city}"></p>
         <p>Rating: </p>
     </div>
 </div>
@@ -83,12 +83,21 @@
     <h2>Pending Bookings</h2>
     <div class="booking">
         <div class="booking-details">
-<!--            <p th:text="${listing.description}"></p>-->
+<!--            <p th:text="${listings.description}"></p>-->
 <!--            <p th:text="${listing.city}"></p>-->
 <!--            <p th:text="${listing.postalCode}"></p>-->
 <!--            <p th:text="${listing.country}"></p>-->
 <!--            <p th:text="${listing.availabilityStart}"></p>-->
 <!--            <p th:text="${listing.availabilityEnd}"></p>>-->
+            <div class="booking-details" th:each="listingItem : ${listings}">
+                <p th:text="${listingItem.description}"></p>
+                <p th:text="${listingItem.city}"></p>
+                <p th:text="${listingItem.postalCode}"></p>
+                <p th:text="${listingItem.country}"></p>
+                <p th:text="${listingItem.availabilityStart}"></p>
+                <p th:text="${listingItem.availabilityEnd}"></p>
+                <!-- Add other listing details as needed -->
+            </div>
         </div>
         <div class="booking-photos">
             <img src="img/paris1.jpg" alt="Booking Photo 1" class="photo">
