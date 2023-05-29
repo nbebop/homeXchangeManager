@@ -46,6 +46,12 @@ public class ListingController {
     }
 
 
+    /**
+     * Code to display images in frontend
+     * th:src=@{${listing.getMainImgPath}})
+     * th:src=@{${listing.getScdImgPath}})
+     * th:src=@{${listing.getTrdImgPath}})
+     */
     @PostMapping("/new_listing")
     public String createListing(@Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {

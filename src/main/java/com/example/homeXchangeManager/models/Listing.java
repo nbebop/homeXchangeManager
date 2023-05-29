@@ -58,6 +58,24 @@ public class Listing implements Serializable {
         this.mainImg = mainImg;
     }
 
+    @Transient
+    public String getMainImgPath() {
+        if (mainImg == null ) return null;
+        return "/listing-images/" + listingId + "/" + mainImg;
+    }
+
+    @Transient
+    public String getScdImgPath() {
+        if (scdImg == null ) return null;
+        return "/listing-images/" + listingId + "/" + scdImg;
+    }
+
+    @Transient
+    public String getTrdImgPath() {
+        if (trdImg == null ) return null;
+        return "/listing-images/" + listingId + "/" + trdImg;
+    }
+
     public String getScdImg() {
         return scdImg;
     }
