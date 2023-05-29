@@ -15,18 +15,14 @@ public class StayTimeConstraintValidator implements ConstraintValidator<StayTime
             return true; // Skip validation if the booking is null
         }
 
-        Date bookingStartDate = booking.getBookingStart();
-        Date bookingEndDate = booking.getBookingEnd();
+        Date bookingStart = booking.getBookingStart();
+        Date bookingEnd = booking.getBookingEnd();
 
-        if (bookingStartDate == null || bookingEndDate == null) {
-            return true; // Skip validation if either start or end date is null
+        if (bookingStart == null || bookingEnd == null) {
+            return true; // Skip validation if either booking start or end date is null
         }
 
-        // Calculate the duration between the start and end date
-        long milliseconds = bookingEndDate.getTime() - bookingStartDate.getTime();
-        long days = milliseconds / (24 * 60 * 60 * 1000);
-
-        // Check if the duration exceeds 90 days
-        return days <= 90;
+        long stayDuration = Duration.between(bookingStart.toInstant(), bookingEnd.toInstant()).toDays();
+        return stayDuration <= 90;
     }
 }

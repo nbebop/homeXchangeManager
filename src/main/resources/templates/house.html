@@ -78,8 +78,7 @@
         <hr> <!-- Add a horizontal rule to separate each listing -->
     </div>
 
-    <!--    TO CHANGE: -->
-<!-- CHECK IN FORM -->
+<!-- CHECK IN FORM // SEARCH BAR THAT NEEDS CHANGING -->
     <form class="check-form">
         <div>
             <label>Check-in</label>
@@ -95,8 +94,8 @@
         </div>
         <button type="submit">Check Availability</button>
     </form>
-    <!--    TO CHANGE: -->
-<!-- SOME HARDCODED STUFF -->
+
+<!-- SOME HARDCODED STUFF FOR DE-->
     <ul class="details-list">
         <li><i class="fas fa-home"></i>Entire Home
             <span>You will have the entire flat for you.</span>
@@ -111,18 +110,17 @@
             <span>100% of recent guests gave the check-in process a 5-star rating.</span>
         </li>
     </ul>
-    <!--    TO CHANGE: -->
+
 <!-- MAP -->
     <div class="map">
         <h3>Location on map</h3>
-        <iframe th:src="@{'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21221.676224044128!2d-122.45917885570059!3d37.75203368896406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1641145357317!5m2!1sen!2sin'}"
+        <iframe th:src="@{'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.9185124463!2d2.347035!3d48.85885484999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2spl!4v1685377861536!5m2!1sen!2spl'}"
                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        <b th:text="${listing.city + ', ' + listing.country}">San Francisco, California, United States</b>
-        <p>It's like a home away from home.</p>
+        <b th:text="${listing.city + ', ' + listing.country}"></b>
+        <p>It's like a step away from home.</p>
     </div>
-
     <hr class="line">
-    <!--    TO CHANGE: -->
+
 <!-- HOST -->
     <div class="host">
         <img src="/img/host.png">
