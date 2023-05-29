@@ -110,16 +110,16 @@ public class HomeController {
     private List<Listing> getAllListing() {
         return listingService.findAll();
     }
-    private List<User> getAllUsers() {
-        return userService.findAll();
-
-    }
+  
     @GetMapping("/account")
     public String account(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findByUsername(auth.getName());
+        List<Listing> listings = listingService.findByOwner(user);
 
-        model.addAttribute("currentUser", user);
+        model.addAttribute("user", user);
+        model.addAttribute("listings", listings);
+
         return "account";
     }
 
