@@ -95,7 +95,7 @@ public class ListingController {
         listing.setTrdImg(trdImgName);
 
         listing.setServices(listingDto.getServices());
-        listing.setConstraints(listingDto.getConstrains());
+        listing.setConstraints(listingDto.getConstraints());
         listing.setBookingInfo(listingDto.getBookingInfo());
         listing.setAvailabilityStart(listingDto.getAvailabilityStart());
         listing.setAvailabilityEnd(listingDto.getAvailabilityEnd());
