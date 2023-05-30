@@ -125,7 +125,7 @@
     <div class="host" >
         <div>
 <!--            <h2>Hosted by </h2>-->
-            <h2 th:text="'Hosted by: '+ ${user.firstname + ' ' + user.lastname}"></h2>
+            <h2 th:text="'Hosted by: '+ ${host.firstname + ' ' + host.lastname}"></h2>
             <p>
                 <span th:each="i : ${#numbers.sequence(1, 4)}">
                     <i class="fas fa-star"></i>

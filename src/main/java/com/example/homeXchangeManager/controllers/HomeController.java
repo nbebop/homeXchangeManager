@@ -75,11 +75,9 @@ public class HomeController {
         Listing listing = listingService.findByListingId(id);
         model.addAttribute("listing", listing);
 
-        //here implement User host and find by lising ID !!
-        
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findByUsername(auth.getName());
-        model.addAttribute("user", user);
+      
+        User host = listing.getOwner();
+        model.addAttribute("host", host);
 
         model.addAttribute("request", request); // Add the request object to the model
 
