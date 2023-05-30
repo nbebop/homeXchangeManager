@@ -10,6 +10,7 @@ header {
     display: flex;
     align-items: center;
     padding: 5px 5%;
+
 }
 .navbar {
     position: fixed; /* Set the navbar to fixed position */
@@ -35,7 +36,7 @@ header {
     display: flex;
     justify-content: flex-end;
 }
-.navbar li, a, button {
+.navbar li, a{
     font-weight: 500;
     font-size: 14px;
     color: rgb(167, 135, 136);

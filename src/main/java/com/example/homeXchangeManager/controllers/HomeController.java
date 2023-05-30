@@ -130,4 +130,16 @@ public class HomeController {
         return "reset";
     }
 
+    @GetMapping("/booking/{id}")
+    public String booking(@PathVariable("id") long id, Model model, HttpServletRequest request) {
+        Listing listing = listingService.findByListingId(id);
+        model.addAttribute("listing", listing);
+        model.addAttribute("request", request);
+        return "booking";
+    }
+//    @GetMapping("/booking")
+//    public String booking() {
+//        return "booking";
+//    }
+
 }

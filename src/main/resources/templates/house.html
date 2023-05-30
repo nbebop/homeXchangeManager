@@ -79,21 +79,10 @@
     </div>
 
 <!-- CHECK IN FORM // SEARCH BAR THAT NEEDS CHANGING -->
-    <form class="check-form">
-        <div>
-            <label>Check-in</label>
-            <input type="text" placeholder="Add date">
-        </div>
-        <div>
-            <label>Check-out</label>
-            <input type="text" placeholder="Add date">
-        </div>
-        <div class="guest-field">
-            <label>Guest</label>
-            <input type="text" placeholder="2 guest">
-        </div>
-        <button type="submit">Check Availability</button>
-    </form>
+    <div class="check-form">
+<!--        FIX IT SOMEHOW?? -->
+        <a th:href="@{'/booking/' + ${listing.listingId}}"><button type="submit">Check Availability</button></a>
+    </div>
 
 <!-- SOME HARDCODED STUFF FOR DE-->
     <ul class="details-list">
