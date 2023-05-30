@@ -50,11 +50,12 @@
         <h1>House Booking</h1>
         <p>Please select the desired dates to book the house.</p>
         <form id="bookingForm" action="/confirm_booking" method="POST">
-<!--            <div class="booking-details" th:each="listing: ${listing}">-->
-<!--                <p th:text="'Available from: '+${listing.availabilityStart}"></p>-->
-<!--                <p th:text="'Untill : '+${listing.availabilityEnd}"></p>-->
-            <p> Available from : </p>
-            <p> Until : </p>
+            <div class="booking-details" th:each="listing: ${listing}">
+                <p th:text="'Available from: '+${listing.availabilityStart}"></p>
+                <p th:text="'Untill : '+${listing.availabilityEnd}"></p>
+            </div>
+<!--            <p> Available from : </p>-->
+<!--            <p> Until : </p>-->
             <div class="form-group">
                 <label for="checkIn">Check-in:</label>
                 <input type="date" id="checkIn" name="checkIn" required>

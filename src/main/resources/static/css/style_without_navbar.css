@@ -369,27 +369,28 @@ body {
     max-width: 800px;
     margin: 20px 0 50px;
 }
-.check-form{
-    margin: 30px 0;
-    background: #fff;
-    box-shadow: 0 0 30px rgba(0,0,0,0.3);
-    border-radius: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 10px 50px;
-}
-.check-form label{
-    display: block;
-}
-.check-form div{
-    padding: 20px;
-}
-.check-form input{
-    background: transparent;
-    border: 0;
-    outline: none;
-}
+/*.check-form{*/
+/*    margin: 30px 0;*/
+/*    background: #fff;*/
+/*    box-shadow: 0 0 30px rgba(0,0,0,0.3);*/
+/*    border-radius: 8px;*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    align-items: center;*/
+/*    padding: 10px 50px;*/
+/*    width:400px;*/
+/*}*/
+/*.check-form label{*/
+/*    display: block;*/
+/*}*/
+/*.check-form div{*/
+/*    padding: 20px;*/
+/*}*/
+/*.check-form input{*/
+/*    background: transparent;*/
+/*    border: 0;*/
+/*    outline: none;*/
+/*}*/
 .check-form button{
     background:rgb(167, 135, 136);
     border: 0;
@@ -399,6 +400,7 @@ body {
     width: 350px;
     border-radius: 8px;
     font-size: 16px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
 .guest-field{
     flex: 1;
