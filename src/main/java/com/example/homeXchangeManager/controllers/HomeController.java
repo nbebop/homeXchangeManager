@@ -119,4 +119,10 @@ public class HomeController {
         return "help";
     }
 
+    @GetMapping("/message")
+    public String message() {
+        return "message";
+    }
+
+
 }
