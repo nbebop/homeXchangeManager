@@ -46,10 +46,10 @@
             </form>
         </div>
     </div>
-    <!-- IF LISTINGS PASSED BY SEARCH WORKS -->
-    <div class="left-col" th:if="${listingsSearch != null}" >
+    <!-- IF LISTINGS PASSED BY SIMPLE SEARCH WORKS -->
+    <div class="left-col" th:if="${listingsSimpleSearch != null}" >
         <!-- Looping through the listings and populating the HTML dynamically -->
-        <div th:each="listing : ${listingsSearch}" class="house" >
+        <div th:each="listing : ${listingsSimpleSearch}" class="house" >
             <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
             <!-- <div class="house-img">
                 <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">

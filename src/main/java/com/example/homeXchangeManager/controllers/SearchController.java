@@ -29,13 +29,14 @@ public class SearchController {
     public String listingsByCityAndAvailability(Model model, @RequestParam String city, @RequestParam Date start, @RequestParam Date end) {
         List<Listing> listingsSearch = listingService.findAllByCityAndAvailabilityStartBetween(city, start, end);
         model.addAttribute("listingsSearch", listingsSearch);
+
         return "home_page";
     }
 
     @RequestMapping("/listings/city")
     public String listingsByCity(Model model, @RequestParam String city) {
         List<Listing> listings = listingService.findByCity(city);
-        model.addAttribute("listingsSearch", listings);
+        model.addAttribute("listingsSimpleSearch", listings);
 
         return "redirect:/listing";
     }
