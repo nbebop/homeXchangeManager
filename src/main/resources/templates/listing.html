@@ -69,8 +69,6 @@
     </div>
 
 
-
-
     <!-- Find a house and add a listing navlinks -->
     <div class="nav-links">
         <ul class="nav-links-style">
@@ -91,31 +89,7 @@
     </div>
 </nav>
 <div class="container">
-    <div class="list-container">
 
-        <!-- ALL LISTINGS -->
-        <div class="left-col">
-            <p>100+ Options</p>
-            <h1>Recommended Places In Paris</h1>
-            <!-- Looping through the listings and populating the HTML dynamically -->
-            <div th:each="listing : ${listings}" class="house">
-                <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
-                <div class="house-img">
-                    <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
-                </div>
-                <div class="house-info">
-                    <p th:text="${listing.addressLine}"></p>
-                    <h3 th:text="${listing.description}"></h3>
-                    <!-- Rating stars -->
-                    <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
-                <i class="fas fa-star"></i>
-            </span>
-                    <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
-                <i class="far fa-star"></i>
-            </span>
-                </div>
-            </div>
-        </div>
 <!-- PAGINATION BOTTOM - DESIGN -->
     <div class="pagination">
         <a href="#" class="arrow left-arrow"><img src="img/arrow.png"></a>

@@ -4,6 +4,7 @@ import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +27,11 @@ public class SearchController {
     }
 
     @RequestMapping("/listings/city/availability")
-    public String listingsByCityAndAvailability(Model model, @RequestParam String city, @RequestParam Date start, @RequestParam Date end) {
-        List<Listing> listingsSearch = listingService.findAllByCityAndAvailabilityStartBetween(city, start, end);
+    public String listingsByCityAndAvailability(Model model, @RequestParam String cityAdvanced, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date start, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date end) {
+        List<Listing> listingsSearch = listingService.findAllByCityAndAvailabilityStartBetween(cityAdvanced, start, end);
         model.addAttribute("listingsSearch", listingsSearch);
 
-        return "home_page";
+        return "/listing";
     }
 
     @RequestMapping("/listings/city")
@@ -38,7 +39,7 @@ public class SearchController {
         List<Listing> listings = listingService.findByCity(citySimple);
         model.addAttribute("listingsSimpleSearch", listings);
 
-        return "redirect:/listing";
+        return "/listing";
     }
 
 }
