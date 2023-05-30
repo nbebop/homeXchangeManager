@@ -93,7 +93,7 @@
             <h2>Services</h2>
             <div class="services">
                 <label th:each="service : ${services}">
-                    <input type="checkbox" th:field="*{services}" th:value="${service}" />
+                    <input type="checkbox" th:field="*{services}" th:value="${service.serviceId}" />
                     <span th:text="${service.serviceName}"></span>
                 </label>
             </div>
@@ -101,7 +101,7 @@
             <h2>Constraints</h2>
             <div class="constraints">
                 <label th:each="constraint : ${constraints}">
-                    <input type="checkbox" th:field="*{constraints}" th:value="${constraint}" />
+                    <input type="checkbox" th:field="*{constraints}" th:value="${constraint.constraintId}" />
                     <span th:text="${constraint.constraintName}"></span>
                 </label>
             </div>

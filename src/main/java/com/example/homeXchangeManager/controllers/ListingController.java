@@ -35,11 +35,12 @@ public class ListingController {
     private ConstraintServiceImpl constraintService;
 
     @Autowired
-    public ListingController(ListingServiceImpl listingService, UserServiceImpl userService, ServiceServiceImpl serviceService, ConstraintServiceImpl constraintService) {
+    public ListingController(ListingServiceImpl listingService, UserServiceImpl userService, ServiceServiceImpl serviceService, ConstraintServiceImpl constraintService, ListingRepository listingRepository) {
         this.listingService = listingService;
         this.userService = userService;
         this.serviceService = serviceService;
         this.constraintService = constraintService;
+        this.listingRepository = listingRepository;
     }
 
     @ModelAttribute("listing")
@@ -112,7 +113,6 @@ public class ListingController {
         FileUploadUtil.saveFile(uploadDir, mainImg, mainImgName);
         FileUploadUtil.saveFile(uploadDir, scdImg, scdImgName);
         FileUploadUtil.saveFile(uploadDir, trdImg, trdImgName);
-        listingService.save(listing);
 
         return "redirect:/listing";
     }
