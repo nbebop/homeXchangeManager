@@ -150,25 +150,4 @@ public class ListingController {
         }
     }
 
-    // Not sure about this one
-    /*@GetMapping("/listings/search/{city}")
-    public List<Listing> searchListingsByCity(@PathVariable("city") String city) {
-
-        return listingRepository.findAllByCity(city);
-    }*/
-
-    @GetMapping("/listings/city")
-    public String listingsByCity(Model model, @RequestParam String city) {
-        List<Listing> listings = listingRepository.findAllByCity(city);
-        model.addAttribute("listings", listings);
-        return "listings";
-    }
-
-    @GetMapping("/listings/city/availability")
-    public String listingsByCityAndAvailability(Model model, @RequestParam String city, @RequestParam Date start, @RequestParam Date end) {
-        List<Listing> listings = listingRepository.findAllByCityAndAvailabilityStartBetween(city, start, end);
-        model.addAttribute("listings", listings);
-        return "listings";
-    }
-
 }

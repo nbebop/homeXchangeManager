@@ -14,8 +14,8 @@
     <nav id="navBar">
         <a href="/" th:href="@{/home_page}"><img src="img/compass_white_name.png" class="logo"></a>
         <div class="search-bar-list">
-            <form action="/" method="GET" class="form">
-                <input type="search" placeholder="Search for..." class="search-field">
+            <form th:action="@{/listings/city}" method="get" class="form">
+                <input type="search" placeholder="Search in a city..." class="search-field" name="city">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
@@ -27,40 +27,46 @@
         <div class="dropdown">
             <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
-                <a href="/" th:href="@{/account}">Account</a>
-                <a href="/" th:href="@{/message}">Messages</a>
-                <a href="/" th:href="@{/favourites}">Favorites</a>
-                <a href="/" th:href="@{/help}">Help</a>
-                <a href="#" onclick="logout()">Logout</a>
+                <a href="/" th:action="@{/account}">Account</a>
+                <a href="/" th:action="@{/message}">Messages</a>
+                <a href="/" th:action="@{/favourites}">Favorites</a>
+                <a href="/" th:action="@{/help}">Help</a>
+                <a href="/" th:action="@{/logout}" >Log Out</a>
             </div>
         </div>
     </nav>
     <div class="container">
-        <h1>Find Your Next Stay</h1>
-        <div class="search-bar">
-            <form>
-                <div class="location-input">
-                    <label>Location</label>
-                    <input type="text" placeholder="Where are you going?">
+        <!-- ALL LISTINGS -->
+        <div class="left-col" th:if="${listingsSearch != null}" >
+            <!-- Looping through the listings and populating the HTML dynamically -->
+            <div th:each="listing : ${listingsSearch}" class="house" >
+                <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
+                <!-- <div class="house-img">
+                    <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
+                </div> -->
+                <div class="house-info">
+                    <p th:text="${listing.addressLine}"></p>
+                    <h3 th:text="${listing.description}"></h3>
+                    <!-- Rating stars -->
+                    <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
+                <i class="fas fa-star"></i>
+            </span>
+                    <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
+                <i class="far fa-star"></i>
+            </span>
                 </div>
-                <div>
-                    <label>Check in</label>
-                    <input type="text" placeholder="Add Date">
-                </div>
-                <div>
-                    <label>Check out</label>
-                    <input type="text" placeholder="Add Date">
-                </div>
-                <div>
-                    <label>Guest</label>
-                    <input type="text" placeholder="Add Guest">
-                </div>
-                <button type="submit"><img src="img/search.png"></button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
-<form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
+
+<script>
+    var navBar = document.getElementById("navBar");
+
+    function togglebtn() {
+        navBar.classList.toggle("hidemenu");
+    }
+</script>
 
 </body>
 </html>
