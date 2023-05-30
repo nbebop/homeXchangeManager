@@ -121,6 +121,13 @@ public class HomeController {
     public String message() {
         return "message";
     }
-
+    @GetMapping("/forgotten")
+    public String forgotten() {
+        return "forgotten";
+    }
+    @GetMapping("/reset")
+    public String reset() {
+        return "reset";
+    }
 
 }

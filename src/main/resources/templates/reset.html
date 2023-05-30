@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Reset page</title>
         <link href="css/reset.css" rel="stylesheet">
     <title>Login / Sign up</title>
@@ -34,7 +31,7 @@
                     <input type="new_password" name="new_password" placeholder="New password" required>
                     <input type="new_password2" name="new_password2" placeholder="Repeat new password" required>
                     <!-- Login button -->
-                    <button type="submit">Reset</button>
+                    <a href="/" th:action="@{/login}"> <button type="submit">Reset</button></a>
                 </form>
                 <!-- Registration link -->
                 <div class="dont-have-acc">
