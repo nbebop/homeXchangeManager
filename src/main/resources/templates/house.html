@@ -64,7 +64,7 @@
                 <p th:text="'Location: ' + ${listing.city}"></p>
             </div>
         </div>
-        <img th:src="@{${listing.image}}" alt="House Image here">
+        <img th:src="@{${listing.getMainImgPath}}" alt="House Image">
         <p th:text="'Address: ' + ${listing.addressLine} + ', ' + ${listing.city} + ', ' + ${listing.postalCode} + ', ' + ${listing.country}"></p>
         <p th:text="'Description: ' + ${listing.description}"></p>
         <p th:text="'Booking Info: ' + ${listing.bookingInfo}"></p>
@@ -122,22 +122,19 @@
     <hr class="line">
 
 <!-- HOST -->
-    <div class="host">
-        <img src="/img/host.png">
+    <div class="host" >
         <div>
-            <h2>Hosted by Brandon</h2>
+<!--            <h2>Hosted by </h2>-->
+            <h2 th:text="'Hosted by: '+ ${user.firstname + ' ' + user.lastname}"></h2>
             <p>
                 <span th:each="i : ${#numbers.sequence(1, 4)}">
                     <i class="fas fa-star"></i>
                 </span>
                 <i class="fas fa-star-half-alt"></i>
-                <span th:text="245">245 reviews</span>
-                <span>Response rate 100%</span>
-                <span>Response time: 60 min</span>
             </p>
         </div>
     </div>
-    <a href="#" class="contact-host">Contact Host</a>
+    <a href="/" th:href="@{/message}" class="contact-host">Contact Host</a>
 </div>
 
 <!-- SOCIAL MEDIA -->
