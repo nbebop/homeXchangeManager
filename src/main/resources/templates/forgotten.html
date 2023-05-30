@@ -28,12 +28,10 @@
         <div class="general-form">
             <div class="login-space">
                 <h1>Forgotten password</h1>
-
                     <input type="email" name="email" placeholder="Email" required>
 <!--                    <input type="password" name="password" placeholder="Password" required>-->
                     <!-- Login button -->
-                    <a href="/" th:action="@{/login}"> <button type="submit">Send link to reset</button></a>
-
+                    <a href="/" th:href="@{/reset}"> <button type="submit">Send link to reset</button></a>
                 <!-- Registration link -->
                 <div class="dont-have-acc">
                     <p>Don't have an account? <a href="/" th:href="@{/registration}">Sign up for free</a>.</p>

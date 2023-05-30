@@ -46,7 +46,6 @@ public class RegistrationController {
 
 
 
-
     @PostMapping
     public String register(@Valid @ModelAttribute("user") RegisterDto registerDto, BindingResult bindingResult) {
 
