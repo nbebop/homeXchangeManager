@@ -130,15 +130,6 @@ public class ListingController {
         }
     }
 
-    private Byte[] convertToBytes(MultipartFile file) throws IOException {
-        Byte[] byteObjects = new Byte[file.getBytes().length];
-        int i = 0;
-        for (byte b : file.getBytes()) {
-            byteObjects[i++] = b;
-        }
-        return byteObjects;
-    }
-
     @PostMapping("/listing/edit/{id}")
     public String editListing(@PathVariable("id") long listingId, @Valid @ModelAttribute("listing") ListingDto listingDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
