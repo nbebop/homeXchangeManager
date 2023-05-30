@@ -56,7 +56,7 @@
             <div th:each="listing : ${listings}" class="house" >
                 <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
                 <div class="house-img">
-                    <img th:src="@{${listing.image}}" alt="Listing Image">
+                    <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
                 </div>
                 <div class="house-info">
                     <p th:text="${listing.addressLine}"></p>
@@ -71,50 +71,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- RIGHT COLUMN - IDK WHAT TO DO WITH IT -->
-        <div class="right-col">
-            <div class="sidebar">
-                <h2>Select Filters</h2>
-                <h3>Property Type</h3>
-                <div class="filter">
-                    <input type="checkbox"> <p>House</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Hostel</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Flat</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Villa</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Guest Suite</p> <span>(0)</span>
-                </div>
-                <h3>Amenities</h3>
-                <div class="filter">
-                    <input type="checkbox"> <p>Air Conditioning</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Wifi</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Gym</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Pool</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Kitchen</p> <span>(0)</span>
-                </div>
-
-                <div class="sidebar-link">
-                    <a href="#">View More</a>
-                </div>
-            </div>
-        </div>
-    </div>
 <!-- PAGINATION BOTTOM - DESIGN -->
     <div class="pagination">
         <a href="#" class="arrow left-arrow"><img src="img/arrow.png"></a>

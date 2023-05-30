@@ -1,19 +1,15 @@
 package com.example.homeXchangeManager.dto;
 
-import com.example.homeXchangeManager.constraints.FileConstraint;
 import com.example.homeXchangeManager.constraints.NameConstraint;
 import com.example.homeXchangeManager.constraints.PostalCodeConstraint;
 import com.example.homeXchangeManager.constraints.RatingConstraint;
-import com.example.homeXchangeManager.constraints.StayTimeConstraint;
 import com.example.homeXchangeManager.models.Constraint;
-import com.example.homeXchangeManager.models.Image;
 import com.example.homeXchangeManager.models.Service;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
