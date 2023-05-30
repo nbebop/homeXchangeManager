@@ -75,6 +75,10 @@ public class HomeController {
         Listing listing = listingService.findByListingId(id);
         model.addAttribute("listing", listing);
 
+      
+        User host = listing.getOwner();
+        model.addAttribute("host", host);
+
         model.addAttribute("request", request); // Add the request object to the model
 
         return "house";
@@ -112,5 +116,11 @@ public class HomeController {
     public String help() {
         return "help";
     }
+
+    @GetMapping("/message")
+    public String message() {
+        return "message";
+    }
+
 
 }
