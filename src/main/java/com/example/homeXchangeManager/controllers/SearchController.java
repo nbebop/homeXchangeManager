@@ -29,7 +29,7 @@ public class SearchController {
     @RequestMapping("/listings/city/availability")
     public String listingsByCityAndAvailability(Model model, @RequestParam String cityAdvanced, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date start, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date end) {
         List<Listing> listingsSearch = listingService.findAllByCityAndAvailabilityStartBetween(cityAdvanced, start, end);
-        model.addAttribute("listingsSearch", listingsSearch);
+        model.addAttribute("listingsAdvancedSearch", listingsSearch);
 
         return "/listing";
     }

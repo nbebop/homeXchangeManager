@@ -68,6 +68,27 @@
         </div>
     </div>
 
+    <!-- IF LISTINGS PASSED BY ADVANCED SEARCH WORKS -->
+    <div class="left-col" th:if="${listingsAdvancedSearch != null}" >
+        <!-- Looping through the listings and populating the HTML dynamically -->
+        <div th:each="listing : ${listingsAdvancedSearch}" class="house" >
+            <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
+            <!-- <div class="house-img">
+                <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
+            </div> -->
+            <div class="house-info">
+                <p th:text="${listing.addressLine}"></p>
+                <h3 th:text="${listing.description}"></h3>
+                <!-- Rating stars -->
+                <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
+                <i class="fas fa-star"></i>
+            </span>
+                <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
+                <i class="far fa-star"></i>
+            </span>
+            </div>
+        </div>
+    </div>
 
     <!-- Find a house and add a listing navlinks -->
     <div class="nav-links">
