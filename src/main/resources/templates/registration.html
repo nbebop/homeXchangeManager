@@ -2,10 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <title>Sign Up Form</title>
-    <!-- Stylesheet for backend build -->
     <link href="css/registration_style.css" rel="stylesheet">
-    <!-- Stylesheet for frontend build -->
-    <!--    <link href="../static/css/registration_style.css" rel="stylesheet">-->
+    <script src="js/script.js"></script>
 </head>
 <body>
 <!-- NAVBAR-->
@@ -65,10 +63,10 @@
 
             <label for="password">Password:</label>
             <input type="text" id="password" name="password" th:field="*{password}" required>
-            <!--            <button class="passwd-toggle" id="show-passwd"><img src="../static/img/eye_open.svg" alt="Show password"/></button>-->
 
             <label for="password_conf">Confirm password:</label>
             <input type="password" id="password_conf" name="password_conf" required>
+
             <input type="submit" value="Sign Up">
         </form>
     </div>
@@ -99,6 +97,6 @@
     </div>
 </div>
 
-<script src="js/script.js"></script>
+
 </body>
 </html>

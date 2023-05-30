@@ -7,126 +7,140 @@
     <title>House Page</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet" th:if="${#strings.startsWith(request.getRequestURI(), '/house/')}">
+    <link href="/css/style_without_navbar.css" rel="stylesheet" th:if="${#strings.startsWith(request.getRequestURI(), '/house/')}">
     <script src="js/script.js"></script>
 </head>
 <body>
-     <nav id="navBar" class="navbar-white">
-        <a href="index.html">
-            <img src="img/compass_white_name.png" class="logo">
-        </a>
-		 <div class="search-bar-list">
+<section class="navbar">
+    <header>
+        <!-- Logo -->
+        <a href="/" th:href="@{/success}"><img class="logo" src="/img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
             <form action="/" method="GET" class="form">
                 <input type="search" placeholder="Search for..." class="search-field">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
-        <ul class="nav-links">
-             <li><a href="#">Rent your house</a> </li>
-        </ul>
-        <a href="#" class="register-btn">Register Now</a>
-        <i class="fas fa-bars" onclick="togglebtn()"></i>
-		 <div class="dropdown">
-            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
-             <div class="dropdown-content">
-                 <a href="/" th:action="@{/account}">Account</a>
-                 <a href="/" th:action="@{/message}">Messages</a>
-                 <a href="/" th:action="@{/favourites}">Favorites</a>
-                 <a href="/" th:action="@{/help}">Help</a>
-                 <a href="/" th:action="@{/logout}" >Log Out</a>
-             </div>
+        <!-- Find a house and add a listing navlinks -->
+        <div class="nav-links">
+            <ul class="nav-links-style">
+                <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+            </ul>
         </div>
-    </nav>
-    <div class="house-details">
-        <div class="house-title">
-            <h1>Luxury House</h1>
-            <div class="row">
-                <div>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
-                    <span>139 Reviews</span>
-                </div>
-                <div>
-                    <p>Location: Paris</p>
-                </div>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"><img src="/img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <a href="#" onclick="logout()">Logout</a>
             </div>
         </div>
-        <div class="gallery">
-            <div class="gallery-img-1"><img src="img/paris1.jpg"></div>
-            <div><img src="img/paris2.jpg"></div>
-            <div><img src="img/paris3.jpg"></div>
-            <div><img src="img/paris4.jpg"></div>
-            <div><img src="img/paris5.jpg"></div>
-
-        </div>
-        <div class="small-details">
-            <h2>Entire rental unit hosted by Brandon</h2>
-            <p>2 guest &nbsp; &nbsp; 2 beds &nbsp; &nbsp; 1 bathroom</p>
-        </div>
-        <hr class="line">
-        <form class="check-form">
+    </header>
+    <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
+</section>
+<div class="spacer"></div>
+<!-- HOUSE 1 -->
+<div class="house-details">
+    <!-- MAIN DETAILS -->
+    <div>
+        <h1 th:text="${listing.description}"></h1>
+        <div class="row">
             <div>
-                <label>Check-in</label>
-                <input type="text" placeholder="Add date">
+            <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
+                <i class="fas fa-star"></i>
+            </span>
+                <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
+                <i class="far fa-star"></i>
+            </span>
+                <span th:text="${listing.ownerRating}">0</span>
             </div>
             <div>
-                <label>Check-out</label>
-                <input type="text" placeholder="Add date">
-            </div>
-            <div class="guest-field">
-                <label>Guest</label>
-                <input type="text" placeholder="2 guest">
-            </div>
-            <button type="submit">Check Availability</button>
-        </form>
-
-        <ul class="details-list">
-            <li><i class="fas fa-home"></i>Entire Home
-                <span>You will have the entire flat for you.</span>
-            </li>
-            <li><i class="fas fa-paint-brush"></i>Enhanced Clean
-                <span>This host has committed to staybnb's cleaning process.</span>
-            </li>
-            <li><i class="fas fa-map-marker-alt"></i>Great Location
-                <span>90% of recent guests gave the location a 5 star rating.</span>
-            </li>
-            <li><i class="fas fa-heart"></i>Great Check-in Experience
-                <span>100% of recent guests gave the check-in process a 5 star rating.</span>
-            </li>
-        </ul>
-
-        <hr class="line">
-
-        <p class="home-desc">Guests will be allocated on the ground floor according to availability. You get a comfortable Two bedroom apartment has a true city feeling. The price quoted is for two guest, at the guest slot please mark the number of guests to get the exact price for groups. The Guests will be allocated ground floor according to availability. You get the comfortable two bedroom apartment that has a true city feeling.</p>
-        <hr class="line">
-
-        <div class="map">
-            <h3>Location on map</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21221.676224044128!2d-122.45917885570059!3d37.75203368896406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1641145357317!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            <b>San Francisco, California, United States</b>
-            <p>It's like a home away from home.</p>
-        </div>
-
-        <hr class="line">
-
-        <div class="host">
-            <img src="img/host.png">
-            <div>
-                <h2>Hosted by Brandon</h2>
-                <p><span>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </span>&nbsp; &nbsp; 245 reviews &nbsp; &nbsp; Response rate 100% &nbsp; &nbsp; Response time: 60 min</p>
+                <p th:text="'Location: ' + ${listing.city}"></p>
             </div>
         </div>
-        <a href="#" class="contact-host">Contact Host</a>
+        <img th:src="@{${listing.image}}" alt="House Image here">
+        <p th:text="'Address: ' + ${listing.addressLine} + ', ' + ${listing.city} + ', ' + ${listing.postalCode} + ', ' + ${listing.country}"></p>
+        <p th:text="'Description: ' + ${listing.description}"></p>
+        <p th:text="'Booking Info: ' + ${listing.bookingInfo}"></p>
+        <p th:text="'Rating: ' + ${listing.rating}"></p>
+        <p>
+            Availability: From
+            <span th:text="${#dates.format(listing.availabilityStart, 'yyyy-MM-dd')}"></span>
+            to
+            <span th:text="${#dates.format(listing.availabilityEnd, 'yyyy-MM-dd')}"></span>
+        </p>
+        <hr> <!-- Add a horizontal rule to separate each listing -->
     </div>
+
+<!-- CHECK IN FORM // SEARCH BAR THAT NEEDS CHANGING -->
+    <form class="check-form">
+        <div>
+            <label>Check-in</label>
+            <input type="text" placeholder="Add date">
+        </div>
+        <div>
+            <label>Check-out</label>
+            <input type="text" placeholder="Add date">
+        </div>
+        <div class="guest-field">
+            <label>Guest</label>
+            <input type="text" placeholder="2 guest">
+        </div>
+        <button type="submit">Check Availability</button>
+    </form>
+
+<!-- SOME HARDCODED STUFF FOR DE-->
+    <ul class="details-list">
+        <li><i class="fas fa-home"></i>Entire Home
+            <span>You will have the entire flat for you.</span>
+        </li>
+        <li><i class="fas fa-paint-brush"></i>Enhanced Clean
+            <span>This host has committed to staybnb's cleaning process.</span>
+        </li>
+        <li><i class="fas fa-map-marker-alt"></i>Great Location
+            <span>90% of recent guests gave the location a 5-star rating.</span>
+        </li>
+        <li><i class="fas fa-heart"></i>Great Check-in Experience
+            <span>100% of recent guests gave the check-in process a 5-star rating.</span>
+        </li>
+    </ul>
+
+<!-- MAP -->
+    <div class="map">
+        <h3>Location on map</h3>
+        <iframe th:src="@{'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.9185124463!2d2.347035!3d48.85885484999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2spl!4v1685377861536!5m2!1sen!2spl'}"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <b th:text="${listing.city + ', ' + listing.country}"></b>
+        <p>It's like a step away from home.</p>
+    </div>
+    <hr class="line">
+
+<!-- HOST -->
+    <div class="host">
+        <img src="/img/host.png">
+        <div>
+            <h2>Hosted by Brandon</h2>
+            <p>
+                <span th:each="i : ${#numbers.sequence(1, 4)}">
+                    <i class="fas fa-star"></i>
+                </span>
+                <i class="fas fa-star-half-alt"></i>
+                <span th:text="245">245 reviews</span>
+                <span>Response rate 100%</span>
+                <span>Response time: 60 min</span>
+            </p>
+        </div>
+    </div>
+    <a href="#" class="contact-host">Contact Host</a>
+</div>
+
+<!-- SOCIAL MEDIA -->
     <div class="container">
         <div class="footer">
             <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
@@ -138,11 +152,29 @@
         </div>
     </div>
 
-    <script>
-        var navBar = document.getElementById("navBar");
-        function togglebtn(){
-            navBar.classList.toggle("hidemenu");
-        }
-    </script>
+<!-- Bottom information -->
+<section id="info" class="info-section">
+    <a href="#" onclick="openPopup('about')">ABOUT</a>
+    <a href="#">COOKIE SETTINGS</a>
+    <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
+</section>
+
+<!-- Popup Windows -->
+<div id="popup-about" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('about')">&times;</span>
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your project summary text here -->
+    </div>
+</div>
+<div id="popup-privacy" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('privacy')">&times;</span>
+        <h2>Privacy</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your privacy policy text here -->
+    </div>
+</div>
 </body>
 </html>

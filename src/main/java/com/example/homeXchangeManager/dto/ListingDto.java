@@ -1,6 +1,5 @@
 package com.example.homeXchangeManager.dto;
 
-import com.example.homeXchangeManager.constraints.FileConstraint;
 import com.example.homeXchangeManager.constraints.NameConstraint;
 import com.example.homeXchangeManager.constraints.PostalCodeConstraint;
 import com.example.homeXchangeManager.constraints.RatingConstraint;
@@ -31,8 +30,6 @@ public class ListingDto {
     @NameConstraint
     private String country;
     private String premise;
-    @FileConstraint
-    private MultipartFile image;
     private List<Service> services;
     private List<Constraint> constrains;
     private String bookingInfo;
@@ -46,5 +43,9 @@ public class ListingDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date availabilityEnd;
+
+    private MultipartFile mainImg;
+    private MultipartFile scdImg;
+    private MultipartFile trdImg;
 
 }
