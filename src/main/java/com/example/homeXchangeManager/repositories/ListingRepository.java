@@ -4,6 +4,7 @@ import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ListingRepository extends JpaRepository<Listing, Integer> {
@@ -18,4 +19,6 @@ public interface ListingRepository extends JpaRepository<Listing, Integer> {
     List<Listing> findAllByCity(String city);
 
     List<Listing> findAllByOrderByListingIdAsc();
+
+    List<Listing> findAllByCityAndAvailabilityStartBetween(String city, Date start, Date end);
 }
