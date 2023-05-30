@@ -1,10 +1,13 @@
 package com.example.homeXchangeManager.models;
 
+import com.example.homeXchangeManager.constraints.StayTimeConstraint;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
+@StayTimeConstraint
 @Entity
 @Table(name = "booking")
 public class Booking implements Serializable {

@@ -4,60 +4,196 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert new listing</title>
-
 <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-<!--for backend-->
-<!--<link href="css/new_listing_style.css" rel="stylesheet">-->
-<!--for front-->
+<!--<link href="../static/css/navbar.css" rel="stylesheet">-->
+<!--<link href="../static/css/new_listing_style.css" rel="stylesheet">-->
+<link href="css/navbar.css" rel="stylesheet">
 <link href="css/new_listing_style.css" rel="stylesheet">
 <script src="js/script.js"></script>
 <body>
+<section class="navbar">
+    <header>
+        <!-- Logo -->
+<!--        <a href="/" th:href="@{/success}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>-->
+        <a href="/" th:href="@{/success}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
+            <form action="/" method="GET" class="form">
+                <input type="search" placeholder="Search for..." class="search-field">
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- Find a house and add a listing navlinks -->
+        <div class="nav-links">
+            <ul class="nav-links-style">
+                <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+            </ul>
+        </div>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+<!--            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>-->
+            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </header>
+    <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
+</section>
+<div class="spacer"></div>
 <!-- New listing form -->
 <section id="form" class="form-section">
     <div class="form-container">
         <h1>Create a new listing</h1>
+      
         <form modelAttribute="listing" th:action="@{/new_listing}" th:object="${listing}" method="post" enctype="multipart/form-data">
+            <div class="create_listing_info">
+                <label for="description">
+                    Description:</label>
+                <input type="text" id="description" name="description" th:field="*{description}" required>
 
-            <label for="description">description:</label>
-            <input type="text" id="description" name="description" th:field="*{description}" required>
+                <label for="addressLine">
+                    Address:</label>
+                <input type="text" id="addressLine" name="addressLine" th:field="*{addressLine}" required>
 
-<!--            <label for="image" class="upload-btn">upload picture :-->
-<!--                <input type="file" id="image" th:field="*{image}">-->
-<!--                Choose a file-->
-<!--            </label>-->
+                <label for="premise">
+                    Premise:</label>
+                <input type="text" id="premise" name="premise" th:field="*{premise}" required>
 
-                <label for="image">Choose the file:</label>
-                    <input type="file" id="image" th:field="*{image}">
+                <label for="city">
+                    City:</label>
+                <input type="text" id="city" name="city" th:field="*{city}" required>
+
+                <label for="postalCode">
+                    Postal Code:</label>
+                <input type="text" id="postalCode" name="postalCode" th:field="*{postalCode}" required>
+
+                <label for="country">
+                    Country:</label>
+                <input type="text" id="country" name="country" th:field="*{country}" required>
+
+                <label for="city">
+                    Booking Information:</label>
+                <input type="text" id="bookingInfo" name="bookingInfo" th:field="*{bookingInfo}" required>
+
+                <label for="availabilityStart">
+                    Availability Start Date:</label>
+                <input type="date" id="availabilityStart" name="availabilityStart" th:field="*{availabilityStart}" required>
+
+                <label for="availabilityEnd">
+                    Availability End Date:</label>
+                <input type="date" id="availabilityEnd" name="availabilityEnd" th:field="*{availabilityEnd}" required>
+            </div>
+
+            <h2>Services</h2>
+            <div class="services">
+                <label th:each="service : ${services}">
+                    <input type="checkbox" th:field="*{services}" th:value="${service.serviceId}" />
+                    <span th:text="${service.serviceName}"></span>
+                </label>
+            </div>
+
+            <h2>Constraints</h2>
+            <div class="constraints">
+                <label th:each="constraint : ${constraints}">
+                    <input type="checkbox" th:field="*{constraints}" th:value="${constraint.constraintId}" />
+                    <span th:text="${constraint.constraintName}"></span>
+                </label>
+            </div>
+<!-- HARD CODED STUFF I THOUGHT IS IMPORTANT-->
+
+<!--            <h2>Services</h2>-->
+<!--            <div class="services">-->
+
+<!--                <label><input type="checkbox" name="services" value="pets">Take care of pets</label>-->
+<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>-->
+
+<!--                <label><input type="checkbox" name="services" value="plants">Water plants</label>-->
+<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="services" value="cleaning">Clean the house</label>-->
+<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="services" value="security">-->
+<!--                    Ensure home security-->
+<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="services" value="groceries">-->
+<!--                    Buy groceries-->
+<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                &lt;!&ndash; Add more services as needed &ndash;&gt;-->
+
+<!--                <label>-->
+<!--                    <input type="checkbox" name="customServices" value="true">-->
+<!--                </label>-->
+<!--                <input  class="custom-checkbox" type="text" name="customServiceName" placeholder="Enter custom service name">-->
+<!--                <input type="text" name="customServiceDescription" placeholder="Enter custom service description">-->
+
+<!--            </div>-->
+
+<!--            <h2>Limitations</h2>-->
+<!--            <div class="constraints">-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="constraints" value="no-smoking">-->
+<!--                    No smoking in the accommodation-->
+<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="constraints" value="no-noise">-->
+<!--                    No noise after 23h-->
+<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="constraints" value="max-2-children">-->
+<!--                    Maximum 2 children per accommodation-->
+<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="constraints" value="no-children">-->
+<!--                    No children allowed-->
+<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                <label>-->
+<!--                    <input type="checkbox" name="constraints" value="no-pets">-->
+<!--                    No pets allowed-->
+<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
+<!--                </label><br>-->
+<!--                &lt;!&ndash; Add more constraints as needed &ndash;&gt;-->
+
+<!--                <label>-->
+<!--                    <input type="checkbox" name="customConstraints" value="true">-->
+<!--                </label>-->
+<!--                <input type="text" name="customConstraintName" placeholder="Create custom constraint name">-->
+<!--                <input type="text" name="customConstraintDescription" placeholder="Enter additional description">-->
+<!--            </div>-->
 
 
-            <label for="addressLine">Address:</label>
-            <input type="text" id="addressLine" name="addressLine" th:field="*{addressLine}" required>
-
-            <label for="premise">premise:</label>
-            <input type="text" id="premise" name="premise" th:field="*{premise}" required>
-
-            <label for="city">city:</label>
-            <input type="text" id="city" name="city" th:field="*{city}" required>
-
-            <label for="postalCode">postalCode:</label>
-            <input type="text" id="postalCode" name="postalCode" th:field="*{postalCode}" required>
-
-            <label for="country">country:</label>
-            <input type="text" id="country" name="country" th:field="*{country}" required>
-
-            <label for="city">bookingInfo:</label>
-            <input type="text" id="bookingInfo" name="bookingInfo" th:field="*{bookingInfo}" required>
-
-            <label for="availabilityStart">availabilityStart:</label>
-            <input type="date" id="availabilityStart" name="availabilityStart" th:field="*{availabilityStart}" required>
-
-            <label for="availabilityEnd">availabilityEnd:</label>
-            <input type="date" id="availabilityEnd" name="availabilityEnd" th:field="*{availabilityEnd}" required>
+            <label for="image_main" class="upload-btn"> Upload main picture:</label>
+            <input type="file" id="image_main" th:field="*{mainImg}" accept="image/png, image/jpeg">
+            <label for="image_scd" class="upload-btn"> Upload secondary picture :</label>
+            <input type="file" id="image_scd" th:field="*{scdImg}" accept="image/png, image/jpeg">
+            <label for="image_trd" class="upload-btn"> Upload third picture:</label>
+            <input type="file" id="image_trd" th:field="*{trdImg}" accept="image/png, image/jpeg">
 
             <input type="submit" value="Save listing">
         </form>
     </div>
 </section>
+<!-- EXAMPLE ! Delete when implemented properly-->
+<table>
+    <tr th:each="service: ${services}">
+        <td th:text="${service.serviceName}"></td>
+        <td th:text="${service.serviceDescription}"></td>
+    </tr>
+</table>
+
 <!-- Bottom information -->
 <section id="info" class="info-section">
     <a href="#" onclick="openPopup('about')">ABOUT</a>
@@ -70,19 +206,21 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('about')">&times;</span>
         <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your project summary text here -->
     </div>
 </div>
-
 <div id="popup-privacy" class="popup">
     <div class="popup-content">
         <span class="close" onclick="closePopup('privacy')">&times;</span>
         <h2>Privacy</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your privacy policy text here -->
     </div>
 </div>
-
 </body>
 </html>

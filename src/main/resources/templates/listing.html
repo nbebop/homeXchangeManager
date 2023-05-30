@@ -7,188 +7,83 @@
     <title>Listing Page</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/style_without_navbar.css" rel="stylesheet">
     <script src="js/script.js"></script>
 </head>
 <body>
-    <nav id="navBar" class="navbar-white">
-        <a href="index.html">
-            <img src="img/compass_white_name.png" class="logo">
-        </a>
-		 <div class="search-bar-list">
+<section class="navbar">
+    <header>
+        <!-- Logo -->
+        <a href="/" th:href="@{/home_page}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
             <form action="/" method="GET" class="form">
                 <input type="search" placeholder="Search for..." class="search-field">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
-        <ul class="nav-links">
-             <li><a href="#">Rent your house</a> </li>
-        </ul>
-        <a href="#" class="register-btn">Register Now</a>
-        <i class="fas fa-bars" onclick="togglebtn()"></i>
-		 <div class="dropdown">
-            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
-             <div class="dropdown-content">
-                 <a href="/" th:action="@{/account}">Account</a>
-                 <a href="/" th:action="@{/message}">Messages</a>
-                 <a href="/" th:action="@{/favourites}">Favorites</a>
-                 <a href="/" th:action="@{/help}">Help</a>
-                 <a href="/" th:action="@{/logout}" >Log Out</a>
-             </div>
+        <!-- Find a house and add a listing navlinks -->
+        <div class="nav-links">
+            <ul class="nav-links-style">
+                <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+            </ul>
         </div>
-    </nav>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </header>
+    <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
+</section>
+<div class="spacer"></div>
 <div class="container">
-
     <div class="list-container">
+
+        <!-- ALL LISTINGS -->
         <div class="left-col">
             <p>100+ Options</p>
             <h1>Recommended Places In Paris</h1>
-            <div class="house">
+            <!-- Looping through the listings and populating the HTML dynamically -->
+            <div th:each="listing : ${listings}" class="house" >
+                <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
                 <div class="house-img">
-                    <a href="house.html"><img src="img/image-s1.png"></a>
+                    <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
                 </div>
                 <div class="house-info">
-                    <p>Private Villa in Paris</p>
-                    <h3>Modern Room In The Center</h3>
-                    <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-            <div class="house">
-                <div class="house-img">
-                    <img src="img/image-s2.png">
-                </div>
-                <div class="house-info">
-                    <p>Private Villa in Paris</p>
-                    <h3>Luxurious Room With Street View</h3>
-                    <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-            <div class="house">
-                <div class="house-img">
-                    <img src="img/image-s3.png">
-                </div>
-                <div class="house-info">
-                    <p>Private Villa in San Francisco</p>
-                    <h3>Deluxe Queen Room With Street View</h3>
-                    <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-            <div class="house">
-                <div class="house-img">
-                    <img src="img/image-s4.png">
-                </div>
-                <div class="house-info">
-                    <p>Private Villa in San Francisco</p>
-                    <h3>Deluxe Queen Room With Street View</h3>
-                    <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-            <div class="house">
-                <div class="house-img">
-                    <img src="img/image-s5.png">
-                </div>
-                <div class="house-info">
-                    <p>Private Villa in San Francisco</p>
-                    <h3>Deluxe Queen Room With Street View</h3>
-                    <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-            <div class="house">
-                <div class="house-img">
-                    <img src="img/image-s6.png">
-                </div>
-                <div class="house-info">
-                    <p>Private Villa in San Francisco</p>
-                    <h3>Deluxe Queen Room With Street View</h3>
-                    <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
+                    <p th:text="${listing.addressLine}"></p>
+                    <h3 th:text="${listing.description}"></h3>
+                    <!-- Rating stars -->
+                    <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
+                <i class="fas fa-star"></i>
+            </span>
+                    <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
+                <i class="far fa-star"></i>
+            </span>
                 </div>
             </div>
         </div>
-        <div class="right-col">
-            <div class="sidebar">
-                <h2>Select Filters</h2>
-                <h3>Property Type</h3>
-                <div class="filter">
-                    <input type="checkbox"> <p>House</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Hostel</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Flat</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Villa</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Guest Suite</p> <span>(0)</span>
-                </div>
-                <h3>Amenities</h3>
-                <div class="filter">
-                    <input type="checkbox"> <p>Air Conditioning</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Wifi</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Gym</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Pool</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Kitchen</p> <span>(0)</span>
-                </div>
-
-                <div class="sidebar-link">
-                    <a href="#">View More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<!-- PAGINATION BOTTOM - DESIGN -->
     <div class="pagination">
-        <img src="img/arrow.png">
+        <a href="#" class="arrow left-arrow"><img src="img/arrow.png"></a>
         <span class="current">1</span>
         <span>2</span>
         <span>3</span>
         <span>4</span>
-        <span>5</span>
-        <span>&middot; &middot; &middot; &middot;</span>
+        <a href="#" class="ellipsis">&middot; &middot; &middot; &middot;</a>
         <span>20</span>
-        <img src="img/arrow.png" class="right-arrow">
+        <a href="#" class="arrow right-arrow"><img src="img/arrow.png"></a>
     </div>
 
+<!-- MEDIA-->
     <div class="footer">
         <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
         <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
@@ -197,19 +92,30 @@
         <p></p>
     </div>
 </div>
-    
 
-<script>
-    var navBar = document.getElementById("navBar");
-    function togglebtn(){
-        navBar.classList.toggle("hidemenu");
-    }
-</script>
+<!-- Bottom information -->
+<section id="info" class="info-section">
+    <a href="#" onclick="openPopup('about')">ABOUT</a>
+    <a href="#">COOKIE SETTINGS</a>
+    <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
+</section>
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-4.4.1.js"></script>
+<!-- Popup Windows -->
+<div id="popup-about" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('about')">&times;</span>
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your project summary text here -->
+    </div>
+</div>
+<div id="popup-privacy" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('privacy')">&times;</span>
+        <h2>Privacy</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <!-- Add your privacy policy text here -->
+    </div>
+</div>
 </body>
 </html>

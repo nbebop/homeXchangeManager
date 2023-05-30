@@ -21,9 +21,6 @@ public class Listing implements Serializable {
     private User owner;
 
     private String description;
-    @Lob
-    @Column(name = "image", length = Integer.MAX_VALUE, nullable = true)
-    private Byte[] image;
 
     @ManyToMany
     private List<Service> services;
@@ -53,14 +50,62 @@ public class Listing implements Serializable {
     private String postalCode;
     private String country;
 
+    public String getMainImg() {
+        return mainImg;
+    }
+
+    public void setMainImg(String mainImg) {
+        this.mainImg = mainImg;
+    }
+
+    @Transient
+    public String getMainImgPath() {
+        if (mainImg == null ) return null;
+        return "/listing-images/" + listingId + "/" + mainImg;
+    }
+
+    @Transient
+    public String getScdImgPath() {
+        if (scdImg == null ) return null;
+        return "/listing-images/" + listingId + "/" + scdImg;
+    }
+
+    @Transient
+    public String getTrdImgPath() {
+        if (trdImg == null ) return null;
+        return "/listing-images/" + listingId + "/" + trdImg;
+    }
+
+    public String getScdImg() {
+        return scdImg;
+    }
+
+    public void setScdImg(String scdImg) {
+        this.scdImg = scdImg;
+    }
+
+    public String getTrdImg() {
+        return trdImg;
+    }
+
+    public void setTrdImg(String trdImg) {
+        this.trdImg = trdImg;
+    }
+
+    @Column(name = "main_image")
+    private String mainImg;
+    @Column(name = "second_image")
+    private String scdImg;
+    @Column(name = "third_image")
+    private String trdImg;
+
     public Listing() {
     }
 
-    public Listing(long listingId, User owner, String description, Byte[] image, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country) {
+    public Listing(long listingId, User owner, String description, List<Service> services, List<Constraint> constraints, String bookingInfo, double rating, double ownerRating, Date availabilityStart, Date availabilityEnd, String addressLine, String premise, String city, String postalCode, String country, String mainImg, String scdImg, String trdImg) {
         this.listingId = listingId;
         this.owner = owner;
         this.description = description;
-        this.image = image;
         this.services = services;
         this.constraints = constraints;
         this.bookingInfo = bookingInfo;
@@ -97,14 +142,6 @@ public class Listing implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(Byte[] image) {
-        this.image = image;
     }
 
     public List<Service> getServices() {

@@ -210,7 +210,6 @@ a:hover {
     width: 80%;
     max-width: 600px;
 }
-
 .close {
     color: #aaa;
     float: right;
@@ -218,10 +217,20 @@ a:hover {
     font-weight: bold;
     cursor: pointer;
 }
-
 .close:hover,
 .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
 }

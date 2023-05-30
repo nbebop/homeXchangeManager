@@ -26,9 +26,15 @@ INSERT INTO user_roles (user_id, role_id) VALUES (8, 2);
 INSERT INTO user_roles (user_id, role_id) VALUES (9, 1);
 
 -- listing
-
--- INSERT INTO listings (listing_id, owner_id, description, image, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
--- VALUES ('1', '1', 'Small cozy loft in the center of paris', NULL, 'Any other info call me', '0', '0', '2024-01-01', '2024-12-01', 'Qifsharopt 69', '4th floor, left', 'Paris', '750001', 'France');
+INSERT INTO listings (listing_id, owner_id, description, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country, main_image)
+VALUES ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Brown 69', '4th floor, left', 'Paris', '750001', 'France', 'house-1.png'),
+('2', '2', 'Big apartement in the center of paris', 'Any other info call me', 0, 0, '2024-01-02', '2024-12-02', 'Bookish 69', '2th floor, left', 'Paris', '750002', 'France', 'house-3.png'),
+('3', '3', 'Modern studio apartment in downtown Paris', 'Contact me for booking details', 0, 0, '2024-03-15', '2024-12-31', 'Rue de la Liberte 123', '7th floor, Apt 12', 'Paris', '750003', 'France', 'house-1.png'),
+('4', '4', 'Charming cottage in the outskirts of Paris', 'Please inquire for availability', 0, 0, '2024-02-01', '2024-12-15', 'Chemin des Fleurs 456', 'Garden Cottage', 'Paris', '750004', 'France', 'house-3.png'),
+('5', '5', 'Spacious penthouse with panoramic views', 'For bookings, contact the owner', 0, 0, '2024-05-01', '2024-12-31', 'Avenue des Champs-Elysees 789', 'Penthouse Suite', 'Paris', '750005', 'France', 'house-1.png'),
+('6', '6', 'Cozy apartment near Eiffel Tower', 'For booking inquiries, please contact the owner', 0, 0, '2024-06-01', '2024-12-31', 'Rue de la Tour 10', '2nd floor, Apt 5', 'Paris', '750006', 'France', 'house-3.png'),
+('7', '7', 'Beautiful villa with garden in Paris', 'Contact owner for availability and reservations', 0, 0, '2024-07-01', '2024-12-31', 'Avenue du Jardin 25', 'Villa Flore', 'Paris', '750007', 'France', NULL),
+('8', '8', 'Modern loft in vibrant neighborhood', 'Please inquire for booking details', 0, 0, '2024-08-01', '2024-12-31', 'Rue de la Mode 42', '5th floor, Loft 8', 'Paris', '750008', 'France', NULL);
 
 
 -- messages
@@ -41,3 +47,21 @@ VALUES
        (7, 8, 'Is it possible to smoke in your home?', CURRENT_TIMESTAMP),
        (8, 7, 'Absolutely no!', CURRENT_TIMESTAMP);
 
+-- services
+INSERT INTO services (service_id, service_name, service_description)
+VALUES (1, 'Garbage disposal', 'Take out the trash and recycling'),
+       (2, 'Plant care', 'Water plants and tend to garden'),
+       (3, 'Errand running', 'Run errands, such as picking up dry cleaning or dropping off mail. The owner will let you know in chat.'),
+       (4, 'Appliance maintenance', 'Clean and maintain appliances, such as the refrigerator and oven'),
+       (5, 'Disinfecting and sanitizing', ' Clean and disinfect high-touch surfaces, such as doorknobs and light switches');
+
+-- constraints
+INSERT INTO constraints (constraint_id, constraint_name, constraint_description)
+VALUES (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire hazards and health risks.'),
+       (2, 'No pets', 'Pets are not allowed to prevent damage and/or hygiene and health issues.'),
+       (3, 'No shoes on carpet', 'Shoes are not allowed on the carpet to keep it clean and prevent wear and tear.'),
+       (4, 'No loud music after 10pm', 'Loud music is not allowed after 10pm to respect neighbors and maintain a peaceful environment.'),
+       (5, 'No cooking with open flames', 'Cooking with open flames is prohibited due to fire hazards and safety concerns.'),
+       (6, 'No leaving doors unlocked', 'Doors must be locked at all times to prevent theft and ensure safety.'),
+       (7, 'No food in bedrooms', 'Eating in bedrooms is not allowed to prevent pests and maintain cleanliness.'),
+       (8, 'No car space', 'Cars cause pollution and there is not parking spot available. ');

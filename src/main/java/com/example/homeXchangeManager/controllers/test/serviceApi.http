@@ -1,0 +1,11 @@
+POST http://localhost:8090/service/new
+Content-Type: application/json
+
+{
+  "serviceName": "Feed the cat",
+  "serviceDescription": "Every day two times a day, the cat needs to be fed."
+}
+
+
+
+
