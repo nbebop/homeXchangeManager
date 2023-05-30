@@ -19,23 +19,17 @@ public class Constraint implements Serializable {
 
     @NotNull
     @NotEmpty
-    private String constraintText;
-
-    @NotNull
-    @NotEmpty
     private String constraintDescription;
 
-    // Default constructor
-    public Constraint() {}
+    public Constraint() {
+    }
 
-    // Constructor with parameters
-    public Constraint(String constraintName, String constraintText, String constraintDescription) {
+    public Constraint(int constraintId, String constraintName, String constraintDescription) {
+        this.constraintId = constraintId;
         this.constraintName = constraintName;
-        this.constraintText = constraintText;
         this.constraintDescription = constraintDescription;
     }
 
-    // Getters and Setters
     public int getConstraintId() {
         return constraintId;
     }
@@ -50,14 +44,6 @@ public class Constraint implements Serializable {
 
     public void setConstraintName(String constraintName) {
         this.constraintName = constraintName;
-    }
-
-    public String getConstraintText() {
-        return constraintText;
-    }
-
-    public void setConstraintText(String constraintText) {
-        this.constraintText = constraintText;
     }
 
     public String getConstraintDescription() {

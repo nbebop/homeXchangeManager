@@ -31,7 +31,7 @@ public class ListingDto {
     private String country;
     private String premise;
     private List<Service> services;
-    private List<Constraint> constrains;
+    private List<Constraint> constraints;
     private String bookingInfo;
     @RatingConstraint
     private double rating;

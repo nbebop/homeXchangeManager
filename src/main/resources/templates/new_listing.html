@@ -93,16 +93,16 @@
             <h2>Services</h2>
             <div class="services">
                 <label th:each="service : ${services}">
-                    <input type="checkbox" th:field="*{services}" th:value="${service}" />
-                    <span th:text="${service.name}"></span>
+                    <input type="checkbox" th:field="*{services}" th:value="${service.serviceId}" />
+                    <span th:text="${service.serviceName}"></span>
                 </label>
             </div>
 
             <h2>Constraints</h2>
             <div class="constraints">
                 <label th:each="constraint : ${constraints}">
-                    <input type="checkbox" th:field="*{constraints}" th:value="${constraint}" />
-                    <span th:text="${constraint.name}"></span>
+                    <input type="checkbox" th:field="*{constraints}" th:value="${constraint.constraintId}" />
+                    <span th:text="${constraint.constraintName}"></span>
                 </label>
             </div>
 <!-- HARD CODED STUFF I THOUGHT IS IMPORTANT-->
@@ -186,6 +186,14 @@
         </form>
     </div>
 </section>
+<!-- EXAMPLE ! Delete when implemented properly-->
+<table>
+    <tr th:each="service: ${services}">
+        <td th:text="${service.serviceName}"></td>
+        <td th:text="${service.serviceDescription}"></td>
+    </tr>
+</table>
+
 <!-- Bottom information -->
 <section id="info" class="info-section">
     <a href="#" onclick="openPopup('about')">ABOUT</a>
