@@ -5,16 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert new listing</title>
 <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-<!--<link href="../static/css/navbar.css" rel="stylesheet">-->
-<!--<link href="../static/css/new_listing_style.css" rel="stylesheet">-->
 <link href="css/navbar.css" rel="stylesheet">
-<link href="css/new_listing_style.css" rel="stylesheet">
+<link href="/css/new_listing_style.css" rel="stylesheet">
 <script src="js/script.js"></script>
 <body>
 <section class="navbar">
     <header>
         <!-- Logo -->
-<!--        <a href="/" th:href="@{/success}"><img class="logo" src="../static/img/compass_white_name.png" alt="logo"></a>-->
         <a href="/" th:href="@{/success}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
         <!--Search bar -->
         <div class="search-bar">
@@ -32,7 +29,6 @@
         </div>
         <!-- Dropdown menu -->
         <div class="dropdown">
-<!--            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>-->
             <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="/" th:href="@{/account}">Account</a>
@@ -50,7 +46,6 @@
 <section id="form" class="form-section">
     <div class="form-container">
         <h1>Create a new listing</h1>
-      
         <form modelAttribute="listing" th:action="@{/new_listing}" th:object="${listing}" method="post" enctype="multipart/form-data">
             <div class="create_listing_info">
                 <label for="description">
@@ -89,7 +84,7 @@
                     Availability End Date:</label>
                 <input type="date" id="availabilityEnd" name="availabilityEnd" th:field="*{availabilityEnd}" required>
             </div>
-
+            <!-- Services -->
             <h2>Services</h2>
             <div class="services">
                 <label th:each="service : ${services}">
@@ -97,7 +92,11 @@
                     <span th:text="${service.serviceName}"></span>
                 </label>
             </div>
+<!--            INPUT ADDITIONAL   - to implement!      -->
+<!--            <label for="city">Additional information :</label>-->
+<!--            <input type="text" id="additionalInfo" name="additionalInfo" th:field="*{additionalInfo}" required>-->
 
+            <!-- Constraints -->
             <h2>Constraints</h2>
             <div class="constraints">
                 <label th:each="constraint : ${constraints}">
@@ -105,94 +104,24 @@
                     <span th:text="${constraint.constraintName}"></span>
                 </label>
             </div>
-<!-- HARD CODED STUFF I THOUGHT IS IMPORTANT-->
+<!--            INPUT ADDITIONAL         -->
+<!--            <label for="city">Additional information :</label>-->
+<!--            <input type="text" id="additionalInfo2" name="additionalInfo2" th:field="*{additionalInfo2}" required>-->
 
-<!--            <h2>Services</h2>-->
-<!--            <div class="services">-->
-
-<!--                <label><input type="checkbox" name="services" value="pets">Take care of pets</label>-->
-<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>-->
-
-<!--                <label><input type="checkbox" name="services" value="plants">Water plants</label>-->
-<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>-->
-<!--                <label>-->
-<!--                    <input type="checkbox" name="services" value="cleaning">Clean the house</label>-->
-<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description"><br>-->
-<!--                <label>-->
-<!--                    <input type="checkbox" name="services" value="security">-->
-<!--                    Ensure home security-->
-<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description">-->
-<!--                </label><br>-->
-<!--                <label>-->
-<!--                    <input type="checkbox" name="services" value="groceries">-->
-<!--                    Buy groceries-->
-<!--                    <input type="text" name="serviceDescriptions" placeholder="Enter additional description">-->
-<!--                </label><br>-->
-<!--                &lt;!&ndash; Add more services as needed &ndash;&gt;-->
-
-<!--                <label>-->
-<!--                    <input type="checkbox" name="customServices" value="true">-->
-<!--                </label>-->
-<!--                <input  class="custom-checkbox" type="text" name="customServiceName" placeholder="Enter custom service name">-->
-<!--                <input type="text" name="customServiceDescription" placeholder="Enter custom service description">-->
-
-<!--            </div>-->
-
-<!--            <h2>Limitations</h2>-->
-<!--            <div class="constraints">-->
-<!--                <label>-->
-<!--                    <input type="checkbox" name="constraints" value="no-smoking">-->
-<!--                    No smoking in the accommodation-->
-<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
-<!--                </label><br>-->
-<!--                <label>-->
-<!--                    <input type="checkbox" name="constraints" value="no-noise">-->
-<!--                    No noise after 23h-->
-<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
-<!--                </label><br>-->
-<!--                <label>-->
-<!--                    <input type="checkbox" name="constraints" value="max-2-children">-->
-<!--                    Maximum 2 children per accommodation-->
-<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
-<!--                </label><br>-->
-<!--                <label>-->
-<!--                    <input type="checkbox" name="constraints" value="no-children">-->
-<!--                    No children allowed-->
-<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
-<!--                </label><br>-->
-<!--                <label>-->
-<!--                    <input type="checkbox" name="constraints" value="no-pets">-->
-<!--                    No pets allowed-->
-<!--                    <input type="text" name="constraintDescriptions" placeholder="Enter additional description">-->
-<!--                </label><br>-->
-<!--                &lt;!&ndash; Add more constraints as needed &ndash;&gt;-->
-
-<!--                <label>-->
-<!--                    <input type="checkbox" name="customConstraints" value="true">-->
-<!--                </label>-->
-<!--                <input type="text" name="customConstraintName" placeholder="Create custom constraint name">-->
-<!--                <input type="text" name="customConstraintDescription" placeholder="Enter additional description">-->
-<!--            </div>-->
-
-
-            <label for="image_main" class="upload-btn"> Upload main picture:</label>
+<!--            ADDING 3 IMAGES         -->
+            <label for="image_main" class="upload-btn">Upload main picture:</label>
             <input type="file" id="image_main" th:field="*{mainImg}" accept="image/png, image/jpeg">
-            <label for="image_scd" class="upload-btn"> Upload secondary picture :</label>
+
+            <label for="image_scd" class="upload-btn">Upload secondary picture:</label>
             <input type="file" id="image_scd" th:field="*{scdImg}" accept="image/png, image/jpeg">
-            <label for="image_trd" class="upload-btn"> Upload third picture:</label>
+
+            <label for="image_trd" class="upload-btn">Upload third picture:</label>
             <input type="file" id="image_trd" th:field="*{trdImg}" accept="image/png, image/jpeg">
 
             <input type="submit" value="Save listing">
         </form>
     </div>
 </section>
-<!-- EXAMPLE ! Delete when implemented properly-->
-<table>
-    <tr th:each="service: ${services}">
-        <td th:text="${service.serviceName}"></td>
-        <td th:text="${service.serviceDescription}"></td>
-    </tr>
-</table>
 
 <!-- Bottom information -->
 <section id="info" class="info-section">
