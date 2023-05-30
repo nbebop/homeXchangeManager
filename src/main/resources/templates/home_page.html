@@ -36,26 +36,23 @@
         </div>
     </nav>
     <div class="container">
-        <!-- ALL LISTINGS -->
-        <div class="left-col" th:if="${listingsSearch != null}" >
-            <!-- Looping through the listings and populating the HTML dynamically -->
-            <div th:each="listing : ${listingsSearch}" class="house" >
-                <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
-                <!-- <div class="house-img">
-                    <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
-                </div> -->
-                <div class="house-info">
-                    <p th:text="${listing.addressLine}"></p>
-                    <h3 th:text="${listing.description}"></h3>
-                    <!-- Rating stars -->
-                    <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
-                <i class="fas fa-star"></i>
-            </span>
-                    <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
-                <i class="far fa-star"></i>
-            </span>
+        <h1>Find Your Next Stay</h1>
+        <div class="search-bar">
+            <form>
+                <div class="location-input">
+                    <label>Location</label>
+                    <input type="text" placeholder="Where are you going?">
                 </div>
-            </div>
+                <div>
+                    <label>Check in</label>
+                    <input type="text" placeholder="Add Date">
+                </div>
+                <div>
+                    <label>Check out</label>
+                    <input type="text" placeholder="Add Date">
+                </div>
+                <button type="submit"><img src="img/search.png"></button>
+            </form>
         </div>
     </div>
 </div>
