@@ -5,55 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listing Page</title>
-    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-    <link href="css/style.css" rel="stylesheet">
-    <script src="js/script.js"></script>
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="/js/script.js"></script>
 </head>
 <body>
-<nav id="navBar" class="navbar-white">
-    <a href="index.html">
-        <img src="img/compass_white_name.png" class="logo">
-    </a>
-    <div class="search-bar-list">
-        <form th:action="@{/listings/city/availability}" method="get" class="form">
-            <input type="search" placeholder="Search in city " class="search-field">
-            <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
-
-    <div class="container">
-        <h1>Find Your Next Stay</h1>
+<section class="navbar">
+    <header>
+        <!-- Logo -->
+        <a href="/" th:href="@{/home_page}"><img class="logo" src="/img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
         <div class="search-bar">
-            <form>
-                <div class="location-input">
-                    <label>Location</label>
-                    <input type="text" placeholder="Where are you going?">
-                </div>
-                <div>
-                    <label>Check in</label>
-                    <input type="text" placeholder="Add Date">
-                </div>
-                <div>
-                    <label>Check out</label>
-                    <input type="text" placeholder="Add Date">
-                </div>
-                <div>
-                    <label>Guest</label>
-                    <input type="text" placeholder="Add Guest">
-                </div>
-                <button type="submit"><img src="img/search.png"></button>
+            <form th:action="@{/listings/city}" method="get" class="form">
+                <input type="search" placeholder="Search in city " class="search-field" name="citySimple">
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
+
+        <!-- Find a house and add a listing navlinks -->
+        <div class="nav-links">
+            <ul class="nav-links-style">
+                <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+            </ul>
+        </div>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"><img src="/img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </header>
+    <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
+</section>
+
+<div class="spacer"></div>
+
+    <!-- Listings passed from simple search -->
+    <div th:if="${simpleSearch}">
+        <h2> Simple search results: </h2>
+
+        <div class="left-col" th:if="${listingsSimpleSearch == null or listingsSimpleSearch.isEmpty()}" >
+            <p> No listings found in this city.. </p>
+        </div>
     </div>
-    <!-- IF LISTINGS PASSED BY SIMPLE SEARCH WORKS -->
     <div class="left-col" th:if="${listingsSimpleSearch != null}" >
         <!-- Looping through the listings and populating the HTML dynamically -->
         <div th:each="listing : ${listingsSimpleSearch}" class="house" >
             <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
-            <!-- <div class="house-img">
+            <div class="house-img">
                 <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
-            </div> -->
+            </div>
             <div class="house-info">
                 <p th:text="${listing.addressLine}"></p>
                 <h3 th:text="${listing.description}"></h3>
@@ -69,7 +76,14 @@
     </div>
 
     <!-- IF LISTINGS PASSED BY ADVANCED SEARCH WORKS -->
-    <div class="left-col" th:if="${listingsAdvancedSearch != null}" >
+    <div th:if="${advancedSearch}">
+        <h2> Advanced search results: </h2>
+
+        <div class="left-col" th:if="${listingsAdvancedSearch == null or listingsAdvancedSearch.isEmpty()}" >
+            <p> No listings found... Try with another city or dates! </p>
+        </div>
+    </div>
+    <div class="left-col" th:if="${listingsAdvancedSearch != null and !listingsAdvancedSearch.isEmpty()}" >
         <!-- Looping through the listings and populating the HTML dynamically -->
         <div th:each="listing : ${listingsAdvancedSearch}" class="house" >
             <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
@@ -90,47 +104,26 @@
         </div>
     </div>
 
-    <!-- Find a house and add a listing navlinks -->
-    <div class="nav-links">
-        <ul class="nav-links-style">
-            <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-            <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
-        </ul>
-    </div>
-    <!-- Dropdown menu -->
-    <div class="dropdown">
-        <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
-        <div class="dropdown-content">
-            <a href="/" th:href="@{/account}">Account</a>
-            <a href="/" th:href="@{/message}">Messages</a>
-            <a href="/" th:href="@{/favourites}">Favorites</a>
-            <a href="/" th:href="@{/help}">Help</a>
-            <a href="#" onclick="logout()">Logout</a>
-        </div>
-    </div>
-</nav>
-<div class="container">
-
 <!-- PAGINATION BOTTOM - DESIGN -->
-    <div class="pagination">
-        <a href="#" class="arrow left-arrow"><img src="img/arrow.png"></a>
-        <span class="current">1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <a href="#" class="ellipsis">&middot; &middot; &middot; &middot;</a>
-        <span>20</span>
-        <a href="#" class="arrow right-arrow"><img src="img/arrow.png"></a>
-    </div>
+<div class="pagination">
+    <a href="#" class="arrow left-arrow"><img src="/img/arrow.png"></a>
+    <span class="current">1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <a href="#" class="ellipsis">&middot; &middot; &middot; &middot;</a>
+    <span>20</span>
+    <a href="#" class="arrow right-arrow"><img src="/img/arrow.png"></a>
+</div>
 
 <!-- MEDIA-->
-    <div class="footer">
-        <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
-        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
-        <hr>
-        <p></p>
-    </div>
+<div class="footer">
+    <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+    <hr>
+    <p></p>
+</div>
 </div>
 
 <!-- Bottom information -->
@@ -156,7 +149,6 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
         <!-- Add your privacy policy text here -->
     </div>
-</div>
 </div>
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,14 +31,17 @@ public class SearchController {
     public String listingsByCityAndAvailability(Model model, @RequestParam String cityAdvanced, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date start, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date end) {
         List<Listing> listingsSearch = listingService.findAllByCityAndAvailabilityStartBetween(cityAdvanced, start, end);
         model.addAttribute("listingsAdvancedSearch", listingsSearch);
+        model.addAttribute("advancedSearch", true);
 
         return "/listing";
     }
 
-    @RequestMapping("/listings/city")
+    @GetMapping("/listings/city")
     public String listingsByCity(Model model, @RequestParam String citySimple) {
         List<Listing> listings = listingService.findByCity(citySimple);
+
         model.addAttribute("listingsSimpleSearch", listings);
+        model.addAttribute("simpleSearch", true);
 
         return "/listing";
     }
