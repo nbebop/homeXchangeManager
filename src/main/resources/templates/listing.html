@@ -27,7 +27,7 @@
         <div class="nav-links">
             <ul class="nav-links-style">
                 <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
             </ul>
         </div>
         <!-- Dropdown menu -->
@@ -53,7 +53,7 @@
             <p>100+ Options</p>
             <h1>Recommended Places In Paris</h1>
             <!-- Looping through the listings and populating the HTML dynamically -->
-            <div th:each="listing : ${listings}" class="house" >
+            <div th:each="listing : ${listings}" class="house">
                 <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
                 <div class="house-img">
                     <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
@@ -71,51 +71,55 @@
                 </div>
             </div>
         </div>
-<!-- PAGINATION BOTTOM - DESIGN -->
-    <div class="pagination">
-        <a href="#" class="arrow left-arrow"><img src="img/arrow.png"></a>
-        <span class="current">1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <a href="#" class="ellipsis">&middot; &middot; &middot; &middot;</a>
-        <span>20</span>
-        <a href="#" class="arrow right-arrow"><img src="img/arrow.png"></a>
+        <!-- PAGINATION BOTTOM - DESIGN -->
+        <div class="pagination">
+            <a href="#" class="arrow left-arrow"><img src="img/arrow.png"></a>
+            <span class="current">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <a href="#" class="ellipsis">&middot; &middot; &middot; &middot;</a>
+            <span>20</span>
+            <a href="#" class="arrow right-arrow"><img src="img/arrow.png"></a>
+        </div>
+
+        <!-- MEDIA-->
+        <div class="footer">
+            <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+            <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+            <hr>
+            <p></p>
+        </div>
     </div>
 
-<!-- MEDIA-->
-    <div class="footer">
-        <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
-        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
-        <hr>
-        <p></p>
-    </div>
-</div>
+    <!-- Bottom information -->
+    <section id="info" class="info-section">
+        <a href="#" onclick="openPopup('about')">ABOUT</a>
+        <a href="#">COOKIE SETTINGS</a>
+        <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
+    </section>
 
-<!-- Bottom information -->
-<section id="info" class="info-section">
-    <a href="#" onclick="openPopup('about')">ABOUT</a>
-    <a href="#">COOKIE SETTINGS</a>
-    <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
-</section>
-
-<!-- Popup Windows -->
-<div id="popup-about" class="popup">
-    <div class="popup-content">
-        <span class="close" onclick="closePopup('about')">&times;</span>
-        <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
-        <!-- Add your project summary text here -->
+    <!-- Popup Windows -->
+    <div id="popup-about" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('about')">&times;</span>
+            <h2>About</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in
+                nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse
+                platea dictumst.</p>
+            <!-- Add your project summary text here -->
+        </div>
     </div>
-</div>
-<div id="popup-privacy" class="popup">
-    <div class="popup-content">
-        <span class="close" onclick="closePopup('privacy')">&times;</span>
-        <h2>Privacy</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
-        <!-- Add your privacy policy text here -->
+    <div id="popup-privacy" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('privacy')">&times;</span>
+            <h2>Privacy</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in
+                nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse
+                platea dictumst.</p>
+            <!-- Add your privacy policy text here -->
+        </div>
     </div>
-</div>
 </body>
 </html>

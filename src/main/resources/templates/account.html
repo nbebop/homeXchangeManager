@@ -22,7 +22,7 @@
         <div class="nav-links">
             <ul class="nav-links-style">
                 <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
             </ul>
         </div>
         <!-- Dropdown menu -->
@@ -42,35 +42,35 @@
 <div class="spacer"></div>
 <div class="profile-section">
     <h2>Profile</h2>
-    <div class="profile-details" >
+    <div class="profile-details">
         <div class="booking-details" th:each="listings : ${listings}">
-<!--         Display user's profile information-->
-        <p th:text="'Name: '+ ${user.firstname + ' ' + user.lastname}"></p>
-        <p th:text="'Email: ' + ${user.email}"></p>
-        <p th:text="'Address: '+ ${user.city}"></p>
-        <p th:text="'Rating: '+ ${listings.ownerRating}"></p>
+            <!--         Display user's profile information-->
+            <p th:text="'Name: '+ ${user.firstname + ' ' + user.lastname}"></p>
+            <p th:text="'Email: ' + ${user.email}"></p>
+            <p th:text="'Address: '+ ${user.city}"></p>
+            <p th:text="'Rating: '+ ${listings.ownerRating}"></p>
+        </div>
     </div>
-</div>
 
-<div class="photos-section" th:each="listingItem : ${listings}">
-    <h2>Photos of My Home</h2>
-    <img th:src="@{${listingItem.getMainImgPath}}" alt="House Image">
-</div>
+    <div class="photos-section" th:each="listingItem : ${listings}">
+        <h2>Photos of My Home</h2>
+        <img th:src="@{${listingItem.getMainImgPath}}" alt="House Image">
+    </div>
 
-<div class="services-section" th:each="listingItem : ${listings}">
-    <h2>Services Offered</h2>
-    <!-- Display services offered by the user -->
-    <p th:text="'Services: ' + ${listingItem.services}"></p>
-</div>
+    <div class="services-section" th:each="listingItem : ${listings}">
+        <h2>Services Offered</h2>
+        <!-- Display services offered by the user -->
+        <p th:text="'Services: ' + ${listingItem.services}"></p>
+    </div>
 
-<div class="constraints-section" th:each="listingItem : ${listings}">
-    <h2>Constraints/Limits</h2>
-    <p th:text="'Constraints: ' + ${listingItem.constraints}"></p>
-</div>
+    <div class="constraints-section" th:each="listingItem : ${listings}">
+        <h2>Constraints/Limits</h2>
+        <p th:text="'Constraints: ' + ${listingItem.constraints}"></p>
+    </div>
 
-<div class="bookings-section">
-    <h2>Pending Bookings</h2>
-    <div class="booking">
+    <div class="bookings-section">
+        <h2>Pending Bookings</h2>
+        <div class="booking">
             <div class="booking-details" th:each="listingItem : ${listings}">
                 <p th:text="'Description: ' + ${listingItem.description}"></p>
                 <p th:text="'City: '+ ${listingItem.city}"></p>
@@ -81,17 +81,17 @@
                 <!-- Add other listing details as needed -->
             </div>
         </div>
-      <!--  <div class="booking-photos">
-            <img src="img/paris1.jpg" alt="Booking Photo 1" class="photo">
-            <img src="img/paris2.jpg" alt="Booking Photo 2" class="photo">
-            <img src="img/paris3.jpg" alt="Booking Photo 3" class="photo">
-        </div>-->
-    <div class="booking-photos" th:each="listingItem : ${listings}">
-        <img th:src="@{${listingItem.getMainImgPath}}" alt="Booking Image">
+        <!--  <div class="booking-photos">
+              <img src="img/paris1.jpg" alt="Booking Photo 1" class="photo">
+              <img src="img/paris2.jpg" alt="Booking Photo 2" class="photo">
+              <img src="img/paris3.jpg" alt="Booking Photo 3" class="photo">
+          </div>-->
+        <div class="booking-photos" th:each="listingItem : ${listings}">
+            <img th:src="@{${listingItem.getMainImgPath}}" alt="Booking Image">
+        </div>
     </div>
-    </div>
-    </div>
-    <!-- Add more bookings here -->
+</div>
+<!-- Add more bookings here -->
 </div>
 
 <div class="messaging-section">
@@ -115,7 +115,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('about')">&times;</span>
         <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your project summary text here -->
     </div>
 </div>
@@ -123,7 +125,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('privacy')">&times;</span>
         <h2>Privacy</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your privacy policy text here -->
     </div>
 </div>

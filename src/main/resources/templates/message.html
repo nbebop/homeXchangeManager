@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message Page</title>
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-<!--    <link href="css/navbar.css" rel="stylesheet">-->
+    <!--    <link href="css/navbar.css" rel="stylesheet">-->
     <link href="css/message.css" rel="stylesheet">
     <script src="js/script.js"></script>
 </head>
@@ -26,7 +26,7 @@
         <div class="nav-links">
             <ul class="nav-links-style">
                 <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
             </ul>
         </div>
         <!-- Dropdown menu -->
@@ -44,41 +44,41 @@
     <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 </section>
 <div class="spacer"></div>
-    <div class="host">
-        <img src="img/host.png">
-        <div>
-            <h2>Brandon</h2>
-            <p><span>
+<div class="host">
+    <img src="img/host.png">
+    <div>
+        <h2>Brandon</h2>
+        <p><span>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </span> 245 reviews </p>
-        </div>
     </div>
-    <div class="conversation">
-        <div class="message received">
-            <p>Hello, is the apartment still available?</p>
-            <span class="timestamp">10:30 AM</span>
-        </div>
-        <div class="message sent">
-            <p>Yes, it is still available. When would you like to rent it?</p>
-            <span class="timestamp">10:35 AM</span>
-        </div>
-        <div class="message received">
-            <p>I am interested in renting it for the next 3 months. Can we arrange a viewing?</p>
-            <span class="timestamp">10:45 AM</span>
-        </div>
-        <div class="message sent">
-            <p>Sure, when would you like to come for a viewing?</p>
-            <span class="timestamp">10:50 AM</span>
-        </div>
+</div>
+<div class="conversation">
+    <div class="message received">
+        <p>Hello, is the apartment still available?</p>
+        <span class="timestamp">10:30 AM</span>
     </div>
-    <form>
-        <textarea id="message" name="message" placeholder="Type your message"></textarea>
-        <input type="submit" value="Send">
-    </form>
+    <div class="message sent">
+        <p>Yes, it is still available. When would you like to rent it?</p>
+        <span class="timestamp">10:35 AM</span>
+    </div>
+    <div class="message received">
+        <p>I am interested in renting it for the next 3 months. Can we arrange a viewing?</p>
+        <span class="timestamp">10:45 AM</span>
+    </div>
+    <div class="message sent">
+        <p>Sure, when would you like to come for a viewing?</p>
+        <span class="timestamp">10:50 AM</span>
+    </div>
+</div>
+<form>
+    <textarea id="message" name="message" placeholder="Type your message"></textarea>
+    <input type="submit" value="Send">
+</form>
 <!-- Bottom information -->
 <section id="info" class="info-section">
     <a href="#" onclick="openPopup('about')">ABOUT</a>
@@ -91,7 +91,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('about')">&times;</span>
         <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your project summary text here -->
     </div>
 </div>
@@ -99,7 +101,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('privacy')">&times;</span>
         <h2>Privacy</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your privacy policy text here -->
     </div>
 </div>
