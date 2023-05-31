@@ -81,7 +81,8 @@
 <!-- CHECK IN FORM // SEARCH BAR THAT NEEDS CHANGING -->
     <div class="check-form">
 <!--        FIX IT SOMEHOW?? -->
-        <a th:href="@{'/booking/' + ${listing.listingId}}"><button type="submit">Check Availability</button></a>
+        <a th:href="@{'/booking/new/' + ${listing.listingId}}">
+            <button type="submit">Book listing</button> </a>
     </div>
 
 <!-- SOME HARDCODED STUFF FOR DE-->

@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 public class ListingServiceImpl implements ListingService {
-    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(ListingServiceImpl.class);
 
     private final ListingRepository listingRepository;
 

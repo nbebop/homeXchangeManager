@@ -73,12 +73,10 @@ public class HomeController {
     @GetMapping("/house/{id}")
     public String house(@PathVariable("id") long id, Model model, HttpServletRequest request) {
         Listing listing = listingService.findByListingId(id);
-        model.addAttribute("listing", listing);
-
-      
         User host = listing.getOwner();
-        model.addAttribute("host", host);
 
+        model.addAttribute("listing", listing);
+        model.addAttribute("host", host);
         model.addAttribute("request", request); // Add the request object to the model
 
         return "house";
@@ -121,25 +119,16 @@ public class HomeController {
     public String message() {
         return "message";
     }
+
     @GetMapping("/forgotten")
     public String forgotten() {
         return "forgotten";
     }
+
     @GetMapping("/reset")
     public String reset() {
         return "reset";
     }
 
-    @GetMapping("/booking/{id}")
-    public String booking(@PathVariable("id") long id, Model model, HttpServletRequest request) {
-        Listing listing = listingService.findByListingId(id);
-        model.addAttribute("listing", listing);
-        model.addAttribute("request", request);
-        return "booking";
-    }
-//    @GetMapping("/booking")
-//    public String booking() {
-//        return "booking";
-//    }
 
 }
