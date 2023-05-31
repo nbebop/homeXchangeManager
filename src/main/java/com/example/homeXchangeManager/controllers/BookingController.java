@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -59,8 +60,9 @@ public class BookingController {
     public String checkBookings(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User host = userService.findByUsername(auth.getName());
+        Date date = new Date();
 
-        model.addAttribute("oldBookings", bookingService.findByHostAndBookingRequestDateBefore(host, new Date()));
+        model.addAttribute("oldBookings", bookingService.findByHostAndBookingRequestDateBefore(host, date));
 
         return "booking_history";
     }
@@ -82,6 +84,7 @@ public class BookingController {
         // listing owner is host
         Listing listing = listingService.findByListingId(listingId);
         User host = listing.getOwner();
+        Date currentDate = new Date();
 
         Booking booking = new Booking();
         booking.setGuest(guest);
@@ -89,7 +92,7 @@ public class BookingController {
         booking.setListing(listing);
         booking.setBookingStart(bookingDto.getBookingStart());
         booking.setBookingEnd(bookingDto.getBookingEnd());
-        booking.setBookingRequestDate(new Date());
+        booking.setBookingRequestDate(currentDate);
         booking.setAdditionalInfo(bookingDto.getAdditionalInfo());
         bookingService.save(booking);
 
