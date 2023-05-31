@@ -68,7 +68,7 @@ public class BookingController {
     }
 
     @PostMapping("/booking/new/{listingId}")
-    public String newBooking(@PathVariable("listingId") int listingId,@Valid @ModelAttribute("booking") BookingDto bookingDto, BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response) {
+    public String newBooking(@PathVariable("listingId") int listingId,@Valid @ModelAttribute("booking") BookingDto bookingDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             String errorMessages = "";
             for (ObjectError error : bindingResult.getAllErrors()) {
