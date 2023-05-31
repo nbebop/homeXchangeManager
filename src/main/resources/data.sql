@@ -12,8 +12,7 @@ INSERT INTO users (id, username, firstname, lastname, password, email, birthdate
        ('6', 'user6', 'Naruto', 'Uzumaki', '12345', 'naruto@example.com', '2000-10-08', '386063686', 'The next Hokage', '15 Ichiban Street', 'Premise 6', 'Tokyo', '34375', 'Japan'),
        ('7', 'user7', 'James', 'Hetfield', 'yeah45', 'jameshetfield@example.com', '1965-11-22', '666666666', 'Best musician in the world', '45 Guitar street', 'Premise 7', 'San Francisco', '84735', 'USA'),
        ('8', 'user8', 'Fernando', 'Alonso', 'password33', 'fernandoalonso@example.com', '1983-03-03', '333333333', 'The GOAT of formula 1', '33 Win Street', 'Premise 8', 'Oviedo', '41008', 'Spain'),
-       ('9', 'admin2', 'admin2', 'admin2', 'admin2', 'admin2@example.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'Premise admin', 'Paris', '750015', 'France'),
-       ('10', 'admin3', 'admin3', 'admin3', 'admin3', 'admin3@example.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'Premise admin', 'Madrid', '750015', 'Spain');
+       ('9', 'admin2', 'admin2', 'admin2', 'admin2', 'admin2@example.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'Premise admin', 'Paris', '750015', 'France');
 
 -- set user rights
 INSERT INTO user_roles (user_id, role_id) VALUES (1, 1);
@@ -35,9 +34,7 @@ VALUES ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call
 ('5', '5', 'Spacious penthouse with panoramic views', 'For bookings, contact the owner', 0, 0, '2024-05-01', '2024-12-31', 'Avenue des Champs-Elysees 789', 'Penthouse Suite', 'Paris', '750005', 'France', 'house-1.png'),
 ('6', '6', 'Cozy apartment near Eiffel Tower', 'For booking inquiries, please contact the owner', 0, 0, '2024-06-01', '2024-12-31', 'Rue de la Tour 10', '2nd floor, Apt 5', 'Paris', '750006', 'France', 'house-3.png'),
 ('7', '7', 'Beautiful villa with garden in Paris', 'Contact owner for availability and reservations', 0, 0, '2024-07-01', '2024-12-31', 'Avenue du Jardin 25', 'Villa Flore', 'Paris', '750007', 'France', NULL),
-('8', '8', 'Modern loft in vibrant neighborhood', 'Please inquire for booking details', 0, 0, '2024-08-01', '2024-12-31', 'Rue de la Mode 42', '5th floor, Loft 8', 'Paris', '750008', 'France', NULL),
-('9', '9', 'Beautiful villa with garden in Paris', 'Contact owner for availability and reservations', 0, 0, '2024-07-01', '2024-12-31', 'Avenue du Jardin 25', 'Villa Flore', 'Paris', '750007', 'France', NULL),
-('10', '10', 'Modern loft in vibrant neighborhood', 'Please inquire for booking details', 0, 0, '2024-08-01', '2024-12-31', 'Rue de la Mode 42', '5th floor, Loft 8', 'Madrid', '750008', 'Spain', NULL);
+('8', '8', 'Modern loft in vibrant neighborhood', 'Please inquire for booking details', 0, 0, '2024-08-01', '2024-12-31', 'Rue de la Mode 42', '5th floor, Loft 8', 'Paris', '750008', 'France', NULL);
 
 
 -- messages
