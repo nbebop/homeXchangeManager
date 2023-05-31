@@ -3,7 +3,6 @@ package com.example.homeXchangeManager.service;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 
-import java.util.Date;
 import java.util.List;
 
 public interface ListingService {
@@ -22,8 +21,6 @@ public interface ListingService {
     List<Listing> findByCity(String city);
 
     List<Listing> findAll();
-
-    List<Listing> findAllByCityAndAvailabilityStartBetween(String city, Date start, Date end);
 
     long count();
 
