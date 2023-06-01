@@ -66,7 +66,7 @@ public class HomeController {
 
     @GetMapping("/listing")
     public String listing(Model model) {
-        model.addAttribute("listings", getAllListing());
+        model.addAttribute("allListings", getAllListing());
         return "listing";
     }
 

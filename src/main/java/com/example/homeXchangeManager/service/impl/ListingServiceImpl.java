@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -79,6 +80,16 @@ public class ListingServiceImpl implements ListingService {
     @Override
     public long count() {
         return listingRepository.count();
+    }
+
+    @Override
+    public List<Listing> findAllByCityAndAvailabilityStartBetween(String city, Date start, Date end) {
+        return listingRepository.findAllByCityAndAvailabilityStartBetween(city, start, end);
+    }
+
+    @Override
+    public List<Listing> findByCityAndAvailabilityStartGreaterThanEqualAndAvailabilityEndLessThanEqual(String city, Date start, Date end) {
+        return listingRepository.findByCityAndAvailabilityStartGreaterThanEqualAndAvailabilityEndLessThanEqual(city, start, end);
     }
 
 }
