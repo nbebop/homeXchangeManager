@@ -59,11 +59,11 @@ public class BookingController {
     @GetMapping("/booking_history")
     public String checkBookings(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User host = userService.findByUsername(auth.getName());
+        User currentUser = userService.findByUsername(auth.getName());
         Date date = new Date();
 
-        model.addAttribute("oldBookings", bookingService.findByHostAndBookingRequestDateBefore(host, date));
-
+        model.addAttribute("allBookingsAsGuest", bookingService.findByGuest(currentUser));
+        model.addAttribute("oldBookingsAsHost", bookingService.findByHostAndBookingRequestDateBefore(currentUser, date));
         return "booking_history";
     }
 
@@ -121,6 +121,5 @@ public class BookingController {
         model.addAttribute("listing", listing);
         return "new_booking";
     }
-
 
 }

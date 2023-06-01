@@ -45,11 +45,20 @@
     <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 </section>
 <div class="spacer"></div>
-<section class="booking-section">
-    <div class="booking-container">
+<section>
+    <div>
         <h2>Booking history</h2>
-        <div class="constraints">
-            <label th:each="booking : ${oldBookings}">
+        
+        <div>
+            <h4> Your bookings requests: </h4>
+            <label th:each="booking : ${allBookingsAsGuest}">
+                <p th:text="${booking.additionalInfo}"></p>
+            </label>
+        </div>
+
+        <div>
+            <h4> All bookings you hosted: </h4>
+            <label th:each="booking : ${oldBookingsAsHost}">
                 <p th:text="${booking.additionalInfo}"></p>
             </label>
         </div>

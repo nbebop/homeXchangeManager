@@ -20,4 +20,6 @@ public interface BookingService {
 
     List<Booking> findByHostAndBookingRequestDateBefore(User guest, Date before);
 
+    List<Booking> findByGuestAndBookingRequestDateBefore(User guest, Date before);
+
 }

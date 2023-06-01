@@ -41,7 +41,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public List<Booking> findByGuest(User guest) {
-        return bookingRepository.findByHost(guest);
+        return bookingRepository.findByGuest(guest);
     }
 
     public Booking findById(int id) {
@@ -51,5 +51,10 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public List<Booking> findByHostAndBookingRequestDateBefore(User host, Date before) {
         return bookingRepository.findByHostAndBookingRequestDateBefore(host, before);
+    }
+
+    @Override
+    public List<Booking> findByGuestAndBookingRequestDateBefore(User guest, Date before) {
+        return bookingRepository.findByGuestAndBookingRequestDateBefore(guest, before);
     }
 }
