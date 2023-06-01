@@ -101,6 +101,28 @@
             </div>
         </div>
 
+        <!-- All listings with no search -->
+        <div class="left-col" th:if="${simpleSearch==null and advancedSearch==null}">
+            <h2> All listings: </h2>
+            <div th:each="listing : ${allListings}" class="house">
+                <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
+                <div class="house-img">
+                    <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
+                </div>
+                <div class="house-info">
+                    <p th:text="${listing.addressLine}"></p>
+                    <h3 th:text="${listing.description}"></h3>
+                    <!-- Rating stars -->
+                    <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
+                <i class="fas fa-star"></i>
+            </span>
+                    <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
+                <i class="far fa-star"></i>
+            </span>
+                </div>
+            </div>
+        </div>
+
         <!-- PAGINATION BOTTOM - DESIGN -->
         <div class="pagination">
             <a href="#" class="arrow left-arrow"><img src="/img/arrow.png"></a>
