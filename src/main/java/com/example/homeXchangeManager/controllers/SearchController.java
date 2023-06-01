@@ -37,7 +37,7 @@ public class SearchController {
     }
 
     @GetMapping("/listings/city")
-    public String listingsByCity(Model model, @RequestParam String citySimple) {
+    public String listingsByCity(@RequestParam String citySimple, Model model) {
         List<Listing> listings = listingService.findByCity(citySimple);
 
         model.addAttribute("listingsSimpleSearch", listings);
