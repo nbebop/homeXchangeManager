@@ -44,7 +44,7 @@
             <label for="dob">Date of Birth:</label>
             <input type="date" id="dob" name="dob" th:field="*{birthdate}" required>
             <!-- in errorclass you can set css for the error -->
-            <p th:if="${#fields.hasErrors('birthdate')}" th:errorclass="error" th:errors="*{birthdate}" />
+            <p th:if="${#fields.hasErrors('birthdate')}" th:errorclass="error" th:errors="*{birthdate}"/>
 
             <label for="phone">Phone number:</label>
             <input type="tel" id="phone" name="phone" th:field="*{phoneNumber}" required>
@@ -83,7 +83,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('about')">&times;</span>
         <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your project summary text here -->
     </div>
 </div>
@@ -92,7 +94,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('privacy')">&times;</span>
         <h2>Privacy</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your privacy policy text here -->
     </div>
 </div>

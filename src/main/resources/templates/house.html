@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
     <link href="/css/navbar.css" rel="stylesheet" th:if="${#strings.startsWith(request.getRequestURI(), '/house/')}">
-    <link href="/css/style_without_navbar.css" rel="stylesheet" th:if="${#strings.startsWith(request.getRequestURI(), '/house/')}">
+    <link href="/css/style_without_navbar.css" rel="stylesheet"
+          th:if="${#strings.startsWith(request.getRequestURI(), '/house/')}">
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -27,7 +28,7 @@
         <div class="nav-links">
             <ul class="nav-links-style">
                 <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
             </ul>
         </div>
         <!-- Dropdown menu -->
@@ -78,7 +79,7 @@
         <hr> <!-- Add a horizontal rule to separate each listing -->
     </div>
 
-<!-- CHECK IN FORM // SEARCH BAR THAT NEEDS CHANGING -->
+    <!-- CHECK IN FORM // SEARCH BAR THAT NEEDS CHANGING -->
     <form class="check-form">
         <div>
             <label>Check-in</label>
@@ -95,7 +96,7 @@
         <button type="submit">Check Availability</button>
     </form>
 
-<!-- SOME HARDCODED STUFF FOR DE-->
+    <!-- SOME HARDCODED STUFF FOR DE-->
     <ul class="details-list">
         <li><i class="fas fa-home"></i>Entire Home
             <span>You will have the entire flat for you.</span>
@@ -111,7 +112,7 @@
         </li>
     </ul>
 
-<!-- MAP -->
+    <!-- MAP -->
     <div class="map">
         <h3>Location on map</h3>
         <iframe th:src="@{'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.9185124463!2d2.347035!3d48.85885484999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2spl!4v1685377861536!5m2!1sen!2spl'}"
@@ -121,10 +122,10 @@
     </div>
     <hr class="line">
 
-<!-- HOST -->
-    <div class="host" >
+    <!-- HOST -->
+    <div class="host">
         <div>
-<!--            <h2>Hosted by </h2>-->
+            <!--            <h2>Hosted by </h2>-->
             <h2 th:text="'Hosted by: '+ ${host.firstname + ' ' + host.lastname}"></h2>
             <p>
                 <span th:each="i : ${#numbers.sequence(1, 4)}">
@@ -138,16 +139,16 @@
 </div>
 
 <!-- SOCIAL MEDIA -->
-    <div class="container">
-        <div class="footer">
-            <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
-            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-            <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
-            <hr>
-        </div>
+<div class="container">
+    <div class="footer">
+        <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+        <hr>
     </div>
+</div>
 
 <!-- Bottom information -->
 <section id="info" class="info-section">
@@ -161,7 +162,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('about')">&times;</span>
         <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your project summary text here -->
     </div>
 </div>
@@ -169,7 +172,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('privacy')">&times;</span>
         <h2>Privacy</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your privacy policy text here -->
     </div>
 </div>

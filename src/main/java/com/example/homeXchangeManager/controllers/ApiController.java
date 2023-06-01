@@ -18,12 +18,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Collections;
-import java.util.List;
-
 @Controller
 public class ApiController {
     private AuthenticationManager authenticationManager;
@@ -102,12 +100,5 @@ public class ApiController {
     public ResponseEntity<String> deleteListingApi(@RequestBody ListingDto listingDto) {
 
         return new ResponseEntity<>("Listing deleted success", HttpStatus.OK);
-    }
-
-    @GetMapping("api/listings/search/{city}")
-    public ResponseEntity<List<Listing>> searchListingsByCityApi(@PathVariable("city") String city){
-
-        List<Listing> listings = listingRepository.findAllByCity(city);
-        return new ResponseEntity<>(listings, HttpStatus.OK);
     }
 }

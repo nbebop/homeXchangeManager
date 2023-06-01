@@ -28,11 +28,11 @@
         <div class="dropdown">
             <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
-                <a href="/" th:action="@{/account}">Account</a>
-                <a href="/" th:action="@{/message}">Messages</a>
-                <a href="/" th:action="@{/favourites}">Favorites</a>
-                <a href="/" th:action="@{/help}">Help</a>
-                <a href="/" th:action="@{/logout}">Log Out</a>
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <a href="#" onclick="logout()">Logout</a>
             </div>
         </div>
     </nav>
@@ -58,14 +58,7 @@
         </div>
     </div>
 </div>
-
-<script>
-    var navBar = document.getElementById("navBar");
-
-    function togglebtn() {
-        navBar.classList.toggle("hidemenu");
-    }
-</script>
+<form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 
 </body>
 </html>
