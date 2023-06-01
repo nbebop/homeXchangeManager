@@ -18,7 +18,7 @@
         <a href="/" th:href="@{/home_page}"><img class="logo" src="/img/compass_white_name.png" alt="logo"></a>
         <!--Search bar -->
         <div class="search-bar">
-            <form th:action="@{/listings/city}" method="get" class="form">
+            <form th:action="@{/listings/search/simple}" method="get" class="form">
                 <input type="search" placeholder="Search in a city..." class="search-field" name="citySimple">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>

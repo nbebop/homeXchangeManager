@@ -84,7 +84,12 @@ public class ListingServiceImpl implements ListingService {
 
     @Override
     public List<Listing> findAllByCityAndAvailabilityStartBetween(String city, Date start, Date end) {
-         return listingRepository.findAllByCityAndAvailabilityStartBetween(city, start, end);
+        return listingRepository.findAllByCityAndAvailabilityStartBetween(city, start, end);
+    }
+
+    @Override
+    public List<Listing> findByCityAndAvailabilityStartGreaterThanEqualAndAvailabilityEndLessThanEqual(String city, Date start, Date end) {
+        return listingRepository.findByCityAndAvailabilityStartGreaterThanEqualAndAvailabilityEndLessThanEqual(city, start, end);
     }
 
 }

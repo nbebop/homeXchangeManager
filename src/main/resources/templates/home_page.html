@@ -15,14 +15,14 @@
         <a href="/" th:href="@{/home_page}"><img src="img/compass_white_name.png" class="logo"></a>
         <div class="search-bar-list">
             <!-- Simple search bar -->
-            <form th:action="@{/listings/city}" method="get" class="form">
+            <form th:action="@{/listings/search/simple}" method="get" class="form">
                 <input type="search" placeholder="Search in a city..." class="search-field" name="citySimple">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
         <ul class="nav-links">
             <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-            <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+            <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
         </ul>
         <i class="fas fa-bars" onclick="togglebtn()"></i>
         <div class="dropdown">
@@ -32,7 +32,7 @@
                 <a href="/" th:action="@{/message}">Messages</a>
                 <a href="/" th:action="@{/favourites}">Favorites</a>
                 <a href="/" th:action="@{/help}">Help</a>
-                <a href="/" th:action="@{/logout}" >Log Out</a>
+                <a href="/" th:action="@{/logout}">Log Out</a>
             </div>
         </div>
     </nav>
@@ -40,18 +40,18 @@
         <h1>Find Your Next Stay</h1>
         <div class="search-bar">
             <!-- Complex search bar -->
-            <form th:action="@{/listings/city/availability}" method="get" class="form">
+            <form th:action="@{/listings/search/advanced}" method="get" class="form">
                 <div class="location-input">
                     <label>Location</label>
-                    <input type="text" placeholder="Where are you going?" name="cityAdvanced">
+                    <input type="text" placeholder="Where are you going?" name="cityAdvanced" th:name="cityAdvanced">
                 </div>
                 <div>
                     <label>Check in</label>
-                    <input type="date" placeholder="Add Date" name="start">
+                    <input type="date" placeholder="Check in date" name="dateStart" th:name="dateStart">
                 </div>
                 <div>
                     <label>Check out</label>
-                    <input type="date" placeholder="Add Date" name="end">
+                    <input type="date" placeholder="Check out date" name="dateEnd" th:name="dateEnd">
                 </div>
                 <button type="submit"><img src="img/search.png"></button>
             </form>

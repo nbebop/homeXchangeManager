@@ -21,4 +21,6 @@ public interface ListingRepository extends JpaRepository<Listing, Integer> {
     List<Listing> findAllByOrderByListingIdAsc();
 
     List<Listing> findAllByCityAndAvailabilityStartBetween(String city, Date start, Date end);
+
+    List<Listing> findByCityAndAvailabilityStartGreaterThanEqualAndAvailabilityEndLessThanEqual(String city, Date start, Date end);
 }

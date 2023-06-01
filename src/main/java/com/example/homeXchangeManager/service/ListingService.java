@@ -25,6 +25,8 @@ public interface ListingService {
 
     List<Listing> findAllByCityAndAvailabilityStartBetween(String city, Date start, Date end);
 
+    List<Listing> findByCityAndAvailabilityStartGreaterThanEqualAndAvailabilityEndLessThanEqual(String city, Date start, Date end);
+
     long count();
 
 }
