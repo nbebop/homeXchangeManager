@@ -33,8 +33,11 @@ public class SearchController {
 
     @GetMapping("/listings/search/advanced")
     public String listingsByCityAndAvailability(@RequestParam String cityAdvanced, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateStart, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateEnd, Model model) {
+        logger.debug("city: " +cityAdvanced);
+        logger.debug("start: " + dateStart);
+        logger.debug("end: "+ dateEnd);
         List<Listing> listingsSearch = listingService.findAllByCityAndAvailabilityStartBetween(cityAdvanced, dateStart, dateEnd);
-
+        logger.debug("listing: "+ listingsSearch);
         model.addAttribute("listingsAdvancedSearch", listingsSearch);
         model.addAttribute("advancedSearch", true);
 
