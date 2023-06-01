@@ -9,6 +9,8 @@
     <!--    <link href="css/navbar.css" rel="stylesheet">-->
     <link href="css/message.css" rel="stylesheet">
     <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/chat.js"></script>
 </head>
 <body>
 <section class="navbar">
@@ -75,9 +77,9 @@
         <span class="timestamp">10:50 AM</span>
     </div>
 </div>
-<form>
-    <textarea id="message" name="message" placeholder="Type your message"></textarea>
-    <input type="submit" value="Send">
+<form id="chat-form" action="/chat/send" method="post">
+    <textarea id="message" name="content" placeholder="Type your message"></textarea>
+    <input type="submit" id="send-message" value="Send">
 </form>
 <!-- Bottom information -->
 <section id="info" class="info-section">
