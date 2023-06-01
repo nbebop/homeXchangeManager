@@ -65,3 +65,12 @@ VALUES (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire haza
        (6, 'No leaving doors unlocked', 'Doors must be locked at all times to prevent theft and ensure safety.'),
        (7, 'No food in bedrooms', 'Eating in bedrooms is not allowed to prevent pests and maintain cleanliness.'),
        (8, 'No car space', 'Cars cause pollution and there is not parking spot available. ');
+
+INSERT INTO bookings (booking_id, accepted, additional_info, booking_end, booking_request_date, booking_start, guest_id, host_id, listing_id)
+VALUES (1, false, 'Nice house! I have lifelong experience and I would love to exchange home with you!', '2022-04-03','2022-02-02', '2022-03-03', 3, 2, 2),
+       (2, true, 'Great place! I´m excited to stay there.', '2022-05-15', '2022-03-01', '2022-04-01', 4, 6, 5),
+       (3, true, 'Looking forward to a wonderful stay!', '2022-07-10', '2022-05-10', '2022-06-10', 8, 4, 3),
+       (4, false, 'I hope the place has good internet access.', '2022-08-20', '2022-06-15', '2022-07-15', 7, 5, 8),
+       (5, true, 'Excited for the trip!', '2022-09-25', '2022-07-20', '2022-08-25', 6, 7, 4),
+       (6, false, 'Looking for a peaceful retreat.', '2022-11-12', '2022-09-15', '2022-10-15', 3, 8, 6),
+       (7, true, 'Need a pet-friendly accommodation.', '2023-01-05', '2022-11-10', '2022-12-20', 5, 2, 7);
