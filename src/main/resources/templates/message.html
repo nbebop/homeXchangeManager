@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message Page</title>
-    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+    <!--    <link href="css/navbar.css" rel="stylesheet">-->
     <link href="css/message.css" rel="stylesheet">
+    <script src="js/script.js"></script>
 </head>
 <body>
 <section class="navbar">
     <header>
         <!-- Logo -->
-        <a href="/" th:action="@{/login}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
+        <a href="/" th:href="@{/success}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
         <!--Search bar -->
         <div class="search-bar">
             <form action="/" method="GET" class="form">
@@ -21,61 +22,90 @@
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
-        <!-- Rent a house link -->
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">Rent your house</a> </li>
+        <!-- Find a house and add a listing navlinks -->
+        <div class="nav-links">
+            <ul class="nav-links-style">
+                <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
             </ul>
-        </nav>
+        </div>
         <!-- Dropdown menu -->
         <div class="dropdown">
             <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
-                <a href="#">Account</a>
-                <a href="#">Messages</a>
-                <a href="#">Favorites</a>
-                <a href="#">Help</a>
-                <a href="#">Log Out</a>
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <a href="#" onclick="logout()">Logout</a>
             </div>
         </div>
     </header>
+    <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 </section>
-<main>
-    <div class="host">
-        <img src="img/host.png">
-        <div>
-            <h2>Brandon</h2>
-            <p><span>
+<div class="spacer"></div>
+<div class="host">
+    <img src="img/host.png">
+    <div>
+        <h2>Brandon</h2>
+        <p><span>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
-                </span>&nbsp; &nbsp; 245 reviews &nbsp; &nbsp; Response rate 100% &nbsp; &nbsp; Response time: 60 min</p>
-        </div>
+                </span> 245 reviews </p>
     </div>
-    <div class="conversation">
-        <div class="message received">
-            <p>Hello, is the apartment still available?</p>
-            <span class="timestamp">10:30 AM</span>
-        </div>
-        <div class="message sent">
-            <p>Yes, it is still available. When would you like to rent it?</p>
-            <span class="timestamp">10:35 AM</span>
-        </div>
-        <div class="message received">
-            <p>I am interested in renting it for the next 3 months. Can we arrange a viewing?</p>
-            <span class="timestamp">10:45 AM</span>
-        </div>
-        <div class="message sent">
-            <p>Sure, when would you like to come for a viewing?</p>
-            <span class="timestamp">10:50 AM</span>
-        </div>
+</div>
+<div class="conversation">
+    <div class="message received">
+        <p>Hello, is the apartment still available?</p>
+        <span class="timestamp">10:30 AM</span>
     </div>
-    <form>
-        <textarea id="message" name="message" placeholder="Type your message"></textarea>
-        <input type="submit" value="Send">
-    </form>
-</main>
+    <div class="message sent">
+        <p>Yes, it is still available. When would you like to rent it?</p>
+        <span class="timestamp">10:35 AM</span>
+    </div>
+    <div class="message received">
+        <p>I am interested in renting it for the next 3 months. Can we arrange a viewing?</p>
+        <span class="timestamp">10:45 AM</span>
+    </div>
+    <div class="message sent">
+        <p>Sure, when would you like to come for a viewing?</p>
+        <span class="timestamp">10:50 AM</span>
+    </div>
+</div>
+<form>
+    <textarea id="message" name="message" placeholder="Type your message"></textarea>
+    <input type="submit" value="Send">
+</form>
+<!-- Bottom information -->
+<section id="info" class="info-section">
+    <a href="#" onclick="openPopup('about')">ABOUT</a>
+    <a href="#">COOKIE SETTINGS</a>
+    <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
+</section>
+
+<!-- Popup Windows -->
+<div id="popup-about" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('about')">&times;</span>
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
+        <!-- Add your project summary text here -->
+    </div>
+</div>
+<div id="popup-privacy" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('privacy')">&times;</span>
+        <h2>Privacy</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
+        <!-- Add your privacy policy text here -->
+    </div>
+</div>
 </body>
 </html>

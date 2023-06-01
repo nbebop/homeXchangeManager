@@ -1,221 +1,242 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin Page</title>
-  <link href="css/admin_style.css" rel="stylesheet">
-  <script src="js/script.js"></script>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/admin_style.css" rel="stylesheet">
+    <script src="js/script.js"></script>
 </head>
 <body>
 <section class="navbar">
-  <header>
-    <!-- Logo -->
-    <a href="/" th:action="@{/login}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
-    <!--Search bar -->
-    <div class="search-bar">
-      <form action="/" method="GET" class="form">
-        <input type="search" placeholder="Search for..." class="search-field">
-        <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
-      </form>
-    </div>
-    <!-- Rent a house link -->
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#">Rent your house</a> </li>
-      </ul>
-    </nav>
-    <!-- Dropdown menu -->
-    <div class="dropdown">
-      <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
-      <div class="dropdown-content">
-        <a href="/" th:action="@{/account}">Account</a>
-        <a href="#">Messages</a>
-        <a href="#">Favorites</a>
-        <a href="#">Help</a>
-        <a href="#">Log Out</a>
-      </div>
-    </div>
-  </header>
+    <header>
+        <!-- Logo -->
+        <a href="/" th:href="@{/success}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
+            <form action="/" method="GET" class="form">
+                <input type="search" placeholder="Search for..." class="search-field">
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- Find a house and add a listing navlinks -->
+        <div class="nav-links">
+            <ul class="nav-links-style">
+                <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
+            </ul>
+        </div>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </header>
+    <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 </section>
+<div class="spacer"></div>
 <div class="edit_listings">
-  <h2>Edit Listings</h2>
-  <!-- Sort by on the edit listings -->
-  <div class="sort-by">
-    <label for="sort-by-select">Sort By:</label>
-    <select id="sort-by-select">
-      <option value="name">Name</option>
-      <option value="price">Price</option>
-      <option value="rating">Rating</option>
-      <option value="owner">Owner</option>
-    </select>
-  </div>
-  <!-- TABLE FROM DATABASE-->
-  <table>
-    <!-- TABLE HEADERS-->
-    <tr class="table-header">
-      <th>Name</th>
-      <th>Rating</th>
-      <th>Owner</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-    <!-- TABLE INPUTS-->
-    <tr th:each="listing : ${listings}">
-      <td th:text="${listing.description}"></td>
-      <td th:text="${listing.rating}"></td>
-      <td th:text="${listing.owner}"></td>
-      <td><button>Edit</button></td>
-      <td><button>Delete</button></td>
-    </tr>
-    <!-- Add more rows as needed -->
-  </table>
-
-  <!-- TABLE HARD-CODED-->
-<!--  <table>-->
-<!--    &lt;!&ndash; TABLE HEADERS&ndash;&gt;-->
-<!--    <tr class="table-header">-->
-<!--      <th>Name</th>-->
-<!--      <th>Rating</th>-->
-<!--      <th>Owner</th>-->
-<!--      <th>Edit</th>-->
-<!--      <th>Delete</th>-->
-<!--    </tr>-->
-<!--&lt;!&ndash; TABLE INPUTS&ndash;&gt;-->
-<!--    <tr>-->
-<!--      <td>Listing 1</td>-->
-<!--      <td>4.5</td>-->
-<!--      <td>John Doe</td>-->
-<!--      <td><button>Edit</button></td>-->
-<!--      <td><button>Delete</button></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Listing 2</td>-->
-<!--      <td>4.2</td>-->
-<!--      <td>Jane Smith</td>-->
-<!--      <td><button>Edit</button></td>-->
-<!--      <td><button>Delete</button></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Listing 3</td>-->
-<!--      <td>4.2</td>-->
-<!--      <td>Jane Smith</td>-->
-<!--      <td><button>Edit</button></td>-->
-<!--      <td><button>Delete</button></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Listing 4</td>-->
-<!--      <td>4.2</td>-->
-<!--      <td>Jane Smith</td>-->
-<!--      <td><button>Edit</button></td>-->
-<!--      <td><button>Delete</button></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Listing 4</td>-->
-<!--      <td>4.2</td>-->
-<!--      <td>Jane Smith</td>-->
-<!--      <td><button>Edit</button></td>-->
-<!--      <td><button>Delete</button></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Listing 6</td>-->
-<!--      <td>4.2</td>-->
-<!--      <td>Jane Smith</td>-->
-<!--      <td><button>Edit</button></td>-->
-<!--      <td><button>Delete</button></td>-->
-<!--    </tr>-->
-<!--    &lt;!&ndash; Add more rows as needed &ndash;&gt;-->
-<!--  </table>-->
-
-<!-- TABLE FOR USERS ACCORDING WITH DATABASE-->
-  <!-- User List -->
-  <!-- User List -->
-  <div class="user-list">
-    <h2>User List</h2>
+    <h2>Edit Listings</h2>
+    <!-- TABLE FROM DATABASE-->
     <table>
-      <tr class="table-header">
-        <th>Name</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-      <!-- TABLE INPUTS-->
-      <tr th:each="user : ${users}">
-        <td th:text="${user.firstname + ' ' + user.lastname}"></td>
-        <td th:text="${user.email}"></td>
-        <td>
-          <select>
-            <option th:each="role : ${roles}" th:value="${role.name}" th:text="${role.name}" th:selected="${user.roles.contains(role)}"></option>
-          </select>
-        </td>
-        <td><button>Edit</button></td>
-        <td>
-          <form action="/delete-user" method="post">
-            <input type="hidden" name="userId" th:value="${user.id}">
-            <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-          </form>
-        </td>
-      </tr>
-      <!-- Add more rows as needed -->
+        <!-- TABLE HEADERS-->
+        <tr class="table-header">
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Owner</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <!-- TABLE INPUTS-->
+        <tr th:each="listing : ${listings}">
+            <td th:tex00:text="${listing.rating}"></td>
+            <td th:text="${listing.owner}"></td>
+            <td>
+                <button>Edit</button>
+            </td>
+            <td>
+                <button>Delete</button>
+            </td>
+        </tr>
+        <!-- Add more rows as needed -->
     </table>
-  </div>
 
-  <!-- TABLE FOR USERS HARD-CODED-->
-<!--  <div class="user-list">-->
-<!--    <h2>User List</h2>-->
-<!--    <table>-->
-<!--      <tr class="table-header">-->
-<!--        <th>Name</th>-->
-<!--        <th>Email</th>-->
-<!--        <th>Role</th>-->
-<!--        <th>Edit</th>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <td>John Doe</td>-->
-<!--        <td>johndoe@example.com</td>-->
-<!--        <td>Admin</td>-->
-<!--        <td>-->
-<!--          <select>-->
-<!--            <option value="admin">Admin</option>-->
-<!--            <option value="user">User</option>-->
-<!--            <option value="guest">Guest</option>-->
-<!--          </select>-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <td>Jane Smith</td>-->
-<!--        <td>janesmith@example.com</td>-->
-<!--        <td>User</td>-->
-<!--        <td>-->
-<!--          <select>-->
-<!--            <option value="admin">Admin</option>-->
-<!--            <option value="user">User</option>-->
-<!--            <option value="guest">Guest</option>-->
-<!--          </select>-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--      &lt;!&ndash; Add more rows for each user &ndash;&gt;-->
-<!--    </table>-->
-<!--  </div>-->
+    <!-- TABLE HARD-CODED-->
+    <!--  <table>-->
+    <!--    &lt;!&ndash; TABLE HEADERS&ndash;&gt;-->
+    <!--    <tr class="table-header">-->
+    <!--      <th>Name</th>-->
+    <!--      <th>Rating</th>-->
+    <!--      <th>Owner</th>-->
+    <!--      <th>Edit</th>-->
+    <!--      <th>Delete</th>-->
+    <!--    </tr>-->
+    <!--&lt;!&ndash; TABLE INPUTS&ndash;&gt;-->
+    <!--    <tr>-->
+    <!--      <td>Listing 1</td>-->
+    <!--      <td>4.5</td>-->
+    <!--      <td>John Doe</td>-->
+    <!--      <td><button>Edit</button></td>-->
+    <!--      <td><button>Delete</button></td>-->
+    <!--    </tr>-->
+    <!--    <tr>-->
+    <!--      <td>Listing 2</td>-->
+    <!--      <td>4.2</td>-->
+    <!--      <td>Jane Smith</td>-->
+    <!--      <td><button>Edit</button></td>-->
+    <!--      <td><button>Delete</button></td>-->
+    <!--    </tr>-->
+    <!--    <tr>-->
+    <!--      <td>Listing 3</td>-->
+    <!--      <td>4.2</td>-->
+    <!--      <td>Jane Smith</td>-->
+    <!--      <td><button>Edit</button></td>-->
+    <!--      <td><button>Delete</button></td>-->
+    <!--    </tr>-->
+    <!--    <tr>-->
+    <!--      <td>Listing 4</td>-->
+    <!--      <td>4.2</td>-->
+    <!--      <td>Jane Smith</td>-->
+    <!--      <td><button>Edit</button></td>-->
+    <!--      <td><button>Delete</button></td>-->
+    <!--    </tr>-->
+    <!--    <tr>-->
+    <!--      <td>Listing 4</td>-->
+    <!--      <td>4.2</td>-->
+    <!--      <td>Jane Smith</td>-->
+    <!--      <td><button>Edit</button></td>-->
+    <!--      <td><button>Delete</button></td>-->
+    <!--    </tr>-->
+    <!--    <tr>-->
+    <!--      <td>Listing 6</td>-->
+    <!--      <td>4.2</td>-->
+    <!--      <td>Jane Smith</td>-->
+    <!--      <td><button>Edit</button></td>-->
+    <!--      <td><button>Delete</button></td>-->
+    <!--    </tr>-->
+    <!--    &lt;!&ndash; Add more rows as needed &ndash;&gt;-->
+    <!--  </table>-->
+
+    <!-- TABLE FOR USERS ACCORDING WITH DATABASE-->
+    <!-- User List -->
+    <!-- User List -->
+    <div class="user-list">
+        <h2>User List</h2>
+        <table>
+            <tr class="table-header">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <!-- TABLE INPUTS-->
+            <tr th:each="user : ${users}">
+                <td th:text="${user.firstname + ' ' + user.lastname}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <form action="/delete-user" method="post">
+                        <input type="hidden" name="userId" th:value="${user.id}">
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </table>
+    </div>
+
+    <!-- TABLE FOR USERS HARD-CODED-->
+    <!--  <div class="user-list">-->
+    <!--    <h2>User List</h2>-->
+    <!--    <table>-->
+    <!--      <tr class="table-header">-->
+    <!--        <th>Name</th>-->
+    <!--        <th>Email</th>-->
+    <!--        <th>Role</th>-->
+    <!--        <th>Edit</th>-->
+    <!--      </tr>-->
+    <!--      <tr>-->
+    <!--        <td>John Doe</td>-->
+    <!--        <td>johndoe@example.com</td>-->
+    <!--        <td>Admin</td>-->
+    <!--        <td>-->
+    <!--          <select>-->
+    <!--            <option value="admin">Admin</option>-->
+    <!--            <option value="user">User</option>-->
+    <!--            <option value="guest">Guest</option>-->
+    <!--          </select>-->
+    <!--        </td>-->
+    <!--      </tr>-->
+    <!--      <tr>-->
+    <!--        <td>Jane Smith</td>-->
+    <!--        <td>janesmith@example.com</td>-->
+    <!--        <td>User</td>-->
+    <!--        <td>-->
+    <!--          <select>-->
+    <!--            <option value="admin">Admin</option>-->
+    <!--            <option value="user">User</option>-->
+    <!--            <option value="guest">Guest</option>-->
+    <!--          </select>-->
+    <!--        </td>-->
+    <!--      </tr>-->
+    <!--      &lt;!&ndash; Add more rows for each user &ndash;&gt;-->
+    <!--    </table>-->
+    <!--  </div>-->
 
 </div>
 <!-- STATISTICS -->
 <div class="statistics-block">
-  <h2>Website Statistics</h2>
-  <ul class="statistics-list">
-    <li class="statistics-item">
-      Total Visitors: 1000
-    </li>
-    <li class="statistics-item">
-      Unique Visitors: 800
-    </li>
-    <li class="statistics-item">
-      Page Views: 5000
-    </li>
-    <li class="statistics-item">
-      Average Time on Site: 2 minutes
-    </li>
-  </ul>
+    <h2>Website Statistics</h2>
+    <ul class="statistics-list">
+        <li class="statistics-item">
+            Total Visitors: 1000
+        </li>
+        <li class="statistics-item">
+            Unique Visitors: 800
+        </li>
+        <li class="statistics-item">
+            Page Views: 5000
+        </li>
+        <li class="statistics-item">
+            Average Time on Site: 2 minutes
+        </li>
+    </ul>
+</div>
+<!-- Bottom information -->
+<section id="info" class="info-section">
+    <a href="#" onclick="openPopup('about')">ABOUT</a>
+    <a href="#">COOKIE SETTINGS</a>
+    <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
+</section>
+
+<!-- Popup Windows -->
+<div id="popup-about" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('about')">&times;</span>
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
+        <!-- Add your project summary text here -->
+    </div>
+</div>
+<div id="popup-privacy" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('privacy')">&times;</span>
+        <h2>Privacy</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
+        <!-- Add your privacy policy text here -->
+    </div>
 </div>
 </body>
 </html>

@@ -6,82 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-
-    <!--for backend-->
-    <link href="css/styles.css" rel="stylesheet">
-    <!--for front-->
-<!--    <link href="../static/css/style.css" rel="stylesheet">-->
-
+    <link href="css/style.css" rel="stylesheet">
     <script src="js/script.js"></script>
-
 </head>
 <body>
 <div class="header">
     <nav id="navBar">
-        <a href="index.html">
-            <img src="../static/img/compass_white_name.png" class="logo">
-        </a>
+        <a href="/" th:href="@{/home_page}"><img src="img/compass_white_name.png" class="logo"></a>
         <div class="search-bar-list">
-            <form action="/" method="GET" class="form">
-                <input type="search" placeholder="Search for..." class="search-field">
+            <!-- Simple search bar -->
+            <form th:action="@{/listings/search/simple}" method="get" class="form">
+                <input type="search" placeholder="Search in a city..." class="search-field" name="citySimple">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
         <ul class="nav-links">
-            <li><a href="#">Swap your house</a></li>
+            <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+            <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
         </ul>
-        <a href="/" th:href="@{/new_listing}" class="register-btn">Add a listing</a>
-        <form name="logoutForm" th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
-
         <i class="fas fa-bars" onclick="togglebtn()"></i>
         <div class="dropdown">
-            <button class="dropbtn"><img src="../static/img/menu3.png" alt="My Button Image"></button>
+            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
-                <a href="/" th:action="@{/account}">Account</a>
-                <a href="/" th:action="@{/message}">Messages</a>
-                <a href="/" th:action="@{/favourites}">Favorites</a>
-                <a href="/" th:action="@{/help}">Help</a>
-                <form name="logoutForm" th:action="@{/logout}" method="post">
-                    <input hidden type="submit" value="Sign Out"/>
-                </form>
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <a href="#" onclick="logout()">Logout</a>
             </div>
         </div>
     </nav>
     <div class="container">
         <h1>Find Your Next Stay</h1>
         <div class="search-bar">
-            <form>
+            <!-- Complex search bar -->
+            <form th:action="@{/listings/search/advanced}" method="get" class="form">
                 <div class="location-input">
                     <label>Location</label>
-                    <input type="text" placeholder="Where are you going?">
+                    <input type="text" placeholder="Where are you going?" name="cityAdvanced" th:name="cityAdvanced">
                 </div>
                 <div>
                     <label>Check in</label>
-                    <input type="text" placeholder="Add Date">
+                    <input type="date" placeholder="Check in date" name="dateStart" th:name="dateStart">
                 </div>
                 <div>
                     <label>Check out</label>
-                    <input type="text" placeholder="Add Date">
+                    <input type="date" placeholder="Check out date" name="dateEnd" th:name="dateEnd">
                 </div>
-                <div>
-                    <label>Guest</label>
-                    <input type="text" placeholder="Add Guest">
-                </div>
-                <button type="submit"><img src="../static/img/search.png"></button>
+                <button type="submit"><img src="img/search.png"></button>
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    var navBar = document.getElementById("navBar");
-
-    function togglebtn() {
-        navBar.classList.toggle("hidemenu");
-    }
-</script>
+<form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 
 </body>
 </html>
