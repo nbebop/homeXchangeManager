@@ -3,16 +3,20 @@ INSERT INTO roles (id, name) VALUES ('1', 'ADMIN');
 INSERT INTO roles (id, name) VALUES ('2', 'USER');
 
 -- create users
+--admins
+INSERT INTO users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
+VALUES ('1', 'admin', 'admin', 'admin', '$2a$10$PJf3MqpW2aexwqLML51U5exS62wv0rsJ6pKcI7j9aqh9s0HUDtWVu', 'admin@example.com', '1990-01-01', '123456789', 'Description admin','Admin st 2', 'Left apt.', 'Paris', '750001', 'France'),
+       ('9', 'user9', 'admin2', 'admin2', 'admin2', 'admin2@example.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'Premise admin', 'Paris', '750015', 'France');
+
+--regular users
 INSERT INTO users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
        VALUES ('2', 'user', 'user', 'user', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user@example.com', '1990-01-01', '123456789', 'Description user', 'Test street 1', 'Premise 1', 'paris', '750014', 'France'),
-       ('1', 'admin', 'admin', 'admin', '$2a$10$PJf3MqpW2aexwqLML51U5exS62wv0rsJ6pKcI7j9aqh9s0HUDtWVu', 'admin@example.com', '1990-01-01', '123456789', 'Description admin','Admin st 2', 'Left apt.', 'Paris', '750001', 'France'),
        ('3', 'user3', 'David', 'Johnson', 'password3', 'user3@example.com', '1985-08-20', '555555555', 'Description 3', '789 Oak St', 'Premise 3', 'Chicago', '23456', 'USA'),
        ('4', 'user4', 'Emily', 'Davis', 'password4', 'user4@example.com', '1995-03-10', '111111111', 'Description 4', '987 Pine St', 'Premise 4', 'Houston', '78901', 'USA'),
        ('5', 'user5', 'Michael', 'Wilson', 'password5', 'user5@example.com', '1998-11-25', '999999999', 'Description 5', '321 Maple St', 'Premise 5', 'Sevilla', '34567', 'Spain'),
        ('6', 'user6', 'Naruto', 'Uzumaki', '12345', 'naruto@example.com', '2000-10-08', '386063686', 'The next Hokage', '15 Ichiban Street', 'Premise 6', 'Tokyo', '34375', 'Japan'),
        ('7', 'user7', 'James', 'Hetfield', 'yeah45', 'jameshetfield@example.com', '1965-11-22', '666666666', 'Best musician in the world', '45 Guitar street', 'Premise 7', 'San Francisco', '84735', 'USA'),
        ('8', 'user8', 'Fernando', 'Alonso', 'password33', 'fernandoalonso@example.com', '1983-03-03', '333333333', 'The GOAT of formula 1', '33 Win Street', 'Premise 8', 'Oviedo', '41008', 'Spain'),
-       ('9', 'user9', 'admin2', 'admin2', 'admin2', 'admin2@example.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'Premise admin', 'Paris', '750015', 'France'),
        ('10', 'user10', 'admin3', 'userrr', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'userrrrrrr@example.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'User ', 'Madrid', '750015', 'Spain'),
        ('11', 'user11', 'admin3', 'userrrr', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'userrrrrexample.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'User', 'Madrid', '750015', 'Spain'),
        ('12', 'user12', 'John', 'Smith', 'password12', 'johnsmith@example.com', '1992-05-15', '123456789', 'Description 12', '123 Elm St', 'Premise 12', 'New York', '10001', 'USA'),
@@ -100,7 +104,6 @@ VALUES ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call
        ('29', '29', 'Modern loft in Seoul', 'Please inquire for booking details', 0, 0, '2024-08-01', '2024-12-31', '33 BTS street', 'User', 'Seoul', '06000', 'South Korea', 'house-6.png'),
        ('30', '30', 'Modern loft in Beijing', 'Please inquire for booking details', 0, 0, '2024-08-01', '2024-12-31', '32 Haiki street', 'User', 'Beijing', '100000', 'China', 'house-5.png');
 
-
 -- messages
 INSERT INTO messages (sender_id, receiver_id, content, timestamp)
 VALUES
@@ -156,3 +159,29 @@ VALUES (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire haza
        (18, 'No smoking on the balcony', 'Smoking is prohibited on the balcony due to fire hazards and health risks.'),
        (19, 'No candles', 'Candles are prohibited due to fire hazards.'),
        (20, 'No hot tub use without prior approval', 'Guests must obtain prior approval from the owner before using the hot tub.');
+
+--booking
+INSERT INTO booking (guest_id, listing_id, booking_start, booking_end, additional_info)
+VALUES
+       -- Future bookings
+       (5, 1, '2023-07-01', '2023-07-07', 'Looking forward to our stay!'),
+       (6, 2, '2023-08-01', '2023-08-07', 'Excited for our vacation!'),
+       (7, 3, '2023-09-01', '2023-09-07', 'Planning a relaxing getaway.'),
+       (8, 4, '2023-10-01', '2023-10-07', 'Cant wait to explore!'),
+       (9, 5, '2023-11-01', '2023-11-07', 'Celebrating a special occasion.'),
+       (10, 6, '2023-12-01', '2023-12-07', 'Memorable trip!'),
+       (11, 7, '2024-01-01', '2024-01-07', 'Looking forward to our stay!'),
+       (12, 8, '2024-02-01', '2024-02-07', 'Had a great time!'),
+       (13, 9, '2024-03-01', '2024-03-07', 'Excited for our vacation!'),
+       (14, 10, '2024-04-01', '2024-04-07', 'Wonderful experience!'),
+       -- Past dates
+       (15, 1, '2023-01-01', '2023-01-07', 'Had a great time!'),
+       (16, 2, '2023-02-01', '2023-02-07', 'Highly recommended!'),
+       (17, 3, '2023-03-01', '2023-03-07', 'Wonderful experience!'),
+       (18, 4, '2023-04-01', '2023-04-07', 'Memorable trip!'),
+       (19, 5, '2023-05-01', '2023-05-07', 'Enjoyed every moment.'),
+       (20, 6, '2023-06-01', '2023-06-07', 'Absolutely loved it!'),
+       (21, 7, '2023-07-01', '2023-07-07', 'Looking forward to our stay!'),
+       (22, 8, '2023-08-01', '2023-08-07', 'Had a great time!'),
+       (23, 9, '2023-09-01', '2023-09-07', 'Highly recommended!'),
+       (24, 10, '2023-10-01', '2023-10-07', 'Wonderful experience!');
