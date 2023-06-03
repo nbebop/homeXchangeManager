@@ -33,8 +33,6 @@ public class ListingServiceImpl implements ListingService {
     @Override
     public void save(ListingDto listingDto) {
         Listing listing = new Listing();
-
-
         listingRepository.save(listing);
     }
 
