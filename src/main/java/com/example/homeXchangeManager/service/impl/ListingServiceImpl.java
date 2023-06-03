@@ -1,5 +1,7 @@
 package com.example.homeXchangeManager.service.impl;
 
+import com.example.homeXchangeManager.dto.ListingDto;
+import com.example.homeXchangeManager.models.Image;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.ListingRepository;
@@ -8,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
@@ -18,18 +21,51 @@ public class ListingServiceImpl implements ListingService {
 
     private final ListingRepository listingRepository;
 
+    private ImageStorageServiceImpl imageService;
+
+
     @Autowired
-    public ListingServiceImpl(ListingRepository listingRepository) {
+    public ListingServiceImpl(ListingRepository listingRepository, ImageStorageServiceImpl imageService) {
         this.listingRepository = listingRepository;
+        this.imageService = imageService;
     }
 
     @Override
-    public void save(Listing listing) {
+    public void save(ListingDto listingDto) {
+        Listing listing = new Listing();
+
+
         listingRepository.save(listing);
     }
 
     @Override
-    public void edit(long id, Listing updatedListing) {
+    public void save(ListingDto listingDto, MultipartFile[] images) {
+        Listing listing = new Listing();
+
+        listing.setOwner(listingDto.getOwner());
+        listing.setDescription(listingDto.getDescription());
+        listing.setServices(listingDto.getServices());
+        listing.setConstraints(listingDto.getConstraints());
+        listing.setBookingInfo(listingDto.getBookingInfo());
+        listing.setAvailabilityStart(listingDto.getAvailabilityStart());
+        listing.setAvailabilityEnd(listingDto.getAvailabilityEnd());
+        listing.setRating(0.0);
+        listing.setOwnerRating(0.0);
+        listing.setAddressLine(listingDto.getAddressLine());
+        listing.setPremise(listingDto.getPremise());
+        listing.setCity(listingDto.getCity());
+        listing.setPostalCode(listingDto.getPostalCode());
+        listing.setCountry(listingDto.getCountry());
+        Listing savedListing = listingRepository.saveAndFlush(listing);
+
+        for (MultipartFile image : images) {
+            Image saveImage = imageService.save(image, savedListing);
+            savedListing.getImages().add(saveImage);
+        }
+    }
+
+    @Override
+    public void edit(long id, ListingDto updatedListing, MultipartFile[] images) {
         Listing listing = listingRepository.getById((int) id);
 
         listing.setDescription(updatedListing.getDescription());
@@ -44,7 +80,14 @@ public class ListingServiceImpl implements ListingService {
         listing.setCity(updatedListing.getCity());
         listing.setPostalCode(updatedListing.getPostalCode());
         listing.setCountry(updatedListing.getCountry());
-        save(listing);
+
+        for (MultipartFile image : images) {
+            Image saveImage = imageService.save(image, listing);
+            listing.getImages().add(saveImage);
+        }
+
+        listingRepository.save(listing);
+
     }
 
     @Override
