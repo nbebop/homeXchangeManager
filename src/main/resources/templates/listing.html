@@ -58,8 +58,8 @@
             <!-- Looping through the listings and populating the HTML dynamically -->
             <div th:if="${listingsSimpleSearch != null}" th:each="listing : ${listingsSimpleSearch}" class="house">
                 <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
-                <div class="house-img">
-                    <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
+                <div th:each="image : ${listing.getImages}" class="house-img">
+                    <img th:src="@{${image.getUrl}}" alt="Listing Image">
                 </div>
                 <div class="house-info">
                     <p th:text="${listing.addressLine}"></p>
@@ -84,8 +84,8 @@
             <!-- Looping through the listings and populating the HTML dynamically -->
             <div th:if="${listingsAdvancedSearch != null}" th:each="listing : ${listingsAdvancedSearch}" class="house">
                 <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
-                <div class="house-img">
-                    <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
+                <div th:each="image : ${listing.getImages}" class="house-img">
+                    <img th:src="@{${image.getUrl}}" alt="Listing Image">
                 </div>
                 <div class="house-info">
                     <p th:text="${listing.addressLine}"></p>
@@ -106,8 +106,8 @@
             <h2> All listings: </h2>
             <div th:each="listing : ${allListings}" class="house">
                 <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
-                <div class="house-img">
-                    <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
+                <div th:each="image : ${listing.getImages}" class="house-img">
+                    <img th:src="@{${image.getUrl}}" alt="Listing Image">
                 </div>
                 <div class="house-info">
                     <p th:text="${listing.addressLine}"></p>

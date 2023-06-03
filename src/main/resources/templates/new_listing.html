@@ -178,13 +178,8 @@
             <!--                <input type="text" name="customConstraintDescription" placeholder="Enter additional description">-->
             <!--            </div>-->
 
-
-            <label for="image_main" class="upload-btn"> Upload main picture:</label>
-            <input type="file" id="image_main" th:field="*{mainImg}" accept="image/png, image/jpeg">
-            <label for="image_scd" class="upload-btn"> Upload secondary picture :</label>
-            <input type="file" id="image_scd" th:field="*{scdImg}" accept="image/png, image/jpeg">
-            <label for="image_trd" class="upload-btn"> Upload third picture:</label>
-            <input type="file" id="image_trd" th:field="*{trdImg}" accept="image/png, image/jpeg">
+            <label for="multiple_img"> Upload picture (at least 3):</label>
+            <input type="file" id="multiple_img" accept="image/png, image/jpeg, image/jpg" name="images " multiple>
 
             <input type="submit" value="Save listing">
         </form>

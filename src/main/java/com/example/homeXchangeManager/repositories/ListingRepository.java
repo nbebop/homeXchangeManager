@@ -8,6 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 public interface ListingRepository extends JpaRepository<Listing, Integer> {
+    Listing save(Listing l);
+
+    @Override
+    <S extends Listing> S saveAndFlush(S entity);
     List<Listing> findAllByOwner(User owner);
 
     Listing deleteListingByListingId(long listingId);
