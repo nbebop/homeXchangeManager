@@ -53,17 +53,6 @@ public class HomeController {
         return "error/404";
     }
 
-    //    LOGOUT
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/login?logout";
-    }
-
-
     @GetMapping("/listing")
     public String listing(Model model) {
         model.addAttribute("allListings", getAllListing());
