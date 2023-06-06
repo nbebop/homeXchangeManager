@@ -59,25 +59,10 @@
                 </span> 245 reviews </p>
     </div>
 </div>
-<div class="conversation">
-    <div class="message received">
-        <p>Hello, is the apartment still available?</p>
-        <span class="timestamp">10:30 AM</span>
-    </div>
-    <div class="message sent">
-        <p>Yes, it is still available. When would you like to rent it?</p>
-        <span class="timestamp">10:35 AM</span>
-    </div>
-    <div class="message received">
-        <p>I am interested in renting it for the next 3 months. Can we arrange a viewing?</p>
-        <span class="timestamp">10:45 AM</span>
-    </div>
-    <div class="message sent">
-        <p>Sure, when would you like to come for a viewing?</p>
-        <span class="timestamp">10:50 AM</span>
-    </div>
+<div class="conversation" id="chat-messages">
+    <!-- Chat messages will be dynamically populated here -->
 </div>
-<form id="chat-form" action="/chat/send" method="post">
+<form id="chat-form" action="/chat/send" method="post" th:object="${message}">
     <textarea id="message" name="content" placeholder="Type your message"></textarea>
     <input type="submit" id="send-message" value="Send">
 </form>

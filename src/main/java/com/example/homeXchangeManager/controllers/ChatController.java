@@ -57,7 +57,8 @@ public class ChatController {
         return "redirect:/message";
     }
 
-    @PostMapping("/chat/message/{name}")
+    @GetMapping("/chat/message/{name}")
+    @ResponseBody
     public List<Message> getChatMessages(@PathVariable("name") String receiverName) {
         // retrieve logged in user
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
