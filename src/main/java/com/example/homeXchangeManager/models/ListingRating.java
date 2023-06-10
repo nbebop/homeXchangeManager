@@ -15,22 +15,22 @@ public class ListingRating implements Serializable {
     private User reviewer;
 
     @ManyToOne
-    @JoinColumn(name = "reviewedId", referencedColumnName = "listingId")
+    @JoinColumn(name = "listingId", referencedColumnName = "listingId")
     private Listing listing;
 
     @Column(name = "ratingScore")
-    private int ratingScore;
+    private int score;
 
-    @Column(name = "reviewComments")
-    private String reviewComments;
+    @Column(name = "description")
+    private String description;
 
     public ListingRating() {}
 
-    public ListingRating(User reviewer, Listing listing, int ratingScore, String reviewComments) {
+    public ListingRating(User reviewer, Listing listing, int score, String description) {
         this.reviewer = reviewer;
         this.listing = listing;
-        this.ratingScore = ratingScore;
-        this.reviewComments = reviewComments;
+        this.score = score;
+        this.description = description;
     }
 
     public int getRatingId() {
@@ -57,19 +57,19 @@ public class ListingRating implements Serializable {
         this.listing = listing;
     }
 
-    public int getRatingScore() {
-        return ratingScore;
+    public int getScore() {
+        return score;
     }
 
-    public void setRatingScore(int ratingScore) {
-        this.ratingScore = ratingScore;
+    public void setScore(int ratingScore) {
+        this.score = ratingScore;
     }
 
-    public String getReviewComments() {
-        return reviewComments;
+    public String getDescription() {
+        return description;
     }
 
-    public void setReviewComments(String reviewComments) {
-        this.reviewComments = reviewComments;
+    public void setDescription(String reviewComments) {
+        this.description = reviewComments;
     }
 }
