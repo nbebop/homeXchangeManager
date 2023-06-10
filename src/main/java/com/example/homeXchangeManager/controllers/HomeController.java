@@ -53,20 +53,9 @@ public class HomeController {
         return "error/404";
     }
 
-    //    LOGOUT
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/login?logout";
-    }
-
-
     @GetMapping("/listing")
     public String listing(Model model) {
-        model.addAttribute("listings", getAllListing());
+        model.addAttribute("allListings", getAllListing());
         return "listing";
     }
 
@@ -74,6 +63,10 @@ public class HomeController {
     public String house(@PathVariable("id") long id, Model model, HttpServletRequest request) {
         Listing listing = listingService.findByListingId(id);
         model.addAttribute("listing", listing);
+
+      
+        User host = listing.getOwner();
+        model.addAttribute("host", host);
 
         model.addAttribute("request", request); // Add the request object to the model
 
@@ -112,5 +105,11 @@ public class HomeController {
     public String help() {
         return "help";
     }
+
+    @GetMapping("/message")
+    public String message() {
+        return "message";
+    }
+
 
 }

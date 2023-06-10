@@ -11,7 +11,6 @@
 <body>
 <section class="navbar">
     <header>
-        <!-- Logo -->
         <a href="/" th:href="@{/success}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
         <!--Search bar -->
         <div class="search-bar">
@@ -24,7 +23,7 @@
         <div class="nav-links">
             <ul class="nav-links-style">
                 <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
             </ul>
         </div>
         <!-- Dropdown menu -->
@@ -51,10 +50,12 @@
                 <label for="description">
                     Description:</label>
                 <input type="text" id="description" name="description" th:field="*{description}" required>
+                <p th:if="${#fields.hasErrors('description')}" th:errorclass="error" th:errors="*{description}"></p>
 
                 <label for="addressLine">
                     Address:</label>
                 <input type="text" id="addressLine" name="addressLine" th:field="*{addressLine}" required>
+                <p th:if="${#fields.hasErrors('addressLine')}" th:errorclass="error" th:errors="*{addressLine}"></p>
 
                 <label for="premise">
                     Premise:</label>
@@ -78,7 +79,8 @@
 
                 <label for="availabilityStart">
                     Availability Start Date:</label>
-                <input type="date" id="availabilityStart" name="availabilityStart" th:field="*{availabilityStart}" required>
+                <input type="date" id="availabilityStart" name="availabilityStart" th:field="*{availabilityStart}"
+                       required>
 
                 <label for="availabilityEnd">
                     Availability End Date:</label>
@@ -88,7 +90,7 @@
             <h2>Services</h2>
             <div class="services">
                 <label th:each="service : ${services}">
-                    <input type="checkbox" th:field="*{services}" th:value="${service.serviceId}" />
+                    <input type="checkbox" th:field="*{services}" th:value="${service.serviceId}"/>
                     <span th:text="${service.serviceName}"></span>
                 </label>
             </div>
@@ -100,14 +102,15 @@
             <h2>Constraints</h2>
             <div class="constraints">
                 <label th:each="constraint : ${constraints}">
-                    <input type="checkbox" th:field="*{constraints}" th:value="${constraint.constraintId}" />
+                    <input type="checkbox" th:field="*{constraints}" th:value="${constraint.constraintId}"/>
                     <span th:text="${constraint.constraintName}"></span>
                 </label>
             </div>
+            <label for="multiple_img"> Upload picture (at least 3):</label>
+            <input type="file" id="multiple_img" accept="image/png, image/jpeg, image/jpg" name="images " multiple>
 <!--            INPUT ADDITIONAL         -->
 <!--            <label for="city">Additional information :</label>-->
 <!--            <input type="text" id="additionalInfo2" name="additionalInfo2" th:field="*{additionalInfo2}" required>-->
-
 <!--            ADDING 3 IMAGES         -->
             <label for="image_main" class="upload-btn">Upload main picture:</label>
             <input type="file" id="image_main" th:field="*{mainImg}" accept="image/png, image/jpeg">

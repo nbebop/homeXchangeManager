@@ -16,12 +16,16 @@
         <a href="/" th:action="@{/login}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
         <nav>
             <ul class="nav-links">
-                <li><a href="#how-it-works">How it works?</a> </li>
-                <li><a href="#how-much-it-costs">How much it costs?</a> </li>
+                <li><a href="#how-it-works">How it works?</a></li>
+                <li><a href="#how-much-it-costs">How much it costs?</a></li>
             </ul>
         </nav>
-        <a class="cta" href="/" th:href="@{/login}"><button>Login</button></a>
-        <a class="cta" href="/" th:href="@{/registration}"><button>Register</button></a>
+        <a class="cta" href="/" th:href="@{/login}">
+            <button>Login</button>
+        </a>
+        <a class="cta" href="/" th:href="@{/registration}">
+            <button>Register</button>
+        </a>
     </header>
 </section>
 <section id="main_info">
@@ -62,7 +66,8 @@
 <!-- Section: How it works? -->
 <section id="how-it-works" class="how-it-works-section">
     <h2>How it works?</h2>
-    <p>Welcome to Home Exchange Manager! Our platform allows individuals to exchange their homes for short vacations, creating a unique and cost-effective way to explore new destinations.</p>
+    <p>Welcome to Home Exchange Manager! Our platform allows individuals to exchange their homes for short vacations,
+        creating a unique and cost-effective way to explore new destinations.</p>
     <p>Here's how it works:</p>
     <ol>
         <li>Create an account and set up your profile.</li>
@@ -78,8 +83,12 @@
 <!-- Section: How much it costs? -->
 <section id="how-much-it-costs" class="costs-section">
     <h2>How much it costs?</h2>
-    <p>Home Exchange Manager operates on a free-of-charge basis. The exchanges facilitated through our platform are completely free. Instead of paying for accommodation, you exchange your home with another member, allowing both parties to enjoy a vacation without the expense of traditional accommodation.</p>
-    <p>Keep in mind that while the accommodation is free, there might be additional expenses associated with your vacation, such as transportation, meals, and activities. However, the cost savings on accommodation can significantly contribute to a more affordable and immersive travel experience.</p>
+    <p>Home Exchange Manager operates on a free-of-charge basis. The exchanges facilitated through our platform are
+        completely free. Instead of paying for accommodation, you exchange your home with another member, allowing both
+        parties to enjoy a vacation without the expense of traditional accommodation.</p>
+    <p>Keep in mind that while the accommodation is free, there might be additional expenses associated with your
+        vacation, such as transportation, meals, and activities. However, the cost savings on accommodation can
+        significantly contribute to a more affordable and immersive travel experience.</p>
 </section>
 
 <!-- BOTTOM SECTION -->
@@ -94,7 +103,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('about')">&times;</span>
         <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your project summary text here -->
     </div>
 </div>
@@ -103,7 +114,9 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup('privacy')">&times;</span>
         <h2>Privacy</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
+            luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
+            dictumst.</p>
         <!-- Add your privacy policy text here -->
     </div>
 </div>
