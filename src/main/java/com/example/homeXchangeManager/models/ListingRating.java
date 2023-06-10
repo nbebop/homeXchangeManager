@@ -1,9 +1,14 @@
 package com.example.homeXchangeManager.models;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-@Table(name = "ListingRating")
+@Table(name = "listing_rating")
 public class ListingRating implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,20 +22,22 @@ public class ListingRating implements Serializable {
     @ManyToOne
     @JoinColumn(name = "listingId", referencedColumnName = "listingId")
     private Listing listing;
-
-    @Column(name = "ratingScore")
     private int score;
-
-    @Column(name = "description")
     private String description;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/YYYY")
+    @Column
+    private Date reviewDate;
 
-    public ListingRating() {}
+    public ListingRating() {
+    }
 
-    public ListingRating(User reviewer, Listing listing, int score, String description) {
+    public ListingRating(User reviewer, Listing listing, int score, String description, Date reviewDate) {
         this.reviewer = reviewer;
         this.listing = listing;
         this.score = score;
         this.description = description;
+        this.reviewDate = reviewDate;
     }
 
     public int getRatingId() {
@@ -71,5 +78,13 @@ public class ListingRating implements Serializable {
 
     public void setDescription(String reviewComments) {
         this.description = reviewComments;
+    }
+
+    public Date getReviewDate() {
+        return reviewDate;
+    }
+
+    public void setReviewDate(Date reviewDate) {
+        this.reviewDate = reviewDate;
     }
 }

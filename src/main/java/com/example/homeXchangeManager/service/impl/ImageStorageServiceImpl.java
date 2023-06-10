@@ -32,8 +32,7 @@ public class ImageStorageServiceImpl implements ImageStorageService {
     @Value("${uploadDir}")
     private String uploadPath;
 
-    private static final Logger logger = LoggerFactory.getLogger(ListingController.class);
-
+    private static final Logger logger = LoggerFactory.getLogger(ImageStorageServiceImpl.class);
 
     private final Path root = Paths.get("./uploads");
 
