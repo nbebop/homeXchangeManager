@@ -49,13 +49,8 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="date"], 
     border: none;
     margin-bottom: 20px;
 }
-input[type="file"] {
-    background-color: rgb(167, 135, 136);
-    color: #fff;
-    cursor: pointer;
-}
 input[type="submit"] {
-    margin-left: 40px;
+    margin-left: 55px;
     width: 515px;
     padding: 10px;
     color: #fff;
@@ -76,14 +71,42 @@ label[for="image"] {
     margin-right: 10px;
 }
 
-/*!* Services *!*/
+label, input[type="file"]{
+    display: inline-block;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
 
-.services input[type="text"]{
-    margin-left: 0;
+input[type="file"] {
+    background-color: rgb(167, 135, 136);
+    color: #fff;
+    cursor: pointer;
+}
+
+label, input[type="file"]{
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.services label,
+.constraints label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.services input,
+.constraints input {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.services span,
+.constraints span {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 
-/* Limitations */
 
 /* Bottom information */
 #info {
