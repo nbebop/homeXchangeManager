@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -57,7 +58,7 @@ public class ListingController {
      * Code to display images in frontend
      */
     @PostMapping("/new_listing")
-    public String createListing(@Valid @ModelAttribute("listing") ListingDto listingDto, @RequestParam("images") MultipartFile[] images, BindingResult bindingResult) {
+    public String createListing(@Valid @ModelAttribute("listing") ListingDto listingDto, @RequestParam("images") MultipartFile[] images, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             String errorMessages = "";
             for (ObjectError error : bindingResult.getAllErrors()) {
@@ -73,6 +74,7 @@ public class ListingController {
         User owner = userService.findByUsername(auth.getName());
         listingDto.setOwner(owner);
         listingService.save(listingDto, images);
+        redirectAttributes.addFlashAttribute("successMessage", "Listing created successfully!");
 
         return "redirect:/listing";
     }
