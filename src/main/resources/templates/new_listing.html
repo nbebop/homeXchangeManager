@@ -94,10 +94,6 @@
                     <span th:text="${service.serviceName}"></span>
                 </label>
             </div>
-<!--            INPUT ADDITIONAL   - to implement!      -->
-<!--            <label for="city">Additional information :</label>-->
-<!--            <input type="text" id="additionalInfo" name="additionalInfo" th:field="*{additionalInfo}" required>-->
-
             <!-- Constraints -->
             <h2>Constraints</h2>
             <div class="constraints">
@@ -108,10 +104,7 @@
             </div>
             <label for="multiple_img"> Upload picture (at least 3):</label>
             <input type="file" id="multiple_img" accept="image/png, image/jpeg, image/jpg" name="images " multiple>
-<!--            INPUT ADDITIONAL         -->
-<!--            <label for="city">Additional information :</label>-->
-<!--            <input type="text" id="additionalInfo2" name="additionalInfo2" th:field="*{additionalInfo2}" required>-->
-<!--            ADDING 3 IMAGES         -->
+
             <label for="image_main" class="upload-btn">Upload main picture:</label>
             <input type="file" id="image_main" th:field="*{mainImg}" accept="image/png, image/jpeg">
 
@@ -122,6 +115,10 @@
             <input type="file" id="image_trd" th:field="*{trdImg}" accept="image/png, image/jpeg">
 
             <input type="submit" value="Save listing">
+
+            <div th:if="${successMessage}" class="success-message">
+                <p th:text="${successMessage}"></p>
+            </div>
         </form>
     </div>
 </section>
