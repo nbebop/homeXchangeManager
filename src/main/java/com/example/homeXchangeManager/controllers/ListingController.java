@@ -27,17 +27,21 @@ public class ListingController {
     private UserServiceImpl userService;
     private ServiceServiceImpl serviceService;
     private ConstraintServiceImpl constraintService;
-
     private ImageStorageServiceImpl imageService;
+    private ListingRatingServiceImpl ratingService;
 
     @Autowired
-    public ListingController(ListingServiceImpl listingService, UserServiceImpl userService, ServiceServiceImpl serviceService, ConstraintServiceImpl constraintService, ListingRepository listingRepository, ImageStorageServiceImpl imageService) {
+    public ListingController(ListingServiceImpl listingService, UserServiceImpl userService,
+                             ServiceServiceImpl serviceService, ConstraintServiceImpl constraintService,
+                             ListingRepository listingRepository, ImageStorageServiceImpl imageService,
+                             ListingRatingServiceImpl ratingService) {
         this.listingService = listingService;
         this.userService = userService;
         this.serviceService = serviceService;
         this.constraintService = constraintService;
         this.listingRepository = listingRepository;
         this.imageService = imageService;
+        this.ratingService = ratingService;
     }
 
     @ModelAttribute("listing")
