@@ -68,6 +68,10 @@
             <input type="password" id="password_conf" name="password_conf" required>
 
             <input type="submit" value="Sign Up">
+
+            <div th:if="${successMessage}" class="success-message">
+                <p th:text="${successMessage}"></p>
+            </div>
         </form>
     </div>
 </section>
