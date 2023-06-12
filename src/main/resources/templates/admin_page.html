@@ -48,17 +48,29 @@
     <table>
         <!-- TABLE HEADERS-->
         <tr class="table-header">
-            <th>Name</th>
+            <th>ID</th>
+            <th>
+                <a th:href="@{/admin_page(sort='description', order=${currentSortDirection == 'asc' ? 'desc' : 'asc'})}">
+                    Description
+                </a>
+            </th>
             <th>Rating</th>
             <th>Owner</th>
+            <th>
+                <a th:href="@{/admin_page(sort='city', order=${currentSortDirection == 'asc' ? 'desc' : 'asc'})}">
+                    City
+                </a>
+            </th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
         <!-- TABLE INPUTS-->
         <tr th:each="listing : ${listings}">
-            <td th:tex00:text="${listing.listingId}"></td>
-            <td th:tex00:text="${listing.rating}"></td>
+            <td th:text="${listing.listingId}"></td>
+            <td th:text="${listing.description}"></td>
+            <td th:text="${listing.rating}"></td>
             <td th:text="${listing.owner}"></td>
+            <td th:text="${listing.city}"></td>
             <td>
                 <form action="/edit_listing">
                     <input type="hidden" name="listingId" th:value="${listing.listingId}">
@@ -88,7 +100,6 @@
                         Email
                     </a>
                 </th>
-
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
