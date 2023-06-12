@@ -55,6 +55,9 @@
             <p th:text="'Address: ' + ${listing.addressLine} + ', ' + ${listing.city} + ', ' + ${listing.postalCode} + ', ' + ${listing.country}"></p>
             <p th:text="'Description: ' + ${listing.description}"></p>
          </div>
+        <!-- Hidden fields for reviewerId and listingId -->
+        <input type="hidden" name="reviewerId" th:value="${rating.reviewerId}" />
+        <input type="hidden" name="listingId" th:value="${listing.listingId}" />
         <!-- Rating stars -->
         <div class="rating">
             <input type="radio" id="star5" name="score" value="5" th:field="*{score}">
