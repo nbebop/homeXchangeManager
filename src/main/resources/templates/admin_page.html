@@ -84,7 +84,7 @@
             <tr class="table-header">
                 <th>Name</th>
                 <th>
-                    <a th:href="@{/admin_page(sort='email', order=${order == 'asc' ? 'desc' : 'asc'})}">
+                    <a th:href="@{/admin_page(sort='email', order=${currentSortDirection == 'asc' ? 'desc' : 'asc'})}">
                         Email
                     </a>
                 </th>
