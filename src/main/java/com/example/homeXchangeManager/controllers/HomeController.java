@@ -100,7 +100,6 @@ public class HomeController {
         model.addAttribute("user", user);
         model.addAttribute("listing", listing);
 
-
         return "account";
     }
 
