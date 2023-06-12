@@ -24,7 +24,7 @@ public interface ListingService {
 
     List<Listing> findByCountry(String country);
 
-    List<Listing> findByOwner(User owner);
+    Listing findByOwner(User owner);
 
     List<Listing> findByCity(String city);
 

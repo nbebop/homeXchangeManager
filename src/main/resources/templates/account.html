@@ -43,31 +43,35 @@
 <div class="profile-section">
     <h2>Profile</h2>
     <div class="profile-details">
-        <div class="booking-details" th:each="listings : ${listings}">
+        <div class="booking-details" >
             <!--         Display user's profile information-->
             <p th:text="'Name: '+ ${user.firstname + ' ' + user.lastname}"></p>
             <p th:text="'Email: ' + ${user.email}"></p>
             <p th:text="'Address: '+ ${user.city}"></p>
-            <p th:text="'Rating: '+ ${listings.ownerRating}"></p>
+            <p th:text="'Rating: '+ ${listing.ownerRating}"></p>
         </div>
     </div>
 
-    <div class="photos-section" th:each="listingItem : ${listings}">
+    <div th:if="${listing == null}" class="photos-section">
+        <p> You do not have a listing yet.. Why do not you add one? </p>
+    </div>
+
+    <div th:if="${listing != null}" class="photos-section">
         <h2>Photos of My Home</h2>
-        <div th:each="image : ${listingItem.getImages}" class="house-img">
+        <div th:each="image : ${listing.getImages}" class="house-img">
             <img th:src="@{${image.getUrl}}" alt="Listing Image">
         </div>
     </div>
 
-    <div class="services-section" th:each="listingItem : ${listings}">
+    <div class="services-section">
         <h2>Services Offered</h2>
         <!-- Display services offered by the user -->
-        <p th:text="'Services: ' + ${listingItem.services}"></p>
+        <p th:text="'Services: ' + ${listing.getServices}"></p>
     </div>
 
-    <div class="constraints-section" th:each="listingItem : ${listings}">
+    <div class="constraints-section" >
         <h2>Constraints/Limits</h2>
-        <p th:text="'Constraints: ' + ${listingItem.constraints}"></p>
+        <p th:text="'Constraints: ' + ${listing.getConstraints}"></p>
     </div>
 </div>
 <!-- Add more bookings here -->

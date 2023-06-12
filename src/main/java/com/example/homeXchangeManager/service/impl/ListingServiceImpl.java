@@ -104,8 +104,8 @@ public class ListingServiceImpl implements ListingService {
     }
 
     @Override
-    public List<Listing> findByOwner(User owner) {
-        return listingRepository.findAllByOwner(owner);
+    public Listing findByOwner(User owner) {
+        return listingRepository.findByOwner(owner);
     }
 
     @Override
