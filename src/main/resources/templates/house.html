@@ -65,7 +65,9 @@
                 <p th:text="'Location: ' + ${listing.city}"></p>
             </div>
         </div>
-        <img th:src="@{${listing.getMainImgPath}}" alt="House Image">
+        <div th:each="image : ${listing.getImages}" class="house-img">
+            <img th:src="@{${image.getUrl}}" alt="Listing Image">
+        </div>
         <p th:text="'Address: ' + ${listing.addressLine} + ', ' + ${listing.city} + ', ' + ${listing.postalCode} + ', ' + ${listing.country}"></p>
         <p th:text="'Description: ' + ${listing.description}"></p>
         <p th:text="'Booking Info: ' + ${listing.bookingInfo}"></p>
