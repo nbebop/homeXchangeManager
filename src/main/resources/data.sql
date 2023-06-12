@@ -206,3 +206,11 @@ VALUES
        (22, 8, '2023-08-01', '2023-08-07', 'Had a great time!'),
        (23, 9, '2023-09-01', '2023-09-07', 'Highly recommended!'),
        (24, 10, '2023-10-01', '2023-10-07', 'Wonderful experience!');
+
+-- constraints for existing listings
+INSERT INTO listing_constraints (listing_id, constraint_id)
+VALUES (1,16), (1,8), (1,12), (2,10), (2,14), (2,20), (3,6), (3,5), (3,13), (4,7), (4,17), (4,15), (5,18), (5,1), (5,9), (6,11), (6,4), (6,19);
+
+-- services for existing listings
+INSERT INTO listing_services (listing_id, service_id)
+VALUES (1,16), (1,8), (1,12), (2,10), (2,14), (2,20), (3,6), (3,5), (3,13), (4,7), (4,17), (4,15), (5,18), (5,1), (5,9), (6,11), (6,4), (6,19);
