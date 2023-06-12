@@ -163,9 +163,23 @@ VALUES (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire haza
 -- images
 INSERT INTO images (id, name, listing_id, url, content_type)
 VALUES (1, "house-1", 1 ,"/listing-images/1/house-1.png", "image/x-png"),
-       (2, "house-3", 1 ,"/listing-images/1/house-2.png", "image/x-png"),
-       (3, "house-3", 1 ,"/listing-images/1/house-3.png", "image/x-png");
-
+       (2, "house-2", 1 ,"/listing-images/1/house-2.png", "image/x-png"),
+       (3, "house-3", 1 ,"/listing-images/1/house-3.png", "image/x-png"),
+       (4, "house-3", 2 ,"/listing-images/2/house-3.png", "image/x-png"),
+       (5, "house-4", 2 ,"/listing-images/2/house-4.png", "image/x-png"),
+       (6, "house-5", 2 ,"/listing-images/2/house-5.png", "image/x-png"),
+       (7, "house-3", 3 ,"/listing-images/3/house-1.png", "image/x-png"),
+       (8, "house-3", 3 ,"/listing-images/3/house-2.png", "image/x-png"),
+       (9, "house-3", 3 ,"/listing-images/3/house-3.png", "image/x-png"),
+       (10, "house-3", 4,"/listing-images/4/house-3.png", "image/x-png"),
+       (11, "house-4", 4,"/listing-images/4/house-4.png", "image/x-png"),
+       (12, "house-5", 4,"/listing-images/4/house-5.png", "image/x-png"),
+       (13, "house-3", 6,"/listing-images/6/house-3.png", "image/x-png"),
+       (14, "house-4", 6,"/listing-images/6/house-4.png", "image/x-png"),
+       (15, "house-5", 6,"/listing-images/6/house-5.png", "image/x-png"),
+       (16, "house-1", 5,"/listing-images/5/house-1.png", "image/x-png"),
+       (17, "house-2", 5,"/listing-images/5/house-2.png", "image/x-png"),
+       (18, "house-3", 5,"/listing-images/5/house-3.png", "image/x-png");
 
 --booking
 INSERT INTO booking (guest_id, listing_id, booking_start, booking_end, additional_info)
