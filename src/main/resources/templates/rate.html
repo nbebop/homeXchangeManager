@@ -10,35 +10,7 @@
     <link href="/css/rate.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
     <script src="js/script.js"></script>
-<!--    <style>-->
-<!--        /* Add your custom styles here */-->
-<!--        /* Example: */-->
-<!--        .list-rating {-->
-<!--            margin-top: 50px;-->
-<!--            text-align: center;-->
-<!--        }-->
-<!--        .list-rating h2 {-->
-<!--            font-size: 24px;-->
-<!--            margin-bottom: 20px;-->
-<!--        }-->
-<!--        .rating {-->
-<!--            margin-bottom: 30px;-->
-<!--        }-->
-<!--        .rating label {-->
-<!--            color: #ffcc00;-->
-<!--            font-size: 30px;-->
-<!--        }-->
-<!--        .rating input[type="radio"] {-->
-<!--            display: none;-->
-<!--        }-->
-<!--        .rating input[type="radio"] + label i {-->
-<!--            color: #ccc;-->
-<!--            transition: color 0.2s;-->
-<!--        }-->
-<!--        .rating input[type="radio"]:checked + label i {-->
-<!--            color: #ffcc00;-->
-<!--        }-->
-<!--    </style>-->
+
 </head>
 <body>
 <section class="navbar">
@@ -81,31 +53,38 @@
     <form id="ratingForm" th:action="@{'/listing/rate/'}" method="POST" enctype="multipart/form-data" th:object="${rating}">
         <!-- Rating stars -->
         <div class="rating">
-            <input type="radio" id="star5" name="rating" value="5">
+            <input type="radio" id="star5" name="score" value="5" th:field="*{score}">
             <label for="star5" title="5 stars">
                 <i class="fas fa-star"></i>
             </label>
-            <input type="radio" id="star4" name="rating" value="4">
+            <input type="radio" id="star4" name="score" value="4" th:field="*{score}">
             <label for="star4" title="4 stars">
                 <i class="fas fa-star"></i>
             </label>
-            <input type="radio" id="star3" name="rating" value="3">
+            <input type="radio" id="star3" name="score" value="3" th:field="*{score}">
             <label for="star3" title="3 stars">
                 <i class="fas fa-star"></i>
             </label>
-            <input type="radio" id="star2" name="rating" value="2">
+            <input type="radio" id="star2" name="score" value="2" th:field="*{score}">
             <label for="star2" title="2 stars">
                 <i class="fas fa-star"></i>
             </label>
-            <input type="radio" id="star1" name="rating" value="1">
+            <input type="radio" id="star1" name="score" value="1" th:field="*{score}">
             <label for="star1" title="1 star">
                 <i class="fas fa-star"></i>
             </label>
         </div>
+
+        <!-- Description field -->
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" th:field="*{description}" class="form-control" rows="5"></textarea>
+            <small class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small>
+        </div>
+
         <button type="submit">Submit Rating</button>
     </form>
 </div>
-
 
 </body>
 </html>

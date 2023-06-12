@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 body {
-    background-color: rgb(230, 225, 220);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
 }
-
+header{
+    background-color: rgb(215, 210, 207);
+}
 .container {
     background-color: #ffffff;
     border: 2px solid #dddddd;
@@ -64,4 +65,28 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: rgb(161, 101, 103);
+}
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.text-danger {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
 }
