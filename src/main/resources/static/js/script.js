@@ -72,3 +72,22 @@ function updateListingRating(rating) {
     // For demonstration purposes, we'll just log the rating to the console
     console.log('Listing rating updated:', rating);
 }
+
+ratingInputs.forEach((input) => {
+    input.addEventListener('change', handleRatingChange);
+});
+
+function handleRatingChange(event) {
+    const selectedRating = event.target.value;
+
+    ratingInputs.forEach((input) => {
+        const label = input.nextElementSibling;
+        const starIcon = label.querySelector('i');
+
+        if (input.value <= selectedRating) {
+            starIcon.classList.add('checked');
+        } else {
+            starIcon.classList.remove('checked');
+        }
+    });
+}
