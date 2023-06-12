@@ -4,6 +4,7 @@ import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
+import com.example.homeXchangeManager.service.impl.ListingRatingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,11 +28,14 @@ public class HomeController {
     private UserService userService;
 
     private ListingService listingService;
+    private ListingRatingServiceImpl ratingService;
 
     @Autowired
-    public HomeController(UserService userService, ListingService listingService) {
+    public HomeController(UserService userService, ListingService listingService,
+                          ListingRatingServiceImpl ratingService) {
         this.userService = userService;
         this.listingService = listingService;
+        this.ratingService = ratingService;
     }
 
     //    LOGIN
@@ -40,9 +45,10 @@ public class HomeController {
     }
 
     @GetMapping("/success")
-    public String successLogin(Authentication authResult, Model model) {
+    public String successLogin(Authentication authResult, Model model, RedirectAttributes redirectAttributes) {
         String role = authResult.getAuthorities().toString();
         model.addAttribute("role", role);
+        redirectAttributes.addFlashAttribute("successMessage", "User signed in successfully");
 
         if (role.contains("ADMIN")) {
             return "redirect:/admin_page";
@@ -62,13 +68,13 @@ public class HomeController {
     @GetMapping("/house/{id}")
     public String house(@PathVariable("id") long id, Model model, HttpServletRequest request) {
         Listing listing = listingService.findByListingId(id);
-        model.addAttribute("listing", listing);
-
-      
         User host = listing.getOwner();
-        model.addAttribute("host", host);
+        double avgListingRating = ratingService.calculateAverageRating(listing);
 
-        model.addAttribute("request", request); // Add the request object to the model
+        model.addAttribute("host", host);
+        model.addAttribute("listing", listing);
+        model.addAttribute("rating", avgListingRating);
+        model.addAttribute("request", request);
 
         return "house";
     }

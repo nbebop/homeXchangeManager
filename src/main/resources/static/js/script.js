@@ -72,4 +72,3 @@ setTimeout(function() {
     }
 }, 3000); // Adjust the duration (in milliseconds) as needed
 
-

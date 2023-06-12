@@ -41,9 +41,9 @@
 </section>
 <div class="spacer"></div>
 <div class="profile-section">
-    <h2>Profile</h2>
     <div class="profile-details">
-        <div class="booking-details" th:each="listings : ${listings}">
+        <h2>Profile</h2>
+        <div class="booking-details_2" th:each="listings : ${listings}">
             <!--         Display user's profile information-->
             <p th:text="'Name: '+ ${user.firstname + ' ' + user.lastname}"></p>
             <p th:text="'Email: ' + ${user.email}"></p>
@@ -54,7 +54,9 @@
 
     <div class="photos-section" th:each="listingItem : ${listings}">
         <h2>Photos of My Home</h2>
-        <img th:src="@{${listingItem.getMainImgPath}}" alt="House Image">
+        <div th:each="image : ${listingItem.getImages}" class="house-img">
+            <img th:src="@{${image.getUrl}}" alt="Listing Image">
+        </div>
     </div>
 
     <div class="services-section" th:each="listingItem : ${listings}">
@@ -78,16 +80,10 @@
                 <p th:text="'Conutry: '+${listingItem.country}"></p>
                 <p th:text="'Start: '+${listingItem.availabilityStart}"></p>
                 <p th:text="'End: '+${listingItem.availabilityEnd}"></p>
-                <!-- Add other listing details as needed -->
             </div>
         </div>
-        <!--  <div class="booking-photos">
-              <img src="img/paris1.jpg" alt="Booking Photo 1" class="photo">
-              <img src="img/paris2.jpg" alt="Booking Photo 2" class="photo">
-              <img src="img/paris3.jpg" alt="Booking Photo 3" class="photo">
-          </div>-->
         <div class="booking-photos" th:each="listingItem : ${listings}">
-            <img th:src="@{${listingItem.getMainImgPath}}" alt="Booking Image">
+<!--            <img th:src="@{${listingItem.getMainImgPath}}" alt="Booking Image">-->
         </div>
     </div>
 </div>
@@ -95,11 +91,10 @@
 </div>
 
 <div class="messaging-section">
-    <h2>Communicate Through Messaging</h2>
+    <h2>Messaging</h2>
     <form class="messaging-form">
         <!-- Messaging form for communication -->
-        <textarea rows="4" cols="50" placeholder="Type your message here"></textarea>
-        <br>
+        <textarea rows="4" cols="50" placeholder="Type your message here"></textarea> <br>
         <button type="submit">Send Message</button>
     </form>
 </div>
