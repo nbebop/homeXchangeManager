@@ -69,7 +69,7 @@
             <td th:text="${listing.listingId}"></td>
             <td th:text="${listing.description}"></td>
             <td th:text="${listing.rating}"></td>
-            <td th:text="${listing.owner}"></td>
+            <td th:text="${listing.owner.getUsername}"></td>
             <td th:text="${listing.city}"></td>
             <td>
                 <form action="/edit_listing">
