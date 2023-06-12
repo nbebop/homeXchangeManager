@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <link rel="stylesheet" href="booking.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/booking.css" rel="stylesheet">
+    <script src="js/script.js"></script>
+</head>
+<body>
+<section class="navbar">
+    <header>
+        <!-- Logo -->
+        <a href="/" th:href="@{/success}"><img class="logo" src="/img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
+            <form action="/" method="GET" class="form">
+                <input type="search" placeholder="Search for..." class="search-field">
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- Find a house and add a listing navlinks -->
+        <div class="nav-links">
+            <ul class="nav-links-style">
+                <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
+            </ul>
+        </div>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"><img src="/img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </header>
+    <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
+</section>
+<div class="spacer"></div>
+<section>
+    <div>
+        <h2>Booking history</h2>
+        
+        <div>
+            <h4> Your bookings requests: </h4>
+            <label th:each="booking : ${allBookingsAsGuest}">
+                <p th:text="${booking.additionalInfo}"></p>
+            </label>
+        </div>
+
+        <div>
+            <h4> All bookings you hosted: </h4>
+            <label th:each="booking : ${oldBookingsAsHost}">
+                <p th:text="${booking.additionalInfo}"></p>
+            </label>
+        </div>
+    </div>
+</section>
+</body>
+</html>
