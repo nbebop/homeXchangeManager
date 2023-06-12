@@ -58,8 +58,8 @@
             </span>
                 <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
-            </span>
-                <span th:text="${listing.ownerRating}">0</span>
+                </span>
+<!--                <span th:text="${listing.ownerRating}">0</span>-->
             </div>
             <div>
                 <p th:text="'Location: ' + ${listing.city}"></p>
