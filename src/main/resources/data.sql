@@ -179,7 +179,19 @@ VALUES (1, "house-1", 1 ,"/listing-images/1/house-1.png", "image/x-png"),
        (15, "house-5", 6,"/listing-images/6/house-5.png", "image/x-png"),
        (16, "house-1", 5,"/listing-images/5/house-1.png", "image/x-png"),
        (17, "house-2", 5,"/listing-images/5/house-2.png", "image/x-png"),
-       (18, "house-3", 5,"/listing-images/5/house-3.png", "image/x-png");
+       (18, "house-3", 5,"/listing-images/5/house-3.png", "image/x-png"),
+       (19, "house-4", 7, "/listing-images/7/house-7.png", "image/x-png"),
+       (20, "house-5", 7, "/listing-images/7/house-8.png", "image/x-png"),
+       (21, "house-6", 7, "/listing-images/7/house-9.png", "image/x-png"),
+       (22, "house-7", 8, "/listing-images/8/house-10.png", "image/x-png"),
+       (23, "house-8", 8, "/listing-images/8/house-11.png", "image/x-png"),
+       (24, "house-9", 8, "/listing-images/8/house-12.png", "image/x-png"),
+       (25, "house-1", 9 ,"/listing-images/9/house-1.png", "image/x-png"),
+       (26, "house-3", 9 ,"/listing-images/9/house-2.png", "image/x-png"),
+       (27, "house-3", 9 ,"/listing-images/9/house-3.png", "image/x-png"),
+       (28, "house-1", 10, "/listing-images/10/house-4.png", "image/x-png"),
+       (29, "house-2", 10, "/listing-images/10/house-5.png", "image/x-png"),
+       (30, "house-3", 10, "/listing-images/10/house-6.png", "image/x-png");
 
 --booking
 INSERT INTO booking (guest_id, listing_id, booking_start, booking_end, additional_info)
