@@ -249,6 +249,7 @@ input[type="search"]::-webkit-search-cancel-button {
 /****************************************************/
 /* Bottom information section*/
 .info-section {
+    margin-top: 100px;
     text-align: center;
 }
 .info-section a {
