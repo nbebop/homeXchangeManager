@@ -80,7 +80,7 @@ public class Listing implements Serializable {
         return listingId;
     }
 
-    public void setListingId(int listingId) {
+    public void setListingId(long listingId) {
         this.listingId = listingId;
     }
 

@@ -44,6 +44,7 @@
     </header>
     <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 </section>
+
 <div class="spacer"></div>
 <div class="container">
     <div class="list-container">
@@ -71,6 +72,12 @@
                     <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
+                    <!-- rating -->
+                    <form action="/listing/rate/{{listingId}}" method="get">
+                        <button type="submit">Rate this listing</button>
+                    </form>
+
+
                 </div>
             </div>
         </div>
@@ -97,6 +104,10 @@
                     <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
+                    <!-- rating -->
+                    <form action="/listing/rate/{{listingId}}" method="get">
+                        <button type="submit">Rate this listing</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -119,6 +130,12 @@
                     <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
+                    <!-- rating -->
+                    <div class="check-form">
+                        <a th:href="@{'/listing/rate/' + ${listing.listingId}}">
+                            <button type="submit">Rate this listing</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
