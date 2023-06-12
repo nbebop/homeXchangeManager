@@ -3,6 +3,8 @@ package com.example.homeXchangeManager.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "services")
@@ -16,10 +18,17 @@ public class Service implements Serializable {
     @NotNull
     @Column(name = "service_name")
     private String serviceName;
-    
+
     @NotNull
     @Column(name = "service_description")
     private String serviceDescription;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }, mappedBy = "services")
+    private List<Listing> listings;
 
     public Service() {
     }
@@ -53,4 +62,13 @@ public class Service implements Serializable {
     public void setServiceDescription(String serviceDescription) {
         this.serviceDescription = serviceDescription;
     }
+
+    public List<Listing> getListings() {
+        return listings;
+    }
+
+    public void setListings(List<Listing> listings) {
+        this.listings = listings;
+    }
+
 }
