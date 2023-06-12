@@ -3,36 +3,54 @@ package com.example.homeXchangeManager.controllers;
 import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
+import com.example.homeXchangeManager.repositories.UserRepository;
 import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
 public class AdminController {
     private static final Logger logger = LoggerFactory.getLogger(ListingController.class);
+    private UserRepository userRepository;
     private UserService userService;
     private ListingService listingService;
 
-    public AdminController(UserService userService, ListingService listingService) {
+    public AdminController(UserService userService, ListingService listingService, UserRepository userRepository) {
         this.userService = userService;
         this.listingService = listingService;
+        this.userRepository = userRepository;
     }
 
-
     @GetMapping("/admin_page")
-    public String adminPage(Model model) {
+    public String adminPage(Model model, @RequestParam(name = "sort", required = false) String sort,
+                            @RequestParam(name = "order", required = false) String order) {
+        List<User> users;
+
+        if (sort != null && sort.equals("email")) {
+            users = getAllUsers(order != null ? order : "asc");
+            model.addAttribute("order", order != null && order.equals("asc") ? "desc" : "asc");
+        } else {
+            users = getAllUsers("asc");
+            model.addAttribute("order", "asc");
+        }
+
         model.addAttribute("listings", getAllListing());
-        model.addAttribute("users", getAllUsers());
+        model.addAttribute("users", users);
         return "admin_page";
+    }
+
+    private List<User> getAllUsers(String sortDirection) {
+        Sort sort = Sort.by(sortDirection.equals("asc") ? Sort.Direction.ASC : Sort.Direction.DESC, "email");
+        return userRepository.findAll(sort);
     }
 
     @PostMapping("/admin/delete/listing/{id}")
@@ -59,10 +77,7 @@ public class AdminController {
         }
     }
 
-    private List<User> getAllUsers() {
-        return userService.findAll();
 
-    }
 
     private List<Listing> getAllListing() {
         return listingService.findAll();
@@ -109,4 +124,5 @@ public class AdminController {
 
         return listingDto;
     }
+
 }
