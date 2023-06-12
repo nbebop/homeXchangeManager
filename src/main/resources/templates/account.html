@@ -66,12 +66,18 @@
     <div class="services-section">
         <h2>Services Offered</h2>
         <!-- Display services offered by the user -->
-        <p th:text="'Services: ' + ${listing.getServices}"></p>
+        <p>Services: </p>
+        <div th:each="service : ${listing.getServices}" >
+        <p th:text="${service.getServiceName}"></p>
+            </div>
     </div>
 
     <div class="constraints-section" >
         <h2>Constraints/Limits</h2>
-        <p th:text="'Constraints: ' + ${listing.getConstraints}"></p>
+        <p>Constraints: </p>
+        <div th:each="constraint : ${listing.getConstraints}" >
+            <p th:text="${constraint.getConstraintName}"></p>
+        </div>
     </div>
 </div>
 <!-- Add more bookings here -->
