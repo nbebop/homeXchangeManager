@@ -54,7 +54,7 @@
 
     <div class="photos-section" th:each="listingItem : ${listings}">
         <h2>Photos of My Home</h2>
-<!--        <img th:src="@{${listingItem.getMainImgPath}}" alt="House Image">-->
+        <img th:src="@{${listingItem.getMainImgPath}}" alt="House Image">
     </div>
 
     <div class="services-section" th:each="listingItem : ${listings}">
@@ -78,10 +78,16 @@
                 <p th:text="'Conutry: '+${listingItem.country}"></p>
                 <p th:text="'Start: '+${listingItem.availabilityStart}"></p>
                 <p th:text="'End: '+${listingItem.availabilityEnd}"></p>
+                <!-- Add other listing details as needed -->
             </div>
         </div>
+        <!--  <div class="booking-photos">
+              <img src="img/paris1.jpg" alt="Booking Photo 1" class="photo">
+              <img src="img/paris2.jpg" alt="Booking Photo 2" class="photo">
+              <img src="img/paris3.jpg" alt="Booking Photo 3" class="photo">
+          </div>-->
         <div class="booking-photos" th:each="listingItem : ${listings}">
-<!--            <img th:src="@{${listingItem.getMainImgPath}}" alt="Booking Image">-->
+            <img th:src="@{${listingItem.getMainImgPath}}" alt="Booking Image">
         </div>
     </div>
 </div>
