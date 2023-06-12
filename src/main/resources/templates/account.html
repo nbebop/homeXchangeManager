@@ -41,9 +41,9 @@
 </section>
 <div class="spacer"></div>
 <div class="profile-section">
-    <h2>Profile</h2>
     <div class="profile-details">
-        <div class="booking-details" th:each="listings : ${listings}">
+        <h2>Profile</h2>
+        <div class="booking-details_2" th:each="listings : ${listings}">
             <!--         Display user's profile information-->
             <p th:text="'Name: '+ ${user.firstname + ' ' + user.lastname}"></p>
             <p th:text="'Email: ' + ${user.email}"></p>
@@ -91,11 +91,10 @@
 </div>
 
 <div class="messaging-section">
-    <h2>Communicate Through Messaging</h2>
+    <h2>Messaging</h2>
     <form class="messaging-form">
         <!-- Messaging form for communication -->
-        <textarea rows="4" cols="50" placeholder="Type your message here"></textarea>
-        <br>
+        <textarea rows="4" cols="50" placeholder="Type your message here"></textarea> <br>
         <button type="submit">Send Message</button>
     </form>
 </div>
