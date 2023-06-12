@@ -70,14 +70,12 @@
                     <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
-<<<<<<< HEAD
+
                     <!-- rating -->
                     <form action="/listing/rate/{{listingId}}" method="get">
                         <button type="submit">Rate this listing</button>
                     </form>
 
-=======
->>>>>>> eff421235fb635f3078c9483d475eb0259ff8987
 
                 </div>
                 <div th:each="image : ${listing.getImages}" class="house-img">
@@ -107,16 +105,16 @@
                     <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
-<<<<<<< HEAD
+
                     <!-- rating -->
                     <form action="/listing/rate/{{listingId}}" method="get">
                         <button type="submit">Rate this listing</button>
                     </form>
-=======
+
                     <div th:each="image : ${listing.getImages}" class="house-img">
                         <img th:src="@{${image.getUrl}}" alt="Listing Image">
                     </div>
->>>>>>> eff421235fb635f3078c9483d475eb0259ff8987
+
                 </div>
             </div>
         </div>
@@ -137,19 +135,18 @@
                     <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
-<<<<<<< HEAD
-                    <!-- rating -->
+      <!-- rating -->
+                    <div th:each="image : ${listing.getImages}" class="house-img">
+                        <img th:src="@{${image.getUrl}}" alt="Listing Image">
+
+                    </div>
                     <div class="check-form">
                         <a th:href="@{'/listing/rate/' + ${listing.listingId}}">
                             <button type="submit">Rate this listing</button>
                         </a>
                     </div>
-=======
 
-                </div>
-                <div th:each="image : ${listing.getImages}" class="house-img">
-                    <img th:src="@{${image.getUrl}}" alt="Listing Image">
->>>>>>> eff421235fb635f3078c9483d475eb0259ff8987
+
                 </div>
             </div>
         </div>
