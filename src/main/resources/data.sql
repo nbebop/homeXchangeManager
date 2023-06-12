@@ -1,16 +1,16 @@
 -- create roles
-INSERT INTO roles (id, name) VALUES ('1', 'ADMIN');
-INSERT INTO roles (id, name) VALUES ('2', 'USER');
+insert into roles (id, name) values ('1', 'ADMIN');
+insert into roles (id, name) values ('2', 'USER');
 
 -- create users
 --admins
-INSERT INTO users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
-VALUES ('1', 'admin', 'admin', 'admin', '$2a$10$PJf3MqpW2aexwqLML51U5exS62wv0rsJ6pKcI7j9aqh9s0HUDtWVu', 'admin@example.com', '1990-01-01', '123456789', 'Description admin','Admin st 2', 'Left apt.', 'Paris', '750001', 'France'),
+insert into users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
+values ('1', 'admin', 'admin', 'admin', '$2a$10$PJf3MqpW2aexwqLML51U5exS62wv0rsJ6pKcI7j9aqh9s0HUDtWVu', 'admin@example.com', '1990-01-01', '123456789', 'Description admin','Admin st 2', 'Left apt.', 'Paris', '750001', 'France'),
        ('9', 'user9', 'admin2', 'admin2', 'admin2', 'admin2@example.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'Premise admin', 'Paris', '750015', 'France');
 
 --regular users
-INSERT INTO users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
-       VALUES ('2', 'user', 'user', 'user', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user@example.com', '1990-01-01', '123456789', 'Description user', 'Test street 1', 'Premise 1', 'paris', '750014', 'France'),
+insert into users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
+       values ('2', 'user', 'user', 'user', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user@example.com', '1990-01-01', '123456789', 'Description user', 'Test street 1', 'Premise 1', 'paris', '750014', 'France'),
        ('3', 'user3', 'David', 'Johnson', 'password3', 'user3@example.com', '1985-08-20', '555555555', 'Description 3', '789 Oak St', 'Premise 3', 'Chicago', '23456', 'USA'),
        ('4', 'user4', 'Emily', 'Davis', 'password4', 'user4@example.com', '1995-03-10', '111111111', 'Description 4', '987 Pine St', 'Premise 4', 'Houston', '78901', 'USA'),
        ('5', 'user5', 'Michael', 'Wilson', 'password5', 'user5@example.com', '1998-11-25', '999999999', 'Description 5', '321 Maple St', 'Premise 5', 'Sevilla', '34567', 'Spain'),
@@ -40,40 +40,40 @@ INSERT INTO users (id, username, firstname, lastname, password, email, birthdate
        ('30', 'user30', 'Henry', 'Lewis', 'password30', 'henrylewis@example.com', '1994-05-31', '555555555', 'Description 30', '654 Oak St', 'Premise 30', 'Los Angeles', '90001', 'USA');
 
 -- set user rights
-INSERT INTO user_roles (user_id, role_id) VALUES (1, 1);
-INSERT INTO user_roles (user_id, role_id) VALUES (2, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (3, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (4, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (5, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (6, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (7, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (8, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (9, 1);
-INSERT INTO user_roles (user_id, role_id) VALUES (10, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (11, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (12, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (13, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (14, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (15, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (16, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (17, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (18, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (19, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (20, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (21, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (22, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (23, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (24, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (25, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (26, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (27, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (28, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (29, 2);
-INSERT INTO user_roles (user_id, role_id) VALUES (30, 2);
+insert into user_roles (user_id, role_id) values (1, 1);
+insert into user_roles (user_id, role_id) values (2, 2);
+insert into user_roles (user_id, role_id) values (3, 2);
+insert into user_roles (user_id, role_id) values (4, 2);
+insert into user_roles (user_id, role_id) values (5, 2);
+insert into user_roles (user_id, role_id) values (6, 2);
+insert into user_roles (user_id, role_id) values (7, 2);
+insert into user_roles (user_id, role_id) values (8, 2);
+insert into user_roles (user_id, role_id) values (9, 1);
+insert into user_roles (user_id, role_id) values (10, 2);
+insert into user_roles (user_id, role_id) values (11, 2);
+insert into user_roles (user_id, role_id) values (12, 2);
+insert into user_roles (user_id, role_id) values (13, 2);
+insert into user_roles (user_id, role_id) values (14, 2);
+insert into user_roles (user_id, role_id) values (15, 2);
+insert into user_roles (user_id, role_id) values (16, 2);
+insert into user_roles (user_id, role_id) values (17, 2);
+insert into user_roles (user_id, role_id) values (18, 2);
+insert into user_roles (user_id, role_id) values (19, 2);
+insert into user_roles (user_id, role_id) values (20, 2);
+insert into user_roles (user_id, role_id) values (21, 2);
+insert into user_roles (user_id, role_id) values (22, 2);
+insert into user_roles (user_id, role_id) values (23, 2);
+insert into user_roles (user_id, role_id) values (24, 2);
+insert into user_roles (user_id, role_id) values (25, 2);
+insert into user_roles (user_id, role_id) values (26, 2);
+insert into user_roles (user_id, role_id) values (27, 2);
+insert into user_roles (user_id, role_id) values (28, 2);
+insert into user_roles (user_id, role_id) values (29, 2);
+insert into user_roles (user_id, role_id) values (30, 2);
 
 -- listing
-INSERT INTO listings (listing_id, owner_id, description, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
-VALUES ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Brown 69', '4th floor, left', 'Paris', '750001', 'France'),
+insert into listings (listing_id, owner_id, description, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
+values ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Brown 69', '4th floor, left', 'Paris', '750001', 'France'),
        ('2', '2', 'Big apartement in the center of paris', 'Any other info call me', 0, 0, '2024-01-02', '2024-12-02', 'Bookish 69', '2th floor, left', 'Paris', '750002', 'France'),
        ('3', '3', 'Modern studio apartment in downtown Paris', 'Contact me for booking details', 0, 0, '2024-03-15', '2024-12-31', 'Rue de la Liberte 123', '7th floor, Apt 12', 'Paris', '750003', 'France'),
        ('4', '4', 'Charming cottage in the outskirts of Paris', 'Please inquire for availability', 0, 0, '2024-02-01', '2024-12-15', 'Chemin des Fleurs 456', 'Garden Cottage', 'Paris', '750004', 'France'),
@@ -105,9 +105,9 @@ VALUES ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call
        ('30', '30', 'Modern loft in Beijing', 'Please inquire for booking details', 0, 0, '2024-08-01', '2024-12-31', '32 Haiki street', 'User', 'Beijing', '100000', 'China');
 
 -- messages
-INSERT INTO messages (sender_id, receiver_id, content, timestamp)
-VALUES
-       (7, 8, 'Hello User 8, this is User 7!', CURRENT_TIMESTAMP),
+insert into messages (sender_id, receiver_id, content, timestamp)
+values
+       (7, 8, 'Hello User 8, this is User 7!', current_timestamp),
        (8, 7, 'Hi User 7, nice to hear from you!', CURRENT_TIMESTAMP),
        (7, 8, 'How are you today?', CURRENT_TIMESTAMP),
        (8, 7, 'I am fine, thank you', CURRENT_TIMESTAMP),
@@ -115,8 +115,8 @@ VALUES
        (8, 7, 'Absolutely no!', CURRENT_TIMESTAMP);
 
 -- services
-INSERT INTO services (service_id, service_name, service_description)
-VALUES (1, 'Garbage disposal', 'Take out the trash and recycling'),
+insert into services (service_id, service_name, service_description)
+values (1, 'Garbage disposal', 'Take out the trash and recycling'),
        (2, 'Plant care', 'Water plants and tend to garden'),
        (3, 'Errand running', 'Run errands, such as picking up dry cleaning or dropping off mail. The owner will let you know in chat.'),
        (4, 'Appliance maintenance', 'Clean and maintain appliances, such as the refrigerator and oven'),
@@ -138,8 +138,8 @@ VALUES (1, 'Garbage disposal', 'Take out the trash and recycling'),
        (20, 'Move-in/move-out assistance', 'Help the owner move into or out of their home');
 
 -- constraints
-INSERT INTO constraints (constraint_id, constraint_name, constraint_description)
-VALUES (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire hazards and health risks.'),
+insert into constraints (constraint_id, constraint_name, constraint_description)
+values (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire hazards and health risks.'),
        (2, 'No pets', 'Pets are not allowed to prevent damage and/or hygiene and health issues.'),
        (3, 'No shoes on carpet', 'Shoes are not allowed on the carpet to keep it clean and prevent wear and tear.'),
        (4, 'No loud music after 10pm', 'Loud music is not allowed after 10pm to respect neighbors and maintain a peaceful environment.'),
@@ -161,15 +161,42 @@ VALUES (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire haza
        (20, 'No hot tub use without prior approval', 'Guests must obtain prior approval from the owner before using the hot tub.');
 
 -- images
-INSERT INTO images (id, name, listing_id, url, content_type)
-VALUES (1, "house-1", 1 ,"listing-images/1/house-1.png", "image/x-png"),
+insert into images (id, name, listing_id, url, content_type)
+values (1, "house-1", 1 ,"listing-images/1/house-1.png", "image/x-png"),
        (2, "house-3", 1 ,"listing-images/1/house-2.png", "image/x-png"),
-       (3, "house-3", 1 ,"listing-images/1/house-3.png", "image/x-png");
+       (3, "house-3", 1 ,"listing-images/1/house-3.png", "image/x-png"),
+       (4, "house-1", 2, "listing-images/2/house-4.png", "image/x-png"),
+  (5, "house-2", 2, "listing-images/2/house-5.png", "image/x-png"),
+  (6, "house-3", 2, "listing-images/2/house-6.png", "image/x-png"),
+  (7, "house-4", 3, "listing-images/3/house-7.png", "image/x-png"),
+  (8, "house-5", 3, "listing-images/3/house-8.png", "image/x-png"),
+  (9, "house-6", 3, "listing-images/3/house-9.png", "image/x-png"),
+  (10, "house-7", 4, "listing-images/4/house-10.png", "image/x-png"),
+  (11, "house-8", 4, "listing-images/4/house-11.png", "image/x-png"),
+  (12, "house-9", 4, "listing-images/4/house-12.png", "image/x-png"),
+  (13, "house-10", 5, "listing-images/1/house-1.png", "image/x-png"),
+  (14, "house-11", 5, "listing-images/1/house-2.png", "image/x-png"),
+  (15, "house-12", 5, "listing-images/1/house-3.png", "image/x-png"),
+  (16, "house-13", 6, "listing-images/2/house-4.png", "image/x-png"),
+  (17, "house-14", 6, "listing-images/2/house-5.png", "image/x-png"),
+  (18, "house-15", 6, "listing-images/2/house-6.png", "image/x-png"),
+  (19, "house-4", 7, "listing-images/3/house-7.png", "image/x-png"),
+  (20, "house-5", 7, "listing-images/3/house-8.png", "image/x-png"),
+  (21, "house-6", 7, "listing-images/3/house-9.png", "image/x-png"),
+  (22, "house-7", 8, "listing-images/4/house-10.png", "image/x-png"),
+  (23, "house-8", 8, "listing-images/4/house-11.png", "image/x-png"),
+  (24, "house-9", 8, "listing-images/4/house-12.png", "image/x-png"),
+  (25, "house-1", 9 ,"listing-images/1/house-1.png", "image/x-png"),
+  (26, "house-3", 9 ,"listing-images/1/house-2.png", "image/x-png"),
+  (27, "house-3", 9 ,"listing-images/1/house-3.png", "image/x-png"),
+  (28, "house-1", 10, "listing-images/2/house-4.png", "image/x-png"),
+  (29, "house-2", 10, "listing-images/2/house-5.png", "image/x-png"),
+  (30, "house-3", 10, "listing-images/2/house-6.png", "image/x-png");
 
 
 --booking
-INSERT INTO booking (guest_id, listing_id, booking_start, booking_end, additional_info)
-VALUES
+insert into booking (guest_id, listing_id, booking_start, booking_end, additional_info)
+values
        -- Future bookings
        (5, 1, '2023-07-01', '2023-07-07', 'Looking forward to our stay!'),
        (6, 2, '2023-08-01', '2023-08-07', 'Excited for our vacation!'),
