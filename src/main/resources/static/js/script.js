@@ -72,4 +72,14 @@ setTimeout(function() {
     }
 }, 3000); // Adjust the duration (in milliseconds) as needed
 
-
+function changeImage(element) {
+    var nextImage = element.nextElementSibling;
+    if (nextImage) {
+        element.style.transform = 'scale(0)';
+        nextImage.style.transform = 'scale(1)';
+    } else {
+        var firstImage = element.parentNode.firstElementChild;
+        firstImage.style.transform = 'scale(1)';
+        element.style.transform = 'scale(0)';
+    }
+}
