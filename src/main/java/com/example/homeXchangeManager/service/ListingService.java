@@ -1,14 +1,23 @@
 package com.example.homeXchangeManager.service;
 
+import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
+import org.springframework.data.domain.Sort;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ListingService {
-    void save(Listing listing);
+    void save(ListingDto listing);
 
-    void edit(long id, Listing newListing);
+    void save(ListingDto listing, MultipartFile[] images);
+
+    //Listing saveAndFlush(Listing listing);
+
+
+    void edit(long id, ListingDto newListing, MultipartFile[] images);
 
     void delete(long id);
 
@@ -16,12 +25,19 @@ public interface ListingService {
 
     List<Listing> findByCountry(String country);
 
-    List<Listing> findByOwner(User owner);
+    Listing findByOwner(User owner);
 
     List<Listing> findByCity(String city);
 
     List<Listing> findAll();
+    List<Listing> findAll(Sort sort);
+
+    List<Listing> findAllByCityAndAvailabilityStartBetween(String city, Date start, Date end);
+
+    List<Listing> findByCityAndAvailabilityStartGreaterThanEqualAndAvailabilityEndLessThanEqual(String city, Date start, Date end);
 
     long count();
+
+    //void save(ListingDto listing, MultipartFile[] images);
 
 }

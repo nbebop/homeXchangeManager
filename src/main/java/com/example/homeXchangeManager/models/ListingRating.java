@@ -1,9 +1,14 @@
 package com.example.homeXchangeManager.models;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-@Table(name = "ListingRating")
+@Table(name = "listing_rating")
 public class ListingRating implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,22 +20,24 @@ public class ListingRating implements Serializable {
     private User reviewer;
 
     @ManyToOne
-    @JoinColumn(name = "reviewedId", referencedColumnName = "listingId")
+    @JoinColumn(name = "listings", referencedColumnName = "listing_id")
     private Listing listing;
+    private int score;
+    private String description;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/YYYY")
+    @Column
+    private Date reviewDate;
 
-    @Column(name = "ratingScore")
-    private int ratingScore;
+    public ListingRating() {
+    }
 
-    @Column(name = "reviewComments")
-    private String reviewComments;
-
-    public ListingRating() {}
-
-    public ListingRating(User reviewer, Listing listing, int ratingScore, String reviewComments) {
+    public ListingRating(User reviewer, Listing listing, int score, String description, Date reviewDate) {
         this.reviewer = reviewer;
         this.listing = listing;
-        this.ratingScore = ratingScore;
-        this.reviewComments = reviewComments;
+        this.score = score;
+        this.description = description;
+        this.reviewDate = reviewDate;
     }
 
     public int getRatingId() {
@@ -57,19 +64,27 @@ public class ListingRating implements Serializable {
         this.listing = listing;
     }
 
-    public int getRatingScore() {
-        return ratingScore;
+    public int getScore() {
+        return score;
     }
 
-    public void setRatingScore(int ratingScore) {
-        this.ratingScore = ratingScore;
+    public void setScore(int ratingScore) {
+        this.score = ratingScore;
     }
 
-    public String getReviewComments() {
-        return reviewComments;
+    public String getDescription() {
+        return description;
     }
 
-    public void setReviewComments(String reviewComments) {
-        this.reviewComments = reviewComments;
+    public void setDescription(String reviewComments) {
+        this.description = reviewComments;
+    }
+
+    public Date getReviewDate() {
+        return reviewDate;
+    }
+
+    public void setReviewDate(Date reviewDate) {
+        this.reviewDate = reviewDate;
     }
 }

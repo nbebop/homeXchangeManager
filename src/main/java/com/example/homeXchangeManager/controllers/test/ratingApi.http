@@ -1,0 +1,9 @@
+POST http://localhost:8090/api/listing/rate
+Content-Type: application/json
+
+{
+  "reviewerId": "2",
+  "listingId": "2",
+  "score": 4,
+  "description": "Description of user rating"
+}

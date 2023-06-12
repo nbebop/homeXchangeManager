@@ -18,6 +18,30 @@ function closePopup(popupId) {
     var popup = document.getElementById("popup-" + popupId);
     popup.style.display = "none";
 }
+
+
+//Cookie setting
+
+function saveCookiePreferences() {
+    var essentialChecked = document.getElementById("cookie-essential").checked;
+    var analyticsChecked = document.getElementById("cookie-analytics").checked;
+    var preferencesChecked = document.getElementById("cookie-preferences").checked;
+    var marketingChecked = document.getElementById("cookie-marketing").checked;
+
+    // Save the preferences in your preferred way (e.g., using cookies or server-side storage)
+    // You can modify the code below to suit your needs
+    console.log("Essential Cookies: " + essentialChecked);
+    console.log("Analytics Cookies: " + analyticsChecked);
+    console.log("Preference Cookies: " + preferencesChecked);
+    console.log("Marketing Cookies: " + marketingChecked);
+}
+
+window.onload = function() {
+    var saveButton = document.getElementById("cookie-save");
+    if (saveButton) {
+        saveButton.addEventListener("click", saveCookiePreferences);
+    }
+};
 //validating password
 function validatePassword(event) {
     event.preventDefault(); // Prevent form submission for demonstration purposes
@@ -49,3 +73,45 @@ setTimeout(function() {
 }, 3000); // Adjust the duration (in milliseconds) as needed
 
 
+// script.js
+const ratingForm = document.getElementById('ratingForm');
+const ratingInputs = ratingForm.querySelectorAll('input[name="rating"]');
+
+ratingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const selectedRating = Array.from(ratingInputs).find(input => input.checked);
+    if (selectedRating) {
+        const rating = selectedRating.value;
+        updateListingRating(rating);
+        ratingForm.reset();
+        alert('Thank you for your rating!');
+    } else {
+        alert('Please select a rating!');
+    }
+});
+
+function updateListingRating(rating) {
+    // Send an AJAX request or perform any necessary logic to update the listing rating on the server-side
+    // You can use the 'rating' value to send it to the server and update the corresponding listing
+    // For demonstration purposes, we'll just log the rating to the console
+    console.log('Listing rating updated:', rating);
+}
+
+ratingInputs.forEach((input) => {
+    input.addEventListener('change', handleRatingChange);
+});
+
+function handleRatingChange(event) {
+    const selectedRating = event.target.value;
+
+    ratingInputs.forEach((input) => {
+        const label = input.nextElementSibling;
+        const starIcon = label.querySelector('i');
+
+        if (input.value <= selectedRating) {
+            starIcon.classList.add('checked');
+        } else {
+            starIcon.classList.remove('checked');
+        }
+    });
+}

@@ -16,6 +16,7 @@ body {
 .location-input{
     flex: 1;
 }
+
 /* ---------exclusives------------- */
 .sub-title{
     margin: 50px 0 20px;
@@ -198,17 +199,31 @@ body {
     padding: 30px 0;
     border-top: 1px solid #ccc;
 }
-.house-img{
-    flex-basis: 40%;
+.house-img-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.house-img {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 270px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.house-img img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
 }
 .house-info{
     flex-basis: 58%;
     color: #555;
 }
-.house-img img{
-    width: 100%;
-    border-radius: 12px;
-}
+
 .house-info h3{
     font-weight: 600;
     color: #333;
@@ -369,28 +384,25 @@ body {
     max-width: 800px;
     margin: 20px 0 50px;
 }
-/*.check-form{*/
-/*    margin: 30px 0;*/
-/*    background: #fff;*/
-/*    box-shadow: 0 0 30px rgba(0,0,0,0.3);*/
-/*    border-radius: 8px;*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    align-items: center;*/
-/*    padding: 10px 50px;*/
-/*    width:400px;*/
-/*}*/
-/*.check-form label{*/
-/*    display: block;*/
-/*}*/
-/*.check-form div{*/
-/*    padding: 20px;*/
-/*}*/
-/*.check-form input{*/
-/*    background: transparent;*/
-/*    border: 0;*/
-/*    outline: none;*/
-/*}*/
+.check-form{
+    margin: 30px 0;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 50px;
+}
+.check-form label{
+    display: block;
+}
+.check-form div{
+    padding: 20px;
+}
+.check-form input{
+    background: transparent;
+    border: 0;
+    outline: none;
+}
 .check-form button{
     background:rgb(167, 135, 136);
     border: 0;
@@ -400,7 +412,6 @@ body {
     width: 350px;
     border-radius: 8px;
     font-size: 16px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
 .guest-field{
     flex: 1;

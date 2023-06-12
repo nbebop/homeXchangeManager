@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "constraints")
@@ -11,6 +12,7 @@ public class Constraint implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "constraint_id")
     private int constraintId;
 
     @NotNull
@@ -20,6 +22,13 @@ public class Constraint implements Serializable {
     @NotNull
     @NotEmpty
     private String constraintDescription;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }, mappedBy = "constraints")
+    private List<Listing> listings;
 
     public Constraint() {
     }
@@ -52,5 +61,13 @@ public class Constraint implements Serializable {
 
     public void setConstraintDescription(String constraintDescription) {
         this.constraintDescription = constraintDescription;
+    }
+
+    public List<Listing> getListings() {
+        return listings;
+    }
+
+    public void setListings(List<Listing> listings) {
+        this.listings = listings;
     }
 }

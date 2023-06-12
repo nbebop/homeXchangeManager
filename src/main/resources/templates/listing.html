@@ -5,21 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listing Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-    <link href="css/navbar.css" rel="stylesheet">
-    <link href="css/style_without_navbar.css" rel="stylesheet">
-    <script src="js/script.js"></script>
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/style_without_navbar.css}" rel="stylesheet">
+    <script src="/js/script.js"></script>
 </head>
 <body>
 <section class="navbar">
     <header>
         <!-- Logo -->
-        <a href="/" th:href="@{/home_page}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
+        <a href="/" th:href="@{/home_page}"><img class="logo" src="/img/compass_white_name.png" alt="logo"></a>
         <!--Search bar -->
         <div class="search-bar">
-            <form action="/" method="GET" class="form">
-                <input type="search" placeholder="Search for..." class="search-field">
+            <form th:action="@{/listings/search/simple}" method="get" class="form">
+                <input type="search" placeholder="Search in a city..." class="search-field" name="citySimple">
                 <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
             </form>
         </div>
@@ -27,12 +27,12 @@
         <div class="nav-links">
             <ul class="nav-links-style">
                 <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
+                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
             </ul>
         </div>
         <!-- Dropdown menu -->
         <div class="dropdown">
-            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
+            <button class="dropbtn"><img src="/img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="/" th:href="@{/account}">Account</a>
                 <a href="/" th:href="@{/message}">Messages</a>
@@ -44,23 +44,30 @@
     </header>
     <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 </section>
+
 <div class="spacer"></div>
 <div class="container">
     <div class="list-container">
 
-        <!-- ALL LISTINGS -->
-        <div class="left-col">
-            <p>100+ Options</p>
-            <h1>Recommended Places In Paris</h1>
+        <!-- Listings by simple search -->
+        <div class="left-col" th:if="${simpleSearch}">
+            <h2> Simple search results: </h2>
+            <div class="left-col" th:if="${listingsSimpleSearch == null or listingsSimpleSearch.isEmpty()}">
+                <p> No listings found in this city.. </p>
+            </div>
+
             <!-- Looping through the listings and populating the HTML dynamically -->
-            <div th:each="listing : ${listings}" class="house" >
-                <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>
-                <div class="house-img">
-                    <img th:src="@{${listing.getMainImgPath}}" alt="Listing Image">
+            <div th:if="${listingsSimpleSearch != null}" th:each="listing : ${listingsSimpleSearch}" class="house">
+                <div th:each="image : ${listing.getImages}" class="house-img">
+                    <img th:src="@{${image.getUrl}}" alt="Listing Image">
                 </div>
                 <div class="house-info">
                     <p th:text="${listing.addressLine}"></p>
-                    <h3 th:text="${listing.description}"></h3>
+                    <h3>
+                        <a th:href="@{'/house/' + ${listing.listingId}}">
+                            <span th:text="${listing.description}"></span>
+                        </a>
+                    </h3>
                     <!-- Rating stars -->
                     <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
                 <i class="fas fa-star"></i>
@@ -68,35 +75,122 @@
                     <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
+
+                    <!-- rating -->
+                    <form action="/listing/rate/{{listingId}}" method="get">
+                        <button type="submit">Rate this listing</button>
+                    </form>
+
+
+                </div>
+                <div th:each="image : ${listing.getImages}" class="house-img">
+                    <img th:src="@{${image.getUrl}}" alt="Listing Image">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Listings by advanced search -->
+        <div class="left-col" th:if="${advancedSearch}">
+            <h2> Advanced search results: </h2>
+            <div class="left-col" th:if="${listingsAdvancedSearch == null or listingsAdvancedSearch.isEmpty()}">
+                <p> No listings found... Try with another city or dates! </p>
+            </div>
+            <!-- Looping through the listings and populating the HTML dynamically -->
+            <div th:if="${listingsAdvancedSearch != null}" th:each="listing : ${listingsAdvancedSearch}" class="house">
+                <div th:each="image : ${listing.getImages}" class="house-img">
+                    <img th:src="@{${image.getUrl}}" alt="Listing Image">
+                </div>
+                <div class="house-info">
+                    <p th:text="${listing.addressLine}"></p>
+                    <h3>
+                        <a th:href="@{'/house/' + ${listing.listingId}}">
+                            <span th:text="${listing.description}"></span>
+                        </a>
+                    </h3>
+                    <!-- Rating stars -->
+                    <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
+                <i class="fas fa-star"></i>
+            </span>
+                    <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
+                <i class="far fa-star"></i>
+            </span>
+
+                    <!-- rating -->
+                    <form action="/listing/rate/{{listingId}}" method="get">
+                        <button type="submit">Rate this listing</button>
+                    </form>
+
+                    <div th:each="image : ${listing.getImages}" class="house-img">
+                        <img th:src="@{${image.getUrl}}" alt="Listing Image">
+                    </div>
+
                 </div>
             </div>
         </div>
-<!-- PAGINATION BOTTOM - DESIGN -->
-    <div class="pagination">
-        <a href="#" class="arrow left-arrow"><img src="img/arrow.png"></a>
-        <span class="current">1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <a href="#" class="ellipsis">&middot; &middot; &middot; &middot;</a>
-        <span>20</span>
-        <a href="#" class="arrow right-arrow"><img src="img/arrow.png"></a>
-    </div>
 
-<!-- MEDIA-->
-    <div class="footer">
-        <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
-        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
-        <hr>
-        <p></p>
-    </div>
-</div>
+        <!-- All listings with no search -->
+        <div class="left-col" th:if="${simpleSearch==null and advancedSearch==null}">
+            <h2> Our top recommendations : </h2>
+            <div th:each="listing : ${allListings}" class="house">
+                <div th:each="image : ${listing.getImages}" class="house-img">
+                    <img th:src="@{${image.getUrl}}" alt="Listing Image">
+                </div>
+                <div class="house-info">
+                    <p th:text="${listing.addressLine}"></p>
+                    <h3>
+                        <a th:href="@{'/house/' + ${listing.listingId}}">
+                            <span th:text="${listing.description}"></span>
+                        </a>
+                    </h3>
+                    <!-- Rating stars -->
+                    <span th:each="i : ${#numbers.sequence(1, listing.rating)}">
+                <i class="fas fa-star"></i>
+            </span>
+                    <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
+                <i class="far fa-star"></i>
+            </span>
+      <!-- rating -->
+                    <div th:each="image : ${listing.getImages}" class="house-img">
+                        <img th:src="@{${image.getUrl}}" alt="Listing Image">
 
+                    </div>
+                    <div class="check-form">
+                        <a th:href="@{'/listing/rate/' + ${listing.listingId}}">
+                            <button type="submit">Rate this listing</button>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGINATION BOTTOM - DESIGN -->
+        <div class="pagination">
+            <a href="#" class="arrow left-arrow"><img src="/img/arrow.png"></a>
+            <span class="current">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <a href="#" class="ellipsis">&middot; &middot; &middot; &middot;</a>
+            <span>20</span>
+            <a href="#" class="arrow right-arrow"><img src="/img/arrow.png"></a>
+        </div>
+
+        <!-- MEDIA-->
+        <div class="footer">
+            <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+            <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+            <hr>
+            <p></p>
+        </div>
+    </div>
 <!-- Bottom information -->
 <section id="info" class="info-section">
     <a href="#" onclick="openPopup('about')">ABOUT</a>
-    <a href="#">COOKIE SETTINGS</a>
+    <a href="#" onclick="openPopup('cookie')">COOKIE SETTINGS</a>
     <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
 </section>
 
@@ -104,18 +198,74 @@
 <div id="popup-about" class="popup">
     <div class="popup-content">
         <span class="close" onclick="closePopup('about')">&times;</span>
-        <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
-        <!-- Add your project summary text here -->
+        <h2>Welcome to La Vaca Polaca!</h2>
+        <p>We are a team of talented individuals passionate about revolutionizing the home exchange experience. Our mission is to connect homeowners worldwide, allowing them to seamlessly swap their homes for vacations, work trips, or other purposes. We believe that home exchange offers a unique and enriching way to travel, fostering cultural exchange, cost-saving, and unforgettable experiences.</p>
+        <p>With our platform, you can create a profile, list your home, browse available properties, and connect with other users to arrange exchanges. Our user-friendly interface and advanced features make the process simple and enjoyable.</p>
+        <p>At La Vaca Polaca, we prioritize user satisfaction, security, and privacy. We have implemented stringent measures to ensure the safety of your personal information and provide a trustworthy environment for all members of our community.</p>
+        <p>Thank you for choosing La Vaca Polaca for your home exchange needs. We are committed to continuously improving our platform and delivering an exceptional experience. If you have any questions, suggestions, or feedback, please don't hesitate to contact us.</p>
+    </div>
+</div>
+<div id="popup-cookie" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('cookie')">&times;</span>
+        <h2>Cookie Settings</h2>
+        <p>We use cookies on our website to enhance your browsing experience and provide personalized content. Cookies are small text files that are stored on your device. They help us understand how you interact with our site and improve its functionality.</p>
+        <p>You can customize your cookie preferences below:</p>
+        <ul>
+            <li>
+                <input type="checkbox" id="cookie-essential" checked disabled>
+                <label for="cookie-essential">Essential Cookies</label>
+                <p>These cookies are necessary for the website to function properly. They enable basic features and are automatically enabled.</p>
+            </li>
+            <li>
+                <input type="checkbox" id="cookie-analytics">
+                <label for="cookie-analytics">Analytics Cookies</label>
+                <p>We use analytics cookies to collect anonymous information about your visit and usage patterns. This helps us analyze data and improve our services.</p>
+            </li>
+            <li>
+                <input type="checkbox" id="cookie-preferences">
+                <label for="cookie-preferences">Preference Cookies</label>
+                <p>Preference cookies allow us to remember your preferences and personalize your experience on our website.</p>
+            </li>
+            <li>
+                <input type="checkbox" id="cookie-marketing">
+                <label for="cookie-marketing">Marketing Cookies</label>
+                <p>Marketing cookies are used to deliver relevant advertisements and measure the effectiveness of our marketing campaigns.</p>
+            </li>
+        </ul>
+        <p>Please note that disabling certain types of cookies may impact your browsing experience and limit the functionality of our website.</p>
+        <p>If you have any questions about our cookie policy or need assistance with your preferences, please contact us.</p>
+        <button id="cookie-save" onclick="saveCookiePreferences(); closePopup('cookie')">Save Preferences</button>
     </div>
 </div>
 <div id="popup-privacy" class="popup">
     <div class="popup-content">
         <span class="close" onclick="closePopup('privacy')">&times;</span>
         <h2>Privacy</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
-        <!-- Add your privacy policy text here -->
-    </div>
+        <p>This website values your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you interact with our website.</p>
+        <p>1. Information We Collect:</p>
+        <p>We may collect various types of information from you when you visit or use our website, including:</p>
+        <ul>
+            <li>Personal information such as your name, email address, and contact details that you provide voluntarily.</li>
+            <li>Non-personal information such as your IP address, browser type, and operating system, collected automatically through cookies and similar technologies.</li>
+        </ul>
+        <p>2. How We Use Your Information:</p>
+        <p>We use the information we collect to:</p>
+        <ul>
+            <li>Provide and improve our services to you.</li>
+            <li>Personalize your experience on our website.</li>
+            <li>Send you promotional emails or newsletters if you have opted in to receive them.</li>
+            <li>Analyze trends and gather statistical information for research and analytics purposes.</li>
+        </ul>
+        <p>3. How We Protect Your Information:</p>
+        <p>We implement reasonable security measures to protect your personal information from unauthorized access and use. However, please be aware that no method of transmission over the internet or electronic storage is 100% secure.</p>
+        <p>4. Third-Party Links:</p>
+        <p>Our website may contain links to third-party websites. We have no control over the privacy practices or content of those websites. We encourage you to review the privacy policies of any third-party websites you visit.</p>
+        <p>5. Changes to This Privacy Policy:</p>
+        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the revised version will be effective as of the date it is posted.</p>
+        <p>By using our website, you agree to the terms of this Privacy Policy.</p>    </div>
 </div>
+
+
 </body>
 </html>

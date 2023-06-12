@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin Page</title>
-  <link href="css/navbar.css" rel="stylesheet">
-  <link href="css/admin_style.css" rel="stylesheet">
-  <script src="js/script.js"></script>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/admin_style.css" rel="stylesheet">
+    <script src="js/script.js"></script>
 </head>
 <body>
 <section class="navbar">
-  <header>
-    <!-- Logo -->
-    <a href="/" th:href="@{/success}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
-    <!--Search bar -->
-    <div class="search-bar">
-      <form action="/" method="GET" class="form">
-        <input type="search" placeholder="Search for..." class="search-field">
-        <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
-      </form>
-    </div>
-    <!-- Find a house and add a listing navlinks -->
-    <div class="nav-links">
-      <ul class="nav-links-style">
-        <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-        <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
-      </ul>
-    </div>
-    <!-- Dropdown menu -->
-    <div class="dropdown">
-      <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
-      <div class="dropdown-content">
-        <a href="/" th:href="@{/account}">Account</a>
-        <a href="/" th:href="@{/message}">Messages</a>
-        <a href="/" th:href="@{/favourites}">Favorites</a>
-        <a href="/" th:href="@{/help}">Help</a>
-        <a href="#" onclick="logout()">Logout</a>
-      </div>
-    </div>
-  </header>
+    <header>
+        <!-- Logo -->
+        <a href="/" th:href="@{/success}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
+        <!--Search bar -->
+        <div class="search-bar">
+            <form action="/" method="GET" class="form">
+                <input type="search" placeholder="Search for..." class="search-field">
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- Find a house and add a listing navlinks -->
+        <div class="nav-links">
+            <ul class="nav-links-style">
+                <li><a href="/" th:href="@{/listing}">Find a house</a></li>
+                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
+            </ul>
+        </div>
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+            <button class="dropbtn"><img src="img/menu3.png" alt="My Button Image"></button>
+            <div class="dropdown-content">
+                <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/message}">Messages</a>
+                <a href="/" th:href="@{/favourites}">Favorites</a>
+                <a href="/" th:href="@{/help}">Help</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </header>
     <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 </section>
 <div class="spacer"></div>
@@ -48,91 +48,58 @@
     <table>
         <!-- TABLE HEADERS-->
         <tr class="table-header">
-            <th>Name</th>
+            <th>ID</th>
+            <th>
+                <a th:href="@{/admin_page(sort='description', order=${currentSortDirection == 'asc' ? 'desc' : 'asc'})}">
+                    Description
+                </a>
+            </th>
             <th>Rating</th>
             <th>Owner</th>
+            <th>
+                <a th:href="@{/admin_page(sort='city', order=${currentSortDirection == 'asc' ? 'desc' : 'asc'})}">
+                    City
+                </a>
+            </th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
         <!-- TABLE INPUTS-->
         <tr th:each="listing : ${listings}">
-            <td th:tex00:text="${listing.rating}"></td>
+            <td th:text="${listing.listingId}"></td>
+            <td th:text="${listing.description}"></td>
+            <td th:text="${listing.rating}"></td>
             <td th:text="${listing.owner}"></td>
+            <td th:text="${listing.city}"></td>
             <td>
-                <button>Edit</button>
+                <form action="/edit_listing">
+                    <input type="hidden" name="listingId" th:value="${listing.listingId}">
+                    <button type="submit" onclick="return confirm('Are you sure you want to edit this listing?')">
+                        Edit
+                    </button>
+                </form>
             </td>
             <td>
-                <button>Delete</button>
+                <form action="/admin/delete/listing/{id}" method="post">
+                    <input type="hidden" name="listingId" th:value="${listing.listingId}">
+                    <button type="submit" onclick="return confirm('Are you sure you want to delete this listing?')">
+                        Delete
+                    </button>
+                </form>
             </td>
         </tr>
-        <!-- Add more rows as needed -->
     </table>
-  
-    <!-- TABLE HARD-CODED-->
-    <!--  <table>-->
-    <!--    &lt;!&ndash; TABLE HEADERS&ndash;&gt;-->
-    <!--    <tr class="table-header">-->
-    <!--      <th>Name</th>-->
-    <!--      <th>Rating</th>-->
-    <!--      <th>Owner</th>-->
-    <!--      <th>Edit</th>-->
-    <!--      <th>Delete</th>-->
-    <!--    </tr>-->
-    <!--&lt;!&ndash; TABLE INPUTS&ndash;&gt;-->
-    <!--    <tr>-->
-    <!--      <td>Listing 1</td>-->
-    <!--      <td>4.5</td>-->
-    <!--      <td>John Doe</td>-->
-    <!--      <td><button>Edit</button></td>-->
-    <!--      <td><button>Delete</button></td>-->
-    <!--    </tr>-->
-    <!--    <tr>-->
-    <!--      <td>Listing 2</td>-->
-    <!--      <td>4.2</td>-->
-    <!--      <td>Jane Smith</td>-->
-    <!--      <td><button>Edit</button></td>-->
-    <!--      <td><button>Delete</button></td>-->
-    <!--    </tr>-->
-    <!--    <tr>-->
-    <!--      <td>Listing 3</td>-->
-    <!--      <td>4.2</td>-->
-    <!--      <td>Jane Smith</td>-->
-    <!--      <td><button>Edit</button></td>-->
-    <!--      <td><button>Delete</button></td>-->
-    <!--    </tr>-->
-    <!--    <tr>-->
-    <!--      <td>Listing 4</td>-->
-    <!--      <td>4.2</td>-->
-    <!--      <td>Jane Smith</td>-->
-    <!--      <td><button>Edit</button></td>-->
-    <!--      <td><button>Delete</button></td>-->
-    <!--    </tr>-->
-    <!--    <tr>-->
-    <!--      <td>Listing 4</td>-->
-    <!--      <td>4.2</td>-->
-    <!--      <td>Jane Smith</td>-->
-    <!--      <td><button>Edit</button></td>-->
-    <!--      <td><button>Delete</button></td>-->
-    <!--    </tr>-->
-    <!--    <tr>-->
-    <!--      <td>Listing 6</td>-->
-    <!--      <td>4.2</td>-->
-    <!--      <td>Jane Smith</td>-->
-    <!--      <td><button>Edit</button></td>-->
-    <!--      <td><button>Delete</button></td>-->
-    <!--    </tr>-->
-    <!--    &lt;!&ndash; Add more rows as needed &ndash;&gt;-->
-    <!--  </table>-->
-
-    <!-- TABLE FOR USERS ACCORDING WITH DATABASE-->
-    <!-- User List -->
     <!-- User List -->
     <div class="user-list">
         <h2>User List</h2>
         <table>
             <tr class="table-header">
                 <th>Name</th>
-                <th>Email</th>
+                <th>
+                    <a th:href="@{/admin_page(sort='email', order=${currentSortDirection == 'asc' ? 'desc' : 'asc'})}">
+                        Email
+                    </a>
+                </th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -141,7 +108,10 @@
                 <td th:text="${user.firstname + ' ' + user.lastname}"></td>
                 <td th:text="${user.email}"></td>
                 <td>
-                    <form action="/delete-user" method="post">
+                    <button>Edit</button>
+                </td>
+                <td>
+                    <form action="/admin/delete/user/{id}" method="post">
                         <input type="hidden" name="userId" th:value="${user.id}">
                         <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')">
                             Delete
@@ -149,48 +119,8 @@
                     </form>
                 </td>
             </tr>
-            <!-- Add more rows as needed -->
         </table>
     </div>
-
-    <!-- TABLE FOR USERS HARD-CODED-->
-    <!--  <div class="user-list">-->
-    <!--    <h2>User List</h2>-->
-    <!--    <table>-->
-    <!--      <tr class="table-header">-->
-    <!--        <th>Name</th>-->
-    <!--        <th>Email</th>-->
-    <!--        <th>Role</th>-->
-    <!--        <th>Edit</th>-->
-    <!--      </tr>-->
-    <!--      <tr>-->
-    <!--        <td>John Doe</td>-->
-    <!--        <td>johndoe@example.com</td>-->
-    <!--        <td>Admin</td>-->
-    <!--        <td>-->
-    <!--          <select>-->
-    <!--            <option value="admin">Admin</option>-->
-    <!--            <option value="user">User</option>-->
-    <!--            <option value="guest">Guest</option>-->
-    <!--          </select>-->
-    <!--        </td>-->
-    <!--      </tr>-->
-    <!--      <tr>-->
-    <!--        <td>Jane Smith</td>-->
-    <!--        <td>janesmith@example.com</td>-->
-    <!--        <td>User</td>-->
-    <!--        <td>-->
-    <!--          <select>-->
-    <!--            <option value="admin">Admin</option>-->
-    <!--            <option value="user">User</option>-->
-    <!--            <option value="guest">Guest</option>-->
-    <!--          </select>-->
-    <!--        </td>-->
-    <!--      </tr>-->
-    <!--      &lt;!&ndash; Add more rows for each user &ndash;&gt;-->
-    <!--    </table>-->
-    <!--  </div>-->
-
 </div>
 <!-- STATISTICS -->
 <div class="statistics-block">
@@ -210,29 +140,85 @@
         </li>
     </ul>
 </div>
+
 <!-- Bottom information -->
 <section id="info" class="info-section">
-  <a href="#" onclick="openPopup('about')">ABOUT</a>
-  <a href="#">COOKIE SETTINGS</a>
-  <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
+    <a href="#" onclick="openPopup('about')">ABOUT</a>
+    <a href="#" onclick="openPopup('cookie')">COOKIE SETTINGS</a>
+    <a href="#" onclick="openPopup('privacy')">PRIVACY</a>
 </section>
 
 <!-- Popup Windows -->
 <div id="popup-about" class="popup">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup('about')">&times;</span>
-    <h2>About</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
-    <!-- Add your project summary text here -->
-  </div>
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('about')">&times;</span>
+        <h2>Welcome to La Vaca Polaca!</h2>
+        <p>We are a team of talented individuals passionate about revolutionizing the home exchange experience. Our mission is to connect homeowners worldwide, allowing them to seamlessly swap their homes for vacations, work trips, or other purposes. We believe that home exchange offers a unique and enriching way to travel, fostering cultural exchange, cost-saving, and unforgettable experiences.</p>
+        <p>With our platform, you can create a profile, list your home, browse available properties, and connect with other users to arrange exchanges. Our user-friendly interface and advanced features make the process simple and enjoyable.</p>
+        <p>At La Vaca Polaca, we prioritize user satisfaction, security, and privacy. We have implemented stringent measures to ensure the safety of your personal information and provide a trustworthy environment for all members of our community.</p>
+        <p>Thank you for choosing La Vaca Polaca for your home exchange needs. We are committed to continuously improving our platform and delivering an exceptional experience. If you have any questions, suggestions, or feedback, please don't hesitate to contact us.</p>
+    </div>
+</div>
+<div id="popup-cookie" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('cookie')">&times;</span>
+        <h2>Cookie Settings</h2>
+        <p>We use cookies on our website to enhance your browsing experience and provide personalized content. Cookies are small text files that are stored on your device. They help us understand how you interact with our site and improve its functionality.</p>
+        <p>You can customize your cookie preferences below:</p>
+        <ul>
+            <li>
+                <input type="checkbox" id="cookie-essential" checked disabled>
+                <label for="cookie-essential">Essential Cookies</label>
+                <p>These cookies are necessary for the website to function properly. They enable basic features and are automatically enabled.</p>
+            </li>
+            <li>
+                <input type="checkbox" id="cookie-analytics">
+                <label for="cookie-analytics">Analytics Cookies</label>
+                <p>We use analytics cookies to collect anonymous information about your visit and usage patterns. This helps us analyze data and improve our services.</p>
+            </li>
+            <li>
+                <input type="checkbox" id="cookie-preferences">
+                <label for="cookie-preferences">Preference Cookies</label>
+                <p>Preference cookies allow us to remember your preferences and personalize your experience on our website.</p>
+            </li>
+            <li>
+                <input type="checkbox" id="cookie-marketing">
+                <label for="cookie-marketing">Marketing Cookies</label>
+                <p>Marketing cookies are used to deliver relevant advertisements and measure the effectiveness of our marketing campaigns.</p>
+            </li>
+        </ul>
+        <p>Please note that disabling certain types of cookies may impact your browsing experience and limit the functionality of our website.</p>
+        <p>If you have any questions about our cookie policy or need assistance with your preferences, please contact us.</p>
+        <button id="cookie-save" onclick="saveCookiePreferences(); closePopup('cookie')">Save Preferences</button>
+    </div>
 </div>
 <div id="popup-privacy" class="popup">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup('privacy')">&times;</span>
-    <h2>Privacy</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
-    <!-- Add your privacy policy text here -->
-  </div>
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('privacy')">&times;</span>
+        <h2>Privacy</h2>
+        <p>This website values your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you interact with our website.</p>
+        <p>1. Information We Collect:</p>
+        <p>We may collect various types of information from you when you visit or use our website, including:</p>
+        <ul>
+            <li>Personal information such as your name, email address, and contact details that you provide voluntarily.</li>
+            <li>Non-personal information such as your IP address, browser type, and operating system, collected automatically through cookies and similar technologies.</li>
+        </ul>
+        <p>2. How We Use Your Information:</p>
+        <p>We use the information we collect to:</p>
+        <ul>
+            <li>Provide and improve our services to you.</li>
+            <li>Personalize your experience on our website.</li>
+            <li>Send you promotional emails or newsletters if you have opted in to receive them.</li>
+            <li>Analyze trends and gather statistical information for research and analytics purposes.</li>
+        </ul>
+        <p>3. How We Protect Your Information:</p>
+        <p>We implement reasonable security measures to protect your personal information from unauthorized access and use. However, please be aware that no method of transmission over the internet or electronic storage is 100% secure.</p>
+        <p>4. Third-Party Links:</p>
+        <p>Our website may contain links to third-party websites. We have no control over the privacy practices or content of those websites. We encourage you to review the privacy policies of any third-party websites you visit.</p>
+        <p>5. Changes to This Privacy Policy:</p>
+        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the revised version will be effective as of the date it is posted.</p>
+        <p>By using our website, you agree to the terms of this Privacy Policy.</p>    </div>
 </div>
+
 </body>
 </html>
