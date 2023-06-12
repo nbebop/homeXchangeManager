@@ -31,24 +31,30 @@ public class AdminController {
     }
 
     @GetMapping("/admin_page")
-    public String adminPage(Model model, @RequestParam(name = "sort", required = false) String sort,
+    public String adminPage(Model model,
+                            @RequestParam(name = "sort", required = false) String sort,
+                            @RequestParam(name = "order", defaultValue = "asc") String order,
                             HttpSession session) {
-        List<User> users;
         Sort.Direction currentSortDirection = getSessionSortDirection(session);
+        Sort.Direction newSortDirection = currentSortDirection;
 
-        if (sort != null && sort.equals("email")) {
+        if (sort != null && (sort.equals("city") || sort.equals("description"))) {
             currentSortDirection = toggleSortDirection(currentSortDirection);
+            newSortDirection = currentSortDirection;
             updateSessionSortDirection(session, currentSortDirection);
         }
 
-        Sort sortObject = Sort.by(currentSortDirection, "email");
-        users = getAllUsers(sortObject);
+        Sort sortObject = Sort.by(newSortDirection, sort != null ? sort : "city");
+        if (order.equals("desc")) {
+            sortObject = sortObject.descending();
+        }
 
-        model.addAttribute("listings", getAllListing());
-        model.addAttribute("users", users);
+        model.addAttribute("listings", getAllListing(sortObject));
+        model.addAttribute("users", getAllUsers(sortObject));
         model.addAttribute("currentSortDirection", currentSortDirection);
         return "admin_page";
     }
+
 
     private Sort.Direction getSessionSortDirection(HttpSession session) {
         Sort.Direction currentSortDirection = (Sort.Direction) session.getAttribute("sortDirection");
@@ -63,10 +69,14 @@ public class AdminController {
         session.setAttribute("sortDirection", currentSortDirection);
     }
 
+
     private List<User> getAllUsers(Sort sort) {
         return userRepository.findAll(sort);
     }
 
+    private List<Listing> getAllListing(Sort sort) {
+        return listingService.findAll(sort);
+    }
 
     @PostMapping("/admin/delete/listing/{id}")
     public String deleteListing(@PathVariable("id") long listingId) {
@@ -90,12 +100,6 @@ public class AdminController {
         } else {
             return "error/404";
         }
-    }
-
-
-
-    private List<Listing> getAllListing() {
-        return listingService.findAll();
     }
 
     @GetMapping("/admin/edit/listing/{id}")

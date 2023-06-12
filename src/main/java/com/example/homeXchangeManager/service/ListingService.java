@@ -3,6 +3,7 @@ package com.example.homeXchangeManager.service;
 import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
@@ -29,6 +30,7 @@ public interface ListingService {
     List<Listing> findByCity(String city);
 
     List<Listing> findAll();
+    List<Listing> findAll(Sort sort);
 
     List<Listing> findAllByCityAndAvailabilityStartBetween(String city, Date start, Date end);
 
