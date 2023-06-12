@@ -162,9 +162,9 @@ VALUES (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire haza
 
 -- images
 INSERT INTO images (id, name, listing_id, url, content_type)
-VALUES (1, "house-1", 1 ,"listing-images/1/house-1.png", "image/x-png"),
-       (2, "house-3", 1 ,"listing-images/1/house-2.png", "image/x-png"),
-       (3, "house-3", 1 ,"listing-images/1/house-3.png", "image/x-png");
+VALUES (1, "house-1", 1 ,"/listing-images/1/house-1.png", "image/x-png"),
+       (2, "house-3", 1 ,"/listing-images/1/house-2.png", "image/x-png"),
+       (3, "house-3", 1 ,"/listing-images/1/house-3.png", "image/x-png");
 
 
 --booking
