@@ -50,7 +50,11 @@
 
 <div class="list-rating">
     <h2>Rate the Listing</h2>
-    <form id="ratingForm" th:action="@{'/listing/rate/'}" method="POST" enctype="multipart/form-data" th:object="${rating}">
+    <form modelAttribute="rating" id="ratingForm" th:action="@{'/listing/rate/'}" method="POST" enctype="multipart/form-data" th:object="${rating}">
+        <div class="listing-details" th:each="listing: ${listing}">
+            <p th:text="'Address: ' + ${listing.addressLine} + ', ' + ${listing.city} + ', ' + ${listing.postalCode} + ', ' + ${listing.country}"></p>
+            <p th:text="'Description: ' + ${listing.description}"></p>
+         </div>
         <!-- Rating stars -->
         <div class="rating">
             <input type="radio" id="star5" name="score" value="5" th:field="*{score}">
@@ -74,7 +78,8 @@
                 <i class="fas fa-star"></i>
             </label>
         </div>
-        
+
+
         <!-- Description field -->
         <div class="form-group">
             <label for="description">Description</label>

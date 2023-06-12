@@ -51,7 +51,7 @@ public class RatingController {
         // score, description (user input)
         // make sure the names are right. it is tested and works
         ratingService.save(ratingDto);
-        return "redirect:/home_page"; // or change page
+        return "redirect:/listing"; // or change page
     }
 
 }
