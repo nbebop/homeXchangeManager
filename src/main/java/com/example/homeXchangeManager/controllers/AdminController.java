@@ -32,26 +32,41 @@ public class AdminController {
 
     @GetMapping("/admin_page")
     public String adminPage(Model model, @RequestParam(name = "sort", required = false) String sort,
-                            @RequestParam(name = "order", required = false) String order) {
+                            HttpSession session) {
         List<User> users;
+        Sort.Direction currentSortDirection = getSessionSortDirection(session);
 
         if (sort != null && sort.equals("email")) {
-            users = getAllUsers(order != null ? order : "asc");
-            model.addAttribute("order", order != null && order.equals("asc") ? "desc" : "asc");
-        } else {
-            users = getAllUsers("asc");
-            model.addAttribute("order", "asc");
+            currentSortDirection = toggleSortDirection(currentSortDirection);
+            updateSessionSortDirection(session, currentSortDirection);
         }
+
+        Sort sortObject = Sort.by(currentSortDirection, "email");
+        users = getAllUsers(sortObject);
 
         model.addAttribute("listings", getAllListing());
         model.addAttribute("users", users);
+        model.addAttribute("currentSortDirection", currentSortDirection);
         return "admin_page";
     }
 
-    private List<User> getAllUsers(String sortDirection) {
-        Sort sort = Sort.by(sortDirection.equals("asc") ? Sort.Direction.ASC : Sort.Direction.DESC, "email");
+    private Sort.Direction getSessionSortDirection(HttpSession session) {
+        Sort.Direction currentSortDirection = (Sort.Direction) session.getAttribute("sortDirection");
+        return currentSortDirection != null ? currentSortDirection : Sort.Direction.ASC;
+    }
+
+    private Sort.Direction toggleSortDirection(Sort.Direction currentSortDirection) {
+        return currentSortDirection == Sort.Direction.ASC ? Sort.Direction.DESC : Sort.Direction.ASC;
+    }
+
+    private void updateSessionSortDirection(HttpSession session, Sort.Direction currentSortDirection) {
+        session.setAttribute("sortDirection", currentSortDirection);
+    }
+
+    private List<User> getAllUsers(Sort sort) {
         return userRepository.findAll(sort);
     }
+
 
     @PostMapping("/admin/delete/listing/{id}")
     public String deleteListing(@PathVariable("id") long listingId) {
