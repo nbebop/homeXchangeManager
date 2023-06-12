@@ -74,11 +74,11 @@
                 <i class="fas fa-star"></i>
             </label>
         </div>
-
+        
         <!-- Description field -->
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" th:field="*{description}" class="form-control" rows="5"></textarea>
+            <textarea id="description" th:field="*{description}" class="form-control" rows="5" required></textarea>
             <small class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small>
         </div>
 

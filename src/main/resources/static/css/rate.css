@@ -80,7 +80,8 @@ textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     resize: vertical;
 }
 
