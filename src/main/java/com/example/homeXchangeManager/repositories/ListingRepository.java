@@ -13,6 +13,7 @@ public interface ListingRepository extends JpaRepository<Listing, Integer> {
     @Override
     <S extends Listing> S saveAndFlush(S entity);
     List<Listing> findAllByOwner(User owner);
+    Listing findByOwner(User owner);
 
     Listing deleteListingByListingId(long listingId);
 

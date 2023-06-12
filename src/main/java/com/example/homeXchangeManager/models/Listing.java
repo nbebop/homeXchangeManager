@@ -15,6 +15,7 @@ import java.util.List;
 public class Listing implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "listing_id")
     private long listingId;
 
     @ManyToOne
@@ -26,10 +27,18 @@ public class Listing implements Serializable {
     private List<Image> images = new ArrayList<>();
     private String description;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "listing_services",
+            joinColumns = { @JoinColumn(name = "listing_id") },
+            inverseJoinColumns = { @JoinColumn(name = "service_id") })
     private List<Service> services = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "listing_constraints",
+            joinColumns = { @JoinColumn(name = "listing_id") },
+            inverseJoinColumns = { @JoinColumn(name = "constraint_id") })
     private List<Constraint> constraints = new ArrayList<>();
 
     private String bookingInfo;
@@ -80,7 +89,7 @@ public class Listing implements Serializable {
         return listingId;
     }
 
-    public void setListingId(int listingId) {
+    public void setListingId(long listingId) {
         this.listingId = listingId;
     }
 

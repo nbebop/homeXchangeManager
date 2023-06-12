@@ -44,6 +44,7 @@
     </header>
     <form id="logoutForm" action="/logout" method="post" style="display: none;"></form>
 </section>
+
 <div class="spacer"></div>
 <div class="container">
     <div class="list-container">
@@ -51,13 +52,12 @@
         <!-- Listings by simple search -->
         <div class="left-col" th:if="${simpleSearch}">
             <h2> Simple search results: </h2>
-            <div class="left-col" th:if="${listingsSimpleSearch == null or listingsSimpleSearch.isEmpty()}" >
+            <div class="left-col" th:if="${listingsSimpleSearch == null or listingsSimpleSearch.isEmpty()}">
                 <p> No listings found in this city.. </p>
             </div>
 
             <!-- Looping through the listings and populating the HTML dynamically -->
             <div th:if="${listingsSimpleSearch != null}" th:each="listing : ${listingsSimpleSearch}" class="house">
-<!--                <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>-->
                 <div th:each="image : ${listing.getImages}" class="house-img">
                     <img th:src="@{${image.getUrl}}" alt="Listing Image">
                 </div>
@@ -75,19 +75,29 @@
                     <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
+
+                    <!-- rating -->
+                    <form action="/listing/rate/{{listingId}}" method="get">
+                        <button type="submit">Rate this listing</button>
+                    </form>
+
+
                 </div>
+                <div th:each="image : ${listing.getImages}" class="house-img">
+                    <img th:src="@{${image.getUrl}}" alt="Listing Image">
+                </div>
+
             </div>
         </div>
 
         <!-- Listings by advanced search -->
         <div class="left-col" th:if="${advancedSearch}">
             <h2> Advanced search results: </h2>
-            <div class="left-col" th:if="${listingsAdvancedSearch == null or listingsAdvancedSearch.isEmpty()}" >
+            <div class="left-col" th:if="${listingsAdvancedSearch == null or listingsAdvancedSearch.isEmpty()}">
                 <p> No listings found... Try with another city or dates! </p>
             </div>
             <!-- Looping through the listings and populating the HTML dynamically -->
             <div th:if="${listingsAdvancedSearch != null}" th:each="listing : ${listingsAdvancedSearch}" class="house">
-<!--                <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>-->
                 <div th:each="image : ${listing.getImages}" class="house-img">
                     <img th:src="@{${image.getUrl}}" alt="Listing Image">
                 </div>
@@ -105,6 +115,16 @@
                     <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
+
+                    <!-- rating -->
+                    <form action="/listing/rate/{{listingId}}" method="get">
+                        <button type="submit">Rate this listing</button>
+                    </form>
+
+                    <div th:each="image : ${listing.getImages}" class="house-img">
+                        <img th:src="@{${image.getUrl}}" alt="Listing Image">
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -113,7 +133,6 @@
         <div class="left-col" th:if="${simpleSearch==null and advancedSearch==null}">
             <h2> Our top recommendations : </h2>
             <div th:each="listing : ${allListings}" class="house">
-<!--                <a th:href="@{'/house/' + ${listing.listingId}}">CLICK HERE FOR MORE INFO</a>-->
                 <div th:each="image : ${listing.getImages}" class="house-img">
                     <img th:src="@{${image.getUrl}}" alt="Listing Image">
                 </div>
@@ -131,6 +150,18 @@
                     <span th:each="i : ${#numbers.sequence(1, 5 - listing.rating)}">
                 <i class="far fa-star"></i>
             </span>
+      <!-- rating -->
+                    <div th:each="image : ${listing.getImages}" class="house-img">
+                        <img th:src="@{${image.getUrl}}" alt="Listing Image">
+
+                    </div>
+                    <div class="check-form">
+                        <a th:href="@{'/listing/rate/' + ${listing.listingId}}">
+                            <button type="submit">Rate this listing</button>
+                        </a>
+                    </div>
+
+
                 </div>
             </div>
         </div>

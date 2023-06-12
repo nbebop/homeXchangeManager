@@ -43,44 +43,40 @@
 <div class="profile-section">
     <div class="profile-details">
         <h2>Profile</h2>
-        <div class="booking-details_2" th:each="listings : ${listings}">
+        <div class="booking-details_2" >
             <!--         Display user's profile information-->
             <p th:text="'Name: '+ ${user.firstname + ' ' + user.lastname}"></p>
             <p th:text="'Email: ' + ${user.email}"></p>
             <p th:text="'Address: '+ ${user.city}"></p>
-            <p th:text="'Rating: '+ ${listings.ownerRating}"></p>
+            <p th:text="'Rating: '+ ${listing.ownerRating}"></p>
         </div>
     </div>
 
-    <div class="photos-section" th:each="listingItem : ${listings}">
+    <div th:if="${listing == null}" class="photos-section">
+        <p> You do not have a listing yet.. Why do not you add one? </p>
+    </div>
+
+    <div th:if="${listing != null}" class="photos-section">
         <h2>Photos of My Home</h2>
-        <div th:each="image : ${listingItem.getImages}" class="house-img">
+        <div th:each="image : ${listing.getImages}" class="house-img">
             <img th:src="@{${image.getUrl}}" alt="Listing Image">
         </div>
     </div>
 
-    <div class="services-section" th:each="listingItem : ${listings}">
+    <div class="services-section">
         <h2>Services Offered</h2>
         <!-- Display services offered by the user -->
-        <p th:text="'Services: ' + ${listingItem.services}"></p>
-    </div>
-
-    <div class="constraints-section" th:each="listingItem : ${listings}">
-        <h2>Constraints/Limits</h2>
-        <p th:text="'Constraints: ' + ${listingItem.constraints}"></p>
-    </div>
-
-    <div class="bookings-section">
-        <h2>Pending Bookings</h2>
-        <div class="booking">
-            <div class="booking-details" th:each="listingItem : ${listings}">
-                <p th:text="'Description: ' + ${listingItem.description}"></p>
-                <p th:text="'City: '+ ${listingItem.city}"></p>
-                <p th:text="'Code: '+ ${listingItem.postalCode}"></p>
-                <p th:text="'Conutry: '+${listingItem.country}"></p>
-                <p th:text="'Start: '+${listingItem.availabilityStart}"></p>
-                <p th:text="'End: '+${listingItem.availabilityEnd}"></p>
+        <p>Services: </p>
+        <div th:each="service : ${listing.getServices}" >
+        <p th:text="${service.getServiceName}"></p>
             </div>
+    </div>
+
+    <div class="constraints-section" >
+        <h2>Constraints/Limits</h2>
+        <p>Constraints: </p>
+        <div th:each="constraint : ${listing.getConstraints}" >
+            <p th:text="${constraint.getConstraintName}"></p>
         </div>
         <div class="booking-photos" th:each="listingItem : ${listings}">
 <!--            <img th:src="@{${listingItem.getMainImgPath}}" alt="Booking Image">-->

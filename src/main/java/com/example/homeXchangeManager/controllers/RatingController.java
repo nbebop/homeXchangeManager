@@ -1,6 +1,5 @@
 package com.example.homeXchangeManager.controllers;
 
-import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.dto.RatingDto;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
@@ -43,7 +42,7 @@ public class RatingController {
         model.addAttribute("listing", listing);
         model.addAttribute("owner", listingOwner);
         model.addAttribute("request", request);
-        return "rate_listing";
+        return "rate";
     }
 
     @PostMapping("/listing/rate")
@@ -52,7 +51,7 @@ public class RatingController {
         // score, description (user input)
         // make sure the names are right. it is tested and works
         ratingService.save(ratingDto);
-        return "redirect:/home_page"; // or change page
+        return "redirect:/listing"; // or change page
     }
 
 }

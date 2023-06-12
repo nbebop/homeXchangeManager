@@ -1,10 +1,14 @@
 package com.example.homeXchangeManager.controllers;
 
+import com.example.homeXchangeManager.models.Booking;
+import com.example.homeXchangeManager.models.Image;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
 import com.example.homeXchangeManager.service.impl.ListingRatingServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,13 +26,12 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
     private PasswordEncoder passwordEncoder;
-
     private UserService userService;
-
     private ListingService listingService;
     private ListingRatingServiceImpl ratingService;
+
 
     @Autowired
     public HomeController(UserService userService, ListingService listingService,
@@ -94,10 +97,10 @@ public class HomeController {
     public String account(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findByUsername(auth.getName());
-        List<Listing> listings = listingService.findByOwner(user);
+        Listing listing = listingService.findByOwner(user);
 
         model.addAttribute("user", user);
-        model.addAttribute("listings", listings);
+        model.addAttribute("listing", listing);
 
         return "account";
     }

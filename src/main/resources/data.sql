@@ -1,79 +1,79 @@
 -- create roles
-insert into roles (id, name) values ('1', 'ADMIN');
-insert into roles (id, name) values ('2', 'USER');
+INSERT INTO roles (id, name) VALUES ('1', 'ADMIN');
+INSERT INTO roles (id, name) VALUES ('2', 'USER');
 
 -- create users
 --admins
-insert into users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
-values ('1', 'admin', 'admin', 'admin', '$2a$10$PJf3MqpW2aexwqLML51U5exS62wv0rsJ6pKcI7j9aqh9s0HUDtWVu', 'admin@example.com', '1990-01-01', '123456789', 'Description admin','Admin st 2', 'Left apt.', 'Paris', '750001', 'France'),
+INSERT INTO users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
+VALUES ('1', 'admin', 'admin', 'admin', '$2a$10$PJf3MqpW2aexwqLML51U5exS62wv0rsJ6pKcI7j9aqh9s0HUDtWVu', 'admin@example.com', '1990-01-01', '123456789', 'Description admin','Admin st 2', 'Left apt.', 'Paris', '750001', 'France'),
        ('9', 'user9', 'admin2', 'admin2', 'admin2', 'admin2@example.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'Premise admin', 'Paris', '750015', 'France');
 
 --regular users
-insert into users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
-       values ('2', 'user', 'user', 'user', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user@example.com', '1990-01-01', '123456789', 'Description user', 'Test street 1', 'Premise 1', 'paris', '750014', 'France'),
-       ('3', 'user3', 'David', 'Johnson', 'password3', 'user3@example.com', '1985-08-20', '555555555', 'Description 3', '789 Oak St', 'Premise 3', 'Chicago', '23456', 'USA'),
-       ('4', 'user4', 'Emily', 'Davis', 'password4', 'user4@example.com', '1995-03-10', '111111111', 'Description 4', '987 Pine St', 'Premise 4', 'Houston', '78901', 'USA'),
-       ('5', 'user5', 'Michael', 'Wilson', 'password5', 'user5@example.com', '1998-11-25', '999999999', 'Description 5', '321 Maple St', 'Premise 5', 'Sevilla', '34567', 'Spain'),
-       ('6', 'user6', 'Naruto', 'Uzumaki', '12345', 'naruto@example.com', '2000-10-08', '386063686', 'The next Hokage', '15 Ichiban Street', 'Premise 6', 'Tokyo', '34375', 'Japan'),
-       ('7', 'user7', 'James', 'Hetfield', 'yeah45', 'jameshetfield@example.com', '1965-11-22', '666666666', 'Best musician in the world', '45 Guitar street', 'Premise 7', 'San Francisco', '84735', 'USA'),
-       ('8', 'user8', 'Fernando', 'Alonso', 'password33', 'fernandoalonso@example.com', '1983-03-03', '333333333', 'The GOAT of formula 1', '33 Win Street', 'Premise 8', 'Oviedo', '41008', 'Spain'),
+INSERT INTO users (id, username, firstname, lastname, password, email, birthdate, phone_number, description, address_line, premise, city, postal_code, country)
+       VALUES ('2', 'user', 'user', 'user', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user@example.com', '1990-01-01', '123456789', 'Description user', 'Test street 1', 'Premise 1', 'paris', '750014', 'France'),
+       ('3', 'user3', 'David', 'Johnson', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user3@example.com', '1985-08-20', '555555555', 'Description 3', '789 Oak St', 'Premise 3', 'Chicago', '23456', 'USA'),
+       ('4', 'user4', 'Emily', 'Davis', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user4@example.com', '1995-03-10', '111111111', 'Description 4', '987 Pine St', 'Premise 4', 'Houston', '78901', 'USA'),
+       ('5', 'user5', 'Michael', 'Wilson', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'user5@example.com', '1998-11-25', '999999999', 'Description 5', '321 Maple St', 'Premise 5', 'Sevilla', '34567', 'Spain'),
+       ('6', 'user6', 'Naruto', 'Uzumaki', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'naruto@example.com', '2000-10-08', '386063686', 'The next Hokage', '15 Ichiban Street', 'Premise 6', 'Tokyo', '34375', 'Japan'),
+       ('7', 'user7', 'James', 'Hetfield', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'jameshetfield@example.com', '1965-11-22', '666666666', 'Best musician in the world', '45 Guitar street', 'Premise 7', 'San Francisco', '84735', 'USA'),
+       ('8', 'user8', 'Fernando', 'Alonso', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'fernandoalonso@example.com', '1983-03-03', '333333333', 'The GOAT of formula 1', '33 Win Street', 'Premise 8', 'Oviedo', '41008', 'Spain'),
        ('10', 'user10', 'admin3', 'userrr', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'userrrrrrr@example.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'User ', 'Madrid', '750015', 'Spain'),
        ('11', 'user11', 'admin3', 'userrrr', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'userrrrrexample.com', '2000-03-03', '125636835', 'admin', '32 admin street', 'User', 'Madrid', '750015', 'Spain'),
-       ('12', 'user12', 'John', 'Smith', 'password12', 'johnsmith@example.com', '1992-05-15', '123456789', 'Description 12', '123 Elm St', 'Premise 12', 'New York', '10001', 'USA'),
-       ('13', 'user13', 'Emma', 'Johnson', 'password13', 'emmajohnson@example.com', '1991-08-10', '987654321', 'Description 13', '456 Oak St', 'Premise 13', 'Los Angeles', '90001', 'USA'),
-       ('14', 'user14', 'Sophia', 'Lee', 'password14', 'sophialee@example.com', '1995-12-25', '555555555', 'Description 14', '789 Maple St', 'Premise 14', 'Toronto', 'M5J 2H7', 'Canada'),
-       ('15', 'user15', 'Oliver', 'Garcia', 'password15', 'olivergarcia@example.com', '1994-03-18', '666666666', 'Description 15', '321 Main St', 'Premise 15', 'Mexico City', '06500', 'Mexico'),
-       ('16', 'user16', 'Mia', 'Rodriguez', 'password16', 'miarodriguez@example.com', '1998-09-30', '999999999', 'Description 16', '456 Elm St', 'Premise 16', 'Sydney', '2000', 'Australia'),
-       ('17', 'user17', 'Noah', 'Martinez', 'password17', 'noahmartinez@example.com', '1993-07-12', '111111111', 'Description 17', '789 Oak St', 'Premise 17', 'London', 'WC2N 5DU', 'United Kingdom'),
-       ('18', 'user18', 'Ava', 'Lopez', 'password18', 'avalopez@example.com', '1997-02-28', '222222222', 'Description 18', '123 Maple St', 'Premise 18', 'Paris', '75010', 'France'),
-       ('19', 'user19', 'Liam', 'Harris', 'password19', 'liamharris@example.com', '1996-11-07', '333333333', 'Description 19', '456 Oak St', 'Premise 19', 'Berlin', '10115', 'Germany'),
-       ('20', 'user20', 'Isabella', 'Clark', 'password20', 'isabellaclark@example.com', '1990-04-22', '444444444', 'Description 20', '789 Elm St', 'Premise 20', 'Tokyo', '100-0001', 'Japan'),
-       ('21', 'user21', 'Sophie', 'Brown', 'password21', 'sophiebrown@example.com', '1992-07-17', '555555555', 'Description 21', '987 Maple St', 'Premise 21', 'Toronto', 'M5J 1A7', 'Canada'),
-       ('22', 'user22', 'Daniel', 'Taylor', 'password22', 'danieltaylor@example.com', '1989-11-03', '666666666', 'Description 22', '321 Oak St', 'Premise 22', 'Los Angeles', '90001', 'USA'),
-       ('23', 'user23', 'Olivia', 'Anderson', 'password23', 'oliviaanderson@example.com', '1991-04-29', '777777777', 'Description 23', '654 Elm St', 'Premise 23', 'Mexico City', '06500', 'Mexico'),
-       ('24', 'user24', 'Ethan', 'Thomas', 'password24', 'ethanthomas@example.com', '1995-09-12', '888888888', 'Description 24', '456 Main St', 'Premise 24', 'Sydney', '2000', 'Australia'),
-       ('25', 'user25', 'Sofia', 'White', 'password25', 'sofiawhite@example.com', '1993-12-07', '999999999', 'Description 25', '789 Oak St', 'Premise 25', 'London', 'WC2N 4DJ', 'United Kingdom'),
-       ('26', 'user26', 'Lucas', 'Gonzalez', 'password26', 'lucasgonzalez@example.com', '1998-01-25', '111111111', 'Description 26', '123 Pine St', 'Premise 26', 'Paris', '75014', 'France'),
-       ('27', 'user27', 'Luna', 'Rodriguez', 'password27', 'lunarodriguez@example.com', '1996-06-19', '222222222', 'Description 27', '456 Oak St', 'Premise 27', 'Berlin', '10117', 'Germany'),
-       ('28', 'user28', 'Benjamin', 'Harris', 'password28', 'benjaminharris@example.com', '1990-09-02', '333333333', 'Description 28', '789 Maple St', 'Premise 28', 'Tokyo', '100-0002', 'Japan'),
-       ('29', 'user29', 'Victoria', 'Clark', 'password29', 'victoriaclark@example.com', '1988-12-15', '444444444', 'Description 29', '321 Elm St', 'Premise 29', 'Toronto', 'M5J 2N8', 'Canada'),
-       ('30', 'user30', 'Henry', 'Lewis', 'password30', 'henrylewis@example.com', '1994-05-31', '555555555', 'Description 30', '654 Oak St', 'Premise 30', 'Los Angeles', '90001', 'USA');
+       ('12', 'user12', 'John', 'Smith', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'johnsmith@example.com', '1992-05-15', '123456789', 'Description 12', '123 Elm St', 'Premise 12', 'New York', '10001', 'USA'),
+       ('13', 'user13', 'Emma', 'Johnson', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'emmajohnson@example.com', '1991-08-10', '987654321', 'Description 13', '456 Oak St', 'Premise 13', 'Los Angeles', '90001', 'USA'),
+       ('14', 'user14', 'Sophia', 'Lee', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'sophialee@example.com', '1995-12-25', '555555555', 'Description 14', '789 Maple St', 'Premise 14', 'Toronto', 'M5J 2H7', 'Canada'),
+       ('15', 'user15', 'Oliver', 'Garcia', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'olivergarcia@example.com', '1994-03-18', '666666666', 'Description 15', '321 Main St', 'Premise 15', 'Mexico City', '06500', 'Mexico'),
+       ('16', 'user16', 'Mia', 'Rodriguez', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'miarodriguez@example.com', '1998-09-30', '999999999', 'Description 16', '456 Elm St', 'Premise 16', 'Sydney', '2000', 'Australia'),
+       ('17', 'user17', 'Noah', 'Martinez', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'noahmartinez@example.com', '1993-07-12', '111111111', 'Description 17', '789 Oak St', 'Premise 17', 'London', 'WC2N 5DU', 'United Kingdom'),
+       ('18', 'user18', 'Ava', 'Lopez', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'avalopez@example.com', '1997-02-28', '222222222', 'Description 18', '123 Maple St', 'Premise 18', 'Paris', '75010', 'France'),
+       ('19', 'user19', 'Liam', 'Harris', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'liamharris@example.com', '1996-11-07', '333333333', 'Description 19', '456 Oak St', 'Premise 19', 'Berlin', '10115', 'Germany'),
+       ('20', 'user20', 'Isabella', 'Clark', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'isabellaclark@example.com', '1990-04-22', '444444444', 'Description 20', '789 Elm St', 'Premise 20', 'Tokyo', '100-0001', 'Japan'),
+       ('21', 'user21', 'Sophie', 'Brown', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'sophiebrown@example.com', '1992-07-17', '555555555', 'Description 21', '987 Maple St', 'Premise 21', 'Toronto', 'M5J 1A7', 'Canada'),
+       ('22', 'user22', 'Daniel', 'Taylor', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'danieltaylor@example.com', '1989-11-03', '666666666', 'Description 22', '321 Oak St', 'Premise 22', 'Los Angeles', '90001', 'USA'),
+       ('23', 'user23', 'Olivia', 'Anderson', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'oliviaanderson@example.com', '1991-04-29', '777777777', 'Description 23', '654 Elm St', 'Premise 23', 'Mexico City', '06500', 'Mexico'),
+       ('24', 'user24', 'Ethan', 'Thomas', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'ethanthomas@example.com', '1995-09-12', '888888888', 'Description 24', '456 Main St', 'Premise 24', 'Sydney', '2000', 'Australia'),
+       ('25', 'user25', 'Sofia', 'White', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'sofiawhite@example.com', '1993-12-07', '999999999', 'Description 25', '789 Oak St', 'Premise 25', 'London', 'WC2N 4DJ', 'United Kingdom'),
+       ('26', 'user26', 'Lucas', 'Gonzalez', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'lucasgonzalez@example.com', '1998-01-25', '111111111', 'Description 26', '123 Pine St', 'Premise 26', 'Paris', '75014', 'France'),
+       ('27', 'user27', 'Luna', 'Rodriguez', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'lunarodriguez@example.com', '1996-06-19', '222222222', 'Description 27', '456 Oak St', 'Premise 27', 'Berlin', '10117', 'Germany'),
+       ('28', 'user28', 'Benjamin', 'Harris', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'benjaminharris@example.com', '1990-09-02', '333333333', 'Description 28', '789 Maple St', 'Premise 28', 'Tokyo', '100-0002', 'Japan'),
+       ('29', 'user29', 'Victoria', 'Clark', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'victoriaclark@example.com', '1988-12-15', '444444444', 'Description 29', '321 Elm St', 'Premise 29', 'Toronto', 'M5J 2N8', 'Canada'),
+       ('30', 'user30', 'Henry', 'Lewis', '$2a$10$nOGhgxh/uWfa.DVZQmkW9.Tp6fpP3rkk5sVwvXGBrwrn24AvLQYuy', 'henrylewis@example.com', '1994-05-31', '555555555', 'Description 30', '654 Oak St', 'Premise 30', 'Los Angeles', '90001', 'USA');
 
 -- set user rights
-insert into user_roles (user_id, role_id) values (1, 1);
-insert into user_roles (user_id, role_id) values (2, 2);
-insert into user_roles (user_id, role_id) values (3, 2);
-insert into user_roles (user_id, role_id) values (4, 2);
-insert into user_roles (user_id, role_id) values (5, 2);
-insert into user_roles (user_id, role_id) values (6, 2);
-insert into user_roles (user_id, role_id) values (7, 2);
-insert into user_roles (user_id, role_id) values (8, 2);
-insert into user_roles (user_id, role_id) values (9, 1);
-insert into user_roles (user_id, role_id) values (10, 2);
-insert into user_roles (user_id, role_id) values (11, 2);
-insert into user_roles (user_id, role_id) values (12, 2);
-insert into user_roles (user_id, role_id) values (13, 2);
-insert into user_roles (user_id, role_id) values (14, 2);
-insert into user_roles (user_id, role_id) values (15, 2);
-insert into user_roles (user_id, role_id) values (16, 2);
-insert into user_roles (user_id, role_id) values (17, 2);
-insert into user_roles (user_id, role_id) values (18, 2);
-insert into user_roles (user_id, role_id) values (19, 2);
-insert into user_roles (user_id, role_id) values (20, 2);
-insert into user_roles (user_id, role_id) values (21, 2);
-insert into user_roles (user_id, role_id) values (22, 2);
-insert into user_roles (user_id, role_id) values (23, 2);
-insert into user_roles (user_id, role_id) values (24, 2);
-insert into user_roles (user_id, role_id) values (25, 2);
-insert into user_roles (user_id, role_id) values (26, 2);
-insert into user_roles (user_id, role_id) values (27, 2);
-insert into user_roles (user_id, role_id) values (28, 2);
-insert into user_roles (user_id, role_id) values (29, 2);
-insert into user_roles (user_id, role_id) values (30, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (1, 1);
+INSERT INTO user_roles (user_id, role_id) VALUES (2, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (3, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (4, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (5, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (6, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (7, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (8, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (9, 1);
+INSERT INTO user_roles (user_id, role_id) VALUES (10, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (11, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (12, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (13, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (14, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (15, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (16, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (17, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (18, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (19, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (20, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (21, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (22, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (23, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (24, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (25, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (26, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (27, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (28, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (29, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (30, 2);
 
 -- listing
-insert into listings (listing_id, owner_id, description, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
-values ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Brown 69', '4th floor, left', 'Paris', '750001', 'France'),
+INSERT INTO listings (listing_id, owner_id, description, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
+VALUES ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call me', 0, 0, '2024-01-01', '2024-12-01', 'Brown 69', '4th floor, left', 'Paris', '750001', 'France'),
        ('2', '2', 'Big apartement in the center of paris', 'Any other info call me', 0, 0, '2024-01-02', '2024-12-02', 'Bookish 69', '2th floor, left', 'Paris', '750002', 'France'),
        ('3', '3', 'Modern studio apartment in downtown Paris', 'Contact me for booking details', 0, 0, '2024-03-15', '2024-12-31', 'Rue de la Liberte 123', '7th floor, Apt 12', 'Paris', '750003', 'France'),
        ('4', '4', 'Charming cottage in the outskirts of Paris', 'Please inquire for availability', 0, 0, '2024-02-01', '2024-12-15', 'Chemin des Fleurs 456', 'Garden Cottage', 'Paris', '750004', 'France'),
@@ -105,9 +105,9 @@ values ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call
        ('30', '30', 'Modern loft in Beijing', 'Please inquire for booking details', 0, 0, '2024-08-01', '2024-12-31', '32 Haiki street', 'User', 'Beijing', '100000', 'China');
 
 -- messages
-insert into messages (sender_id, receiver_id, content, timestamp)
-values
-       (7, 8, 'Hello User 8, this is User 7!', current_timestamp),
+INSERT INTO messages (sender_id, receiver_id, content, timestamp)
+VALUES
+       (7, 8, 'Hello User 8, this is User 7!', CURRENT_TIMESTAMP),
        (8, 7, 'Hi User 7, nice to hear from you!', CURRENT_TIMESTAMP),
        (7, 8, 'How are you today?', CURRENT_TIMESTAMP),
        (8, 7, 'I am fine, thank you', CURRENT_TIMESTAMP),
@@ -115,8 +115,8 @@ values
        (8, 7, 'Absolutely no!', CURRENT_TIMESTAMP);
 
 -- services
-insert into services (service_id, service_name, service_description)
-values (1, 'Garbage disposal', 'Take out the trash and recycling'),
+INSERT INTO services (service_id, service_name, service_description)
+VALUES (1, 'Garbage disposal', 'Take out the trash and recycling'),
        (2, 'Plant care', 'Water plants and tend to garden'),
        (3, 'Errand running', 'Run errands, such as picking up dry cleaning or dropping off mail. The owner will let you know in chat.'),
        (4, 'Appliance maintenance', 'Clean and maintain appliances, such as the refrigerator and oven'),
@@ -138,8 +138,8 @@ values (1, 'Garbage disposal', 'Take out the trash and recycling'),
        (20, 'Move-in/move-out assistance', 'Help the owner move into or out of their home');
 
 -- constraints
-insert into constraints (constraint_id, constraint_name, constraint_description)
-values (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire hazards and health risks.'),
+INSERT INTO constraints (constraint_id, constraint_name, constraint_description)
+VALUES (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire hazards and health risks.'),
        (2, 'No pets', 'Pets are not allowed to prevent damage and/or hygiene and health issues.'),
        (3, 'No shoes on carpet', 'Shoes are not allowed on the carpet to keep it clean and prevent wear and tear.'),
        (4, 'No loud music after 10pm', 'Loud music is not allowed after 10pm to respect neighbors and maintain a peaceful environment.'),
@@ -161,42 +161,41 @@ values (1, 'No smoking indoors', 'Smoking indoors is prohibited due to fire haza
        (20, 'No hot tub use without prior approval', 'Guests must obtain prior approval from the owner before using the hot tub.');
 
 -- images
-insert into images (id, name, listing_id, url, content_type)
-values (1, "house-1", 1 ,"listing-images/1/house-1.png", "image/x-png"),
-       (2, "house-3", 1 ,"listing-images/1/house-2.png", "image/x-png"),
-       (3, "house-3", 1 ,"listing-images/1/house-3.png", "image/x-png"),
-       (4, "house-1", 2, "listing-images/2/house-4.png", "image/x-png"),
-  (5, "house-2", 2, "listing-images/2/house-5.png", "image/x-png"),
-  (6, "house-3", 2, "listing-images/2/house-6.png", "image/x-png"),
-  (7, "house-4", 3, "listing-images/3/house-7.png", "image/x-png"),
-  (8, "house-5", 3, "listing-images/3/house-8.png", "image/x-png"),
-  (9, "house-6", 3, "listing-images/3/house-9.png", "image/x-png"),
-  (10, "house-7", 4, "listing-images/4/house-10.png", "image/x-png"),
-  (11, "house-8", 4, "listing-images/4/house-11.png", "image/x-png"),
-  (12, "house-9", 4, "listing-images/4/house-12.png", "image/x-png"),
-  (13, "house-10", 5, "listing-images/1/house-1.png", "image/x-png"),
-  (14, "house-11", 5, "listing-images/1/house-2.png", "image/x-png"),
-  (15, "house-12", 5, "listing-images/1/house-3.png", "image/x-png"),
-  (16, "house-13", 6, "listing-images/2/house-4.png", "image/x-png"),
-  (17, "house-14", 6, "listing-images/2/house-5.png", "image/x-png"),
-  (18, "house-15", 6, "listing-images/2/house-6.png", "image/x-png"),
-  (19, "house-4", 7, "listing-images/3/house-7.png", "image/x-png"),
-  (20, "house-5", 7, "listing-images/3/house-8.png", "image/x-png"),
-  (21, "house-6", 7, "listing-images/3/house-9.png", "image/x-png"),
-  (22, "house-7", 8, "listing-images/4/house-10.png", "image/x-png"),
-  (23, "house-8", 8, "listing-images/4/house-11.png", "image/x-png"),
-  (24, "house-9", 8, "listing-images/4/house-12.png", "image/x-png"),
-  (25, "house-1", 9 ,"listing-images/1/house-1.png", "image/x-png"),
-  (26, "house-3", 9 ,"listing-images/1/house-2.png", "image/x-png"),
-  (27, "house-3", 9 ,"listing-images/1/house-3.png", "image/x-png"),
-  (28, "house-1", 10, "listing-images/2/house-4.png", "image/x-png"),
-  (29, "house-2", 10, "listing-images/2/house-5.png", "image/x-png"),
-  (30, "house-3", 10, "listing-images/2/house-6.png", "image/x-png");
-
+INSERT INTO images (id, name, listing_id, url, content_type)
+VALUES (1, "house-1", 1 ,"/listing-images/1/house-1.png", "image/x-png"),
+       (2, "house-2", 1 ,"/listing-images/1/house-2.png", "image/x-png"),
+       (3, "house-3", 1 ,"/listing-images/1/house-3.png", "image/x-png"),
+       (4, "house-3", 2 ,"/listing-images/2/house-3.png", "image/x-png"),
+       (5, "house-4", 2 ,"/listing-images/2/house-4.png", "image/x-png"),
+       (6, "house-5", 2 ,"/listing-images/2/house-5.png", "image/x-png"),
+       (7, "house-7", 3 ,"/listing-images/3/house-7.png", "image/x-png"),
+       (8, "house-8", 3 ,"/listing-images/3/house-8.png", "image/x-png"),
+       (9, "house-9", 3 ,"/listing-images/3/house-9.png", "image/x-png"),
+       (10, "house-10", 4,"/listing-images/4/house-10.png", "image/x-png"),
+       (11, "house-11", 4,"/listing-images/4/house-11.png", "image/x-png"),
+       (12, "house-12", 4,"/listing-images/4/house-12.png", "image/x-png"),
+       (13, "house-3", 6,"/listing-images/6/house-3.png", "image/x-png"),
+       (14, "house-4", 6,"/listing-images/6/house-4.png", "image/x-png"),
+       (15, "house-5", 6,"/listing-images/6/house-5.png", "image/x-png"),
+       (16, "house-1", 5,"/listing-images/5/house-1.png", "image/x-png"),
+       (17, "house-2", 5,"/listing-images/5/house-2.png", "image/x-png"),
+       (18, "house-3", 5,"/listing-images/5/house-3.png", "image/x-png"),
+       (19, "house-7", 7, "/listing-images/7/house-7.png", "image/x-png"),
+       (20, "house-8", 7, "/listing-images/7/house-8.png", "image/x-png"),
+       (21, "house-9", 7, "/listing-images/7/house-9.png", "image/x-png"),
+       (22, "house-10", 8, "/listing-images/8/house-10.png", "image/x-png"),
+       (23, "house-11", 8, "/listing-images/8/house-11.png", "image/x-png"),
+       (24, "house-12", 8, "/listing-images/8/house-12.png", "image/x-png"),
+       (25, "house-1", 9 ,"/listing-images/9/house-1.png", "image/x-png"),
+       (26, "house-3", 9 ,"/listing-images/9/house-2.png", "image/x-png"),
+       (27, "house-3", 9 ,"/listing-images/9/house-3.png", "image/x-png"),
+       (28, "house-4", 10, "/listing-images/10/house-4.png", "image/x-png"),
+       (29, "house-5", 10, "/listing-images/10/house-5.png", "image/x-png"),
+       (30, "house-6", 10, "/listing-images/10/house-6.png", "image/x-png");
 
 --booking
-insert into booking (guest_id, listing_id, booking_start, booking_end, additional_info)
-values
+INSERT INTO booking (guest_id, listing_id, booking_start, booking_end, additional_info)
+VALUES
        -- Future bookings
        (5, 1, '2023-07-01', '2023-07-07', 'Looking forward to our stay!'),
        (6, 2, '2023-08-01', '2023-08-07', 'Excited for our vacation!'),
@@ -219,3 +218,11 @@ values
        (22, 8, '2023-08-01', '2023-08-07', 'Had a great time!'),
        (23, 9, '2023-09-01', '2023-09-07', 'Highly recommended!'),
        (24, 10, '2023-10-01', '2023-10-07', 'Wonderful experience!');
+
+-- constraints for existing listings
+INSERT INTO listing_constraints (listing_id, constraint_id)
+VALUES (1,16), (1,8), (1,12), (2,10), (2,14), (2,20), (3,6), (3,5), (3,13), (4,7), (4,17), (4,15), (5,18), (5,1), (5,9), (6,11), (6,4), (6,19);
+
+-- services for existing listings
+INSERT INTO listing_services (listing_id, service_id)
+VALUES (1,16), (1,8), (1,12), (2,10), (2,14), (2,20), (3,6), (3,5), (3,13), (4,7), (4,17), (4,15), (5,18), (5,1), (5,9), (6,11), (6,4), (6,19);
