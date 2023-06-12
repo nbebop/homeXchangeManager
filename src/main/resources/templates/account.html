@@ -54,7 +54,9 @@
 
     <div class="photos-section" th:each="listingItem : ${listings}">
         <h2>Photos of My Home</h2>
-<!--        <img th:src="@{${listingItem.getMainImgPath}}" alt="House Image">-->
+        <div th:each="image : ${listingItem.getImages}" class="house-img">
+            <img th:src="@{${image.getUrl}}" alt="Listing Image">
+        </div>
     </div>
 
     <div class="services-section" th:each="listingItem : ${listings}">
