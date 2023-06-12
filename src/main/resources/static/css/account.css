@@ -1,60 +1,4 @@
-.logo {
-    cursor: pointer;
-    width: 15%;
-    height: 15%;
-}
-/* General navbar */
-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 5px 10%;
-}
-/* links */
-.navbar li, a, button {
-    font-weight: 500;
-    font-size: 14px;
-    color: white;
-    text-decoration: none;
-}
-.nav-links {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-}
-.nav-links li {
-    width: 140px;
-    padding: 0 5px;
-}
-.nav-links li a {
-    transition: all 0.3s ease 0s;
-}
-.nav-links li a:hover {
-    color: rgb(167, 135, 136);
-}
-
-/* Dropdown Profile menu */
-.dropbtn{
-    margin-left: 15px;
-    width: 90px;
-    height: 40px;
-    padding: 9px 25px;
-    background-color: rgb(167, 135, 136);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-}
-.dropbtn:hover{background-color: rgb(161, 101, 103);}
-.dropbtn img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* or cover, depending on your needs */
-}
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 body, h1, h2, p, ul, li, form, img, button {
     margin: 0;
@@ -77,9 +21,14 @@ h1 {
 /* Profile Section */
 .profile-section {
     background-color: #ffffff;
-    border: 1px solid #dddddd;
+    border: 2px solid #dddddd;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 800px;
+    color: rgb(167, 135, 136);
+
 }
 
 .profile-section h2 {
@@ -92,8 +41,15 @@ h1 {
     margin-bottom: 10px;
 }
 
-.profile-details p {
-    margin-bottom: 5px;
+.profile-details {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 750px;
+    color: rgb(167, 135, 136);
 }
 
 /* Photos Section */
@@ -102,45 +58,26 @@ h1 {
     border: 1px solid #dddddd;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 750px;
+    color: rgb(167, 135, 136);
 }
 
 .photos-section h2 {
     margin-bottom: 10px;
-
-}
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    text-align: center;
-    transition: all 0.3s ease 0s;
-    border-radius: 20px;
-    padding: 15px;
-    backdrop-filter: blur(10px);
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+.photos-section .house-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    color: white;
-    box-shadow: 0px 20px 20px rgba(0,0,0,0.8);
-    border-radius: 50px;
-    background-color: rgb(167, 135, 136);
-
-
-.photo {
-    width: 200px;
-    height: 200px;
-    margin-right: 10px;
+.photos-section img {
+    width: 33.33%;
     margin-bottom: 10px;
+    height: auto;
 }
 
 /* Services Section */
@@ -149,6 +86,10 @@ h1 {
     border: 1px solid #dddddd;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 750px;
+    color: rgb(167, 135, 136);
 }
 
 .services-section h2 {
@@ -167,6 +108,10 @@ h1 {
     border: 1px solid #dddddd;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 750px;
+    color: rgb(167, 135, 136);
 }
 
 .constraints-section h2 {
@@ -185,6 +130,10 @@ h1 {
     border: 1px solid #dddddd;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 800px;
+    color: rgb(167, 135, 136);
 }
 
 .messaging-section h2 {
@@ -192,7 +141,7 @@ h1 {
 }
 
 .messaging-form textarea {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
 }
@@ -204,113 +153,69 @@ h1 {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    margin-left: 325px;
 }
 
 .messaging-form button:hover {
     background-color: rgb(161, 101, 103);
 }
-/* Style for the popup windows */
-.popup {
-    display: none; /* Hide the popups by default */
-    position: fixed; /* Position the popups */
-    z-index: 1; /* Set a high z-index to make them appear on top of other elements */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Enable scrolling if needed */
-    background-color: rgba(0, 0, 0, 0.6); /* Add a semi-transparent background color */
-}
-
-.popup-content {
-    background-color: #fefefe;
-    margin: 10% auto; /* Center the popup windows vertically and horizontally */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
-/****************************************************/
-/* Search bar */
-.search-bar {
-    flex: 1;
-    position: relative;
-}
-.search-bar input{
-    width: 150px;
-    height: 40px;
-    border: none;
-    outline: none;
-    background: white;
-    border-radius: 50px;
-    text-align: left;
-    padding-left: 20px;
-    font-size: 14px;
-    padding-right: 40px;
-    transition: all 0.3s ease 0s;
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-
-}
-.search-bar:hover input{
-    width: 450px;
-}
-.search-bar button{
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    border: none;
-    position: absolute;
-    right: 0;
-    transform: scale(0.9);
-    background: rgb(167, 135, 136);
-    transition: all 0.3s ease 0s;
-    margin-top: 1px
-}
-.search-bar:hover button{
-    background-color: rgb(161, 101, 103);
-}
-/* Change color of search cancel button */
-input[type="search"]::-webkit-search-cancel-button {
-    /* Remove default */
-    -webkit-appearance: none;
-    /*Your new styles */
-    height: 20px;
-    width: 20px;
-    background-color: rgb(167, 135, 136);
-    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
-}
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: rgb(240, 237, 235);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-header {
-    background-color:rgb(215,210,207);;
-    color: #fff;
-    padding: 10px;
+.help-information-selection{
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 main {
     margin: 20px;
 
 }
+.messaging-form textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    resize: vertical;
+}
+
+.messaging-form textarea:focus {
+    outline: none;
+    border-color: #888;
+    box-shadow: 0 0 5px #888;
+}
+
+
+/* Pending Bookings Section */
+/* Profile Section */
+.bookings-section {
+    background-color: #ffffff;
+    border: 2px solid #dddddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 750px;
+    color: rgb(167, 135, 136);
+}
+
+.bookings-section h2 {
+    margin-bottom: 10px;
+}
+
+.booking-photos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.booking-photos .photo {
+    width: 200px;
+    height: 200px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.booking-details p {
+    margin-bottom: 5px;
+}
+

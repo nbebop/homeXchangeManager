@@ -8,11 +8,13 @@ import com.example.homeXchangeManager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Collections;
@@ -21,9 +23,9 @@ import java.util.Collections;
 @RequestMapping("/registration")
 public class RegistrationController {
 
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public RegistrationController(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
@@ -42,10 +44,8 @@ public class RegistrationController {
         return "registration";
     }
 
-    // for the date
-
     @PostMapping
-    public String register(@Valid @ModelAttribute("user") RegisterDto registerDto, BindingResult bindingResult) {
+    public String register(@Valid @ModelAttribute("user") RegisterDto registerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             return "registration";
@@ -69,8 +69,13 @@ public class RegistrationController {
         Role roles = roleRepository.findByName("USER");
         user.setRoles(Collections.singletonList(roles));
 
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
         userRepository.save(user);
+        redirectAttributes.addFlashAttribute("successMessage", "Listing created successfully!");
         return "login";
     }
+
 
 }

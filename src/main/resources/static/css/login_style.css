@@ -170,7 +170,7 @@ a:hover {
 }
 .how-it-works-section{
     padding-top: 30px;
-    height: 300px;
+    height: 400px;
 }
 .costs-section{
     margin-top: 50px;
@@ -185,6 +185,7 @@ a:hover {
     color: #fff;
     margin-right: 20px;
     margin-left: 30px;
+    margin-bottom: 30px;
 }
 .info-section a:hover {
     color: rgb(167, 135, 136);
@@ -205,12 +206,12 @@ a:hover {
 .popup-content {
     background-color: #fefefe;
     margin: 10% auto; /* Center the popup windows vertically and horizontally */
-    padding: 20px;
+    padding: 40px;
     border: 1px solid #888;
     width: 80%;
     max-width: 600px;
+    border-radius: 10px; /* Add rounded corners */
 }
-
 .close {
     color: #aaa;
     float: right;
@@ -218,10 +219,53 @@ a:hover {
     font-weight: bold;
     cursor: pointer;
 }
-
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
+/* Additional styles */
+.popup-content{
+    padding-left: 20px;
+}
+.popup-content p, li {
+    padding: 10px; /* Add padding to paragraphs */
+    font-size: 14px; /* Set smaller font size */
+}
+.popup-content h2 {
+    text-align: center; /* Center align the heading */
+}
+
+.popup-content ul {
+    padding-left: 40px; /* Add indentation to the list */
+}
+.popup-content button {
+    margin-left: 230px;
+    font-size: 10px;
+    color: white;
+    width: 125px;
+    height: 50px;
+    padding: 9px 25px;
+    background-color: rgb(167, 135, 136);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.popup-content button:hover {
+    background-color: rgb(161, 101, 103);
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+}
+.notification {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    text-align: center; /* Center align text */
+    padding: 10px; /* Add padding */
+    margin-bottom: 10px; /* Add margin */
+    border-radius: 5px; /* Add border radius */
+}
+
+.notification p {
+    margin: 0; /* Remove margin for paragraph inside the notification */
+}
+/****************************************************/

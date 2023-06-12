@@ -1,23 +1,25 @@
 package com.example.homeXchangeManager.models;
 
+import com.example.homeXchangeManager.constraints.StayTimeConstraint;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
+@StayTimeConstraint
 @Entity
-@Table(name = "booking")
 public class Booking implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookingId;
 
     @ManyToOne
-    @JoinColumn(name = "guestId", nullable = false)
+    @JoinColumn(name = "guest_id", nullable = false)
     private User guest;
 
     @ManyToOne
-    @JoinColumn(name = "listingId", nullable = false)
+    @JoinColumn(name = "listing_id", nullable = false)
     private Listing listing;
 
     @NotNull

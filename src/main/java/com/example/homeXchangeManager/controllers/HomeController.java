@@ -1,20 +1,23 @@
 package com.example.homeXchangeManager.controllers;
 
 import com.example.homeXchangeManager.models.Listing;
+import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.service.ListingService;
 import com.example.homeXchangeManager.service.UserService;
+import com.example.homeXchangeManager.service.impl.ListingRatingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -25,39 +28,54 @@ public class HomeController {
     private UserService userService;
 
     private ListingService listingService;
-
+    private ListingRatingServiceImpl ratingService;
 
     @Autowired
-    public HomeController(UserService userService, ListingService listingService) {
+    public HomeController(UserService userService, ListingService listingService,
+                          ListingRatingServiceImpl ratingService) {
         this.userService = userService;
         this.listingService = listingService;
+        this.ratingService = ratingService;
     }
 
+    //    LOGIN
     @GetMapping({"/login", "/"})
     public String login() {
         return "login";
     }
 
     @GetMapping("/success")
-    public String successLogin(Authentication authResult) {
+    public String successLogin(Authentication authResult, Model model, RedirectAttributes redirectAttributes) {
         String role = authResult.getAuthorities().toString();
+        model.addAttribute("role", role);
+        redirectAttributes.addFlashAttribute("successMessage", "User signed in successfully");
 
         if (role.contains("ADMIN")) {
-            return "admin_page";
+            return "redirect:/admin_page";
         } else if (role.contains("USER")) {
-            return "home_page";
+            return "redirect:/home_page";
         }
         //fall back
         return "error/404";
     }
 
     @GetMapping("/listing")
-    public String listing() {
+    public String listing(Model model) {
+        model.addAttribute("allListings", getAllListing());
         return "listing";
     }
 
-    @GetMapping("/house")
-    public String house() {
+    @GetMapping("/house/{id}")
+    public String house(@PathVariable("id") long id, Model model, HttpServletRequest request) {
+        Listing listing = listingService.findByListingId(id);
+        User host = listing.getOwner();
+        double avgListingRating = ratingService.calculateAverageRating(listing);
+
+        model.addAttribute("host", host);
+        model.addAttribute("listing", listing);
+        model.addAttribute("rating", avgListingRating);
+        model.addAttribute("request", request);
+
         return "house";
     }
 
@@ -68,27 +86,19 @@ public class HomeController {
         return "home_page";
     }
 
-    /**
-     * Controller to display listing images
-     * and to display the image in frontend:
-     * <img th:src="@{'/listing/image/' + ${listing.id}}">
-     */
-    @GetMapping("/listing/image/{id}")
-    public ResponseEntity<Byte[]> displayItemImage(@PathVariable long id) {
-        Listing listing = listingService.findByListingId(id);
-        Byte[] image = listing.getImage();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG);
-
-        return new ResponseEntity<>(image, headers, HttpStatus.OK);
-    }
-
     private List<Listing> getAllListing() {
         return listingService.findAll();
     }
 
     @GetMapping("/account")
-    public String account() {
+    public String account(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findByUsername(auth.getName());
+        List<Listing> listings = listingService.findByOwner(user);
+
+        model.addAttribute("user", user);
+        model.addAttribute("listings", listings);
+
         return "account";
     }
 
@@ -101,5 +111,11 @@ public class HomeController {
     public String help() {
         return "help";
     }
+
+    @GetMapping("/message")
+    public String message() {
+        return "message";
+    }
+
 
 }

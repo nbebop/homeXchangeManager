@@ -2,6 +2,7 @@ package com.example.homeXchangeManager.controllers;
 
 import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.dto.LoginDto;
+import com.example.homeXchangeManager.dto.RatingDto;
 import com.example.homeXchangeManager.dto.RegisterDto;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.Role;
@@ -9,6 +10,9 @@ import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.ListingRepository;
 import com.example.homeXchangeManager.repositories.RoleRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
+import com.example.homeXchangeManager.service.impl.ListingRatingServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Collections;
 @Controller
 public class ApiController {
+    private static final Logger logger = LoggerFactory.getLogger(ApiController.class);
     private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
     private RoleRepository roleRepository;
@@ -31,12 +36,17 @@ public class ApiController {
     private ListingRepository listingRepository;
     private PasswordEncoder passwordEncoder;
 
+    private ListingRatingServiceImpl ratingService;
+
     @Autowired
-    public ApiController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public ApiController(AuthenticationManager authenticationManager, UserRepository userRepository,
+                         RoleRepository roleRepository, PasswordEncoder passwordEncoder,
+                         ListingRatingServiceImpl ratingService) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.ratingService = ratingService;
     }
 
     @PostMapping("/api/auth/register")
@@ -101,4 +111,13 @@ public class ApiController {
 
         return new ResponseEntity<>("Listing deleted success", HttpStatus.OK);
     }
+
+    @PostMapping("/api/listing/rate")
+    public ResponseEntity<String> rateListingApi(@RequestBody RatingDto ratingDto) {
+        logger.debug(ratingDto.toString());
+        ratingService.save(ratingDto);
+
+        return new ResponseEntity<>("Rating sent with success", HttpStatus.OK);
+    }
+
 }
