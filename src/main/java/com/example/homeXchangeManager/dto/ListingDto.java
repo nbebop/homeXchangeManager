@@ -20,6 +20,7 @@ import java.util.List;
 
 @Data
 public class ListingDto {
+    private long listingId;
     private User owner;
     @NotBlank(message = "Description is required")
     private String description;

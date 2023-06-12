@@ -1,5 +1,6 @@
 package com.example.homeXchangeManager.controllers;
 
+import com.example.homeXchangeManager.dto.ListingDto;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.service.ListingService;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -41,7 +43,6 @@ public class AdminController {
             logger.debug(String.format("Listing with id: %s has been successfully deleted.", listing.getListingId()));
             return "redirect:/admin_page";
         } else {
-            // add error pages
             return "error/404";
         }
     }
@@ -51,7 +52,7 @@ public class AdminController {
         User user = userService.findById(userId);
         if (user != null) {
             userService.delete(userId);
-            logger.debug(String.format("user with id: %s has been successfully deleted.", user.getId()));
+            logger.debug(String.format("User with id: %s has been successfully deleted.", user.getId()));
             return "redirect:/admin_page";
         } else {
             return "error/404";
@@ -65,5 +66,47 @@ public class AdminController {
 
     private List<Listing> getAllListing() {
         return listingService.findAll();
+    }
+
+    @GetMapping("/admin/edit/listing/{id}")
+    public String editListing(@PathVariable("id") long listingId, Model model) {
+        Listing listing = listingService.findByListingId(listingId);
+        if (listing != null) {
+            model.addAttribute("listing", listing);
+            return "edit_listing";
+        } else {
+            return "error/404";
+        }
+    }
+
+    @PostMapping("/admin/update/listing")
+    public String updateListing(@ModelAttribute("listing") Listing updatedListing) {
+        Listing existingListing = listingService.findByListingId(updatedListing.getListingId());
+        if (existingListing != null) {
+            // Update the listing details
+            existingListing.setDescription(updatedListing.getDescription());
+            // Update more listing details
+
+            // Convert the existingListing to a ListingDto
+            ListingDto listingDto = convertToDto(existingListing);
+
+            // Save the ListingDto
+            listingService.save(listingDto);
+
+            logger.debug(String.format("Listing with id: %s has been successfully updated.", existingListing.getListingId()));
+            return "redirect:/admin_page";
+        } else {
+            return "error/404";
+        }
+    }
+
+    private ListingDto convertToDto(Listing listing) {
+        ListingDto listingDto = new ListingDto();
+        // Convert listing properties to listingDto properties
+        listingDto.setListingId(listing.getListingId());
+        listingDto.setDescription(listing.getDescription());
+        // Convert more properties
+
+        return listingDto;
     }
 }
