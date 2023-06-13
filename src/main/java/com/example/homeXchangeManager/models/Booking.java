@@ -9,17 +9,22 @@ import java.util.Date;
 
 @StayTimeConstraint
 @Entity
+@Table(name = "bookings")
 public class Booking implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookingId;
 
     @ManyToOne
-    @JoinColumn(name = "guest_id", nullable = false)
+    @JoinColumn(name = "guestId", nullable = false)
     private User guest;
 
     @ManyToOne
-    @JoinColumn(name = "listing_id", nullable = false)
+    @JoinColumn(name = "hostId", nullable = false)
+    private User host;
+
+    @ManyToOne
+    @JoinColumn(name = "listingId", nullable = false)
     private Listing listing;
 
     @NotNull
@@ -30,18 +35,25 @@ public class Booking implements Serializable {
 
     private String additionalInfo;
 
-    // Constructor
-    public Booking() {}
+    private Date bookingRequestDate;
 
-    public Booking(User guest, Listing listing, Date bookingStart, Date bookingEnd, String additionalInfo) {
+    private boolean accepted;
+
+    public Booking() {
+    }
+
+    public Booking(int bookingId, User guest, User host, Listing listing, Date bookingStart, Date bookingEnd, String additionalInfo, Date bookingRequestDate, boolean accepted) {
+        this.bookingId = bookingId;
         this.guest = guest;
+        this.host = host;
         this.listing = listing;
         this.bookingStart = bookingStart;
         this.bookingEnd = bookingEnd;
         this.additionalInfo = additionalInfo;
+        this.bookingRequestDate = bookingRequestDate;
+        this.accepted = accepted;
     }
 
-    // Getters and Setters
     public int getBookingId() {
         return bookingId;
     }
@@ -88,5 +100,29 @@ public class Booking implements Serializable {
 
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
+    }
+
+    public Date getBookingRequestDate() {
+        return bookingRequestDate;
+    }
+
+    public void setBookingRequestDate(Date bookingRequestDate) {
+        this.bookingRequestDate = bookingRequestDate;
+    }
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
+    public User getHost() {
+        return host;
+    }
+
+    public void setHost(User host) {
+        this.host = host;
     }
 }

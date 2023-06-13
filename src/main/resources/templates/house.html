@@ -28,7 +28,7 @@
         <div class="nav-links">
             <ul class="nav-links-style">
                 <li><a href="/" th:href="@{/listing}">Find a house</a></li>
-                <li><a href="/" th:href="@{/new_listing}">Add a listing</a></li>
+                <li><a href="/" th:href="@{/new_listing}" >Add a listing</a></li>
             </ul>
         </div>
         <!-- Dropdown menu -->
@@ -36,6 +36,7 @@
             <button class="dropbtn"><img src="/img/menu3.png" alt="My Button Image"></button>
             <div class="dropdown-content">
                 <a href="/" th:href="@{/account}">Account</a>
+                <a href="/" th:href="@{/booking_history}">Bookings History</a>
                 <a href="/" th:href="@{/message}">Messages</a>
                 <a href="/" th:href="@{/favourites}">Favorites</a>
                 <a href="/" th:href="@{/help}">Help</a>
@@ -48,6 +49,7 @@
 <div class="spacer"></div>
 <!-- HOUSE 1 -->
 <div class="house-details">
+    <a href="/" th:href="@{/booking_history}">Go to your bookings history</a>
     <!-- MAIN DETAILS -->
     <div>
         <h1 th:text="${listing.description}"></h1>
@@ -84,21 +86,10 @@
     </div>
 
     <!-- CHECK IN FORM // SEARCH BAR THAT NEEDS CHANGING -->
-    <form class="check-form">
-        <div>
-            <label>Check-in</label>
-            <input type="text" placeholder="Add date">
-        </div>
-        <div>
-            <label>Check-out</label>
-            <input type="text" placeholder="Add date">
-        </div>
-        <div class="guest-field">
-            <label>Guest</label>
-            <input type="text" placeholder="2 guest">
-        </div>
-        <button type="submit">Check Availability</button>
-    </form>
+    <div class="check-form">
+        <a th:href="@{'/booking/new/' + ${listing.listingId}}">
+            <button type="submit">Book listing</button> </a>
+    </div>
 
     <!-- SOME HARDCODED STUFF FOR DE-->
     <ul class="details-list">

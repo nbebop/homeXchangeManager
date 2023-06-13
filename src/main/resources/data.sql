@@ -73,15 +73,15 @@ INSERT INTO user_roles (user_id, role_id) VALUES (30, 2);
 
 -- listing
 INSERT INTO listings (listing_id, owner_id, description, booking_info, rating, owner_rating, availability_start, availability_end, address_line, premise, city, postal_code, country)
-VALUES ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call me', 1, 0, '2024-01-01', '2024-12-01', 'Brown 69', '4th floor, left', 'Paris', '750001', 'France'),
-       ('2', '2', 'Big apartement in the center of paris', 'Any other info call me', 2, 0, '2024-01-02', '2024-12-02', 'Bookish 69', '2th floor, left', 'Paris', '750002', 'France'),
+VALUES ('1', '1', 'Small cozy loft in the center of paris', 'Any other info call me', 5, 0, '2024-01-01', '2024-12-01', 'Brown 69', '4th floor, left', 'Paris', '750001', 'France'),
+       ('2', '2', 'Big apartement in the center of paris', 'Any other info call me', 4, 0, '2024-01-02', '2024-12-02', 'Bookish 69', '2th floor, left', 'Paris', '750002', 'France'),
        ('3', '3', 'Modern studio apartment in downtown Paris', 'Contact me for booking details', 3, 0, '2024-03-15', '2024-12-31', 'Rue de la Liberte 123', '7th floor, Apt 12', 'Paris', '750003', 'France'),
        ('4', '4', 'Charming cottage in the outskirts of Paris', 'Please inquire for availability', 4, 0, '2024-02-01', '2024-12-15', 'Chemin des Fleurs 456', 'Garden Cottage', 'Paris', '750004', 'France'),
        ('5', '5', 'Spacious penthouse with panoramic views', 'For bookings, contact the owner', 5, 0, '2024-05-01', '2024-12-31', 'Avenue des Champs-Elysees 789', 'Penthouse Suite', 'Paris', '750005', 'France'),
-       ('6', '6', 'Cozy apartment near Eiffel Tower', 'For booking inquiries, please contact the owner', 1, 0, '2024-06-01', '2024-12-31', 'Rue de la Tour 10', '2nd floor, Apt 5', 'Paris', '750006', 'France'),
-       ('7', '7', 'Beautiful villa with garden in Paris', 'Contact owner for availability and reservations', 2, 0, '2024-07-01', '2024-12-31', 'Avenue du Jardin 25', 'Villa Flore', 'Paris', '750007', 'France'),
+       ('6', '6', 'Cozy apartment near Eiffel Tower', 'For booking inquiries, please contact the owner', 4, 0, '2024-06-01', '2024-12-31', 'Rue de la Tour 10', '2nd floor, Apt 5', 'Paris', '750006', 'France'),
+       ('7', '7', 'Beautiful villa with garden in Paris', 'Contact owner for availability and reservations', 4, 0, '2024-07-01', '2024-12-31', 'Avenue du Jardin 25', 'Villa Flore', 'Paris', '750007', 'France'),
        ('8', '8', 'Modern loft in vibrant neighborhood', 'Please inquire for booking details', 3, 0, '2024-08-01', '2024-12-31', 'Rue de la Mode 42', '5th floor, Loft 8', 'Paris', '750008', 'France'),
-       ('9', '9', 'Beautiful villa with garden in Paris', 'Contact owner for availability and reservations', 2, 0, '2024-07-01', '2024-12-31', 'Avenue du Jardin 25', 'Villa Flore', 'Paris', '750007', 'France'),
+       ('9', '9', 'Beautiful villa with garden in Paris', 'Contact owner for availability and reservations', 4, 0, '2024-07-01', '2024-12-31', 'Avenue du Jardin 25', 'Villa Flore', 'Paris', '750007', 'France'),
        ('10', '10', 'Modern loft in vibrant neighborhood', 'Please inquire for booking details', 5, 0, '2024-08-01', '2024-12-31', 'Rue de la Mode 42', '5th floor, Loft 8', 'Madrid', '750008', 'Spain'),
        ('11', '11', 'Beautiful villa with garden in Madrid', 'Please inquire for booking details', 4, 0, '2024-08-01', '2024-12-31', 'Las ramblas', '6th floor, Loft 8', 'Madrid', '750008', 'Spain'),
        ('12', '12', 'Cozy apartment in Chicago', 'For booking inquiries, please contact the owner', 3, 0, '2024-06-01', '2024-12-31', '123 Oak St', 'Apt 3', 'Chicago', '23456', 'USA'),
@@ -193,31 +193,17 @@ VALUES (1, "house-1", 1 ,"/listing-images/1/house-1.png", "image/x-png"),
        (29, "house-5", 10, "/listing-images/10/house-5.png", "image/x-png"),
        (30, "house-6", 10, "/listing-images/10/house-6.png", "image/x-png");
 
---booking
-INSERT INTO booking (guest_id, listing_id, booking_start, booking_end, additional_info)
-VALUES
-       -- Future bookings
-       (5, 1, '2023-07-01', '2023-07-07', 'Looking forward to our stay!'),
-       (6, 2, '2023-08-01', '2023-08-07', 'Excited for our vacation!'),
-       (7, 3, '2023-09-01', '2023-09-07', 'Planning a relaxing getaway.'),
-       (8, 4, '2023-10-01', '2023-10-07', 'Cant wait to explore!'),
-       (9, 5, '2023-11-01', '2023-11-07', 'Celebrating a special occasion.'),
-       (10, 6, '2023-12-01', '2023-12-07', 'Memorable trip!'),
-       (11, 7, '2024-01-01', '2024-01-07', 'Looking forward to our stay!'),
-       (12, 8, '2024-02-01', '2024-02-07', 'Had a great time!'),
-       (13, 9, '2024-03-01', '2024-03-07', 'Excited for our vacation!'),
-       (14, 10, '2024-04-01', '2024-04-07', 'Wonderful experience!'),
-       -- Past dates
-       (15, 1, '2023-01-01', '2023-01-07', 'Had a great time!'),
-       (16, 2, '2023-02-01', '2023-02-07', 'Highly recommended!'),
-       (17, 3, '2023-03-01', '2023-03-07', 'Wonderful experience!'),
-       (18, 4, '2023-04-01', '2023-04-07', 'Memorable trip!'),
-       (19, 5, '2023-05-01', '2023-05-07', 'Enjoyed every moment.'),
-       (20, 6, '2023-06-01', '2023-06-07', 'Absolutely loved it!'),
-       (21, 7, '2023-07-01', '2023-07-07', 'Looking forward to our stay!'),
-       (22, 8, '2023-08-01', '2023-08-07', 'Had a great time!'),
-       (23, 9, '2023-09-01', '2023-09-07', 'Highly recommended!'),
-       (24, 10, '2023-10-01', '2023-10-07', 'Wonderful experience!');
+INSERT INTO bookings (booking_id, accepted, additional_info, booking_end, booking_request_date, booking_start, guest_id, host_id, listing_id)
+VALUES (1, false, 'Nice house! I have lifelong experience and I would love to exchange home with you!', '2022-04-03','2022-02-02', '2022-03-03', 3, 2, 2),
+       (2, true, 'Great place! I´m excited to stay there.', '2022-05-15', '2022-03-01', '2022-04-01', 4, 6, 5),
+       (3, true, 'Looking forward to a wonderful stay!', '2022-07-10', '2022-05-10', '2022-06-10', 8, 4, 3),
+       (4, false, 'I hope the place has good internet access.', '2022-08-20', '2022-06-15', '2022-07-15', 7, 5, 8),
+       (5, true, 'Excited for the trip!', '2022-09-25', '2022-07-20', '2022-08-25', 6, 7, 4),
+       (6, false, 'Looking for a peaceful retreat.', '2022-11-12', '2022-09-15', '2022-10-15', 3, 8, 6),
+       (7, true, 'Need a pet-friendly accommodation.', '2023-01-05', '2022-11-10', '2022-12-20', 5, 2, 2),
+       (8, true, 'Cant wait to explore!', '2023-11-30', '2023-01-05', '2022-11-10', 3, 2, 2),
+       (9, true, 'I hope the place has good internet access.', '2022-12-30', '2022-01-05', '2022-12-10', 8, 2, 2),
+       (10, false, 'I hope the place has good internet access.', '2022-07-30', '2022-05-30', '2022-07-10', 7, 2, 2);
 
 -- constraints for existing listings
 INSERT INTO listing_constraints (listing_id, constraint_id)

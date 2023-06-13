@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Reset page</title>
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
     <link href="css/reset.css" rel="stylesheet">
-    <title>Login / Sign up</title>
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -16,16 +13,12 @@
         <a href="/" th:action="@{/login}"><img class="logo" src="img/compass_white_name.png" alt="logo"></a>
         <nav>
             <ul class="nav-links">
-                <li><a href="#how-it-works">How it works?</a></li>
-                <li><a href="#how-much-it-costs">How much it costs?</a></li>
+                <li><a href="#how-it-works">How it works?</a> </li>
+                <li><a href="#how-much-it-costs">How much it costs?</a> </li>
             </ul>
         </nav>
-        <a class="cta" href="/" th:action="@{/login}">
-            <button>Login</button>
-        </a>
-        <a class="cta" href="/" th:href="@{/registration}">
-            <button>Register</button>
-        </a>
+        <a class="cta" href="/" th:action="@{/login}"><button>Login</button></a>
+        <a class="cta" href="/" th:href="@{/registration}"><button>Register</button></a>
     </header>
 </section>
 <section id="main_info">
@@ -38,7 +31,7 @@
                     <input type="new_password" name="new_password" placeholder="New password" required>
                     <input type="new_password2" name="new_password2" placeholder="Repeat new password" required>
                     <!-- Login button -->
-                    <button type="submit">Reset</button>
+                    <a href="/" th:action="@{/login}"> <button type="submit">Reset</button></a>
                 </form>
                 <!-- Registration link -->
                 <div class="dont-have-acc">
@@ -52,16 +45,12 @@
 <!-- Sections How it works & How much it works -->
 <section id="how-it-works" class="how-it-works-section">
     <h2>How it works?</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl
-        luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea
-        dictumst.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae volutpat nulla. Sed nec lacus in nisl luctus sagittis. Sed suscipit magna id est ullamcorper, ut vehicula augue mattis. In hac habitasse platea dictumst.</p>
 </section>
 
 <section id="how-much-it-costs" class="costs-section">
     <h2>How much it costs?</h2>
-    <p>Quisque eget nisl ut nisl suscipit dignissim. Duis quis augue eu velit ullamcorper dignissim in ac metus. Etiam
-        euismod eu nunc at varius. Praesent auctor nulla eu tortor congue rhoncus. Nullam dapibus, risus eget euismod
-        blandit, mauris sapien efficitur lectus, sit amet eleifend nulla velit vel risus.</p>
+    <p>Quisque eget nisl ut nisl suscipit dignissim. Duis quis augue eu velit ullamcorper dignissim in ac metus. Etiam euismod eu nunc at varius. Praesent auctor nulla eu tortor congue rhoncus. Nullam dapibus, risus eget euismod blandit, mauris sapien efficitur lectus, sit amet eleifend nulla velit vel risus.</p>
 </section>
 
 <section id="info" class="info-section">
