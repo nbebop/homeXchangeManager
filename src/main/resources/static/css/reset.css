@@ -6,6 +6,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .general-form {
     display: flex;
     justify-content: flex-end;
@@ -28,6 +29,7 @@ body {
     width: 25%;
     height: 25%;
 }
+
 /* General navbar */
 header {
     display: flex;
@@ -35,6 +37,7 @@ header {
     align-items: center;
     padding: 5px 10%;
 }
+
 /* links */
 .navbar-section li, a, button {
     font-weight: 500;
@@ -42,21 +45,26 @@ header {
     color: white;
     text-decoration: none;
 }
+
 .nav-links {
     display: flex;
     justify-content: center;
     list-style: none;
 }
+
 .nav-links li {
     width: 140px;
     padding: 0 5px;
 }
+
 .nav-links li a {
     transition: all 0.3s ease 0s;
 }
+
 .nav-links li a:hover {
     color: rgb(167, 135, 136);
 }
+
 /* Button in navbar */
 header button {
     margin-left: 20px;
@@ -67,9 +75,11 @@ header button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
+
 header button:hover {
     background-color: rgb(161, 101, 103);
 }
+
 /* LOGIN TITLE*/
 h1 {
     text-align: center;
@@ -104,6 +114,7 @@ button[type="submit"] {
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
+
 button[type="submit"]:hover {
     background-color: rgb(161, 101, 103);
 }
@@ -111,6 +122,7 @@ button[type="submit"]:hover {
 a[href="registration.html"] {
     color: rgb(167, 135, 136);
 }
+
 /* forgot password & remember me spots */
 .form-group {
     margin-top: 5px;
@@ -125,28 +137,33 @@ a[href="registration.html"] {
     color: rgb(161, 101, 103);
     text-decoration: none;
 }
+
 .forgot-password-link:hover {
     color: white;
 }
+
 /* dont have account */
-.dont-have-acc{
+.dont-have-acc {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
     font-size: 14px
 }
-.dont-have-acc a{
+
+.dont-have-acc a {
     color: rgb(161, 101, 103);
     text-decoration: none;
 }
 
-.dont-have-acc a:hover{
+.dont-have-acc a:hover {
     color: white;
 }
+
 a:hover {
     text-decoration: none;
 }
+
 /* HOW IT WORKS & COST SECTION */
 .how-it-works-section, .costs-section {
     font-size: 14px;
@@ -160,24 +177,29 @@ a:hover {
     align-items: center;
     text-align: center;
 }
-.how-it-works-section{
+
+.how-it-works-section {
     padding-top: 30px;
     height: 200px;
 }
-.costs-section{
+
+.costs-section {
     margin-top: 50px;
     margin-bottom: 50px;
     height: 400px;
 }
+
 /* Bottom information section*/
 .info-section {
     text-align: center;
 }
+
 .info-section a {
     color: #fff;
     margin-right: 20px;
     margin-left: 30px;
 }
+
 .info-section a:hover {
     color: rgb(167, 135, 136);
 }

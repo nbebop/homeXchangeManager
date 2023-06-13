@@ -14,6 +14,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .message {
     padding: 10px;
     margin-bottom: 10px;
@@ -21,15 +22,18 @@ body {
     max-width: 80%;
     word-wrap: break-word;
 }
+
 .received {
     background-color: #f2f2f2;
     align-self: flex-start;
 }
+
 .sent {
     background-color: rgb(167, 135, 136);
     color: #fff;
     align-self: flex-end;
 }
+
 .timestamp {
     font-size: 10px;
     color: #c8cbcf99;
@@ -37,6 +41,7 @@ body {
     text-align: right;
     margin-top: 5px;
 }
+
 form {
     display: flex;
     flex-direction: column;
@@ -49,6 +54,7 @@ textarea {
     border-radius: 5px;
     resize: none;
 }
+
 input[type="submit"] {
     background-color: rgb(167, 135, 136);
     color: #fff;
@@ -58,26 +64,32 @@ input[type="submit"] {
     cursor: pointer;
     margin-top: 10px;
 }
-.host{
+
+.host {
     display: flex;
     align-items: center;
 }
-.host img{
+
+.host img {
     width: 80px;
     border-radius: 50%;
     margin-right: 30px;
 }
-.host h2{
+
+.host h2 {
     margin-bottom: 10px;
     font-weight: 500;
 }
-.host i{
+
+.host i {
     color: rgb(167, 135, 136);
 }
+
 .message.sent,
 .message.received {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 /* NAVBAR CSS*/
@@ -85,12 +97,14 @@ input[type="submit"] {
 .spacer {
     height: 70px; /* Adjust the height as needed */
 }
+
 /* General navbar */
 header {
     display: flex;
     align-items: center;
     padding: 5px 5%;
 }
+
 .navbar {
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
@@ -98,23 +112,27 @@ header {
     backdrop-filter: blur(10px); /* Add blur effect */
     z-index: 9999;
 }
+
 /* LOGO */
 .logo {
     cursor: pointer;
     width: 153.6px;
     height: 51.2px;
 }
+
 /* links */
 .nav-links {
     /* making all things from links to the right on the RIGHT side of navbar*/
     margin-left: auto;
 }
-.nav-links-style{
+
+.nav-links-style {
     /* style fo links, no bullet points, next to each other */
     list-style: none;
     display: flex;
     justify-content: flex-end;
 }
+
 .navbar li, a, button {
     font-weight: 500;
     font-size: 14px;
@@ -122,23 +140,28 @@ header {
     /*no underline*/
     text-decoration: none;
 }
+
 .nav-links li a {
     transition: all 0.3s ease 0s;
 }
+
 .nav-links li {
     width: 120px;
     padding: 0 5px;
 }
+
 .nav-links li a:hover {
     color: white;
 }
+
 /****************************************************/
 /* Search bar*/
 .search-bar {
     margin-left: auto;
     position: relative; /* Add position relative */
 }
-.search-bar input{
+
+.search-bar input {
     flex: 1;
     position: relative;
     width: 250px;
@@ -182,9 +205,10 @@ header {
 }
 
 
-.search-bar:hover button{
+.search-bar:hover button {
     background-color: rgb(161, 101, 103);
 }
+
 /* Change color of search cancel button */
 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
@@ -193,9 +217,10 @@ input[type="search"]::-webkit-search-cancel-button {
     background-color: rgb(167, 135, 136);
     -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
 }
+
 /****************************************************/
 /* Dropdown Profile menu */
-.dropbtn{
+.dropbtn {
     margin-left: 15px;
     width: 90px;
     height: 40px;
@@ -206,18 +231,22 @@ input[type="search"]::-webkit-search-cancel-button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
-.dropbtn:hover{
+
+.dropbtn:hover {
     background-color: rgb(161, 101, 103);
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
 }
+
 .dropbtn img {
     width: 100%;
     height: 100%;
     object-fit: contain; /* or cover, depending on your needs */
 }
+
 .dropdown {
     /*margin-left: auto;*/
 }
+
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;
@@ -229,6 +258,7 @@ input[type="search"]::-webkit-search-cancel-button {
     padding: 15px;
     backdrop-filter: blur(10px);
 }
+
 /* Links inside the dropdown */
 .dropdown-content a {
     color: black;
@@ -236,15 +266,20 @@ input[type="search"]::-webkit-search-cancel-button {
     text-decoration: none;
     display: block;
 }
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
     color: white;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
     border-radius: 50px;
     background-color: rgb(167, 135, 136);
 }
+
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 /* Bottom things*/
 /****************************************************/
 /* Bottom information section*/
@@ -252,6 +287,7 @@ input[type="search"]::-webkit-search-cancel-button {
     margin-top: 100px;
     text-align: center;
 }
+
 .info-section a {
     color: #fff;
     margin-top: 70px;
@@ -259,9 +295,11 @@ input[type="search"]::-webkit-search-cancel-button {
     margin-left: 30px;
     padding: 40px 130px;
 }
+
 .info-section a:hover {
     color: rgb(167, 135, 136);
 }
+
 /* Style for the popup windows */
 .popup {
     display: none; /* Hide the popups by default */
@@ -283,6 +321,7 @@ input[type="search"]::-webkit-search-cancel-button {
     width: 80%;
     max-width: 600px;
 }
+
 .close {
     color: #aaa;
     float: right;
@@ -290,12 +329,14 @@ input[type="search"]::-webkit-search-cancel-button {
     font-weight: bold;
     cursor: pointer;
 }
+
 .close:hover,
 .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
+
 .popup {
     position: fixed;
     top: 50%;
@@ -307,4 +348,5 @@ input[type="search"]::-webkit-search-cancel-button {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 9999;
 }
+
 /*******

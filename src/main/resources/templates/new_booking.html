@@ -50,7 +50,8 @@
     <div class="booking-container">
         <h1>House Booking</h1>
         <p>Please select the desired dates to exchange the house.</p>
-        <form modelAttribute="booking" th:object="${booking}" id="bookingForm" th:action="@{'/booking/new/'+ ${listing.listingId}}" method="POST"
+        <form modelAttribute="booking" th:object="${booking}" id="bookingForm"
+              th:action="@{'/booking/new/'+ ${listing.listingId}}" method="POST"
               enctype="multipart/form-data">
             <div class="booking-details" th:each="listing: ${listing}">
                 <p th:text="'Available from: ' + ${#dates.format(listing.availabilityStart,'dd-MMM-yyyy')}"></p>

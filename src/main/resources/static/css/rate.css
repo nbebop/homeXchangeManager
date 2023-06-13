@@ -7,9 +7,11 @@ body {
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
 }
-header{
+
+header {
     background-color: rgb(215, 210, 207);
 }
+
 .container {
     background-color: #ffffff;
     border: 2px solid #dddddd;
@@ -66,6 +68,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: rgb(161, 101, 103);
 }
+
 .form-group {
     margin-bottom: 20px;
 }

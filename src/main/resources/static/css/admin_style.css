@@ -2,14 +2,15 @@
 /* General info*/
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: rgb(215,210,207);
+    background-color: rgb(215, 210, 207);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 /* Admin setup */
 /* Edit listings BLOCK*/
-.edit_listings{
+.edit_listings {
     padding: 40px;
     text-decoration: none;
     border-radius: 50px;
@@ -17,6 +18,7 @@ body {
     width: 90%;
     margin-top: 80px;
 }
+
 table-header {
     font-weight: bold;
 }
@@ -31,6 +33,7 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
+
 /* Statistics block*/
 .statistics-block {
     border-radius: 50px;
@@ -54,6 +57,7 @@ th, td {
 .statistics-item {
     margin-bottom: 10px;
 }
+
 /* Sort By dropdown */
 .sort-by {
     margin-bottom: 10px;
@@ -80,39 +84,6 @@ th, td {
 .user-list td:nth-child(4) select {
     margin-right: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 zx

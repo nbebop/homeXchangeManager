@@ -1,21 +1,24 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'poppins', sans-serif;
 
 }
-.header{
+
+.header {
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('../img/travel.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../img/travel.jpg');
     background-size: cover;
     background-position: center;
 }
+
 header.sticky {
     backdrop-filter: blur(10px);
 }
-nav{
+
+nav {
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
@@ -25,24 +28,29 @@ nav{
     padding: 20px 7%;
 
 }
-.logo{
+
+.logo {
     width: 140px;
     cursor: pointer;
 }
-.nav-links li{
+
+.nav-links li {
     list-style: none;
     display: inline-block;
     margin: 10px 30px;
 }
-.nav-links li a{
+
+.nav-links li a {
     text-decoration: none;
     color: #fff;
 }
-.nav-links li a:hover{
+
+.nav-links li a:hover {
     text-decoration: none;
     color: rgb(161, 101, 103);
 }
-.register-btn{
+
+.register-btn {
     background: rgb(161, 101, 103);
     color: #fff;
     padding: 8px 20px;
@@ -50,35 +58,41 @@ nav{
     text-decoration: none;
     font-size: 14px;
 }
-.container{
+
+.container {
     padding: 0 7%;
 }
-.header h1{
+
+.header h1 {
     font-size: 4vw;
     font-weight: 500;
     color: #fff;
     text-align: center;
     padding-top: 22%;
 }
-.search-bar{
+
+.search-bar {
     background: #fff;
     width: 70%;
     margin: 30px auto;
     padding: 6px 10px 6px 30px;
     border-radius: 50px;
 }
-.search-bar form{
+
+.search-bar form {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
-.search-bar form input{
+
+.search-bar form input {
     display: block;
     border: 0;
     outline: none;
     background: transparent;
 }
-.search-bar form button{
+
+.search-bar form button {
     background: rgb(167, 135, 136);
     width: 55px;
     height: 55px;
@@ -87,81 +101,94 @@ nav{
     outline: none;
     cursor: pointer;
 }
-.search-bar form button img{
+
+.search-bar form button img {
     width: 15px;
     margin-top: 7px;
 }
-.location-input{
+
+.location-input {
     flex: 1;
 }
-.search-bar form label{
+
+.search-bar form label {
     font-weight: 600;
 }
 
 /* ---------exclusives------------- */
-.sub-title{
+.sub-title {
     margin: 50px 0 20px;
     font-size: 2.2vw;
     font-weight: 500;
     color: #333;
 }
-.exclusives{
+
+.exclusives {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 30px;
 }
-.exclusives div img{
+
+.exclusives div img {
     width: 100%;
     border-radius: 10px;
 }
-.exclusives div{
+
+.exclusives div {
     position: relative;
 }
-.exclusives div span{
+
+.exclusives div span {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
 }
 
 /* ---------------Trending Places-------------- */
-.trending{
+.trending {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 30px;
     margin-bottom: 30px;
 }
-.trending div img{
+
+.trending div img {
     width: 100%;
     border-radius: 10px;
 }
-.trending h3{
+
+.trending h3 {
     font-weight: 600;
     margin-top: 10px;
 }
+
 /* -------call to action--------- */
-.cta{
+.cta {
     margin: 80px 0;
-    background-image: linear-gradient(to right, #3f2321, transparent),url('../img/banner-2.png');
+    background-image: linear-gradient(to right, #3f2321, transparent), url('../img/banner-2.png');
     background-size: cover;
     background-position: center;
     border-radius: 10px;
     padding: 5%;
     color: #fff;
 }
-.cta h3{
+
+.cta h3 {
     font-size: 4vw;
     line-height: 5.3vw;
     font-weight: 500;
 }
-.cta p{
+
+.cta p {
     font-size: 18px;
     margin: 10px 0;
 }
-.cta-btn{
-    background:rgb(167, 135, 136);
+
+.cta-btn {
+    background: rgb(167, 135, 136);
     color: #fff;
     text-decoration: none;
     padding: 12px 30px;
@@ -171,30 +198,34 @@ nav{
 }
 
 /* ------------Travellers Stories------------ */
-.stories{
+.stories {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 30px;
     margin-bottom: 30px;
 }
-.stories div img{
+
+.stories div img {
     width: 100%;
     border-radius: 10px;
 }
-.stories div{
+
+.stories div {
     position: relative;
     text-align: center;
 }
-.stories p{
+
+.stories p {
     width: 80%;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     color: #fff;
     font-size: 26px;
 }
-.start-btn{
+
+.start-btn {
     text-decoration: none;
     background: rgb(167, 135, 136);
     color: #fff;
@@ -209,43 +240,49 @@ nav{
 }
 
 /* --------about-msg---------- */
-.about-msg{
+.about-msg {
     text-align: center;
     margin: 80px 0;
     color: #333;
     font-size: 17px;
 }
-.about-msg h2{
+
+.about-msg h2 {
     font-size: 28px;
     margin-bottom: 30px;
     font-weight: 500;
 }
+
 /* -----footer------- */
-.footer{
+.footer {
     margin: 80px 0 10px;
     text-align: center;
 }
-.footer a{
+
+.footer a {
     text-decoration: none;
     color: #999;
     font-size: 22px;
     margin: 0 10px;
 }
-.footer hr{
+
+.footer hr {
     background: #999;
     height: 1px;
     width: 100%;
     border: 0;
     margin: 20px 0;
 }
-.footer p{
+
+.footer p {
     padding-bottom: 15px;
 }
 
-.active{
+.active {
     position: relative;
 }
-.active::after{
+
+.active::after {
     content: '';
     background: #fff;
     width: 25px;
@@ -256,18 +293,21 @@ nav{
     bottom: -12px;
     border-radius: 2px;
 }
-nav .fa-bars{
+
+nav .fa-bars {
     display: none;
 }
-/* ---------for small screen devices--- */
-@media only screen and (max-width: 700px){
 
-    .logo{
+/* ---------for small screen devices--- */
+@media only screen and (max-width: 700px) {
+
+    .logo {
         position: fixed;
         top: 4%;
         left: 7%;
     }
-    nav{
+
+    nav {
         position: fixed;
         top: 0;
         z-index: 100;
@@ -280,15 +320,18 @@ nav .fa-bars{
         overflow: hidden;
         transition: max-height 0.5s;
     }
-    nav .nav-links li{
+
+    nav .nav-links li {
         margin: 10px 0;
         display: block;
     }
-    .register-btn{
+
+    .register-btn {
         margin: 15px 0 30px;
         display: inline-block;
     }
-    nav .fa-bars{
+
+    nav .fa-bars {
         display: block;
         position: fixed;
         top: 4%;
@@ -296,64 +339,78 @@ nav .fa-bars{
         color: #fff;
         font-size: 28px;
     }
-    .active::after{
+
+    .active::after {
         left: -40px;
         transform: translate(0, 50%);
         bottom: 50%;
     }
-    .hidemenu{
+
+    .hidemenu {
         max-height: 300px;
     }
-    .header h1{
+
+    .header h1 {
         padding-top: 200px;
         font-size: 7vw;
     }
-    .search-bar{
+
+    .search-bar {
         width: 90%;
         margin: 30px auto;
         padding: 20px 10px 30px;
         border-radius: 5px;
         position: relative;
     }
-    .search-bar form{
+
+    .search-bar form {
         display: block;
     }
-    .search-bar form input{
+
+    .search-bar form input {
         border-bottom: 1px solid #ddd;
         width: 100%;
         margin-bottom: 20px;
         margin-top: 10px;
         padding-bottom: 10px;
     }
-    .search-bar form button{
+
+    .search-bar form button {
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translate(-50%, 50%);
     }
-    .sub-title{
+
+    .sub-title {
         font-size: 6vw;
     }
-    .cta{
+
+    .cta {
         padding: 15% 5%;
     }
-    .cta h3{
+
+    .cta h3 {
         font-size: 7vw;
         line-height: 8vw;
     }
-    .cta p{
+
+    .cta p {
         font-size: 14px;
     }
-    .cta-btn{
+
+    .cta-btn {
         padding: 6px 15px;
         border-radius: 4px;
         margin-top: 10px;
         font-size: 14px;
     }
-    .stories p{
+
+    .stories p {
         font-size: 22px;
     }
-    .about-msg{
+
+    .about-msg {
         font-size: 15px;
     }
 }
@@ -368,7 +425,7 @@ nav .fa-bars{
     margin-right: 30px;
 }
 
-.search-bar-list input{
+.search-bar-list input {
     width: 160px;
     height: 40px;
     border: none;
@@ -382,11 +439,11 @@ nav .fa-bars{
     transition: all 0.3s ease 0s;
 }
 
-.search-bar-list:hover input{
+.search-bar-list:hover input {
     width: 450px;
 }
 
-.search-bar-list button{
+.search-bar-list button {
     cursor: pointer;
     width: 40px;
     height: 40px;
@@ -398,12 +455,12 @@ nav .fa-bars{
     transition: all 0.3s ease 0s;
 }
 
-.search-bar-list:hover button{
+.search-bar-list:hover button {
     background-color: rgb(161, 101, 103);
 }
 
 /* Dropdown Profile menu */
-.dropbtn{
+.dropbtn {
     margin-left: 15px;
     width: 90px;
     height: 40px;
@@ -414,17 +471,23 @@ nav .fa-bars{
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
-.dropbtn:hover{background-color: rgb(161, 101, 103);}
+
+.dropbtn:hover {
+    background-color: rgb(161, 101, 103);
+}
+
 .dropbtn img {
     width: 100%;
     height: 100%;
     object-fit: contain; /* or cover, depending on your needs */
 }
+
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
     position: relative;
     display: inline-block;
 }
+
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;
@@ -449,18 +512,22 @@ nav .fa-bars{
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
     color: white;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
     border-radius: 50px;
     background-color: rgb(167, 135, 136);
 
 }
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
 
-.navbar-white{
-    background-color: rgb(215,210,207);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
+
+.navbar-white {
+    background-color: rgb(215, 210, 207);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
 .navbar-white li, a, button {
     font-weight: 500;
     font-size: 14px;
@@ -468,6 +535,7 @@ nav .fa-bars{
     text-decoration: none;
 
 }
+
 .navbar-white .nav-links {
     display: flex;
     justify-content: center;
@@ -480,125 +548,154 @@ nav .fa-bars{
     width: 140px;
     padding: 0 5px;
 }
+
 .navbar-white .nav-links li a {
     transition: all 0.3s ease 0s;
 }
+
 .navbar-white .nav-links li a:hover {
     color: rgb(167, 135, 136);
 }
 
-.navbar-white .register-btn{
+.navbar-white .register-btn {
     background: rgb(161, 101, 103);
     color: #fff;
 }
-nav.navbar-white .fa-bars{
+
+nav.navbar-white .fa-bars {
     color: #000;
 }
-.navbar-white .active::after{
+
+.navbar-white .active::after {
     background: rgb(161, 101, 103);
 }
-.list-container{
+
+.list-container {
     margin-top: 100px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.left-col{
+
+.left-col {
     flex-basis: 70%;
 }
-.right-col{
+
+.right-col {
     flex-basis: 25%;
 }
-.left-col h1{
+
+.left-col h1 {
     color: #333;
     font-weight: 600;
     margin-bottom: 30px;
 }
-.house{
+
+.house {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 30px 0;
     border-top: 1px solid #ccc;
 }
-.house-img{
+
+.house-img {
     flex-basis: 40%;
 }
-.house-info{
+
+.house-info {
     flex-basis: 58%;
     color: #555;
 }
-.house-img img{
+
+.house-img img {
     width: 100%;
     border-radius: 12px;
 }
-.house-info h3{
+
+.house-info h3 {
     font-weight: 600;
     color: #333;
     font-size: 22px;
     margin: 4px 0;
 }
-.house-info i{
+
+.house-info i {
     color: rgb(161, 101, 103);
     font-size: 18px;
     margin: 10px 1px;
 }
-.house-price{
+
+.house-price {
     text-align: right;
 }
-.house-price h4{
+
+.house-price h4 {
     font-size: 20px;
 }
-.house-price h4 span{
+
+.house-price h4 span {
     font-size: 16px;
     font-weight: 500;
 }
-.sidebar{
+
+.sidebar {
     border: 1px solid #999;
     padding: 20px 30px;
     margin-top: 30px;
 }
-.sidebar h2{
+
+.sidebar h2 {
     font-weight: 500;
 }
-.sidebar h3{
+
+.sidebar h3 {
     font-weight: 500;
     margin: 20px 0 10px;
 }
-.filter{
+
+.filter {
     display: flex;
     align-items: center;
     color: #555;
     margin-bottom: 10px;
 }
-.filter p{
+
+.filter p {
     flex: 1;
 }
-.filter input{
+
+.filter input {
     margin-right: 15px;
     cursor: pointer;
 }
-.sidebar-link{
+
+.sidebar-link {
     text-align: right;
     margin: 20px 0;
 }
-.sidebar-link a{
+
+.sidebar-link a {
     text-decoration: none;
 }
-.pagination{
+
+.pagination {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 40px 0;
 }
-.pagination img{
+
+.pagination img {
     width: 15px;
     margin: 10px 20px;
 }
-.right-arrow{
+
+.right-arrow {
     transform: rotate(180deg);
 }
-.pagination span{
+
+.pagination span {
     margin: 10px 8px;
     width: 40px;
     height: 40px;
@@ -607,7 +704,8 @@ nav.navbar-white .fa-bars{
     border-radius: 50%;
     cursor: pointer;
 }
-.pagination .current{
+
+.pagination .current {
     background: #333;
     color: #fff;
 }
@@ -615,23 +713,28 @@ nav.navbar-white .fa-bars{
 
 /* ------small screen for listing page ---------- */
 
-@media only screen and (max-width: 700px){
-    .list-container{
+@media only screen and (max-width: 700px) {
+    .list-container {
         margin-top: 150px;
     }
-    .left-col, .right-col, .house-img, .house-info{
+
+    .left-col, .right-col, .house-img, .house-info {
         flex-basis: 100%;
     }
-    .left-col h1{
+
+    .left-col h1 {
         font-size: 22px;
     }
-    .house-info h3{
+
+    .house-info h3 {
         font-size: 18px;
     }
-    .house-info i{
+
+    .house-info i {
         font-size: 16px;
     }
-    .pagination span{
+
+    .pagination span {
         margin: 10px 2px;
         width: 30px;
         height: 30px;
@@ -641,50 +744,61 @@ nav.navbar-white .fa-bars{
 }
 
 /* ----------house-details page------------- */
-.house-details{
+.house-details {
     padding: 0 12%;
 }
-.house-title{
+
+.house-title {
     margin-top: 100px;
 }
-.house-title h1{
+
+.house-title h1 {
     font-weight: 600;
 }
-.house-title .row{
+
+.house-title .row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     margin: 10px 0;
 }
-.house-title span{
+
+.house-title span {
     margin: 0 20px;
 }
-.house-title i{
+
+.house-title i {
     color: rgb(167, 135, 136);
     font-size: 14px;
 }
-.gallery{
+
+.gallery {
     display: grid;
     grid-gap: 10px;
     grid-template-areas: 'first first . .' 'first first . .';
     margin: 20px 0;
 }
-.gallery div img{
+
+.gallery div img {
     width: 100%;
     display: block;
     border-radius: 10px;
 }
-.gallery-img-1{
+
+.gallery-img-1 {
     grid-area: first;
 }
-.small-details h2{
+
+.small-details h2 {
     font-weight: 500;
 }
-.small-details h4{
+
+.small-details h4 {
     text-align: right;
     font-size: 22px;
 }
-.line{
+
+.line {
     border: 0;
     height: 1px;
     background: #ccc;
@@ -692,29 +806,34 @@ nav.navbar-white .fa-bars{
     max-width: 800px;
     margin: 20px 0 50px;
 }
-.check-form{
+
+.check-form {
     margin: 30px 0;
     background: #fff;
-    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     padding: 10px 50px;
 }
-.check-form label{
+
+.check-form label {
     display: block;
 }
-.check-form div{
+
+.check-form div {
     padding: 20px;
 }
-.check-form input{
+
+.check-form input {
     background: transparent;
     border: 0;
     outline: none;
 }
-.check-form button{
-    background:rgb(167, 135, 136);
+
+.check-form button {
+    background: rgb(167, 135, 136);
     border: 0;
     outline: none;
     color: #fff;
@@ -723,14 +842,17 @@ nav.navbar-white .fa-bars{
     border-radius: 8px;
     font-size: 16px;
 }
-.guest-field{
+
+.guest-field {
     flex: 1;
 }
-.details-list{
+
+.details-list {
     list-style: none;
     margin: 50px 0;
 }
-.details-list li{
+
+.details-list li {
     margin-left: 50px;
     font-size: 20px;
     font-weight: 500;
@@ -738,54 +860,65 @@ nav.navbar-white .fa-bars{
     color: #555;
     position: relative;
 }
-.details-list li span{
+
+.details-list li span {
     display: block;
     font-weight: 400;
     font-size: 16px;
 }
-.details-list li i{
+
+.details-list li i {
     position: absolute;
     top: 5px;
     left: -40px;
 }
-.home-desc{
+
+.home-desc {
     max-width: 700px;
     margin-bottom: 50px;
 }
-.map{
+
+.map {
     margin: 50px 0;
 }
-.map iframe{
+
+.map iframe {
     width: 100%;
     margin-bottom: 30px;
 }
-.map h3{
+
+.map h3 {
     font-size: 26px;
     font-weight: 500;
     margin-bottom: 30px;
 }
-.map b{
+
+.map b {
     display: block;
     margin-bottom: 16px;
 }
 
-.host{
+.host {
     display: flex;
     align-items: center;
 }
-.host img{
+
+.host img {
     width: 80px;
     border-radius: 50%;
     margin-right: 30px;
 }
-.host h2{
+
+.host h2 {
     margin-bottom: 10px;
     font-weight: 500;
 }
-.host i{
+
+.host i {
     color: rgb(167, 135, 136);
 }
-.contact-host{
+
+.contact-host {
     display: inline-block;
     margin: 40px 0 40px 120px;
     text-decoration: none;
@@ -794,49 +927,60 @@ nav.navbar-white .fa-bars{
     border: 1px solid rgb(167, 135, 136);
     border-radius: 8px;
 }
+
 /* -----media query for house details page---------- */
-@media only screen and (max-width: 700px){
-    .house-details{
+@media only screen and (max-width: 700px) {
+    .house-details {
         margin-top: 150px;
     }
-    .row p{
+
+    .row p {
         margin-top: 10px;
     }
-    .gallery{
+
+    .gallery {
         grid-template-areas: 'first first' '. .' '. .';
     }
-    .small-details h2{
+
+    .small-details h2 {
         font-size: 20px;
         margin-top: 24px;
     }
-    .small-details h4{
+
+    .small-details h4 {
         text-align: left;
         margin: 10px 0;
         font-size: 18px;
     }
-    .check-form{
+
+    .check-form {
         padding: 10px 30px;
     }
-    .check-form div{
+
+    .check-form div {
         padding: 20px 0;
         width: 100%;
     }
-    .check-form input{
+
+    .check-form input {
         border-bottom: 1px solid #ccc;
         width: 100%;
         padding-bottom: 5px;
     }
-    .check-form button{
+
+    .check-form button {
         font-size: 14px;
         margin-top: 10px;
         margin-bottom: 15px;
         border-radius: 4px;
     }
-    .host{
+
+    .host {
         display: block;
         line-height: 28px;
     }
-    .contact-host{
+
+    .contact-host {
         margin: 40px 0;
     }
 }

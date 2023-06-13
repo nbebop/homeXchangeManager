@@ -161,7 +161,8 @@ h1 {
 .messaging-form button:hover {
     background-color: rgb(161, 101, 103);
 }
-.help-information-selection{
+
+.help-information-selection {
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -170,6 +171,7 @@ main {
     margin: 20px;
 
 }
+
 .messaging-form textarea {
     border: 1px solid #ccc;
     border-radius: 5px;

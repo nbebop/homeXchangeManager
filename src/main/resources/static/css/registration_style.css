@@ -17,6 +17,7 @@ body {
     width: 25%;
     height: 25%;
 }
+
 /* General navbar */
 header {
     display: flex;
@@ -24,14 +25,17 @@ header {
     align-items: center;
     padding: 5px 10%;
 }
+
 header.sticky {
     backdrop-filter: blur(10px);
 }
+
 .navbar {
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
 }
+
 /* links */
 .navbar-section li, a, button {
     font-weight: 500;
@@ -39,21 +43,26 @@ header.sticky {
     color: white;
     text-decoration: none;
 }
+
 .nav-links {
     display: flex;
     justify-content: center;
     list-style: none;
 }
+
 .nav-links li {
     width: 140px;
     padding: 0 5px;
 }
+
 .nav-links li a {
     transition: all 0.3s ease 0s;
 }
+
 .nav-links li a:hover {
     color: rgb(167, 135, 136);
 }
+
 /* Button in navbar */
 header button {
     margin-left: 20px;
@@ -64,6 +73,7 @@ header button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
+
 header button:hover {
     background-color: rgb(161, 101, 103);
 }

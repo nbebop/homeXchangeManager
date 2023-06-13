@@ -2,8 +2,9 @@
 function logout() {
     document.getElementById('logoutForm').submit();
 }
+
 //navbar design
-window.addEventListener("scroll", function (){
+window.addEventListener("scroll", function () {
     var header = document.querySelector("header");
     header.classList.toggle("sticky", window.scrollY > 0);
 })
@@ -36,12 +37,13 @@ function saveCookiePreferences() {
     console.log("Marketing Cookies: " + marketingChecked);
 }
 
-window.onload = function() {
+window.onload = function () {
     var saveButton = document.getElementById("cookie-save");
     if (saveButton) {
         saveButton.addEventListener("click", saveCookiePreferences);
     }
 };
+
 //validating password
 function validatePassword(event) {
     event.preventDefault(); // Prevent form submission for demonstration purposes
@@ -58,6 +60,7 @@ function validatePassword(event) {
     alert("Passwords match");
     document.forms[0].submit(); // Uncomment this line to submit the form
 }
+
 var navBar = document.getElementById("navBar");
 
 function togglebtn() {
@@ -65,7 +68,7 @@ function togglebtn() {
 }
 
 // Close the success popup after a certain duration
-setTimeout(function() {
+setTimeout(function () {
     var popup = document.getElementById('successPopup');
     if (popup) {
         popup.style.display = 'none';

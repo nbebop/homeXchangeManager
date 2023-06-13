@@ -49,6 +49,7 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="date"], 
     border: none;
     margin-bottom: 20px;
 }
+
 input[type="submit"] {
     margin-left: 55px;
     width: 515px;
@@ -62,16 +63,18 @@ input[type="submit"] {
     align-items: center;
     background-color: rgb(167, 135, 136);
 }
+
 input[type="submit"]:hover {
     background-color: rgb(161, 101, 103);
 }
- /*Upload file button*/
+
+/*Upload file button*/
 label[for="image"] {
     display: inline-block;
     margin-right: 10px;
 }
 
-label, input[type="file"]{
+label, input[type="file"] {
     display: inline-block;
     margin-left: 50px;
     margin-bottom: 10px;
@@ -83,7 +86,7 @@ input[type="file"] {
     cursor: pointer;
 }
 
-label, input[type="file"]{
+label, input[type="file"] {
     display: inline-block;
     margin-bottom: 10px;
 }
@@ -105,7 +108,6 @@ label, input[type="file"]{
     display: inline-block;
     vertical-align: middle;
 }
-
 
 
 /* Bottom information */
