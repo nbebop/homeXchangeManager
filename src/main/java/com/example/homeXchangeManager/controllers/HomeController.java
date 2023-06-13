@@ -54,7 +54,7 @@ public class HomeController {
         redirectAttributes.addFlashAttribute("successMessage", "User signed in successfully");
 
         if (role.contains("ADMIN")) {
-            return "redirect:/admin_page";
+            return "redirect:/admin/admin_page";
         } else if (role.contains("USER")) {
             return "redirect:/home_page";
         }

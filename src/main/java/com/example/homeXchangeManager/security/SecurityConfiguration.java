@@ -20,7 +20,7 @@ public class SecurityConfiguration {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/registration/**", "/js/**", "/css/**", "/img/**")
                 .permitAll().anyRequest().authenticated().and()
