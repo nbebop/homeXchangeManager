@@ -1,6 +1,5 @@
 package com.example.homeXchangeManager.service.impl;
 
-import com.example.homeXchangeManager.controllers.ListingController;
 import com.example.homeXchangeManager.models.Image;
 import com.example.homeXchangeManager.models.Listing;
 import com.example.homeXchangeManager.repositories.ImageRepository;

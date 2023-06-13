@@ -30,15 +30,15 @@ public class Listing implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "listing_services",
-            joinColumns = { @JoinColumn(name = "listing_id") },
-            inverseJoinColumns = { @JoinColumn(name = "service_id") })
+            joinColumns = {@JoinColumn(name = "listing_id")},
+            inverseJoinColumns = {@JoinColumn(name = "service_id")})
     private List<Service> services = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "listing_constraints",
-            joinColumns = { @JoinColumn(name = "listing_id") },
-            inverseJoinColumns = { @JoinColumn(name = "constraint_id") })
+            joinColumns = {@JoinColumn(name = "listing_id")},
+            inverseJoinColumns = {@JoinColumn(name = "constraint_id")})
     private List<Constraint> constraints = new ArrayList<>();
 
     private String bookingInfo;

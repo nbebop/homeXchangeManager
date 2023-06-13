@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Collections;
+
 @Controller
 public class ApiController {
     private static final Logger logger = LoggerFactory.getLogger(ApiController.class);

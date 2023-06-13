@@ -7,7 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.Arrays;
 
 public class FileConstraintValidator implements ConstraintValidator<FileConstraint, MultipartFile> {
-    private static final String[] ALLOWED_CONTENT_TYPES = { "image/jpeg", "image/png", "image/jpg", "image/gif", "image/tiff", "image/heic" };
+    private static final String[] ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png", "image/jpg", "image/gif", "image/tiff", "image/heic"};
     private static final long MAX_FILE_SIZE = 1000 * 1024 * 1024; // 1000MB
 
     @Override

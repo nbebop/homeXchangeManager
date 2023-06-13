@@ -30,6 +30,7 @@ public interface ListingService {
     List<Listing> findByCity(String city);
 
     List<Listing> findAll();
+
     List<Listing> findAll(Sort sort);
 
     List<Listing> findAllByCityAndAvailabilityStartBetween(String city, Date start, Date end);

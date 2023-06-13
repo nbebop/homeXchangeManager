@@ -22,9 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -68,7 +66,7 @@ public class BookingController {
     }
 
     @PostMapping("/booking/new/{listingId}")
-    public String newBooking(@PathVariable("listingId") int listingId,@Valid @ModelAttribute("booking") BookingDto bookingDto, BindingResult bindingResult) {
+    public String newBooking(@PathVariable("listingId") int listingId, @Valid @ModelAttribute("booking") BookingDto bookingDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             String errorMessages = "";
             for (ObjectError error : bindingResult.getAllErrors()) {

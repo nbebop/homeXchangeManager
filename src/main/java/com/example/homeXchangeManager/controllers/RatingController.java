@@ -36,7 +36,7 @@ public class RatingController {
     }
 
     @GetMapping("/listing/rate/{id}")
-    public String rateListing(@PathVariable("id") long listingId, Model model, HttpServletRequest request){
+    public String rateListing(@PathVariable("id") long listingId, Model model, HttpServletRequest request) {
         Listing listing = listingService.findByListingId(listingId);
         User listingOwner = listing.getOwner();
         model.addAttribute("listing", listing);
@@ -46,7 +46,7 @@ public class RatingController {
     }
 
     @PostMapping("/listing/rate")
-    public String rateListing( @Valid @ModelAttribute("rating") RatingDto ratingDto) {
+    public String rateListing(@Valid @ModelAttribute("rating") RatingDto ratingDto) {
         // ratingDto needs reviewerId, listingId (these are passed from us in: @GetMapping("/listing/rate/{id}")
         // score, description (user input)
         // make sure the names are right. it is tested and works

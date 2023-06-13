@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class ConstraintServiceImpl implements ConstraintService {
     private ConstraintRepository constraintRepository;
+
     @Autowired
     public ConstraintServiceImpl(ConstraintRepository constraintRepository) {
         this.constraintRepository = constraintRepository;
