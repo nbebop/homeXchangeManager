@@ -5,10 +5,13 @@ import com.example.homeXchangeManager.models.Role;
 import com.example.homeXchangeManager.models.User;
 import com.example.homeXchangeManager.repositories.RoleRepository;
 import com.example.homeXchangeManager.repositories.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +24,7 @@ import java.util.Collections;
 @Controller
 @RequestMapping("/registration")
 public class RegistrationController {
+    private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -45,8 +49,13 @@ public class RegistrationController {
 
     @PostMapping
     public String register(@Valid @ModelAttribute("user") RegisterDto registerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
         if (bindingResult.hasErrors()) {
+            String errorMessages = "";
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                errorMessages += error.getDefaultMessage();
+            }
+            logger.debug("Binding error messages: " + errorMessages);
+
             return "registration";
         }
 
@@ -65,7 +74,7 @@ public class RegistrationController {
         user.setPostalCode(registerDto.getPostalCode());
         user.setCountry(registerDto.getCountry());
 
-        Role roles = roleRepository.findByName("USER");
+        Role roles = roleRepository.findByName("ROLE_USER");
         user.setRoles(Collections.singletonList(roles));
 
         if (bindingResult.hasErrors()) {

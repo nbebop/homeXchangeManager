@@ -9,7 +9,7 @@ public class PhoneNumberConstraintValidator implements ConstraintValidator<Phone
         if (value == null) {
             return true; // Skip validation if the value is null
         }
-        String phoneNumberPattern = "^\\d{9}$";
+        String phoneNumberPattern = "^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$";
         return value.matches(phoneNumberPattern);
     }
 }

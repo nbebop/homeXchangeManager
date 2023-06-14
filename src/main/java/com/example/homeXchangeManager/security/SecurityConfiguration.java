@@ -22,6 +22,7 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/forgotten/**").permitAll()
                 .antMatchers("/registration/**", "/js/**", "/css/**", "/img/**")
                 .permitAll().anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/success", true).permitAll().and()
